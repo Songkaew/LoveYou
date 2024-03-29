@@ -4196,32 +4196,38 @@ spawn(function()
 		wait(0.3)
 	end
 end)
-function Tweennnnposmon()
-	PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
-	wait(20)
-end
 
 spawn(function() 
 	while wait() do
 		if _G.Auto_Farm_Level then 
 			pcall(function() QuestCheck()
-				if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
-						if string.find(v.Name, MobName) then
-							_G.PosMonFarmLvSetCFarme = 1
-							repeat task.wait()
-								PosMonLv = v.CFrame * CFrame.new(0,55,0)
-								task.wait(1)--1.5
-								Tweennnnposmon()
-								_G.PosMonFarmLvSetCFarme = 2
-								task.wait(0.05)
-							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-						end
-					end
+				if not game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
+					PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
 				end
 			end)
 		end
 	end
+end)
+
+spawn(function() 
+    while wait() do
+        if _G.Auto_Farm_Level then 
+            pcall(function()
+                if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
+                    for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
+                        if string.find(v.Name, QuestCheck()[3]) then
+                            _G.PosMonFarmLvSetCFarme = 1
+							repeat task.wait()
+									PosMonLv = v.CFrame * CFrame.new(0,77,0)
+									task.wait(1.3)
+									_G.PosMonFarmLvSetCFarme = 2
+							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+                        end
+                    end
+                end
+            end)
+        end
+    end
 end)
 
 task.spawn(function() 
