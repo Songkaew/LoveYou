@@ -4213,7 +4213,8 @@ spawn(function()
                         end
                     end
                 end
-				if not _G.PosMonFarmLvSetCFarme == 1 and not _G.PosMonFarmLvSetCFarme == 2 then
+				if _G.PosMonFarmLvSetCFarme == 1 and _G.PosMonFarmLvSetCFarme == 2 then
+				else
 					PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
 					_G.PosMonFarmLvSetCFarme == 3
 				end
