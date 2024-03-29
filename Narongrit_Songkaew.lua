@@ -4210,22 +4210,27 @@ spawn(function()
 									task.wait(1.3)
 									_G.PosMonFarmLvSetCFarme = 2
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+						else
+							_G.PosMonFarmLvSetCFarme = 3
                         end
+					else
+						_G.PosMonFarmLvSetCFarme = 3
                     end
-                end
-				if _G.PosMonFarmLvSetCFarme == 1 and _G.PosMonFarmLvSetCFarme == 2 then
 				else
+					_G.PosMonFarmLvSetCFarme = 3
+                end
+				if not _G.PosMonFarmLvSetCFarme == 1 and not _G.PosMonFarmLvSetCFarme == 2 then
 					PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
-					_G.PosMonFarmLvSetCFarme == 3
+					_G.PosMonFarmLvSetCFarme = 3
 				end
             end)
         end
     end
 end)
 
-task.spawn(function() 
+task.spawn(function()
 	while task.wait() do
-		if _G.Auto_Farm_Level then 
+		if _G.Auto_Farm_Level then
 			pcall(function()
 				QuestCheck()
 				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
