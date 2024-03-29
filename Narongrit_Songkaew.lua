@@ -2102,7 +2102,9 @@ if randomNumberUI == 2 then
 	_G.ColorWiat = Color3.fromRGB(30,12,12)
 	print("UI 2 ทำงาน")
 end
-if not randomNumberUI == 1 and not randomNumberUI == 2 then
+if randomNumberUI == 1 and randomNumberUI == 2 then
+
+else
 	_G.Color = Color3.fromRGB(80, 80, 80) -- สี Gui
 	_G.ColorWiat = Color3.fromRGB(0,0,0)
 	print("UI เดิม")
@@ -2120,16 +2122,6 @@ else
 end]]
 
 wait(1)
-
-local player = game:GetService("Players").LocalPlayer
--- เช็กว่ามี GUI ชื่อ "KeyMrMaxNaJa" หรือไม่
-if player.PlayerGui:FindFirstChild("KeyMrMaxNaJa") then
-    -- ถ้ามี GUI ชื่อ "KeyMrMaxNaJa" ให้ทำการลบ
-    player.PlayerGui.KeyMrMaxNaJa:Destroy()
-    print("GUI ชื่อ 'KeyMrMaxNaJa' ถูกลบแล้ว")
-else
-    print("ไม่พบ GUI ชื่อ 'KeyMrMaxNaJa'")
-end
 
 local player = game:GetService("Players").LocalPlayer
 -- เช็กว่ามี GUI ชื่อ "Welcome" หรือไม่
