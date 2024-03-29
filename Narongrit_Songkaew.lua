@@ -45,7 +45,7 @@ end
 ]]
 
 
-loadstring(game:HttpGet("https://pastebin.com/raw/vkramXJj"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/vkramXJj"))() --UI
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -1707,7 +1707,7 @@ end
 loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))()
 
 print("CombatFramework")
-loadstring(game:HttpGet("https://pastebin.com/raw/zB5pw6tL"))()
+--loadstring(game:HttpGet("https://pastebin.com/raw/zB5pw6tL"))()
 --loadstring(game:HttpGet("https://pastebin.com/raw/E33gQ5jc"))() --_G.FastAttack = value FastAttackSpeed = value
 ----loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/ser/main/fast-obf-3"))() --open
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/ser/main/fast-obf-2"))()
@@ -1728,6 +1728,27 @@ coroutine.wrap(function()
 				--	if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
 				--end
 				--ac:attack()--
+			elseif _G.FastAttack2 == false then
+				if ac.hitboxMagnitude ~= 55 then
+					ac.hitboxMagnitude = 55
+				end
+				--ac:attack()
+			end
+		end
+	end
+end)()
+
+coroutine.wrap(function()
+	while task.wait() do --.1
+		local ac = CombatFrameworkR.activeController
+		if ac and ac.equipped then
+			if _G.FastAttackX then
+				AttackFunctionNaJa()
+				if tick() - cooldownfastattack > .75 then
+					AttackFunction()
+					wait(.01)
+					cooldownfastattack = tick()
+				end
 			elseif _G.FastAttack2 == false then
 				if ac.hitboxMagnitude ~= 55 then
 					ac.hitboxMagnitude = 55
@@ -1765,13 +1786,12 @@ Attack = function()
     if not ac or not ac.equipped then
         return
     end
-    
-    if tick() - cdnormal > 0.9 then  -- ปรับเวลาคูลดาวน์ลงมาเหมาะสม
+    if tick() - cdnormal > 0.5 then  -- ปรับเวลาคูลดาวน์ลงมาเหมาะสม
         ac:Attack()
         cdnormal = tick()
     else
         Animation.AnimationId = ac.anims.basic[2]
-        ac.humanoid:LoadAnimation(Animation):Play(1, 1)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
+        ac.humanoid:LoadAnimation(Animation):Play(0.05, 0.05)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
         game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
     end
 end
@@ -1779,7 +1799,7 @@ end
 spawn(function()
     while wait(0) do
         if _G.FastAttack2 then
-            if b - tick() > 0.3 then
+            if b - tick() > 0.75 then
                 b = tick()
             end
             pcall(function()
@@ -1789,9 +1809,18 @@ spawn(function()
                     cdnormal = tick()
 				else
                     Animation.AnimationId = ac.anims.basic[2]
-                    ac.humanoid:LoadAnimation(Animation):Play(0.01, 0.01)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
+                    ac.humanoid:LoadAnimation(Animation):Play(0.005, 0.005)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
                     game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 2, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
                 end
+				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+					if v.Humanoid.Health > 0 then
+						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
+							Attack()
+							wait(.5)
+							Boost()
+						end
+					end
+				end
             end)
         end
     end
@@ -7717,6 +7746,29 @@ Settings:Toggle("Fast Attack\nแนะนำ [+]",_G.Settings.FastAttackX,funct
 	_G.FastAttackX = value
 	SaveSettings()
 end)
+
+local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+local CombatFramework = debug.getupvalues(Module)[2]
+local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
+spawn(function()
+    while true do task.wait(0.0)
+        if _G.FastAttackX then
+            pcall(function()
+                CameraShakerR:Stop()
+                CombatFramework.activeController.attacking = false
+                CombatFramework.activeController.timeToNextAttack = 0 --0
+                CombatFramework.activeController.increment = 4  --3
+                CombatFramework.activeController.hitboxMagnitude = 95
+                CombatFramework.activeController.blocking = false
+                CombatFramework.activeController.timeToNextBlock = 0 --0
+                CombatFramework.activeController.focusStart = 0
+                CombatFramework.activeController.humanoid.AutoRotate = true
+            end)
+        end
+        task.wait(0.0)
+    end
+end)
+
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
 	_G.FastAttack1 = value
