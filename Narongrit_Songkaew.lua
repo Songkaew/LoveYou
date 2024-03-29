@@ -1717,14 +1717,13 @@ coroutine.wrap(function()
 		if ac and ac.equipped then
 			if _G.FastAttack2 then
 				AttackFunction()
-					if tick() - cooldownfastattack > math.huge then
-						wait(0.1)
+					if tick() - cooldownfastattack > 1.75 then
 						cooldownfastattack = tick()
 					end
 				--if _G.Settings.Configs["Fast Attack Type"] == "Normal" then
 					--if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
 				--elseif _G.Settings.Configs["Fast Attack Type"] == "Fast" then
-					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
+					--if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
 				--elseif _G.Settings.Configs["Fast Attack Type"] == "Slow" then
 				--	if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
 				--end
@@ -2005,9 +2004,7 @@ task.spawn(function()
 								SeraphFrame.activeController.blocking = false
 								SeraphFrame.activeController.hitboxMagnitude = 80
 								SeraphFrame.activeController.humanoid.AutoRotate = true
-								SeraphFrame.activeController.increment = 2
-								game:GetService 'VirtualUser':CaptureController()
-								game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+								SeraphFrame.activeController.increment = 3
 							until not _G.FastAttack3 or v.Humanoid.Health <= 0
 						end
 					end
