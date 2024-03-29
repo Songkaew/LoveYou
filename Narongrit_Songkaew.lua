@@ -1125,7 +1125,7 @@ spawn(function()
 					Part.Parent = game.Workspace
 					Part.Anchored = true
 					Part.Transparency = 1
-					Part.Size = Vector3.new(123, 0.5, 123)
+					Part.Size = Vector3.new(200, 0.5, 200)
 				else
 					game.Workspace.Part.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.8, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
 				end
@@ -2022,31 +2022,18 @@ task.spawn(function()
 				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Humanoid.Health > 0 then
 						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 80 then
-							repeat task.wait()
-								if v.Humanoid.Health <= v.Humanoid.MaxHealth * 50/100 then 
-									AttackPlayersFunctionNaJa()
-									AttackFunctionNaJa()
-									AttackFunction()
-									Attack()
-									Attack()
-									wait()
-									Boost()
-								else
-									AttackFunctionNaJa()
-									AttackFunction()
-									Attack()
-								end
+								Attack()
+								AttackFunction()
 								AttackFunctionNaJa()
-								if v.Humanoid.Health > 0 then
-									SeraphFrame.activeController.attacking = false
-									SeraphFrame.activeController.timeToNextAttack = 0
-									SeraphFrame.activeController.timeToNextBlock = 0
-									SeraphFrame.activeController.focusStart = 0
-									SeraphFrame.activeController.blocking = false
-									SeraphFrame.activeController.hitboxMagnitude = 80
-									SeraphFrame.activeController.humanoid.AutoRotate = true
-									SeraphFrame.activeController.increment = 4
-								end
+								AttackPlayersFunctionNaJa()
+								SeraphFrame.activeController.attacking = false
+								SeraphFrame.activeController.timeToNextAttack = 0
+								SeraphFrame.activeController.timeToNextBlock = 0
+								SeraphFrame.activeController.focusStart = 0
+								SeraphFrame.activeController.blocking = false
+								SeraphFrame.activeController.hitboxMagnitude = 80
+								SeraphFrame.activeController.humanoid.AutoRotate = true
+								SeraphFrame.activeController.increment = 2
 								game:GetService 'VirtualUser':CaptureController()
 								game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 							until not _G.FastAttack3 or v.Humanoid.Health <= 0
@@ -2057,6 +2044,7 @@ task.spawn(function()
 		end
 	end
 end)
+
 -- KzSystem(getgenv().PCMode)| คุณใช้ PC ใช้มั้ย ใช้เปลี่ยนเป็น true แต่ถ้าคุณใช้มือถือเปลี่ยนเป็น false
 -- KzSystem(getgenv().UIHit)| ปิดการแสดงของ UI false ต้องการดูเปลี่ยนเป็น true
 
@@ -2116,7 +2104,7 @@ if randomNumberUI == 2 then
 	_G.ColorWiat = Color3.fromRGB(30,12,12)
 	print("UI 2 ทำงาน")
 end
-if randomNumberUI == 1 and randomNumberUI == 2 then
+if not randomNumberUI == 1 and not randomNumberUI == 2 then
 	_G.Color = Color3.fromRGB(80, 80, 80) -- สี Gui
 	_G.ColorWiat = Color3.fromRGB(0,0,0)
 	print("UI เดิม")
