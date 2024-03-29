@@ -2022,6 +2022,7 @@ task.spawn(function()
 				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Humanoid.Health > 0 then
 						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 80 then
+							repeat wait()
 								Attack()
 								AttackFunction()
 								AttackFunctionNaJa()
