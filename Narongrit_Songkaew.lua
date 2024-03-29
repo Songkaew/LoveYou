@@ -4201,22 +4201,25 @@ spawn(function()
     while wait() do
         if _G.Auto_Farm_Level then 
             pcall(function() QuestCheck()
-                if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-                    for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
-                        if string.find(v.Name, MobName) then
-                            _G.PosMonFarmLvSetCFarme = 1
+                --if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
+				for i , v in pairs(game.workspace.EnemySpawns:GetChildren()) do--game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
+					if v.Name == MobName then
+						if string.find(v.Name, MobName) then
+							_G.PosMonFarmLvSetCFarme = 1
 							repeat task.wait()
-									PosMonLv = v.CFrame * CFrame.new(0,77,0)
+								local matchingxCFrames = {}
+									table.insert(matchingxCFrames, v.CFrame * CFrame.new(0,77,0))
+									PosMonLv = matchingxCFrames
 									task.wait(1.3)
 									_G.PosMonFarmLvSetCFarme = 2
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						else
 							_G.PosMonFarmLvSetCFarme = 3
-                        end
-                    end
-				else
-					_G.PosMonFarmLvSetCFarme = 3
-                end
+						end
+					else
+						_G.PosMonFarmLvSetCFarme = 3
+					end
+				end
 				if not _G.PosMonFarmLvSetCFarme == 1 and not _G.PosMonFarmLvSetCFarme == 2 then
 					PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
 					_G.PosMonFarmLvSetCFarme = 3
@@ -11382,3 +11385,20 @@ game.StarterGui:SetCore("SendNotification", {
     Title = "Kz hub", 
     Text = "welecome Kz hub"
 })
+game:GetService("RunService").RenderStepped:connect(function()
+game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow:Destroy()
+for i,v in pairs(game.CoreGui:GetChildren()) do
+    if v:FindFirstChild("PropertiesFrame") then
+    if v:FindFirstChild("ExplorerPanel") then
+    if v:FindFirstChild("SideMenu") then
+             warn("DarkDex Detected")
+             game.Players.LocalPlayer:kick("Do not open DarkDex")
+             wait(.3)
+             game:Shutdown()
+             wait(0.2)
+             gamekiller()
+        end
+        end
+        end
+    end
+    end)
