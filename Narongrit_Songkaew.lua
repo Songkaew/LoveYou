@@ -11398,20 +11398,3 @@ game.StarterGui:SetCore("SendNotification", {
     Title = "Kz hub", 
     Text = "welecome Kz hub"
 })
-game:GetService("RunService").RenderStepped:connect(function()
-game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow:Destroy()
-for i,v in pairs(game.CoreGui:GetChildren()) do
-    if v:FindFirstChild("PropertiesFrame") then
-    if v:FindFirstChild("ExplorerPanel") then
-    if v:FindFirstChild("SideMenu") then
-             warn("DarkDex Detected")
-             game.Players.LocalPlayer:kick("Do not open DarkDex")
-             wait(.3)
-             game:Shutdown()
-             wait(0.2)
-             gamekiller()
-        end
-        end
-        end
-    end
-    end)
