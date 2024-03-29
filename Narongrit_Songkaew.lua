@@ -1,4 +1,4 @@
-print("GG ")
+print("GG gg ")
 
 repeat wait()
 until game:IsLoaded()
