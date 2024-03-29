@@ -1798,21 +1798,6 @@ spawn(function()
     end
 end)
 
-local function Attack()
-    local ac = RigControllerR.activeController
-    if not ac or not ac.equipped then
-        return
-    end
-    if tick() - cdnormal > 0.1 then  -- ปรับเวลาคูลดาวน์ลงมาเหมาะสม
-        ac:Attack()
-        cdnormal = tick()
-    else
-        Animation.AnimationId = ac.anims.basic[2]
-        ac.humanoid:LoadAnimation(Animation):Play(1, 1)  -- เล่นอนิเมชันแบบเต็มรูปแบบ
-        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
-    end
-end
-
 local Time = 1
 local AttackRandom = 2
 spawn(function()
@@ -1913,20 +1898,6 @@ task.spawn(function()
 					xShadowx.activeController.blocking = false
 					xShadowx.activeController.attacking = false
 					xShadowx.activeController.humanoid.AutoRotate = true
-				end)
-			end
-		end
-	end
-end)
-task.spawn(function()
-	while true do task.wait()
-		if _G.FastAttack1 then
-			if typeof(xShadowx) == "table" then
-				pcall(function()
-					if xShadowx.activeController then
-						game:GetService 'VirtualUser':CaptureController()
-						game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-					end
 				end)
 			end
 		end
@@ -2123,6 +2094,16 @@ else
 end]]
 
 wait(1)
+
+local player = game:GetService("Players").LocalPlayer
+-- เช็กว่ามี GUI ชื่อ "KeyMrMaxNaJa" หรือไม่
+if player.PlayerGui:FindFirstChild("KeyMrMaxNaJa") then
+    -- ถ้ามี GUI ชื่อ "KeyMrMaxNaJa" ให้ทำการลบ
+    player.PlayerGui.KeyMrMaxNaJa:Destroy()
+    print("GUI ชื่อ 'KeyMrMaxNaJa' ถูกลบแล้ว")
+else
+    print("ไม่พบ GUI ชื่อ 'KeyMrMaxNaJa'")
+end
 
 local player = game:GetService("Players").LocalPlayer
 -- เช็กว่ามี GUI ชื่อ "Welcome" หรือไม่
