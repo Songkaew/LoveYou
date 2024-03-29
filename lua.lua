@@ -4213,8 +4213,6 @@ spawn(function()
 						else
 							_G.PosMonFarmLvSetCFarme = 3
                         end
-					else
-						_G.PosMonFarmLvSetCFarme = 3
                     end
 				else
 					_G.PosMonFarmLvSetCFarme = 3
