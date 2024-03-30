@@ -11525,7 +11525,7 @@ spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
             if _G.FastAttackX then
-				local randomNumberFastAttck = math.random(0.05, 0.25)
+				local randomNumberFastAttck = math.random(0.05, 0.23)
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
 					setfpscap(1240)
