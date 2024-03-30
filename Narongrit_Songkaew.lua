@@ -4176,15 +4176,16 @@ spawn(function()
     while wait() do
         if _G.Auto_Farm_Level then 
             pcall(function() QuestCheck()
-                --if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
-					if string.find(v.Name, MobName) then
-						_G.PosMonFarmLvSetCFarme = 1
-						repeat task.wait()
-							_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
-							task.wait(1.5)
-							_G.PosMonFarmLvSetCFarme = 2
-						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+                if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren(MobName) then
+					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
+						if string.find(v.Name, MobName) then
+							_G.PosMonFarmLvSetCFarme = 1
+							repeat task.wait()
+								_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
+								task.wait(1.5)
+								_G.PosMonFarmLvSetCFarme = 2
+							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+						end
 					end
 				end
             end)
@@ -4238,7 +4239,7 @@ end)
 					QuestCheck()
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						--if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v.Name == MobName then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -4273,7 +4274,7 @@ end)
 								end
 							end
 						--else
-						--end
+						end
 					end
 				end)
 			end
