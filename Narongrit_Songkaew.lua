@@ -4189,15 +4189,17 @@ spawn(function()
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					elseif not string.find(v.Name, MobName) then
 						if string.split(v.Name, MobName) then
-							_G.PosMonFarmLvSetCFarme = 1
-							task.wait(.001)
-							repeat task.wait()
-								task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-								task.wait()
-							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+							if v.Name == MobName then
+								_G.PosMonFarmLvSetCFarme = 1
+								task.wait(.001)
+								repeat task.wait()
+									task.wait()
+									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
+									task.wait(1.5)
+									_G.PosMonFarmLvSetCFarme = 2
+									task.wait()
+								until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+							end
 						end
 					else
 						if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
