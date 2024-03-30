@@ -8578,7 +8578,7 @@ end)
 
 Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บัครออัพเดพ",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
-	_G.FastAttackNaJa = value
+	--_G.FastAttackNaJa = value
 	_G.FastAttack3 = value
 	SaveSettings()
 end)
