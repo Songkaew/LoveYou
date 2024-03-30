@@ -101,7 +101,8 @@ end
 ]]
 
 
-loadstring(game:HttpGet("https://pastebin.com/raw/vkramXJj"))() --UI
+loadstring(game:HttpGet("https://pastebin.com/raw/nUW5kcwN"))() --UI Welcome
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -110,8 +111,7 @@ local CombatFramework = debug.getupvalues(Module)[2]
 local CameraShakerR = require(ReplicatedStorage.Util.CameraShaker)
 
 task.spawn(function()
-    while true do
-        task.wait()
+    while true do task.wait()
         if _G.Auto_Farm_Mastery_Fruit or _G.FastAttack1 then
             pcall(function()
                 CameraShakerR:Stop()
@@ -1763,6 +1763,7 @@ function Check_Sword(Sword_Name)
 		end
 	end
 end
+
 loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
 --loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))() --webhook
 
