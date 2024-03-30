@@ -4185,9 +4185,10 @@ spawn(function()
 							_G.PosMonFarmLvSetCFarme = 2
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
-					if v.Name == MobName then
-					else
-						_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
+					if not string.find(v.Name, MobName) then
+						if v.Name == MobName then
+							_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
+						end
 					end
 				end
             end)
