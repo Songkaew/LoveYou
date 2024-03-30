@@ -4180,10 +4180,14 @@ spawn(function()
 					if string.find(v.Name, MobName) then
 						_G.PosMonFarmLvSetCFarme = 1
 						repeat task.wait()
-							_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 							task.wait(1.5)
 							_G.PosMonFarmLvSetCFarme = 2
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+					end
+					if v.Name == MobName then
+					else
+						_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
 					end
 				end
             end)
@@ -4195,7 +4199,6 @@ task.spawn(function()
 	while task.wait() do
 		if _G.Auto_Farm_Level then 
 			pcall(function()
-				QuestCheck()
 				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
 				if not string.find(QuestTitle, QuestCheck()[3]) then
 					game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
