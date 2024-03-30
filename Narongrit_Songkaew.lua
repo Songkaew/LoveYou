@@ -1730,7 +1730,7 @@ coroutine.wrap(function()
 		if ac and ac.equipped then
 			if _G.FastAttackX then
 				AttackFunctionNaJa()
-				if tick() - cooldownfastattack > .75 then
+				if tick() - cooldownfastattack > .175 then
 					AttackFunction()
 					wait(.01)
 					cooldownfastattack = tick()
