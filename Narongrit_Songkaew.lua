@@ -8557,11 +8557,12 @@ spawn(function()
     end
 end)
 
-Settings:Toggle("Fast Attack!\nไม่แนะนำ! [-]",_G.Settings.FastAttackNaJa,function(value)
-_G.Settings.FastAttackNaJa = value
-_G.FastAttackNaJa = value
+Settings:Toggle("Fast Attack\nไม่แนะนำ [-]",_G.Settings.FastAttackNaJa,function(value)
+	_G.Settings.FastAttackNaJa = value
+	_G.FastAttackNaJa = value
 	SaveSettings()
 end) 
+
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
 	_G.FastAttack1 = value
@@ -8574,6 +8575,7 @@ Settings:Toggle("Fast Attack[2] [Bug]\nโจมตีเร็วสอง บ�
 	_G.FastAttack = value
 	SaveSettings()
 end)
+
 Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บัครออัพเดพ",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
 	_G.FastAttack3 = value
