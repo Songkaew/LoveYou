@@ -4187,29 +4187,24 @@ spawn(function()
 							_G.PosMonFarmLvSetCFarme = 2
 							task.wait()
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-					elseif not string.find(v.Name, MobName) then
-						if string.split(v.Name, MobName) then
-							if (_G.PosMonLv_v2.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 650 then
-								_G.PosMonFarmLvSetCFarme = 1
-								task.wait(.001)
-								repeat task.wait()
-									task.wait()
-									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
-									task.wait(1.5)
-									_G.PosMonFarmLvSetCFarme = 2
-									task.wait()
-								until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-							end
-						end
-					else
-						if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
-							if v.Name == MobName then
-								_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
-							end
-						end
 					end
-					if v.Name == MobName then
-						_G.PosMonLv_v2 = v.CFrame * CFrame.new(0,60,0)
+					--[[if not string.find(v.Name, MobName) then
+						if string.split(v.Name, MobName) then
+							_G.PosMonFarmLvSetCFarme = 1
+							task.wait(.001)
+							repeat task.wait()
+								task.wait()
+								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
+								task.wait(1.5)
+								_G.PosMonFarmLvSetCFarme = 2
+								task.wait()
+							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+						end
+					end]]
+					if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
+						if v.Name == MobName then
+							_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
+						end
 					end
 				end
             end)
