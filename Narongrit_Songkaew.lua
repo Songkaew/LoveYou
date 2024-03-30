@@ -4261,10 +4261,12 @@ end)
 		while task.wait() do
 			if _G.Auto_Farm_Level then 
 				if _G.Fast_Farm_Level and (MyLevel >= 15 and MyLevel <= 300) then
-					if MyLevel >= 15 and MyLevel <= 300 then
-						Fast_Farm_Lv()
-						return
-					end
+					pcall(function()
+						if MyLevel >= 15 and MyLevel <= 300 then
+							Fast_Farm_Lv()
+							return
+						end
+					end)
 				else
 					pcall(function()
 						QuestCheck()
@@ -4312,6 +4314,7 @@ end)
 			end
 		end
 	end)
+if W1 then
 Main:Toggle("Auto Skip Farm Level\nออโต้ฟาร์มลัดเลเวล",_G.Settings.Fast_Farm_Level,function(value)
 	_G.Settings.Fast_Farm_Level = value
     _G.Fast_Farm_Level = value 
@@ -4451,7 +4454,7 @@ end)
 			end
 		end)
 	end
-	
+end
 Main:Toggle('Auto Farm Nearest',_G.NeareastFarm,function(value)
 	_G.NeareastFarm = value
 end)
