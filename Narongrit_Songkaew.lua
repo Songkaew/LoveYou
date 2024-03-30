@@ -4711,7 +4711,7 @@ end)
 
 spawn(function() 
     while wait() do
-        if _G.Auto_Farm_Level then 
+        if _G.Auto_Farm_Level and not _G.Fast_Farm_Level then 
             pcall(function()
 				QuestCheck()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
@@ -4752,7 +4752,7 @@ end)
 
 task.spawn(function() 
 	while task.wait() do
-		if _G.Auto_Farm_Level then 
+		if _G.Auto_Farm_Level and not _G.Fast_Farm_Level then 
 			pcall(function()
 				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
 				if not string.find(QuestTitle, QuestCheck()[3]) then
@@ -4840,7 +4840,7 @@ end)
 												end
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 		v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-											until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
+											until not _G.Auto_Farm_Level or not _G.Fast_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
 										end
 									end
 								end
