@@ -247,6 +247,18 @@ function SaveSettings()
 		return warn("Status : Undetected Executor")
 	end
 end
+-- กำหนดช่วงของตัวเลขที่ต้องการสุ่ม
+--local minNumber = 1
+--local maxNumber = 2--3
+randomNumberUIIF = true
+-- สุ่มเลข
+spawn(function() 
+	while wait() do
+		if randomNumberUIIF then
+			local randomNumberUI = math.random(1, 2)
+		end
+	end
+end) 
 
 LoadSettings()
 
@@ -377,14 +389,14 @@ end
 end
 for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-	print(v.HumanoidRootPart.Parent)
+	--print(v.HumanoidRootPart.Parent)
 	local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
 	local result = string.gsub(v.Name, "Lv. ", "")
 	local result2 = string.gsub(result, "[%[%]]", "")
 	local result3 = string.gsub(result2, "%d+", "")
 	local result4 = string.gsub(result3, "%s+", "")
 
-	print(result4)
+	--print(result4)
 	EnemySpawnsX2.Name = result4
 	EnemySpawnsX2.Parent = workspace.EnemySpawns
 	EnemySpawnsX2.Anchored = true
@@ -398,14 +410,20 @@ if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
 	local result3 = string.gsub(result2, "%d+", "")
 	local result4 = string.gsub(result3, "%s+", "")
 
-	print(result4)
+	--print(result4)
 	EnemySpawnsX2.Name = result4
 	EnemySpawnsX2.Parent = workspace.EnemySpawns
 	EnemySpawnsX2.Anchored = true
 end
 end
 
-
+if W1 then
+    MobList = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Prisoner", "Dangerous Prisoner","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate","Galley Captain"} 
+elseif W2 then
+    MobList = {"Raider","Mercenary","Swan Pirate","Factory Staff","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"} 
+elseif W3 then
+    MobList = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy", "Peanut Scout", "Peanut President", "Ice Cream Chef", "Ice Cream Commander", "Cookie Crafter", "Cake Guard", "Baking Staff", "Head Baker", "Cocoa Warrior", "Chocolate Bar Battler", "Sweet Thief", "Candy Rebel", "Candy Pirate", "Snow Demon","Isle Outlaw","Island Boy","Isle Champion"}
+end
 
 local function QuestCheck()
 local Lvl = game:GetService("Players").LocalPlayer.Data.Level.Value
@@ -1689,7 +1707,7 @@ function Check_Sword(Sword_Name)
 		end
 	end
 end
-
+loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
 loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))()
 
 print("CombatFramework")
@@ -1802,7 +1820,7 @@ spawn(function()
 					if v.Humanoid.Health > 0 then
 						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
 							Attack()
-							wait(.5)
+							wait(.00000025)
 							Boost()
 						end
 					end
@@ -1836,7 +1854,7 @@ Attack = function()
 	if not ac or not ac.equipped then
 		return
 	end
-	if tick() - cdnormal > 0 then
+	if tick() - cdnormal > 5 then
 		ac:attack()
 		cdnormal = tick()
 	else
@@ -1875,7 +1893,7 @@ k = tick()
 spawn(function()
 	while wait() do
 		if  _G.FastAttack2 then
-			if k - tick() > 9e9 then
+			if k - tick() > 0.72 then
 				k = tick()
 			end
 			pcall(function()
@@ -1883,7 +1901,7 @@ spawn(function()
 					if v.Humanoid.Health > 0 then
 						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 							Attack()
-							wait()
+							wait(.000000025)
 							Boost()
 						end
 						wait(0.2)
@@ -2059,37 +2077,17 @@ getgenv().TextUI_IIII = "Wallet : xxx-xxx-xxxx | 37/3/2567" --19-3-2567--28/4/25
 			  
 			  ----------------------------------------------------------------------------------------------------------------------------------------------
 			  print("UI.Lo")
-			  --
--- กำหนดช่วงของตัวเลขที่ต้องการสุ่ม
---local minNumber = 1
---local maxNumber = 2--3
-
--- สุ่มเลข
-local randomNumberUI = math.random(1, 2)
+randomNumberUIIF = false
 print("สุ่ม 1-2 UI ได้ UI ที่:", randomNumberUI)
---[[spawn(function()
-	while wait() do 
-		for i = 1,255 do --255
-			if randomNumber == 3 then
-				_G.Color = Color3.fromHSV(i/255, 1, 1)-- สี Gui
-				wait()
-			end
-		end
-	end
-end)]] 
 
 if randomNumberUI == 1 then
 	_G.Color = Color3.fromRGB(80, 80, 80) -- สี Gui
 	_G.ColorWiat = Color3.fromRGB(0,0,0)
 	print("UI 1 ทำงาน")
-end
-if randomNumberUI == 2 then
+elseif randomNumberUI == 2 then
 	_G.Color = Color3.fromRGB(180, 80, 100) -- สี Gui
 	_G.ColorWiat = Color3.fromRGB(30,12,12)
 	print("UI 2 ทำงาน")
-end
-if randomNumberUI == 1 and randomNumberUI == 2 then
-
 else
 	_G.Color = Color3.fromRGB(80, 80, 80) -- สี Gui
 	_G.ColorWiat = Color3.fromRGB(0,0,0)
@@ -2098,14 +2096,6 @@ end
 
 --_G.Color = Color3.fromRGB(180, 80, 100) -- สี Gui
 --_G.ColorWiat = Color3.fromRGB(30,12,12)
-
-
---[[if randomNumber == 1 or randomNumber == 2 then
-else
-	print("UI ไม่ทำงาน")
-	--
-	--print("ระบบได้เลือกอันเดิม") 
-end]]
 
 wait(1)
 
@@ -2372,6 +2362,19 @@ end
 SaveSettings()
   end)
 
+L_22_:Toggle("RemoveNotify",_G.Settings.RemoveNotify,function(value)
+	_G.Settings.RemoveNotify = value
+	SaveSettings()
+end)
+    spawn(function()
+        while wait() do
+            if _G.Settings.RemoveNotify then
+                game.Players.LocalPlayer.PlayerGui.Notifications.Enabled = false
+            else
+                game.Players.LocalPlayer.PlayerGui.Notifications.Enabled = true
+            end
+        end
+    end)
     L_22_:Toggle("Highlight Mode",false,function(value)
         if value == true then
             game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Beli.Visible = false
@@ -2719,6 +2722,50 @@ Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
 wait(1)
 end)
 
+L_22_:Toggle("FakeLevelUp", FakeLevelUp ,function(value)
+local plr = game:GetService("Players").LocalPlayer
+local Notification = require(game:GetService("ReplicatedStorage").Notification)
+local Data = plr:WaitForChild("Data")
+local EXPFunction = require(game.ReplicatedStorage:WaitForChild("EXPFunction"))
+local LevelUp = require(game:GetService("ReplicatedStorage").Effect.Container.LevelUp)
+local Sound = require(game:GetService("ReplicatedStorage").Util.Sound)
+local LevelUpSound = game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp_Proxy") or game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp")
+function v129(p15)
+    local v130 = p15;
+    while FakeLevelUp do wait()
+        local v131, v132 = string.gsub(v130, "^(-?%d+)(%d%d%d)", "%1,%2");
+        v130 = v131;
+        if v132 == 0 then
+            break;
+        end;    
+		wait()
+    end;
+    return v130;
+end;
+
+Notification.new("<Color=Yellow>QUEST COMPLETED!<Color=/>"):Display()
+Notification.new("Earned <Color=Yellow>1,000,000,000,000 Exp.<Color=/> (+ None)"):Display()
+Notification.new("Earned <Color=Green>$25,000<Color=/>"):Display()
+plr.Data.Exp.Value = 999999999999
+plr.Data.Beli.Value = plr.Data.Beli.Value + 25000
+
+delay = 0
+count = 0
+while plr.Data.Exp.Value - EXPFunction(Data.Level.Value) > 0 do
+    plr.Data.Exp.Value = plr.Data.Exp.Value - EXPFunction(Data.Level.Value)
+    plr.Data.Level.Value = plr.Data.Level.Value + 1
+    plr.Data.Points.Value = plr.Data.Points.Value + 3
+    LevelUp({ plr })
+    Sound.Play(Sound, LevelUpSound.Value)
+    Notification.new("<Color=Green>LEVEL UP!<Color=/> (" .. plr.Data.Level.Value .. ")"):Display()
+    count = count + 1
+    if count >= 5 then
+        delay = tick()
+        count = 0
+        wait()
+    end
+end
+end
 L_22_:Button("Remove Kaitun Cap", function(value)
 game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
@@ -4456,7 +4503,87 @@ end)
 	end
 end
 
-Main:Toggle('Auto Farm Nearest',_G.NeareastFarm,function(value)
+
+Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที่เลือก',_G.Settings.MonSelectFarm,function(value)
+	_G.Settings.MonSelectFarm = value
+	SaveSettings()
+end)
+Main:Dropdown("Select Mon\nเลือกมอน",MobList,_G.Settings.SelectMon,function(value)
+    _G.Settings.SelectMon = value
+    SaveSettings()
+end)
+
+spawn(function()
+	while task.wait() do
+		if _G.Settings.MonSelectFarm then
+			pcall(function()
+				if QSelectFarmMon then
+					game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+				end
+				if game:GetService("Workspace").Enemies:FindFirstChild(_G.Settings.SelectMon) then
+					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v.Name == _G.Settings.SelectMon and v.Humanoid.Health > 0 then
+							repeat wait() 
+								if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+								end
+								EquipWeapon(_G.Select_Weapon)
+								PosMon = v.HumanoidRootPart.CFrame
+								v.HumanoidRootPart.CanCollide = false 
+								v.Head.CanCollide = false
+								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+								BringMobFarm = true
+								Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 30) * CFrame.Angles(math.rad(180), 0, 0))
+								game:GetService 'VirtualUser':CaptureController()
+								game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+							until not _G.Settings.MonSelectFarm or not v.Parent or v.Humanoid.Health <= 0 
+						end
+					end
+				else
+					Tween(_G.PosMonSelect) UnEquipWeapon(_G.Select_Weapon)
+					BringMobFarm = false
+					if World1 and (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+					elseif World1 and not (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
+					elseif World2 and string.find(_G.Settings.SelectMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+					elseif World2 and not string.find(_G.Settings.SelectMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
+					end
+				end
+			end)
+		end
+	end
+end)
+spawn(function() 
+    while wait() do
+        if _G.Settings.MonSelectFarm then 
+            pcall(function()
+				QuestCheck()
+				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
+					if string.find(v.Name, _G.Settings.SelectMon) then
+						_G.PosMonFarmLvSetCFarme = 1
+						task.wait(.001)
+						repeat task.wait()
+							task.wait()
+							_G.PosMonSelect = v.CFrame * CFrame.new(0,68,0)
+							task.wait(1.5)
+							_G.PosMonFarmLvSetCFarme = 2
+							task.wait()
+						until not _G.Settings.MonSelectFarm or _G.PosMonFarmLvSetCFarme == 2
+					end
+					if not string.find(v.Name, _G.Settings.SelectMon) and not string.split(v.Name, _G.Settings.SelectMon) then
+						if v.Name == _G.Settings.SelectMon then
+							_G.PosMonSelect = v.CFrame * CFrame.new(0,60,0)
+						end
+					end
+				end
+            end)
+        end
+    end
+end)
+Main:Toggle('Auto Farm Nearest\nออโต้ฟาร์มมอนรอบๆ',_G.NeareastFarm,function(value)
 	_G.NeareastFarm = value
 end)
 
@@ -4467,6 +4594,9 @@ spawn(function()
 				for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 					if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5500 and v.Humanoid.Health > 0 then
 						repeat wait() 
+							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+							end
 							EquipWeapon(_G.Select_Weapon)
 							PosMon = v.HumanoidRootPart.CFrame
 							v.HumanoidRootPart.CanCollide = false 
@@ -6610,6 +6740,52 @@ spawn(function()
     end
 end)
 
+Main:Label("-「 Advance Raid 」-")
+ 
+Main:Toggle("Auto Unlock Bird: Phoenix Raid",_G.Settings.AutoAdvanceDungeon,function(value)
+	_G.Settings.AutoAdvanceDungeon = value
+	SaveSettings()
+	if a == false then
+		wait()
+		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+	end
+end)
+ 
+spawn(function()
+	while wait() do
+		if _G.Settings.AutoAdvanceDungeon then
+			pcall(function()
+				if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Bird: Phoenix") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Bird: Phoenix") then
+					if game.Players.LocalPlayer.Backpack:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).Level.Value >= 400 then
+							Tween(CFrame.new(-2812.76708984375, 254.803466796875, -12595.560546875))
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Check")
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Heal")
+							if (CFrame.new(-2812.76708984375, 254.803466796875, -12595.560546875).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+								wait(1.5)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Check")
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Heal")
+							end
+						end
+					elseif game.Players.LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
+						if game.Players.LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).Level.Value >= 400 then
+							Tween(CFrame.new(-2812.76708984375, 254.803466796875, -12595.560546875))
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Check")
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Heal")
+							if (CFrame.new(-2812.76708984375, 254.803466796875, -12595.560546875).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+								wait(1.5)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Check")
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SickScientist","Heal")
+							end
+						end
+					end
+				end
+			end)
+		end
+	end
+end)
+
+
 Main:Label("-「 Auto Farm Buddy Swords 」-")
 
 Main:Toggle("Auto Buddy Swords",_G.Settings.Auto_Buddy_Swords,function(a)
@@ -7878,7 +8054,7 @@ spawn(function()
                 CameraShakerR:Stop()
                 CombatFramework.activeController.attacking = false
                 CombatFramework.activeController.timeToNextAttack = 0 --0
-                CombatFramework.activeController.increment = 4  --3
+                CombatFramework.activeController.increment = 4*4*4 --4  --3
                 CombatFramework.activeController.hitboxMagnitude = 95
                 CombatFramework.activeController.blocking = false
                 CombatFramework.activeController.timeToNextBlock = 0 --0
@@ -7890,6 +8066,11 @@ spawn(function()
     end
 end)
 
+Settings:Toggle("Fast Attack!\nไม่แนะนำ! [-]",_G.Settings.FastAttackNaJa,function(value)
+_G.Settings.FastAttackNaJa = value
+_G.FastAttackNaJa = value
+	SaveSettings()
+end)
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
 	_G.FastAttack1 = value
@@ -7913,6 +8094,44 @@ local FastAttack3s = {
     "Level2\nระดับที่สอง",
     "Level3\nระดับที่สาม",
 }
+coroutine.wrap(function()
+local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:Stop()
+    for v,v in pairs(getreg()) do
+        if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
+             for v,v in pairs(debug.getupvalues(v)) do
+                if typeof(v) == "table" then
+                    spawn(function()
+                        game:GetService("RunService").RenderStepped:Connect(function()
+                            if _G.FastAttack1 then
+                                 pcall(function()
+                                     v.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+                                     v.activeController.attacking = false
+                                     v.activeController.increment = 4*4*4
+                                     v.activeController.blocking = false   
+                                     v.activeController.hitboxMagnitude = 150
+    		                         v.activeController.humanoid.AutoRotate = true
+    	                      	     v.activeController.focusStart = 0
+    	                      	     v.activeController.currentAttackTrack = 0
+                                     sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRaxNerous", math.huge)
+                                 end)
+                             end
+                         end)
+                    end)
+                end
+            end
+        end
+    end
+end)();
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if _G.FastAttack1 then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
+end)
 
 --[[Settings:Dropdown("Select Level3\nเลือกระดับที่สาม",FastAttack3s,_G.Settings.SelectLevelFastAttack_3,function(value)
     _G.Settings.SelectLevelFastAttack_3 = value
@@ -8133,7 +8352,7 @@ function InMyNetWork(object)
 	if isnetworkowner then
 		return isnetworkowner(object)
 	else
-		if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then 
+		if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then 
 			return true
 		end
 		return false
@@ -11681,7 +11900,7 @@ spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
             if _G.FastAttackX then
-				local randomNumberFastAttck = math.random(0.05, 0.28)
+				local randomNumberFastAttck = math.random(0.05, 0.29)
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
 					setfpscap(1240)
