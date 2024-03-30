@@ -858,7 +858,7 @@ function EquipWeapon(ToolSe)
 	if not _G.NotAutoEquip then
 		if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
 			Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-			wait(.1)
+			--wait(.1)
 			game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
 		end
 	end
@@ -4177,17 +4177,16 @@ spawn(function()
         if _G.Auto_Farm_Level then 
             pcall(function() QuestCheck()
                 --if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
-						if string.find(v.Name, MobName) then
-							_G.PosMonFarmLvSetCFarme = 1
-							repeat task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-						end
+				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
+					if string.find(v.Name, MobName) then
+						_G.PosMonFarmLvSetCFarme = 1
+						repeat task.wait()
+							_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
+							task.wait(1.5)
+							_G.PosMonFarmLvSetCFarme = 2
+						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
-				--end
+				end
             end)
         end
     end
@@ -4198,8 +4197,22 @@ task.spawn(function()
 		if _G.Auto_Farm_Level then 
 			pcall(function()
 				QuestCheck()
-				if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+				if not string.find(QuestTitle, QuestCheck()[3]) then
+					game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+				end
+				if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+					BringMobFarm = false
+					if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+					elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
+					elseif World2 and string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+					elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
+					end
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					if _G.TweentoQuest then
@@ -4225,16 +4238,12 @@ end)
 					QuestCheck()
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+						--if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v.Name == MobName then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat
 											task.wait()
-											local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-											if not string.find(QuestTitle, QuestCheck()[3]) then
-												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
-											end
 											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 											end
@@ -4263,17 +4272,7 @@ end)
 									end
 								end
 							end
-						else
-							BringMobFarm = false
-							if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-							elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
-							elseif World2 and string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-							elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
-							end
+						--else
 						end
 					end
 				end)
