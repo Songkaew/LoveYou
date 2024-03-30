@@ -32,13 +32,7 @@ else
     game:Shutdown()
     kickcash("//a/a//a//a//a///a///s///s//s//d/a//jsdfjghlkfdhgjcxbzvn//0001/01")
 end
-if PlaceId == 2753915549 then
-	local WorldSetWeb = "Place Id Check : World1"
-elseif PlaceId == 4442272183 then
-	local WorldSetWeb = "Place Id Check : World2"
-elseif PlaceId == 7449423635 then
-	local WorldSetWeb = "Place Id Check : World3"
-end
+
 local Levelplayer = game.Players.LocalPlayer.Data.Level.Value
 local UserPy = game.Players.LocalPlayer.Name
 local tag = tostring(math.random(0001, 9999))
@@ -66,7 +60,7 @@ local data = {
 	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
 	["embeds"] = {
 		{
-			["description"] = "-" ..WorldSetWeb.. "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+			["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
 			["color"] = tonumber(0x00ff00), -- color id		
 			["type"] = "rich",
 			["fields"] =  {
