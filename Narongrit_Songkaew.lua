@@ -4179,10 +4179,13 @@ spawn(function()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
 					if string.find(v.Name, MobName) then
 						_G.PosMonFarmLvSetCFarme = 1
+						task.wait(.001)
 						repeat task.wait()
+							task.wait()
 							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 							task.wait(1.5)
 							_G.PosMonFarmLvSetCFarme = 2
+							task.wait()
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
 					if not string.find(v.Name, MobName) then
