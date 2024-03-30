@@ -318,7 +318,7 @@ end
 
 function AttackFunction()
 	local ac = CombatFrameworkR.activeController
-	if ac and ac.equipped then
+	if ac and ac.equipped and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(60)
 			if #bladehit > 0 then
@@ -4335,7 +4335,7 @@ end)
 		pcall(function()
 			local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 			local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-			CFrameMon = CFrame.new(-4837.64258, 850.10199, -1840.58374, -0.430530697, -4.42848638e-08, -0.90257591, -3.08042516e-08, 1, -3.43712756e-08, 0.90257591, 1.30052875e-08, -0.430530697)
+			--CFrameMon = CFrame.new(-4837.64258, 850.10199, -1840.58374, -0.430530697, -4.42848638e-08, -0.90257591, -3.08042516e-08, 1, -3.43712756e-08, 0.90257591, 1.30052875e-08, -0.430530697)
 			if MyLevel >= 15 and MyLevel <= 69 then
 				BringMobFarm = false
 				if (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)).Magnitude <= 3500 then
@@ -4455,6 +4455,7 @@ end)
 		end)
 	end
 end
+
 Main:Toggle('Auto Farm Nearest',_G.NeareastFarm,function(value)
 	_G.NeareastFarm = value
 end)
@@ -8792,6 +8793,7 @@ spawn(function()
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 											repeat wait()
+											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
 												PosMon = L_459_forvar1.HumanoidRootPart.CFrame
@@ -8803,6 +8805,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											end
 											until not  L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0-- or not L_459_forvar1.Parent
 
 										end
@@ -8816,6 +8819,7 @@ spawn(function()
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
 											repeat wait()
+											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -8830,6 +8834,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											end
 											until not  L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
 
 										end
@@ -8843,6 +8848,7 @@ spawn(function()
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
 											repeat wait()
+											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -8857,6 +8863,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+												end
 											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
 
 										end
@@ -8870,6 +8877,7 @@ spawn(function()
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
 											repeat wait()
+											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -8883,6 +8891,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												PosMon = L_459_forvar1.HumanoidRootPart.CFrame
+												end
 											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
 										end
 									end
@@ -8895,6 +8904,7 @@ spawn(function()
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
 											repeat wait()
+												if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
 												L_459_forvar1.Head.CanCollide = false
@@ -8908,6 +8918,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												PosMon = L_459_forvar1.HumanoidRootPart.CFrame
+												end
 											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0
 										end
 									end
@@ -9048,17 +9059,19 @@ spawn(function()
                                     end)]]
 
 									--L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(80,0,80)
-									repeat wait(.3) --.3
+									repeat wait() --.3
+										if InMyNetWork(v.HumanoidRootPart) then
                                         L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(77,-77,0)
                                         L_459_forvar1.Humanoid:ChangeState(12)
 										L_459_forvar1.Humanoid.Health = 0
 										L_459_forvar1.HumanoidRootPart.CanCollide = false
                                         L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
-										L_459_forvar1:BreakJoints()
+										--L_459_forvar1:BreakJoints()
 										--[[if L_459_forvar1.Humanoid:FindFirstChild("Animator") then
                                             wait(1)
                                             L_459_forvar1.Humanoid.Animator:Destroy()
                                         end]]
+										end
 										--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 									until not _G.Settings.Auto_Raids or L_459_forvar1.Humanoid.Health <= 0 or not L_459_forvar1.Parent
 									--[[if L_459_forvar1.Humanoid.Health <= 0 then wait(.001)
@@ -9096,13 +9109,15 @@ spawn(function()
             for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                     pcall(function()
-                        repeat wait(.3)
+                        repeat wait()
+						if InMyNetWork(v.HumanoidRootPart) then
                             v.Humanoid.Health = 0
                             v:BreakJoints()
                             v.Humanoid:ChangeState(8)
                             v.HumanoidRootPart.CanCollide = false
                             v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                             v.HumanoidRootPart.Transparency = 1
+						end
                         until not _G.Settings.Kill_Aura or not _G.Settings.Auto_Raids or not RaidSuperhuman or not v.Parent or v.Humanoid.Health <= 0
                     end)
                 end
@@ -11607,7 +11622,7 @@ end
 
 function AttackFunctionNai()
 	local ac = CombatFrameworkR.activeController
-	if ac and ac.equipped then
+	if ac and ac.equipped and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(50)
 			if #bladehit > 0 then
