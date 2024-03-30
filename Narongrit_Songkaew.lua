@@ -2765,7 +2765,7 @@ while plr.Data.Exp.Value - EXPFunction(Data.Level.Value) > 0 do
         wait()
     end
 end
-end
+end)
 L_22_:Button("Remove Kaitun Cap", function(value)
 game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
