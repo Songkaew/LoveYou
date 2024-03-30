@@ -4215,7 +4215,7 @@ spawn(function()
 							end
 						end
 					end
-					if not _G.PosMonFarmLvSetCFarme = 3 and not _G.PosMonFarmLvSetCFarme == 2 and not _G.PosMonFarmLvSetCFarme == 1 and not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
+					if not _G.PosMonFarmLvSetCFarme == 3 and not _G.PosMonFarmLvSetCFarme == 2 and not _G.PosMonFarmLvSetCFarme == 1 and not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
 						if v.Name == MobName then
 							_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
 						end
