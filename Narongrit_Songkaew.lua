@@ -4195,17 +4195,15 @@ spawn(function()
 					if string.find(v.Name, MobName) then
 						_G.PosMonFarmLvSetCFarme = 1
 						repeat task.wait()
-							PosMonLv = v.CFrame * CFrame.new(0,77,0)
-							task.wait(1.3)
-							_G.PosMonFarmLvSetCFarme = 2
+							if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+								PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
+							else
+								PosMonLv = v.CFrame * CFrame.new(0,77,0)
+								task.wait(1.3)
+								_G.PosMonFarmLvSetCFarme = 2
+							end
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
-				end
-				if _G.PosMonFarmLvSetCFarme == 1 and _G.PosMonFarmLvSetCFarme == 2 then
-					local c = {}
-				else
-					PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
-					_G.PosMonFarmLvSetCFarme = 3
 				end
             end)
         end
