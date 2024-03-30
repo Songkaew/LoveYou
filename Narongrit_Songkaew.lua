@@ -4163,16 +4163,21 @@ spawn(function()
         if _G.Auto_Farm_Level2 then 
             pcall(function() QuestCheck()
                 if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
-						if string.find(v.Name, MobName) then
+					local matchingCFrames = {}
+					local result = string.gsub(MobName, "Lv. ", "")
+					local result2 = string.gsub(result, "[%[%]]", "")
+					local result3 = string.gsub(result2, "%d+", "")
+					local result4 = string.gsub(result3, "%s+", "")
+					for i , v in pairs(game.workspace.EnemySpawns:GetChildren()) do--game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
+						if string.find(v.Name, result4) then --MobName
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat task.wait()
 								if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+									PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
+								else
 									PosMonLv = v.CFrame * CFrame.new(0,77,0)
 									task.wait(1.3)
 									_G.PosMonFarmLvSetCFarme = 2
-								else
-									PosMonLv = QuestCheck()[7][1] * CFrame.new(0,55,0)
 								end
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						end
