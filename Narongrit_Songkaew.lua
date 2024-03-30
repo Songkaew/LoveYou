@@ -32,7 +32,63 @@ else
     game:Shutdown()
     kickcash("//a/a//a//a//a///a///s///s//s//d/a//jsdfjghlkfdhgjcxbzvn//0001/01")
 end
+if PlaceId == 2753915549 then
+	local WorldSetWeb = "Place Id Check : World1"
+elseif PlaceId == 4442272183 then
+	local WorldSetWeb = "Place Id Check : World2"
+elseif PlaceId == 7449423635 then
+	local WorldSetWeb = "Place Id Check : World3"
+end
+local Levelplayer = game.Players.LocalPlayer.Data.Level.Value
+local UserPy = game.Players.LocalPlayer.Name
+local tag = tostring(math.random(0001, 9999))
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+local Hour = math.floor(GameTime/(60^2))%24
+local Minute = math.floor(GameTime/(60^1))%60
+local Second = math.floor(GameTime/(60^0))%60
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+local Fps = workspace:GetRealPhysicsFPS()
+--Time:Refresh("           Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. "")
+local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
 
+print("Ping:"..Ping.."FPS:"..Fps.. "    ")
+print("User " ..UserPy.. "#" ..tag.. "  ใช้งานเมื่อ" ..TimeGlobal.. "   Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. " " )
+print(UserPy)
+print("")
+print("")
+print("")
+print("")
+print("")
+print("") 
+local url = "https://discord.com/api/webhooks/1219138287562915891/C_2ifHKZ670koANT3DYW0VtvJcQUvdpzoSYXlFmZy0t9MbG8C1GxJIlKMKg2NieXHhcG" -- ur webhook url
+local data = { 
+	["username"] = 'NaJa Hub', -- Webhook name here
+	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+	["embeds"] = {
+		{
+			["description"] = "" ..WorldSetWeb .. "เลเวล : " ..Levelplayer .."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+			["color"] = tonumber(0x00ff00), -- color id		
+			["type"] = "rich",
+			["fields"] =  {
+				{
+					["name"] = "[📁] สคริปที่ใช้",
+					["value"] = '```loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/M/main/%3F.lua"))()```',
+				}
+				
+			},
+			["footer"] = {
+				["text"] = "YouTube:MrMaxNaJa"
+			},
+			["timestamp"] = DateTime.now():ToIsoDate(),
+		}
+	},
+} 
+
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+local headers = {["content-type"] = "application/json"}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
 
 --[[
 if game:IsLoaded() then
@@ -1708,7 +1764,7 @@ function Check_Sword(Sword_Name)
 	end
 end
 loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
-loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))()
+--loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))() --webhook
 
 print("CombatFramework")
 --loadstring(game:HttpGet("https://pastebin.com/raw/zB5pw6tL"))()
