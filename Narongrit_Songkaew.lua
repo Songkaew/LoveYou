@@ -1759,7 +1759,7 @@ function Check_Sword(Sword_Name)
 	end
 end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
+--loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
 --loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))() --webhook
 
 print("CombatFramework")
@@ -8118,11 +8118,11 @@ spawn(function()
     end
 end)
 
-Settings:Toggle("Fast Attack!\nไม่แนะนำ! [-]",_G.Settings.FastAttackNaJa,function(value)
+--[[Settings:Toggle("Fast Attack!\nไม่แนะนำ! [-]",_G.Settings.FastAttackNaJa,function(value)
 _G.Settings.FastAttackNaJa = value
 _G.FastAttackNaJa = value
 	SaveSettings()
-end)
+end)]]
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
 	_G.FastAttack1 = value
