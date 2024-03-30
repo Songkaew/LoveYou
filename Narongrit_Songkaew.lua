@@ -4201,7 +4201,7 @@ spawn(function()
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						end
 					end
-					if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
+					if not _G.PosMonFarmLvSetCFarme == 2 and not _G.PosMonFarmLvSetCFarme == 1 and not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
 						if v.Name == MobName then
 							if string.find(v.Name, MobName) then
 								repeat task.wait()
@@ -4210,11 +4210,12 @@ spawn(function()
 									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
 									task.wait()
+									_G.PosMonFarmLvSetCFarme = 3
 								until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 							end
 						end
 					end
-					if not _G.PosMonFarmLvSetCFarme == 2 and not _G.PosMonFarmLvSetCFarme == 1 and not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
+					if not _G.PosMonFarmLvSetCFarme = 3 and not _G.PosMonFarmLvSetCFarme == 2 and not _G.PosMonFarmLvSetCFarme == 1 and not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
 						if v.Name == MobName then
 							_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
 						end
@@ -11525,7 +11526,7 @@ spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
             if _G.FastAttackX then
-				local randomNumberFastAttck = math.random(0.05, 0.23)
+				local randomNumberFastAttck = math.random(0.05, 0.30)
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
 					setfpscap(1240)
