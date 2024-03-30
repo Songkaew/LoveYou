@@ -66,7 +66,7 @@ local data = {
 	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
 	["embeds"] = {
 		{
-			["description"] = "" ..WorldSetWeb .. "เลเวล : " ..Levelplayer .."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+			["description"] = "-" ..WorldSetWeb.. "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
 			["color"] = tonumber(0x00ff00), -- color id		
 			["type"] = "rich",
 			["fields"] =  {
@@ -102,6 +102,7 @@ end
 
 
 loadstring(game:HttpGet("https://pastebin.com/raw/nUW5kcwN"))() --UI Welcome
+
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
