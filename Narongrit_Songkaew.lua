@@ -4231,9 +4231,9 @@ end)
 					QuestCheck()
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
+						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v.Name == QuestCheck()[3] then
+								if v.Name == MobName then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat
 											task.wait()
@@ -4288,8 +4288,8 @@ end)
 						end
 					else
 						if _G.TweentoQuest then
-							Tween(QuestCheck()[2])
-							if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+							Tween(QuestCheck()[7][1] * CFrame.new(0,28,0))
+							if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 								BringMobFarm = false
 								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
