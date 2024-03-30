@@ -4177,7 +4177,7 @@ spawn(function()
         if _G.Auto_Farm_Level then 
             pcall(function() QuestCheck()
                 --if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren() then
-					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do
+					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
 						if string.find(v.Name, MobName) then
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat task.wait()
@@ -4193,8 +4193,31 @@ spawn(function()
     end
 end) 
 
+task.spawn(function() 
+	while task.wait() do
+		if _G.Auto_Farm_Level then 
+			pcall(function()
+				QuestCheck()
+				if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				end
+				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+					if _G.TweentoQuest then
+						Tween(QuestCheck()[7][1] * CFrame.new(0,28,0))
+						if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
+							BringMobFarm = false
+							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+							Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
+						end
+					else
+						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+					end
+				end
+			end)
+		end
+	end
+end)
 
-	
 	task.spawn(function() 
 		while task.wait() do
 			if _G.Auto_Farm_Level then 
@@ -4242,8 +4265,6 @@ end)
 							end
 						else
 							BringMobFarm = false
-							Tween(_G.PosMonLv) 
-							UnEquipWeapon(_G.Select_Weapon)
 							if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
 							elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
@@ -4253,17 +4274,6 @@ end)
 							elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
 							end
-						end
-					else
-						if _G.TweentoQuest then
-							Tween(QuestCheck()[7][1] * CFrame.new(0,28,0))
-							if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
-								BringMobFarm = false
-								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
-								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
-							end
-						else
-							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 						end
 					end
 				end)
