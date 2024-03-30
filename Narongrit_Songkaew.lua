@@ -869,7 +869,7 @@ spawn(function()
 		if _G.FastAttackNaJa then
 			if (typeof(y) == "table") then
 				pcall(function()
-					y.activeController.timeToNextAttack = -(math.huge ^ (math.huge ^ math.huge));
+					y.activeController.timeToNextAttack = 0 -- -(math.huge ^ (math.huge ^ math.huge));
 					y.activeController.hitboxMagnitude = 60;
 					y.activeController.active = false;
 					y.activeController.timeToNextBlock = 0;
@@ -905,7 +905,7 @@ end);
 		game:GetService("RunService").Heartbeat:Connect(function()
 			if _G.FastAttackNaJa then
 				if v0.activeController then
-					v0.activeController.timeToNextAttack = -(math.huge ^ (math.huge ^ math.huge));
+					v0.activeController.timeToNextAttack = 0-- -(math.huge ^ (math.huge ^ math.huge));
 					v0.activeController.focusStart = 0;
 					v0.activeController.hitboxMagnitude = 60;
 					v0.activeController.humanoid.AutoRotate = true;
@@ -1060,7 +1060,7 @@ end);
 			if _G.FastAttackNaJa then
 				if (typeof(y) == "table") then
 					pcall(function()
-						y.activeController.timeToNextAttack = -(math.huge ^ (math.huge ^ math.huge));
+						y.activeController.timeToNextAttack = 0-- -(math.huge ^ (math.huge ^ math.huge));
 						y.activeController.hitboxMagnitude = 60;
 						y.activeController.active = false;
 						y.activeController.timeToNextBlock = 0;
@@ -8557,11 +8557,11 @@ spawn(function()
     end
 end)
 
-Settings:Toggle("Fast Attack\nไม่แนะนำ [-]",_G.Settings.FastAttackNaJa,function(value)
+--[[Settings:Toggle("Fast Attack BUG บัค\nไม่แนะนำอย่ากด [-]",_G.Settings.FastAttackNaJa,function(value)
 	_G.Settings.FastAttackNaJa = value
 	_G.FastAttackNaJa = value
 	SaveSettings()
-end) 
+end) ]]
 
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
@@ -8578,6 +8578,7 @@ end)
 
 Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บัครออัพเดพ",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
+	_G.FastAttackNaJa = value
 	_G.FastAttack3 = value
 	SaveSettings()
 end)
