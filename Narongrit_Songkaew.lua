@@ -867,9 +867,8 @@ end
 function UnEquipWeapon(Weapon)
 	if game.Players.LocalPlayer.Character:FindFirstChild(Weapon) then
 		_G.NotAutoEquip = true
-		wait(.5)
-		game.Players.LocalPlayer.Character:FindFirstChild(Weapon).Parent = game.Players.LocalPlayer.Backpack
 		wait(.1)
+		game.Players.LocalPlayer.Character:FindFirstChild(Weapon).Parent = game.Players.LocalPlayer.Backpack
 		_G.NotAutoEquip = false
 	end
 end
@@ -4175,23 +4174,22 @@ end)
 spawn(function() 
     while wait() do
         if _G.Auto_Farm_Level then 
-            pcall(function() QuestCheck()
-                if game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren(MobName) then
-					for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
-						if string.find(v.Name, MobName) then
-							_G.PosMonFarmLvSetCFarme = 1
-							repeat task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-						end
+            pcall(function()
+				QuestCheck()
+				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
+					if string.find(v.Name, MobName) then
+						_G.PosMonFarmLvSetCFarme = 1
+						repeat task.wait()
+							_G.PosMonLv = v.CFrame * CFrame.new(0,77,0)
+							task.wait(1.5)
+							_G.PosMonFarmLvSetCFarme = 2
+						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
 				end
             end)
         end
     end
-end) 
+end)
 
 task.spawn(function() 
 	while task.wait() do
@@ -4217,8 +4215,8 @@ task.spawn(function()
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					if _G.TweentoQuest then
-						Tween(QuestCheck()[7][1] * CFrame.new(0,28,0))
-						if (QuestCheck()[7][1].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
+						Tween(QuestCheck()[2])
+						if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 							BringMobFarm = false
 							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 							Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
