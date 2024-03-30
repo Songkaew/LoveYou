@@ -858,7 +858,7 @@ function EquipWeapon(ToolSe)
 	if not _G.NotAutoEquip then
 		if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
 			Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-			--wait(.1)
+			wait(.001)
 			game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
 		end
 	end
