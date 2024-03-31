@@ -8225,7 +8225,7 @@ function InMyNetWork(object)
 	if isnetworkowner then
 		return isnetworkowner(object)
 	else
-		if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then 
+		if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 250 then --350
 			return true
 		end
 		return false
@@ -11618,8 +11618,6 @@ game.StarterGui:SetCore("SendNotification", {
     Text = "welecome"
 })
 
-wait(10)
-
 game.StarterGui:SetCore("SendNotification", {
     Icon = "rbxassetid://12862171447";
     Title = "Kz hub", 
@@ -11747,28 +11745,18 @@ function AttackFunctionNai()
 	end
 end
 
-function Click()
-    local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
-    local CombatFramework = debug.getupvalues(Module)[2]
-    local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
-    CamShake:Stop()
-    CombatFramework.activeController.attacking = false
-    CombatFramework.activeController.timeToNextAttack = 0
-    CombatFramework.activeController.hitboxMagnitude = 80
-    game:GetService'VirtualUser':CaptureController()
-    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-end
-    local effectContainer = game:GetService("ReplicatedStorage").Effect.Container
-    if effectContainer:FindFirstChild("Death") then
-        effectContainer.Death:Destroy()
-    end
-    if effectContainer:FindFirstChild("Respawn") then
-        effectContainer.Respawn:Destroy()
-    end
-	if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
-    	game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
+	function Click()
+		local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
+		local CombatFramework = debug.getupvalues(Module)[2]
+		local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
+		CamShake:Stop()
+		CombatFramework.activeController.attacking = false
+		CombatFramework.activeController.timeToNextAttack = 0
+		CombatFramework.activeController.hitboxMagnitude = 80
+		game:GetService'VirtualUser':CaptureController()
+		game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 	end
-
+	
 spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
@@ -11777,6 +11765,9 @@ spawn(function()
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
 					Click()
+					if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
+						game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
+					end
                 until not _G.FastAttackX
             end
         end)
