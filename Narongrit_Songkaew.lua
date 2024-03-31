@@ -501,35 +501,6 @@ if Lvl >= 1 and Lvl <= 9 then
 	}
 end
 
-if Lvl >= 210 and Lvl <= 249 then
-	MobName = "Dangerous Prisoner"
-	QuestName = "PrisonerQuest"
-	QuestLevel = 2
-	Mon = "Dangerous Prisoner"
-	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	local matchingCFrames = {}
-	local result = string.gsub(MobName, "Lv. ", "")
-	local result2 = string.gsub(result, "[%[%]]", "")
-	local result3 = string.gsub(result2, "%d+", "")
-	local result4 = string.gsub(result3, "%s+", "")
-	
-	for i,v in pairs(game.workspace.EnemySpawns:GetChildren()) do
-		if v.Name == result4 then
-			table.insert(matchingCFrames, v.CFrame)
-		end
-		MobCFrame = matchingCFrames
-	end
-	return {
-		[1] = QuestLevel,
-		[2] = NPCPosition,
-		[3] = MobName,
-		[4] = QuestName,
-		[5] = LevelRequire,
-		[6] = Mon,
-		[7] = MobCFrame
-	}
-end
-
 --game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
 local GuideModule = require(game:GetService("ReplicatedStorage").GuideModule)
 local Quests = require(game:GetService("ReplicatedStorage").Quests)
