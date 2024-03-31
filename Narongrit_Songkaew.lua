@@ -12238,7 +12238,6 @@ spawn(function()
 				local randomNumberFastAttck = math.random(0.05, 0.28)
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
-					setfpscap(1240)
 					Click()
                 until not _G.FastAttackX
             end
