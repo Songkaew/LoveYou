@@ -11756,13 +11756,27 @@ end
 		game:GetService'VirtualUser':CaptureController()
 		game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 	end
-	
+x = tick()
 spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
             if _G.FastAttackX then
+				if x - tick() > 1.50 then
+					wait(.000000175)
+					x = tick() Attack()
+				end
 				local randomNumberFastAttck = math.random(0.05, 0.28)
                 repeat wait(randomNumberFastAttck)
+					for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+						if v.Humanoid.Health > 0 then
+							if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then
+								Attack()
+								wait(.000000175)
+								Boost()
+							end
+							wait(0.2)
+						end
+					end
                     AttackFunctionNai()
 					Click()
 					if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
