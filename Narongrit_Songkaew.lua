@@ -504,7 +504,7 @@ if Lvl >= 1 and Lvl <= 9 then
 end
 
 if Lvl >= 210 and Lvl <= 249 then
-	MobName = "Dangerous Prisoner [Lv. 210]"
+	MobName = "Dangerous Prisoner"
 	QuestName = "PrisonerQuest"
 	QuestLevel = 2
 	Mon = "Dangerous Prisoner"
@@ -580,7 +580,15 @@ for i,v in pairs(Quests) do
 		end
 	end
 end
-	if QuestName == "MarineQuest2" then
+	if QuestName == "JungleQuest" then
+		Mon = "Gorilla"
+		LevelRequire = 15
+		LevelQuest = 2
+		QuestName = "JungleQuest"
+		MobName = "Gorilla"
+		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+		CFrameMon = CFrame.new(-1129.8836669921875, 40.46354675292969, -525.4237060546875)
+	elseif QuestName == "MarineQuest2" then
 		QuestName = "MarineQuest2"
 		QuestLevel = 1
 		MobName = "Chief Petty Officer"
