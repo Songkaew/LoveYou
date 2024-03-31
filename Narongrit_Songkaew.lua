@@ -4308,6 +4308,8 @@ spawn(function()
 						repeat task.wait()
 							task.wait()
 							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
+							task.wait(0.5)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
 							task.wait(1.5)
 							_G.PosMonFarmLvSetCFarme = 2
 							task.wait()
@@ -4328,7 +4330,7 @@ spawn(function()
 					end]]
 					if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
 						if v.Name == MobName then
-							_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
 						end
 					end
 				end
@@ -4343,6 +4345,7 @@ end)
 				pcall(function()
 					QuestCheck()
 					local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+					local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 					if not string.find(QuestTitle, QuestCheck()[3]) then
 						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 					end
@@ -4370,6 +4373,21 @@ end)
 						else
 							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 						end
+if MyLevel >= 190 or MyLevel <= 209 then
+local args = {
+    [1] = "StartQuest",
+    [2] = "PrisonerQuest",
+    [3] = 1
+}
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+elseif MyLevel >= 210 or MyLevel <= 249 then
+local args = {
+    [1] = "StartQuest",
+    [2] = "PrisonerQuest",
+    [3] = 2
+}
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+end
 					end
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
