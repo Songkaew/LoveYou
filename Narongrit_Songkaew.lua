@@ -566,17 +566,17 @@ end
 	elseif QuestName == "PrisonerQuest" then
 		QuestName = "PrisonerQuest"
 		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		if QuestLevel == 1 then
-			LevelQuest = 1
-			LevelRequire = 190
-			Mon = "Prisoner"
-			MobName = "Prisoner"
-		elseif QuestLevel == 2 then
-			LevelQuest = 2
-			LevelRequire = 210
-			Mon = "Dangerous Prisoner"
-			MobName = "Dangerous Prisoner"
-		end
+		LevelQuest = 1
+		LevelRequire = 190
+		Mon = "Prisoner"
+		MobName = "Prisoner"
+	elseif QuestName == "PrisonerQuest" then
+		QuestName = "PrisonerQuest"
+		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+		LevelQuest = 2
+		LevelRequire = 210
+		Mon = "Dangerous Prisoner"
+		MobName = "Dangerous Prisoner"
 	--elseif QuestName == "ImpelQuest" then
 	--	QuestName = "PrisonerQuest"
 	--	QuestLevel = 2
