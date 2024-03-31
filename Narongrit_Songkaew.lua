@@ -8386,7 +8386,7 @@ spawn(function()
                 CameraShakerR:Stop()
                 CombatFramework.activeController.attacking = false
                 CombatFramework.activeController.timeToNextAttack = 0 --0
-                CombatFramework.activeController.increment = 4*4*4 --4  --3
+                CombatFramework.activeController.increment = 4 --4  --3
                 CombatFramework.activeController.hitboxMagnitude = 95
                 CombatFramework.activeController.blocking = false
                 CombatFramework.activeController.timeToNextBlock = 0 --0
@@ -12235,7 +12235,7 @@ spawn(function()
     while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
         pcall(function()
             if _G.FastAttackX then
-				local randomNumberFastAttck = math.random(0.05, 0.29)
+				local randomNumberFastAttck = math.random(0.05, 0.28)
                 repeat wait(randomNumberFastAttck)
                     AttackFunctionNai()
 					setfpscap(1240)
