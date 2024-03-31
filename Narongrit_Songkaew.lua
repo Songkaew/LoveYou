@@ -2403,30 +2403,6 @@ spawn(function()
 	end
 end)
 
-require(game.ReplicatedStorage.Util.CameraShaker):Stop()
-xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
-task.spawn(function()
-	while true do task.wait()
-		if _G.FastAttack1 then
-			if typeof(xShadowx) == "table" then
-				pcall(function()
-					xShadowx.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-					xShadowx.activeController.timeToNextAttack = 0
-					xShadowx.activeController.hitboxMagnitude = 85
-					xShadowx.activeController.active = false
-					xShadowx.activeController.timeToNextBlock = 0
-					xShadowx.activeController.focusStart = 0
-					xShadowx.activeController.increment = 4
-					xShadowx.activeController.blocking = false
-					xShadowx.activeController.attacking = false
-					xShadowx.activeController.humanoid.AutoRotate = true
-				end)
-			end
-		end
-	end
-end)
-
 spawn(function()
     while wait() do
         if _G.FastAttack2 or _G.FastAttack1 then
@@ -2477,7 +2453,7 @@ end
 function AttackFunctionNaJa()
 	local ac = CombatFrameworkR.activeController
 	if ac and ac.equipped then
-		for indexincrement = 1, 3 do -- ปรับจำนวนการเรียกใช้งานได้ตามต้องการ
+		for indexincrement = 1, 2 do -- ปรับจำนวนการเรียกใช้งานได้ตามต้องการ
 			local bladehit = getAllBladeHits(60)
 			if #bladehit > 0 then
 				local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -2502,7 +2478,7 @@ function AttackFunctionNaJa()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "") 
 				end
 			end
 		end
