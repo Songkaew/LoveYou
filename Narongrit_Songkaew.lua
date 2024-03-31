@@ -301,16 +301,10 @@ end
 -- กำหนดช่วงของตัวเลขที่ต้องการสุ่ม
 --local minNumber = 1
 --local maxNumber = 2--3
-randomNumberUIIF = true
 -- สุ่มเลข
 spawn(function() 
-	while wait() do
-		if randomNumberUIIF then
-			local randomNumberUI = math.random(1, 2)
-		end
-	end
-end) 
-
+	local randomNumberUI = math.random(1, 2)
+end)
 LoadSettings()
 
 local vu = game:GetService("VirtualUser")
@@ -1859,6 +1853,21 @@ Attack = function()
         game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
     end
 end
+function AttackX()
+    local ac = SeraphFrame.activeController
+    if not ac or not ac.equipped then
+        return
+    end
+	ac:Attack()
+	Animation.AnimationId = ac.anims.basic[2]
+	ac.humanoid:LoadAnimation(Animation):Play(0.05, 0.05)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
+	game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
+    if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
+		game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
+		game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+		game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 2, "") 
+	end
+end
 
 spawn(function()
     while wait(0) do
@@ -2113,7 +2122,7 @@ getgenv().TextUI_IIII = "Wallet : xxx-xxx-xxxx | 37/3/2567" --19-3-2567--28/4/25
 			  
 			  ----------------------------------------------------------------------------------------------------------------------------------------------
 			  print("UI.Lo")
-randomNumberUIIF = false
+
 print("สุ่ม 1-2 UI ได้ UI ที่:", randomNumberUI)
 
 if randomNumberUI == 1 then
@@ -11765,13 +11774,13 @@ spawn(function()
 					wait(.000000175)
 					x = tick() Attack()
 				end
-				local randomNumberFastAttck = math.random(0.05, 0.28)
+				local randomNumberFastAttck = math.random(0.05, 0.30)
                 repeat wait(randomNumberFastAttck)
 					for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 						if v.Humanoid.Health > 0 then
 							if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then
 								Attack()
-								wait(.000000175)
+								task.wait(randomNumberFastAttck)
 								Boost()
 							end
 							wait(0.2)
@@ -11779,6 +11788,7 @@ spawn(function()
 					end
                     AttackFunctionNai()
 					Click()
+					AttackX()
 					if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
 						game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
 					end
