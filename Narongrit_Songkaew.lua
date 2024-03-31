@@ -302,9 +302,13 @@ end
 --local minNumber = 1
 --local maxNumber = 2--3
 -- สุ่มเลข
-spawn(function() 
-	local randomNumberUI = math.random(1, 2)
-end)
+
+local randomNumberUI = 1
+--spawn(function()
+	--while wait(.1) do
+randomNumberUI = math.random(1,2)
+	--end
+--end)
 LoadSettings()
 
 local vu = game:GetService("VirtualUser")
