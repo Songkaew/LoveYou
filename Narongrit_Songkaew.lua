@@ -2903,7 +2903,7 @@ Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
 wait(1)
 end)
 
-L_22_:Toggle("FakeLevelUp", FakeLevelUp ,function(value)
+L_22_:Button("FakeLevelUp",function()
 local plr = game:GetService("Players").LocalPlayer
 local Notification = require(game:GetService("ReplicatedStorage").Notification)
 local Data = plr:WaitForChild("Data")
@@ -2913,7 +2913,7 @@ local Sound = require(game:GetService("ReplicatedStorage").Util.Sound)
 local LevelUpSound = game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp_Proxy") or game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp")
 function v129(p15)
     local v130 = p15;
-    while FakeLevelUp do wait()
+    while true do wait()
         local v131, v132 = string.gsub(v130, "^(-?%d+)(%d%d%d)", "%1,%2");
         v130 = v131;
         if v132 == 0 then
@@ -3176,7 +3176,7 @@ end
         end)
     end)
     
-    L_22_:Toggle("Infinite Ability",false,function(value)
+--[[    L_22_:Toggle("Infinite Ability",false,function(value)
         InfAbility = value
         if value == false then
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility"):Destroy()
@@ -3189,7 +3189,7 @@ end
                 InfAb()
             end
         end
-    end)
+    end)]]
     
     L_22_:Toggle("Auto Use Awakening",_G.AutoAwakeningRace,function(value)
         _G.AutoAwakeningRace = value
@@ -4455,8 +4455,6 @@ end)
 						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 					end
 					if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
-						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-						BringMobFarm = false
 						if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
 						elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
@@ -4487,6 +4485,7 @@ end)
 											[3] = 1
 										}
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+									Tween(_G.PosMonLv)
 								elseif MyLevel >= 210 or MyLevel <= 249 then
 									local args = {
 											[1] = "StartQuest",
@@ -4494,6 +4493,7 @@ end)
 											[3] = 2
 										}
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+									Tween(_G.PosMonLv)
 								end
 							end
 						else
@@ -4519,6 +4519,7 @@ end)
 									}
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 							end
+							Tween(_G.PosMonLv)
 						end
 					end
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
@@ -4557,7 +4558,28 @@ end)
 									end
 								end
 							end
-						--else
+						else
+							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 350 and v.Humanoid.Health > 0 then
+									repeat wait() 
+										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+										end
+										EquipWeapon(_G.Select_Weapon)
+										PosMon = v.HumanoidRootPart.CFrame
+										v.HumanoidRootPart.CanCollide = false 
+										v.Head.CanCollide = false
+										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+										BringMobFarm = true
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
+										game:GetService 'VirtualUser':CaptureController()
+										game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(MobName)
+								else
+									Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+									BringMobFarm = false
+								end
+							end
 						end
 					end
 				end)
@@ -11797,8 +11819,8 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.50)
-				repeat wait(_G.randomNumberFastAttck + 0.1)
+				_G.randomNumberFastAttck = math.random(0.05, 0.40)
+				repeat wait(_G.randomNumberFastAttck)
 					AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
@@ -11810,7 +11832,7 @@ spawn(function()
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 45 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									AttackFunctionNai()
 									task.wait(_G.randomNumberFastAttck)
 									Click()
@@ -11820,14 +11842,14 @@ spawn(function()
 						end
 					until not _G.FastAttackX
 				else
-					if x - tick() > 1.50 then
+					if x - tick() > 0.175 then
 						wait(.000000175)
 						x = tick() Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 45 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									Attack()
 									task.wait(_G.randomNumberFastAttck)
 									Boost()
