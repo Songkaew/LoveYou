@@ -4591,7 +4591,7 @@ function FarmPakMon()
                      for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if _G.tastFarmPakmon == "2" and v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") then
 									repeat wait() 
-										6if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 										end
 										EquipWeapon(_G.Select_Weapon)
@@ -11780,7 +11780,7 @@ end
 
 function AttackFunctionNai()
 	local ac = CombatFrameworkR.activeController
-	--local NumberFastAttckAcAttack10 = math.random(1 , 2)
+	local NumberFastAttckAcAttack10 = math.random(1 , 2)
 	if ac and ac.equipped and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(50)
@@ -11796,7 +11796,7 @@ function AttackFunctionNai()
 					AcAttack8 = math.floor(NumberAc12 / AcAttack9)
 					AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
 				end)()
-				AcAttack10 = AcAttack10 + 1-- NumberFastAttckAcAttack10 --1
+				AcAttack10 = AcAttack10 + NumberFastAttckAcAttack10 --1
 				debug.setupvalue(ac.attack, 5, AcAttack8)
 				debug.setupvalue(ac.attack, 6, AcAttack9)
 				debug.setupvalue(ac.attack, 4, AcAttack7)
@@ -11807,7 +11807,7 @@ function AttackFunctionNai()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, NumberFastAttckAcAttack10, "") 
 				end
 			end
 		end
