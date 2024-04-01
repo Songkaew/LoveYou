@@ -2344,19 +2344,17 @@ L_22_:Label("Server")
 L_22_:Button("Rejoin Server",function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
+local ShowIDServer = L_22_:Label("ID Server")
 
-local ShowIDServer = L_22_:Label("ID Server: ?")
-spawn(function()
-	while wait() do
-		ShowIDServer:Change("ID Server: "..tostring(game.JobId))
-	end
-end)
+local ShowIDServer = L_22_:Label(tostring(game.JobId))
+
+ShowIDServer:Change(tostring(game.JobId))
 
 L_22_:Button("Copy Id Server",function()
 	setclipboard(tostring(game.JobId))
 end)
 
-L_22_:Textbox("Job Id","",true,function(Value)
+L_22_:Textbox("Job Id","",_G.Job,function(Value)
     _G.Job = Value
 end)
 
