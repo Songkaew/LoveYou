@@ -1791,7 +1791,13 @@ function Check_Sword(Sword_Name)
 		end
 	end
 end
-
+function CheckPlyayers()
+	for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+		if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 35 then
+			return true
+		end
+	end
+end
 --loadstring(game:HttpGet("https://pastebin.com/raw/kwd0JpDm"))() --_G.FastAttackNaJa
 --loadstring(game:HttpGet("https://pastebin.com/raw/QwxceBi7"))() --webhook
 
@@ -1984,6 +1990,103 @@ Attack = function()
 						wait(0.1) -- ลดเวลาที่ต้องรอลง
 					end
 				end
+			end
+		end
+	end
+end
+local AttackRandomFast = 1
+spawn(function()
+	while wait(1) do
+		AttackRandomFast = math.random(1,4)
+	end
+end)
+
+function AttackFunctionRandomFast()
+	if CheckPlyayers() == true then
+		if AttackRandomFast == 1 then
+			AttackFunction()
+		elseif AttackRandomFast == 2 then
+			AttackFunctionNai()
+		elseif AttackRandomFast == 3 then
+			AttackFunctionNaJa()
+		elseif AttackRandomFast == 4 then
+			Attack()
+			wait(0.001 + 0.1)
+			Boost()
+		end
+	else
+		local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+		local CombatFrameworkF = debug.getupvalues(ModuleF)[2]
+		local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
+		local acx = CombatFrameworkF.activeController
+		if acx and acx.equipped then
+			for indexincrement = 1, 1 do
+				debug.setupvalue(ac.attack, 5, 55495)
+				debug.setupvalue(ac.attack, 6, 1892665)
+				debug.setupvalue(ac.attack, 4, 907772)
+				debug.setupvalue(ac.attack, 7, 14)
+				for k, v in pairs(acx.animator.anims.basic) do
+					CameraShakerR:Stop()
+					v:Play()
+				end
+				ac:attack()
+				cdnormal = tick()
+				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 4, "") 
+				end
+				if acx then
+					acx.attacking = false    
+					acx.timeToNextAttack = 0
+					acx.increment = 4
+					acx.hitboxMagnitude = 40
+					acx.blocking = false   
+					acx.timeToNextBlock = 0
+					acx.focusStart = 0
+					acx.humanoid.AutoRotate = true   
+				end
+			end
+		end
+	end
+	local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+	local CombatFrameworkF = debug.getupvalues(ModuleF)[2]
+	local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
+	local acx = CombatFrameworkF.activeController
+	if acx and acx.equipped then
+		for indexincrement = 1, 1 do
+			local AcAttack8 = debug.getupvalue(acx.attack, 5)
+			local AcAttack9 = debug.getupvalue(acx.attack, 6)
+			local AcAttack7 = debug.getupvalue(acx.attack, 4)
+			local AcAttack10 = debug.getupvalue(acx.attack, 7)
+			local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
+			local NumberAc13 = AcAttack7 * 798405
+			(function()
+				NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
+				AcAttack8 = math.floor(NumberAc12 / AcAttack9)
+				AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
+			end)()
+			AcAttack10 = AcAttack10 + 1
+			debug.setupvalue(acx.attack, 5, AcAttack8)
+			debug.setupvalue(acx.attack, 6, AcAttack9)
+			debug.setupvalue(acx.attack, 4, AcAttack7)
+			debug.setupvalue(acx.attack, 7, AcAttack10)
+			for k, v in pairs(acx.animator.anims.basic) do
+				CameraShakerR:Stop()
+				v:Play()
+			end                 
+			if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
+				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
+				game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), indexincrement, "") 
+			end
+			if acx then
+				acx.attacking = false    
+				acx.timeToNextAttack = 0
+				acx.increment = 4
+				acx.hitboxMagnitude = 40
+				acx.blocking = false   
+				acx.timeToNextBlock = 0
+				acx.focusStart = 0
+				acx.humanoid.AutoRotate = true   
 			end
 		end
 	end
@@ -4310,6 +4413,8 @@ spawn(function()
 							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 							task.wait(0.5)
 							_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
+							task.wait(0.5)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
 							task.wait(1.5)
 							_G.PosMonFarmLvSetCFarme = 2
 							task.wait()
@@ -4367,27 +4472,16 @@ end)
 							Tween(QuestCheck()[2])
 							if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 								BringMobFarm = false
-								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+								local args = { [1] = "StartQuest", [2] = QuestCheck()[4], [3] = QuestCheck()[1] }
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+								--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
 							end
 						else
-							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+							local args = { [1] = "StartQuest", [2] = QuestCheck()[4], [3] = QuestCheck()[1] }
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 						end
-if MyLevel >= 190 or MyLevel <= 209 then
-local args = {
-    [1] = "StartQuest",
-    [2] = "PrisonerQuest",
-    [3] = 1
-}
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-elseif MyLevel >= 210 or MyLevel <= 249 then
-local args = {
-    [1] = "StartQuest",
-    [2] = "PrisonerQuest",
-    [3] = 2
-}
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end
 					end
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -11770,8 +11864,9 @@ end
 
 function AttackFunctionNai()
 	local ac = CombatFrameworkR.activeController
+	local NumberFastAttckAcAttack10 = math.random(1 , 2)
 	if ac and ac.equipped and not _G.Settings.Auto_Raids then
-		for indexincrement = 1, 1 do
+		for indexincrement = 1, 3 do
 			local bladehit = getAllBladeHits(50)
 			if #bladehit > 0 then
 				local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -11785,7 +11880,7 @@ function AttackFunctionNai()
 					AcAttack8 = math.floor(NumberAc12 / AcAttack9)
 					AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
 				end)()
-				AcAttack10 = AcAttack10 + 1
+				AcAttack10 = AcAttack10 + NumberFastAttckAcAttack10 --1
 				debug.setupvalue(ac.attack, 5, AcAttack8)
 				debug.setupvalue(ac.attack, 6, AcAttack9)
 				debug.setupvalue(ac.attack, 4, AcAttack7)
@@ -11796,53 +11891,78 @@ function AttackFunctionNai()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "") 
 				end
 			end
 		end
 	end
 end
-
-	function Click()
-		local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
-		local CombatFramework = debug.getupvalues(Module)[2]
-		local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
-		CamShake:Stop()
-		CombatFramework.activeController.attacking = false
-		CombatFramework.activeController.timeToNextAttack = 0
-		CombatFramework.activeController.hitboxMagnitude = 80
-		game:GetService'VirtualUser':CaptureController()
-		game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-	end
+function Click()
+	local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
+	local CombatFramework = debug.getupvalues(Module)[2]
+	local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
+	CamShake:Stop()
+	CombatFramework.activeController.attacking = false
+	CombatFramework.activeController.timeToNextAttack = 0
+	CombatFramework.activeController.hitboxMagnitude = 80
+	game:GetService'VirtualUser':CaptureController()
+	game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+end
 x = tick()
 spawn(function()
-    while wait(000000000000000000000000000000000000000000000000000000000000000000.1) do
+    while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				if x - tick() > 1.50 then
-					wait(.000000175)
-					x = tick() Attack()
-				end
-				local randomNumberFastAttck = math.random(0.05, 0.30)
-                repeat wait(randomNumberFastAttck)
-					for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-						if v.Humanoid.Health > 0 then
-							if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then
-								Attack()
-								task.wait(randomNumberFastAttck)
-								Boost()
+				_G.randomNumberFastAttck = math.random(0.05, 0.50)
+				repeat wait(_G.randomNumberFastAttck + 0.1)
+					AttackFunctionRandomFast()
+				until not _G.FastAttackX
+				if CheckPlyayers() == true then
+					AttackFunction()
+					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
+						wait(1)
+						cooldownfastattack = tick()
+					end
+					repeat wait(_G.randomNumberFastAttck)
+						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+							if v.Humanoid.Health > 0 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 45 then
+									AttackFunctionNai()
+									task.wait(_G.randomNumberFastAttck)
+									Click()
+								end
+								wait(_G.randomNumberFastAttck)
 							end
-							wait(0.2)
 						end
+					until not _G.FastAttackX
+				else
+					if x - tick() > 1.50 then
+						wait(.000000175)
+						x = tick() Attack()
 					end
-                    AttackFunctionNai()
-					Click()
-					AttackX()
-					if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
-						game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
+					repeat wait(_G.randomNumberFastAttck)
+						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+							if v.Humanoid.Health > 0 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 45 then
+									Attack()
+									task.wait(_G.randomNumberFastAttck)
+									Boost()
+								end
+								wait(_G.randomNumberFastAttck)
+							end
+						end
+						AttackFunctionNai()
+						Click()
+						AttackX()
+						if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
+							game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
+						end
+					until not _G.FastAttackX
+					if tick() - cooldownfastattack > tonumber(1.50) then
+						wait(0.01) cooldownfastattack = tick()
 					end
-                until not _G.FastAttackX
-            end
+				end
+			end
         end)
     end
 end)
