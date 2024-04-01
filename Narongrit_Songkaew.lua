@@ -8114,39 +8114,6 @@ Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บ�
 	SaveSettings()
 end)
 
-local FastAttack3s = {
-    "Level1\nระดับที่หนึ่ง",
-    "Level2\nระดับที่สอง",
-    "Level3\nระดับที่สาม",
-}
-coroutine.wrap(function()
-local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:Stop()
-    for v,v in pairs(getreg()) do
-        if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
-             for v,v in pairs(debug.getupvalues(v)) do
-                if typeof(v) == "table" then
-                    spawn(function()
-                        game:GetService("RunService").RenderStepped:Connect(function()
-                            if _G.FastAttack1 then
-                                 pcall(function()
-                                     v.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-                                     v.activeController.attacking = false
-                                     v.activeController.increment = 4*4*4
-                                     v.activeController.blocking = false   
-                                     v.activeController.hitboxMagnitude = 150
-    		                         v.activeController.humanoid.AutoRotate = true
-    	                      	     v.activeController.focusStart = 0
-    	                      	     v.activeController.currentAttackTrack = 0
-                                     sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRaxNerous", math.huge)
-                                 end)
-                             end
-                         end)
-                    end)
-                end
-            end
-        end
-    end
-end)();
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
         if _G.FastAttack1 then
@@ -8158,95 +8125,33 @@ spawn(function()
     end)
 end)
 
---[[Settings:Dropdown("Select Level3\nเลือกระดับที่สาม",FastAttack3s,_G.Settings.SelectLevelFastAttack_3,function(value)
-    _G.Settings.SelectLevelFastAttack_3 = value
-    SaveSettings()
-end)]]
 
-spawn(function()
-    while wait() do
-        if _G.Settings.SelectLevelFastAttack_3 then
-            pcall(function()
-                if _G.Settings.SelectLevelFastAttack_3 == "Level1\nระดับที่หนึ่ง" then
-                    LevelFastAttack_3 = 0.175
-                elseif _G.Settings.SelectLevelFastAttack_3 == "Level2\nระดับที่สอง" then
-                    LevelFastAttack_3 = 0.10
-                elseif _G.Settings.SelectLevelFastAttack_3 == "Level3\nระดับที่สาม" then
-                    LevelFastAttack_3 = 0
-				else
-                	if _G.Settings.SelectLevelFastAttack_3 == "Level3\nระดับที่สาม" then
-                    	LevelFastAttack_3 = 0
-					end
-				end
-            end)
-        end
-    end
-end)
-
-
-
-    Settings:Label("Settings Auto Skill")
+Settings:Label("Settings Auto Skill")
 
 Settings:Toggle('Skill Z',_G.Settings.SkillZ,function(value)
-            _G.SkillZ = value
-			_G.Settings.SkillZ = value
-			SaveSettings()
+	_G.SkillZ = value
+	_G.Settings.SkillZ = value
+	SaveSettings()
 end)
 
 Settings:Toggle('Skill X',_G.Settings.SkillX,function(value)
-            _G.SkillX = value
-			_G.Settings.SkillX = value
-			SaveSettings()
+	_G.SkillX = value
+	_G.Settings.SkillX = value
+	SaveSettings()
 end)
 
 Settings:Toggle('Skill C',_G.Settings.SkillC,function(value)
-	            _G.SkillC = value
-			_G.Settings.SkillC = value
-			SaveSettings()
+	_G.SkillC = value
+	_G.Settings.SkillC = value
+	SaveSettings()
 end)
 
 Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
-            _G.SkillV = value
-			_G.Settings.SkillV = value
-			SaveSettings()
+	_G.SkillV = value
+	_G.Settings.SkillV = value
+	SaveSettings()
 end)
 
---[[    spawn(function()
-        while task.wait() do
-            pcall(function()
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if _G.Auto_Farm_Level and BringMobFarm then
-                        if (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 280 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(77,77,77)
-                            v.HumanoidRootPart.CFrame = PosMon
-                            v.Humanoid:ChangeState(12)
-                            v.Humanoid:ChangeState(13)
-                            v.HumanoidRootPart.CanCollide = false
-                            v.Head.CanCollide = false
-                            if v.Humanoid:FindFirstChild("Animator") then
-                                v.Humanoid.Animator:Destroy()
-                            end
-                            sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                        elseif _G.Auto_Farm_Level and BringMobFarm then
-                            if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 350 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                v.HumanoidRootPart.Size = Vector3.new(123,123,123)
-                                v.Humanoid:ChangeState(12)
-                                v.Humanoid:ChangeState(13)
-                                v.HumanoidRootPart.CanCollide = false
-                                v.Head.CanCollide = false
-                                v.HumanoidRootPart.CFrame = PosMon
-                                if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end
-                                sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-                            end
-                        end
-                    end
-                end
-            end)
-        end
-    end)
-]] 
 task.spawn(function()
 	while task.wait() do
 		pcall(function()
@@ -8308,70 +8213,37 @@ spawn(function()
 	end
 end)
 
-   	spawn(function()
-        while task.wait() do
-			if _G.Brimob and _G.Auto_Farm_Level then
-            	pcall(function()
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if BringMobFarm and (MobName == "Factory Staff" or MobName == "Monkey" or MobName == "Yeti" or MobName == "The Gorilla King" or MobName == "Gorilla" or MobName == "Dragon Crew Warrior" or MobName == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 234 then
-							v.HumanoidRootPart.Size = Vector3.new(100,100,100) --100
-                            v.HumanoidRootPart.CFrame = PosMon
-                            v.Humanoid:ChangeState(12) --14
-                            v.HumanoidRootPart.CanCollide = false
-                            v.Head.CanCollide = false
-							if v.Humanoid:FindFirstChild("Animator") then
-								v.Humanoid.Animator:Destroy()
-							end
-							sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-					elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 289 then
-							v.HumanoidRootPart.Size = Vector3.new(30,30,30)
-							v.HumanoidRootPart.CFrame = PosMon
-							v.Humanoid:ChangeState(8)
-							v.HumanoidRootPart.CanCollide = false
-							v.Head.CanCollide = false
-							if v.Humanoid:FindFirstChild("Animator") then
-								v.Humanoid.Animator:Destroy()
-							end
-							sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-						end
-                    end
-                end)
-            end
-        end
-    end)
-
-
---[[task.spawn(function()
+spawn(function()
 	while task.wait() do
-		pcall(function()
-			if _G.Auto_Farm_Level or _G.Auto_Farm_Mastery_Gun or _G.Auto_Farm_Mastery_Fruit then
-				if _G.Brimob then
-					--if BringMobFarm then
-						local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-						if QuestC.Visible == true then
-							for i,v in pairs(game:GetService("Workspace").Enemies()) do
-								if v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 250 then
-									v.Humanoid.JumpPower = 0
-									v.Humanoid.WalkSpeed = 0
-									v.HumanoidRootPart.CanCollide = false
-									v.HumanoidRootPart.Size = Vector3.new(77,77,77)
-									v.HumanoidRootPart.CFrame = PosMon
-									v.Humanoid:ChangeState(12)
-									 if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end
-                                sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-									--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
-									--Attack = true
-								end
-							end
+		if _G.Brimob and _G.Auto_Farm_Level then
+			pcall(function()
+				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+					if BringMobFarm and (MobName == "Factory Staff" or MobName == "Monkey" or MobName == "Yeti" or MobName == "The Gorilla King" or MobName == "Gorilla" or MobName == "Dragon Crew Warrior" or MobName == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 234 then
+						v.HumanoidRootPart.Size = Vector3.new(100,100,100) --100
+						v.HumanoidRootPart.CFrame = PosMon
+						v.Humanoid:ChangeState(12) --14
+						v.HumanoidRootPart.CanCollide = false
+						v.Head.CanCollide = false
+						if v.Humanoid:FindFirstChild("Animator") then
+							v.Humanoid.Animator:Destroy()
 						end
-					
+						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+				elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 289 then
+						v.HumanoidRootPart.Size = Vector3.new(30,30,30)
+						v.HumanoidRootPart.CFrame = PosMon
+						v.Humanoid:ChangeState(8)
+						v.HumanoidRootPart.CanCollide = false
+						v.Head.CanCollide = false
+						if v.Humanoid:FindFirstChild("Animator") then
+							v.Humanoid.Animator:Destroy()
+						end
+						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+					end
 				end
-			end
-		end)
-	end 
-end)]]
+			end)
+		end
+	end
+end)
 
 function InMyNetWork(object)
 	if isnetworkowner then
@@ -8394,32 +8266,6 @@ spawn(function()
 	end
 end)
 
---[[spawn(function()
-	while wait() do
-		pcall(function()
-			if BringMobFarm then
-				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-					if v.Name == MobName and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 350 then
-						v.HumanoidRootPart.CFrame = PosMon
-						v.HumanoidRootPart.Size = Vector3.new(77,77,77)
-						v.HumanoidRootPart.Transparency = 1
-						v.Humanoid.JumpPower = 0
-						v.Humanoid.WalkSpeed = 0
-						if v.Humanoid:FindFirstChild("Animator") then
-							v.Humanoid.Animator:Destroy()
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.Head.CanCollide = false
-						v.Humanoid:ChangeState(11)
-						v.Humanoid:ChangeState(12)
-					end
-				end
-			end
-		end)
-	end
-end)]]
-
---L_16_
 L_17_:Label("Auto Stats Kaitan")
 
 L_17_:Toggle("Auto Stats Kaitan",_G.Settings.AutoStatsKaitun,function(a)
