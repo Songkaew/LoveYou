@@ -4526,14 +4526,14 @@ end)
 							}
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 							--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
-							if W1 and MyLevel >= 190 or MyLevel <= 209 then
+							if W1 and MyLevel == 190 or MyLevel <= 209 then
 								local args = {
 										[1] = "StartQuest",
 										[2] = "PrisonerQuest",
 										[3] = 1
 									}
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							elseif MyLevel >= 210 or MyLevel <= 249 then
+							elseif MyLevel == 210 or MyLevel <= 249 then
 								local args = {
 										[1] = "StartQuest",
 										[2] = "PrisonerQuest",
