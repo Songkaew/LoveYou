@@ -298,6 +298,7 @@ function SaveSettings()
 		return warn("Status : Undetected Executor")
 	end
 end
+
 -- กำหนดช่วงของตัวเลขที่ต้องการสุ่ม
 --local minNumber = 1
 --local maxNumber = 2--3
@@ -2344,6 +2345,27 @@ L_22_:Button("Rejoin Server",function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
 
+local ShowIDServer = L_22_:Label("ID Server: ?")
+spawn(function()
+	while wait() do
+		ShowIDServer:Change("ID Server: "..tostring(game.JobId))
+	end
+end)
+
+L_22_:Button("Copy Id Server",function()
+	setclipboard(tostring(game.JobId))
+end)
+
+L_22_:Textbox("Job Id","",true,function(Value)
+    _G.Job = Value
+end)
+
+L_22_:Button("Join Job Id",function()
+	_G.Rejoin = false
+	game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
+end)
+
+
 L_22_:Button("Hop Server",function()
 	Hop()
 end)
@@ -2394,7 +2416,7 @@ function Hop()
 						wait()
 						game:GetService("TeleportService"):TeleportToPlaceInstance(L_70_, L_76_, game.Players.LocalPlayer)
 					end)
-					wait(4)
+					wait(1)
 				end
 			end
 		end
@@ -11610,15 +11632,23 @@ spawn(function()
 	while wait() do
 		if _G.Rejoin then
 			Rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(v)
-				if v.Name == 'ErrorPrompt' and v:FindFirstChild('MessageArea') and v.MessageArea:FindFirstChild("ErrorFrame") then
-					print("AutoRejoin!")
-					game:GetService("TeleportService"):Teleport(game.PlaceId)
+				if _G.FastAttack2 and _G.FastAttack3 then
+					if v.Name == 'ErrorPrompt' and v:FindFirstChild('MessageArea') and v.MessageArea:FindFirstChild("ErrorFrame") then
+						game.Players.LocalPlayer:kick("ก็บอกอยู่ว่าบัคก็ยังจะเปิดอยู่เนาะหลุดไปดิไอ้โง่")
+						print("AutoRejoin!")
+						wait(0.5)
+						game:GetService("TeleportService"):Teleport(game.PlaceId)
+					end
+				else
+					if v.Name == 'ErrorPrompt' and v:FindFirstChild('MessageArea') and v.MessageArea:FindFirstChild("ErrorFrame") then
+						print("AutoRejoin!")
+						game:GetService("TeleportService"):Teleport(game.PlaceId)
+					end
 				end
 			end)
 		end
 	end
 end)
-
 
 local replicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -11832,7 +11862,7 @@ spawn(function()
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
 									AttackFunctionNai()
 									task.wait(_G.randomNumberFastAttck)
 									Click()
@@ -11844,17 +11874,18 @@ spawn(function()
 				else
 					if x - tick() > 0.175 then
 						wait(.000000175)
-						x = tick() Attack()
+						x = tick()
+						Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
 									Attack()
 									task.wait(_G.randomNumberFastAttck)
 									Boost()
 								end
-								wait(_G.randomNumberFastAttck)
+								AttackFunctionRandomFast()
 							end
 						end
 						AttackFunctionNai()
@@ -11865,6 +11896,7 @@ spawn(function()
 						end
 					until not _G.FastAttackX
 					if tick() - cooldownfastattack > tonumber(1.50) then
+						AttackFunctionRandomFast()
 						wait(0.01) cooldownfastattack = tick()
 					end
 				end
@@ -11872,3 +11904,7 @@ spawn(function()
         end)
     end
 end)
+local slashHit = game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit')
+if slashHit then
+    slashHit:Destroy()
+end
