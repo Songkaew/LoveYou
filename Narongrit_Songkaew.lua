@@ -1997,7 +1997,7 @@ Attack = function()
 end
 local AttackRandomFast = 1
 spawn(function()
-	while wait(0.5) do
+	while wait(1) do
 		AttackRandomFast = math.random(1,4)
 	end
 end)
@@ -2244,7 +2244,7 @@ end
 getgenv().TextUI_I = "[+] Auto Farm Lv."
 getgenv().TextUI_II = "[+] FastAttack"
 getgenv().TextUI_III = "Donate บาท 10 บาท ได้หมด"
-getgenv().TextUI_IIII = "Wallet : xxx-xxx-xxxx | 37/3/2567" --19-3-2567--28/4/2566
+getgenv().TextUI_IIII = "Wallet : xxx-xxx-xxxx | 2/4/2567" --19-3-2567--28/4/2566
     --[[spawn(function()
         while task.wait() do
             pcall(function()
@@ -4591,7 +4591,7 @@ function FarmPakMon()
                      for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if _G.tastFarmPakmon == "2" and v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") then
 									repeat wait() 
-										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+										6if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 										end
 										EquipWeapon(_G.Select_Weapon)
@@ -11782,7 +11782,7 @@ function AttackFunctionNai()
 	local ac = CombatFrameworkR.activeController
 	local NumberFastAttckAcAttack10 = math.random(1 , 2)
 	if ac and ac.equipped and not _G.Settings.Auto_Raids then
-		for indexincrement = 1, 3 do
+		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(50)
 			if #bladehit > 0 then
 				local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -11829,8 +11829,9 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.40)
-				repeat wait(_G.randomNumberFastAttck)
+			AntiKick()
+				_G.randomNumberFastAttck = math.random(0.10, 0.75)
+				repeat wait(_G.randomNumberFastAttck + 0.10)
 					AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
@@ -11839,10 +11840,10 @@ spawn(function()
 						wait(1)
 						cooldownfastattack = tick()
 					end
-					repeat wait(_G.randomNumberFastAttck)
+					repeat wait(_G.randomNumberFastAttck + 0.05)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									AttackFunctionNai()
 									task.wait(_G.randomNumberFastAttck)
 									Click()
@@ -11852,15 +11853,15 @@ spawn(function()
 						end
 					until not _G.FastAttackX
 				else
-					if x - tick() > 0.175 then
-						wait(.000000175)
+					if x - tick() > 0.75 then
+						wait(.75)
 						x = tick()
 						Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
 									Attack()
 									task.wait(_G.randomNumberFastAttck)
 									Boost()
@@ -11875,9 +11876,9 @@ spawn(function()
 							game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
 						end
 					until not _G.FastAttackX
-					if tick() - cooldownfastattack > tonumber(1.50) then
+					if tick() - cooldownfastattack > tonumber(0.50) then
 						AttackFunctionRandomFast()
-						wait(0.01) cooldownfastattack = tick()
+						wait(0.50) cooldownfastattack = tick()
 					end
 				end
 			end
