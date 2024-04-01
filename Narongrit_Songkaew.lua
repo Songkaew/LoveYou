@@ -4452,7 +4452,7 @@ spawn(function()
     end
 end)
 	
-	task.spawn(function() 
+task.spawn(function() 
 		while task.wait() do
 			if _G.Auto_Farm_Level then
 				pcall(function()
@@ -4532,6 +4532,7 @@ end)
 					end
 					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+					    _G.tastFarmPakmon = "1"
 						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v.Name == MobName then
@@ -4562,13 +4563,33 @@ end)
 											end
 											game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 	v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+	_G.tastFarmPakmon = "1"
 										until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
 									end
 								end
 							end
 						else
-							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 456 then
+							if (_G.PosMonLv.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+							    FarmPakMon()
+							    _G.tastFarmPakmon = "2"
+							else
+							     Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				                 BringMobFarm = false
+							end
+							if _G.tastFarmPakmon == "1" or _G.tastFarmPakmon == "" or _G.tastFarmPakmon == nil then
+							     Tween(_G.PosMonLv)
+							     UnEquipWeapon(_G.Select_Weapon)
+			                 	BringMobFarm = false
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
+function FarmPakMon()
+                     for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if _G.tastFarmPakmon == "2" and v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") then
 									repeat wait() 
 										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -4582,18 +4603,12 @@ end)
 										Tween(v.HumanoidRootPart.CFrame * CFrame.new(11, 22, 33))
 										game:GetService 'VirtualUser':CaptureController()
 										game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0
-								else
-									Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-									BringMobFarm = false
-								end
-							end
-						end
-					end
-				end)
-			end
-		end
-	end)
+									until not _G.Auto_Farm_Level or _G.tastFarmPakmon == "1"
+							else
+							        _G.tastFarmPakmon = "1"
+				             end
+	            	end
+end
 Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที่เลือก',_G.Settings.MonSelectFarm,function(value)
 	_G.Settings.MonSelectFarm = value
 	SaveSettings()
