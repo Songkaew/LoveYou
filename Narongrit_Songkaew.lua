@@ -1997,7 +1997,7 @@ Attack = function()
 end
 local AttackRandomFast = 1
 spawn(function()
-	while wait(1) do
+	while wait(.75) do
 		AttackRandomFast = math.random(1,4)
 	end
 end)
@@ -2005,15 +2005,15 @@ end)
 function AttackFunctionRandomFast()
 	if CheckPlyayers() == false then
 		if AttackRandomFast == 1 then
-			AttackFunction()
+			AttackFunction() wait(.1)
 		elseif AttackRandomFast == 2 then
-			AttackFunctionNai()
+			AttackFunctionNai() wait(.1)
 		elseif AttackRandomFast == 3 then
-			AttackFunctionNaJa()
+			AttackFunctionNaJa() wait(.1)
 		elseif AttackRandomFast == 4 then
 			Attack()
-			wait(0.001)
-			Boost()
+			wait(1)
+			Boost() wait(.1)
 		end
 	else
 		local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
@@ -2033,7 +2033,7 @@ function AttackFunctionRandomFast()
 				ac:attack()
 				cdnormal = tick()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 4, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 1, "") 
 				end
 				if acx then
 					acx.attacking = false    
@@ -2077,7 +2077,7 @@ function AttackFunctionRandomFast()
 			if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
 				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 				game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 2, "") 
+				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 1, "") 
 			end
 			if acx then
 				acx.attacking = false    
@@ -11796,7 +11796,7 @@ function AttackFunctionNai()
 					AcAttack8 = math.floor(NumberAc12 / AcAttack9)
 					AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
 				end)()
-				AcAttack10 = AcAttack10 + NumberFastAttckAcAttack10 --1
+				AcAttack10 = AcAttack10 + 1-- NumberFastAttckAcAttack10 --1
 				debug.setupvalue(ac.attack, 5, AcAttack8)
 				debug.setupvalue(ac.attack, 6, AcAttack9)
 				debug.setupvalue(ac.attack, 4, AcAttack7)
@@ -11830,8 +11830,8 @@ spawn(function()
         pcall(function()
             if _G.FastAttackX then
 			AntiKick()
-				_G.randomNumberFastAttck = math.random(0.10, 0.75)
-				repeat wait(_G.randomNumberFastAttck) wait(.10)
+				_G.randomNumberFastAttck = math.random(0.10, 1)
+				repeat wait(_G.randomNumberFastAttck) wait(1.75)
 					AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
@@ -11844,8 +11844,8 @@ spawn(function()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									AttackFunctionNai()
-									task.wait(_G.randomNumberFastAttck)
+									--AttackFunctionNai()
+									--task.wait(_G.randomNumberFastAttck)
 									Click()
 								end
 								wait(_G.randomNumberFastAttck)
@@ -11856,7 +11856,7 @@ spawn(function()
 					if x - tick() > 0.75 then
 						wait(.75)
 						x = tick()
-						Attack()
+						--Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
@@ -11877,8 +11877,9 @@ spawn(function()
 						end
 					until not _G.FastAttackX
 					if tick() - cooldownfastattack > tonumber(0.50) then
-						AttackFunctionRandomFast()
-						wait(0.50) cooldownfastattack = tick()
+						--AttackFunctionRandomFast()
+						Click()
+wait(0.50) cooldownfastattack = tick()
 					end
 				end
 			end
