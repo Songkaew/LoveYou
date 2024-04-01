@@ -1996,13 +1996,13 @@ Attack = function()
 end
 local AttackRandomFast = 1
 spawn(function()
-	while wait(1) do
+	while wait(0.5) do
 		AttackRandomFast = math.random(1,4)
 	end
 end)
 
 function AttackFunctionRandomFast()
-	if CheckPlyayers() == true then
+	if CheckPlyayers() == false then
 		if AttackRandomFast == 1 then
 			AttackFunction()
 		elseif AttackRandomFast == 2 then
@@ -2011,7 +2011,7 @@ function AttackFunctionRandomFast()
 			AttackFunctionNaJa()
 		elseif AttackRandomFast == 4 then
 			Attack()
-			wait(0.001 + 0.1)
+			wait(0.001)
 			Boost()
 		end
 	else
@@ -4472,13 +4472,21 @@ end)
 							Tween(QuestCheck()[2])
 							if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 								BringMobFarm = false
-								local args = { [1] = "StartQuest", [2] = QuestCheck()[4], [3] = QuestCheck()[1] }
+								local args = {
+									[1] = "StartQuest",
+									[2] = QuestName,
+									[3] = QuestLevel
+								}
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 								--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
 							end
 						else
-							local args = { [1] = "StartQuest", [2] = QuestCheck()[4], [3] = QuestCheck()[1] }
+							local args = {
+								[1] = "StartQuest",
+								[2] = QuestName,
+								[3] = QuestLevel
+							}
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 							--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 						end
