@@ -2359,10 +2359,10 @@ L_22_:Textbox("Job Id","",_G.Job,function(Value)
 end)
 
 L_22_:Button("Join Job Id",function()
-	_G.Rejoin = false
+	--_G.Rejoin = false
 	game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
+	game:GetService("TeleportService"):Teleport(game.PlaceId , _G.Job , game:GetService("Players").localPlayer)
 end)
-
 
 L_22_:Button("Hop Server",function()
 	Hop()
@@ -2543,25 +2543,25 @@ L_22_:Label("Teams")
 L_22_:Toggle("Show Chat disabled", _G.chat, function(value)
     _G.chat = value
     if _G.chat == true then
-local StarterGui = game:GetService('StarterGui')
-StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)    
-elseif _G.chat == false then
-local StarterGui = game:GetService('StarterGui')
-StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)    
-end
-  end)
+		local StarterGui = game:GetService('StarterGui')
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)    
+	elseif _G.chat == false then
+		local StarterGui = game:GetService('StarterGui')
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)    
+	end
+end)
 
-  L_22_:Toggle("Show leaderboard disabled", _G.Settings.leaderboard, function(a)
+L_22_:Toggle("Show leaderboard disabled", _G.Settings.leaderboard, function(a)
     _G.Settings.leaderboard = a
     if _G.Settings.leaderboard == true then
-local StarterGui = game:GetService('StarterGui')
-game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)   
-elseif _G.Settings.leaderboard == false then
-local StarterGui = game:GetService('StarterGui')
-game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)   
-end
-SaveSettings()
-  end)
+		local StarterGui = game:GetService('StarterGui')
+		game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)   
+	elseif _G.Settings.leaderboard == false then
+		local StarterGui = game:GetService('StarterGui')
+		game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)   
+	end
+	SaveSettings()
+end)
 
 L_22_:Toggle("RemoveNotify",_G.Settings.RemoveNotify,function(value)
 	_G.Settings.RemoveNotify = value
@@ -3383,7 +3383,7 @@ L_22_:Button("Ultra Boost Fps",function(d)
     TextureLow()
     InvisibleObject()
     ObjectRemvoe()
-    
+    LavaRemvoe()
 end)
 
 function TextureLow()
@@ -3443,18 +3443,19 @@ function TextureLow()
 		end)
 	end
 end
-
+function LavaRemvoe()
+	for i,v in pairs(game.Workspace:GetDescendants()) do
+		if v.Name == "Lava" then   
+			v:Destroy()
+		end
+	end
+	for i,v in pairs(game.ReplicatedStorage:GetDescendants()) do
+		if v.Name == "Lava" then   
+			v:Destroy()
+		end
+	end
+end
 function WaterRemvoe()
-		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Name == "Lava" then   
-				v:Destroy()
-			end
-		end
-		for i,v in pairs(game.ReplicatedStorage:GetDescendants()) do
-			if v.Name == "Lava" then   
-				v:Destroy()
-			end
-		end
 	for i,v in pairs(workspace:GetDescendants()) do
 		if string.find(v.Name,"Water") then
 			v:Destroy()
@@ -4440,19 +4441,6 @@ spawn(function()
 							task.wait()
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
-					--[[if not string.find(v.Name, MobName) then
-						if string.split(v.Name, MobName) then
-							_G.PosMonFarmLvSetCFarme = 1
-							task.wait(.001)
-							repeat task.wait()
-								task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-								task.wait()
-							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
-						end
-					end]]
 					if not string.find(v.Name, MobName) and not string.split(v.Name, MobName) then
 						if v.Name == MobName then
 							_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
@@ -4580,7 +4568,7 @@ end)
 							end
 						else
 							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 350 and v.Humanoid.Health > 0 then
+								if (QuestCheck()[7][1].Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 550 then
 									repeat wait() 
 										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -4594,7 +4582,7 @@ end)
 										Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
 										game:GetService 'VirtualUser':CaptureController()
 										game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(MobName)
+									until not _G.Auto_Farm_Level or not game:GetService("Workspace").Enemies:FindFirstChild(MobName)
 								else
 									Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 									BringMobFarm = false
@@ -5465,39 +5453,15 @@ spawn(function()
 						else
 							Tween(QPlates["Plate1"].Button.CFrame)
 						end
-						TweenMax(QPlates["Plate1"].Button.CFrame)
+						Tween(QPlates["Plate1"].Button.CFrame)
 					elseif QPlates["Plate2"].Button.BrickColor ~= BrickColor.new("Camo") then
-					if _G.Bypass and (QPlates["Plate2"].Button.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
-							BTP(QPlates["Plate2"].Button.CFrame)
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrameQPlates["Plate2"].Button.CFrame
-						else
-							Tween(QPlates["Plate2"].Button.CFrame)
-						end
-						TweenMax(QPlates["Plate2"].Button.CFrame)
+						Tween(QPlates["Plate2"].Button.CFrame)
 					elseif QPlates["Plate3"].Button.BrickColor ~= BrickColor.new("Camo") then
-						if _G.Bypass and (QPlates["Plate3"].Button.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
-							BTP(QPlates["Plate3"].Button.CFrame)
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrameQPlates["Plate3"].Button.CFrame
-						else
-							Tween(QPlates["Plate3"].Button.CFrame)
-						end
-						TweenMax(QPlates["Plate3"].Button.CFrame)
+						Tween(QPlates["Plate3"].Button.CFrame)
 					elseif QPlates["Plate4"].Button.BrickColor ~= BrickColor.new("Camo") then
-						if _G.Bypass and (QPlates["Plate4"].Button.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
-							BTP(QPlates["Plate4"].Button.CFrame)
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrameQPlates["Plate4"].Button.CFrame
-						else
-							Tween(QPlates["Plate4"].Button.CFrame)
-						end
-						TweenMax(QPlates["Plate4"].Button.CFrame)
+						Tween(QPlates["Plate4"].Button.CFrame)
 					elseif QPlates["Plate5"].Button.BrickColor ~= BrickColor.new("Camo") then
-						if _G.Bypass and (QPlates["Plate5"].Button.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
-							BTP(QPlates["Plate5"].Button.CFrame)
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrameQPlates["Plate5"].Button.CFrame
-						else
-							Tween(QPlates["Plate5"].Button.CFrame)
-						end
-						TweenMax(QPlates["Plate5"].Button.CFrame)
+						Tween(QPlates["Plate5"].Button.CFrame)
 					end
 				pcall(function()
 					if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.CanCollide == false and game:GetService("Workspace").Map.Desert.Burn.Part.CanCollide == true then
@@ -5568,60 +5532,60 @@ spawn(function()
 					else
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
 					end
-				pcall(function()
-					if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == false and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").KilledMob == true then
-						TweenMax(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
-						if not game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or not game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
-							wait(.1)
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress")
-						end game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
-						if game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
-							game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
+					pcall(function()
+						if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == false and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").KilledMob == true then
 							TweenMax(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
-							game:GetService("Workspace").Map.Jungle.Final.Invis.Size = Vector3.new(20,20,20)
-							game:GetService("Workspace").Map.Jungle.Final.Invis.CanCollide = false
+							if not game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or not game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
+								wait(.1)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress")
+							end game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
+							if game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
+								game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
+								TweenMax(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
+								game:GetService("Workspace").Map.Jungle.Final.Invis.Size = Vector3.new(20,20,20)
+								game:GetService("Workspace").Map.Jungle.Final.Invis.CanCollide = false
+							end
+							Tween(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
 						end
-						Tween(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
-					end
-					if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == true and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").KilledShanks == false then
-						for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-							if v.Name == "Saber Expert" then
-								if v:FindFirstChild("HumanoidRootPart") or v:FindFirstChild("Humanoid") then
-									repeat task.wait()
-										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+						if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == true and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").KilledShanks == false then
+							for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+								if v.Name == "Saber Expert" then
+									if v:FindFirstChild("HumanoidRootPart") or v:FindFirstChild("Humanoid") then
+										repeat task.wait()
+											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+											end
+											EquipWeapon(_G.Select_Weapon)
+											Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
+											v.HumanoidRootPart.Transparency = 0.5
+											v.Humanoid.WalkSpeed = 0
+											v.Humanoid.JumpPower = 0
+											game:GetService'VirtualUser':CaptureController()
+											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											--AttackOKKO()
+										until not _G.Settings.Auto_Saber 
+										if sethiddenproperty then
+											sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
 										end
-										EquipWeapon(_G.Select_Weapon)
-										Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
-										v.HumanoidRootPart.Transparency = 0.5
-										v.Humanoid.WalkSpeed = 0
-										v.Humanoid.JumpPower = 0
-										game:GetService'VirtualUser':CaptureController()
-										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										--AttackOKKO()
-									until not _G.Settings.Auto_Saber 
-									if sethiddenproperty then
-										sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+									end
+								end
+							end
+							for x,y in pairs(game.ReplicatedStorage:GetChildren()) do
+								if y.Name == "Saber Expert" then
+									if y:FindFirstChild("HumanoidRootPart") then
+										repeat task.wait()
+											EquipWeapon(_G.Select_Weapon)
+											game:GetService'VirtualUser':CaptureController()
+											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											--AttackOKKO()
+											Tween(y.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
+										until not _G.Settings.Auto_Saber 
 									end
 								end
 							end
 						end
-						for x,y in pairs(game.ReplicatedStorage:GetChildren()) do
-							if y.Name == "Saber Expert" then
-								if y:FindFirstChild("HumanoidRootPart") then
-									repeat task.wait()
-										EquipWeapon(_G.Select_Weapon)
-										game:GetService'VirtualUser':CaptureController()
-										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										--AttackOKKO()
-										Tween(y.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
-									until not _G.Settings.Auto_Saber 
-								end
-							end
-						end
-					end
-				end)
+					end)
 				end
 			end
 		end)
@@ -7414,8 +7378,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	pcall(function()
 		if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
 			if getgenv().ChestFarm then
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
 				game.Players.LocalPlayer.Character.Humanoid.Health = 0
-				 game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping") 
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+				game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping") 
 			end
 		end
 	end)
@@ -8238,7 +8204,7 @@ task.spawn(function()
 			if BringMobFarm then
 				local questTarget = MobName
 				for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
-					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 234 then
+					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 345 then
 						-- ตั้ง CFrame ของมอนเตอร์ให้ตรงกับตำแหน่งที่กำหนด
 						mob.HumanoidRootPart.CFrame = PosMon
 						
@@ -8298,7 +8264,7 @@ spawn(function()
 		if _G.Brimob and _G.Auto_Farm_Level then
 			pcall(function()
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-					if BringMobFarm and (MobName == "Factory Staff" or MobName == "Monkey" or MobName == "Yeti" or MobName == "The Gorilla King" or MobName == "Gorilla" or MobName == "Dragon Crew Warrior" or MobName == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 234 then
+					if BringMobFarm and (MobName == "Factory Staff" or MobName == "Monkey" or MobName == "Yeti" or MobName == "The Gorilla King" or MobName == "Gorilla" or MobName == "Dragon Crew Warrior" or MobName == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 280 then
 						v.HumanoidRootPart.Size = Vector3.new(100,100,100) --100
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(12) --14
@@ -8308,7 +8274,7 @@ spawn(function()
 							v.Humanoid.Animator:Destroy()
 						end
 						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-				elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 289 then
+				elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 350 then
 						v.HumanoidRootPart.Size = Vector3.new(30,30,30)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(8)
@@ -8829,7 +8795,7 @@ spawn(function()
 							end
 							for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 								if _G.Settings.Auto_Raids_Kill_Mon1 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and L_459_forvar1:FindFirstChild("Humanoid") and L_459_forvar1:FindFirstChild("HumanoidRootPart") and (L_459_forvar1.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
-									repeat wait() --.3
+									repeat wait(.1) --.3
 										EquipWeapon(_G.Select_Weapon)
 										L_459_forvar1.Head.CanCollide = false
 										L_459_forvar1.Humanoid.JumpPower = 0
@@ -8962,7 +8928,7 @@ spawn(function()
 								elseif (game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5").Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
-											repeat wait()
+											repeat wait(.1)
 											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
@@ -8976,6 +8942,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 											end
+											sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 											until not  L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0-- or not L_459_forvar1.Parent
 
 										end
@@ -8988,7 +8955,7 @@ spawn(function()
 								elseif (game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4").Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
-											repeat wait()
+											repeat wait(.1)
 											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
@@ -9005,6 +8972,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 											end
+											sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 											until not  L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
 
 										end
@@ -9017,7 +8985,7 @@ spawn(function()
 								elseif (game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3").Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
-											repeat wait()
+											repeat wait(.1)
 											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
@@ -9034,6 +9002,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 												end
+												sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
 
 										end
@@ -9046,7 +9015,7 @@ spawn(function()
 								elseif (game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2").Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
-											repeat wait()
+											repeat wait(.1)
 											if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
@@ -9062,7 +9031,8 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												PosMon = L_459_forvar1.HumanoidRootPart.CFrame
 												end
-											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0 --or not L_459_forvar1.Parent
+												sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0
 										end
 									end
 								end
@@ -9073,7 +9043,7 @@ spawn(function()
 								elseif (game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1").Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 450 then
 									for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 										if L_459_forvar1.Humanoid.Health > 0 and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and (L_459_forvar1.HumanoidRootPart.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 600 then
-											repeat wait()
+											repeat wait(.1)
 												if InMyNetWork(v.HumanoidRootPart) then
 												Tween(L_459_forvar1.HumanoidRootPart.CFrame * CFrame.new(0,38,0))
 												EquipWeapon(_G.Select_Weapon)
@@ -9089,6 +9059,7 @@ spawn(function()
 												L_459_forvar1.HumanoidRootPart.Transparency = 1
 												PosMon = L_459_forvar1.HumanoidRootPart.CFrame
 												end
+												sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 											until not L_459_forvar1.Parent or _G.Settings.Auto_Raids_Kill_Mon or L_459_forvar1.Humanoid.Health <= 0
 										end
 									end
@@ -9219,34 +9190,16 @@ spawn(function()
 							end
 							for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 								if _G.Settings.Auto_Raids and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and L_459_forvar1:FindFirstChild("Humanoid") and L_459_forvar1:FindFirstChild("HumanoidRootPart") and (L_459_forvar1.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
-									--[[pcall(function()
-                                        for i,L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
-                                            if not string.find(L_459_forvar1.Name,"Boss") and L_459_forvar1.Humanoid.Health <= 0 and L_459_forvar1:FindFirstChild("Humanoid") then
-                                                wait(.9)
-                                                L_459_forvar1:Destroy()
-                                            end
-                                        end
-                                    end)]]
-
-									--L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(80,0,80)
-									repeat wait() --.3
+									repeat wait(.1) --.3
 										if InMyNetWork(v.HumanoidRootPart) then
-                                        L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(77,-77,0)
-                                        L_459_forvar1.Humanoid:ChangeState(12)
-										L_459_forvar1.Humanoid.Health = 0
-										L_459_forvar1.HumanoidRootPart.CanCollide = false
-                                        L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
-										--L_459_forvar1:BreakJoints()
-										--[[if L_459_forvar1.Humanoid:FindFirstChild("Animator") then
-                                            wait(1)
-                                            L_459_forvar1.Humanoid.Animator:Destroy()
-                                        end]]
+											L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(77,-77,0)
+											L_459_forvar1.Humanoid:ChangeState(12)
+											L_459_forvar1.Humanoid.Health = 0
+											L_459_forvar1.HumanoidRootPart.CanCollide = false
+											L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
+											sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 										end
-										--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 									until not _G.Settings.Auto_Raids or L_459_forvar1.Humanoid.Health <= 0 or not L_459_forvar1.Parent
-									--[[if L_459_forvar1.Humanoid.Health <= 0 then wait(.001)
-										L_459_forvar1:Destroy()
-									end]]
 								end
 							end
 							if _G.Settings.Auto_Awakened then	
@@ -9273,7 +9226,7 @@ spawn(function()
 	end
 end)
 
-spawn(function()
+--[[spawn(function()
     while wait() do
         if _G.Settings.Kill_Aura then
             for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
@@ -9294,8 +9247,22 @@ spawn(function()
             end
         end
     end
+end)]]
+spawn(function()
+    while wait() do
+        if _G.Settings.Kill_Aura then
+            for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                    repeat wait(.1)
+                        v.Humanoid.Health = 0
+                        v.HumanoidRootPart.CanCollide = false
+                        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                    until not _G.Settings.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
+                end
+            end
+        end
+    end
 end)
-
 spawn(function()
 	pcall(function()
 		while wait() do
