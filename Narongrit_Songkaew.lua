@@ -2077,7 +2077,7 @@ function AttackFunctionRandomFast()
 			if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
 				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 				game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), indexincrement, "") 
+				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 2, "") 
 			end
 			if acx then
 				acx.attacking = false    
@@ -11807,7 +11807,7 @@ function AttackFunctionNai()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, NumberFastAttckAcAttack10, "") 
 				end
 			end
 		end
@@ -11829,9 +11829,9 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-			AntiKick()
+			--AntiKick()
 				_G.randomNumberFastAttck = math.random(0.10, 0.75)
-				repeat wait(_G.randomNumberFastAttck + 0.10)
+				repeat wait(_G.randomNumberFastAttck) wait(.10)
 					AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
@@ -11840,7 +11840,7 @@ spawn(function()
 						wait(1)
 						cooldownfastattack = tick()
 					end
-					repeat wait(_G.randomNumberFastAttck + 0.05)
+					repeat wait(_G.randomNumberFastAttck) wait(.05)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
