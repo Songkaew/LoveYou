@@ -4568,25 +4568,21 @@ end)
 							end
 						else
 							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v:FindFirstChild("Humanoid") then
-									if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 456 then
-										if v.Humanoid.Health > 0 then
-											repeat wait() 
-												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-												end
-												EquipWeapon(_G.Select_Weapon)
-												PosMon = v.HumanoidRootPart.CFrame
-												v.HumanoidRootPart.CanCollide = false 
-												v.Head.CanCollide = false
-												v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-												BringMobFarm = true
-												Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
-												game:GetService 'VirtualUser':CaptureController()
-												game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-											until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0
+								if v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 456 then
+									repeat wait() 
+										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 										end
-									end
+										EquipWeapon(_G.Select_Weapon)
+										PosMon = v.HumanoidRootPart.CFrame
+										v.HumanoidRootPart.CanCollide = false 
+										v.Head.CanCollide = false
+										v.HumanoidRootPart.Size = Vector3.new(77, 77, 77)
+										BringMobFarm = true
+										Tween(v.HumanoidRootPart.CFrame * CFrame.new(11, 22, 33))
+										game:GetService 'VirtualUser':CaptureController()
+										game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0
 								else
 									Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 									BringMobFarm = false
