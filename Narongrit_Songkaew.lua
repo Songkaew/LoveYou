@@ -123,6 +123,40 @@ task.spawn(function()
     end
 end)
 
+Code = {
+	"EXP_5B",
+	"CONTROL",
+	"UPDATE11",
+	"XMASEXP",
+	"1BILLION",
+	"ShutDownFix2",
+	"UPD14",
+	"STRAWHATMAINE",
+	"TantaiGaming",
+	"Colosseum",
+	"Axiore",
+	"Sub2Daigrock",
+	"Sky Island 3",
+	"Sub2OfficialNoobie",
+	"SUB2NOOBMASTER123",
+	"THEGREATACE",
+	"Fountain City",
+	"BIGNEWS",
+	"FUDD10",
+	"SUB2GAMERROBOT_EXP1",
+	"UPD15",
+	"2BILLION",
+	"UPD16",
+	"3BVISITS",
+	"fudd10_v2",
+	"Starcodeheo",
+	"Magicbus",
+	"JCWK",
+	"Bluxxy",
+	"Sub2Fer999",
+	"Enyu_is_Pro"
+}
+
 _G.Settings = {
 	SelectTeam = "Pirate",
 	Auto_Farm_Level = false,
@@ -1794,7 +1828,7 @@ function Check_Sword(Sword_Name)
 end
 function CheckPlyayers()
 	for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-		if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 35 then
+		if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 45 then
 			return true
 		end
 	end
@@ -2014,38 +2048,6 @@ function AttackFunctionRandomFast()
 			Attack()
 			wait(1)
 			Boost() wait(.1)
-		end
-	else
-		local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-		local CombatFrameworkF = debug.getupvalues(ModuleF)[2]
-		local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
-		local acx = CombatFrameworkF.activeController
-		if acx and acx.equipped then
-			for indexincrement = 1, 1 do
-				debug.setupvalue(ac.attack, 5, 55495)
-				debug.setupvalue(ac.attack, 6, 1892665)
-				debug.setupvalue(ac.attack, 4, 907772)
-				debug.setupvalue(ac.attack, 7, 14)
-				for k, v in pairs(acx.animator.anims.basic) do
-					CameraShakerR:Stop()
-					v:Play()
-				end
-				ac:attack()
-				cdnormal = tick()
-				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 1, "") 
-				end
-				if acx then
-					acx.attacking = false    
-					acx.timeToNextAttack = 0
-					acx.increment = 4
-					acx.hitboxMagnitude = 40
-					acx.blocking = false   
-					acx.timeToNextBlock = 0
-					acx.focusStart = 0
-					acx.humanoid.AutoRotate = true   
-				end
-			end
 		end
 	end
 	local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
@@ -4397,7 +4399,9 @@ Main:Button("Redeem All Code",function()
 		Redeem(t) 
 	end
 end)
-
+Main:Button("Go to Ui Kaitun",function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/%5B2%5DUP***********************"))()
+end)
 Main:Toggle("Auto Farm Level\nออโต้ฟาร์มเลเวล",_G.Settings.Auto_Farm_Level,function(value)
 	_G.Settings.Auto_Farm_Level = value
     _G.Auto_Farm_Level = value 
@@ -8164,7 +8168,6 @@ end)
 Settings:Toggle("Fast Attack[2] [Bug]\nโจมตีเร็วสอง บัครออัพเดพ",_G.Settings.FastAttack2,function(value)
 	_G.Settings.FastAttack2 = value
 	_G.FastAttack2 = value
-	_G.FastAttack = value
 	SaveSettings()
 end)
 
@@ -8253,7 +8256,7 @@ spawn(function()
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
+					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 50 then
 							v.HumanoidRootPart.CFrame = PosMon
 							v.Humanoid.JumpPower = 0
 							v.Humanoid.WalkSpeed = 0
@@ -11813,6 +11816,7 @@ function AttackFunctionNai()
 		end
 	end
 end
+
 function Click()
 	local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
 	local CombatFramework = debug.getupvalues(Module)[2]
@@ -11824,33 +11828,31 @@ function Click()
 	game:GetService'VirtualUser':CaptureController()
 	game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
+
 _G.randomNumberFastAttck = 0
 x = tick()
 spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-			--AntiKick()
 				_G.randomNumberFastAttck = math.random(0.10, 0.99)
-				repeat wait(_G.randomNumberFastAttck) wait(.175)
-					Click()--AttackFunctionRandomFast()
+				repeat wait(_G.randomNumberFastAttck)
+					Click()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
 					AttackFunction()
 					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
 						Click()
-								wait(1)
+						task.wait(1.75)
 						cooldownfastattack = tick()
 					end
 					repeat wait(_G.randomNumberFastAttck)  wait(.05)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									--AttackFunctionNai()
-									--task.wait(_G.randomNumberFastAttck)
+									task.wait(_G.randomNumberFastAttck)
 									Click()
 								end
-								wait(_G.randomNumberFastAttck)
 							end
 						end
 					until not _G.FastAttackX
@@ -11866,21 +11868,15 @@ spawn(function()
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
 									Attack()
 									task.wait(_G.randomNumberFastAttck)
-									Boost()
+									AttackFunctionRandomFast()
 								end
-								AttackFunctionRandomFast()
 							end
 						end
-						AttackFunctionNai()
-						Click()
-								wait(.05)
 						AttackX()
-						
 					until not _G.FastAttackX
 					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
-						AttackFunctionRandomFast()
 						Click()
-wait(0.50) cooldownfastattack = tick()
+						cooldownfastattack = tick()
 					end
 				end
 			end
