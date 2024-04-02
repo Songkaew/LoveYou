@@ -545,7 +545,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if MyLevel == 190 or MyLevel <= 209 then
+	if Lvl == 190 or Lvl <= 209 then
 		MobName = "Prisoner"
 		QuestName = "PrisonerQuest"
 		QuestLevel = 2
@@ -572,7 +572,7 @@ function QuestCheck()
 			[6] = Mon,
 			[7] = MobCFrame
 		}
-	elseif MyLevel == 210 or MyLevel <= 249 then
+	elseif Lvl == 210 or Lvl <= 249 then
 		MobName = "Dangerous Prisoner"
 		QuestName = "PrisonerQuest"
 		QuestLevel = 2
