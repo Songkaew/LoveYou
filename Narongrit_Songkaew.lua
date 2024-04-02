@@ -640,20 +640,21 @@ for i,v in pairs(Quests) do
 	end
 end
 	if QuestName == "JungleQuest" then
-		QuestName = "JungleQuest"
-		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 		if QuestLevel == 1 then
 			Mon = "Monkey"
 			LevelRequire = 10
 			QuestLevel = 1
 			MobName = "Monkey"
+			QuestName = "JungleQuest"
+			NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 		elseif QuestLevel == 2 then
 			Mon = "Gorilla"
 			LevelRequire = 15
 			QuestLevel = 2
 			MobName = "Gorilla"
+			QuestName = "JungleQuest"
+			NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 		end
-		
 	elseif QuestName == "BuggyQuest1" then
 		Mon = "Pirate"
 		QuestLevel = 1
@@ -11833,7 +11834,7 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.10, 0.99)
+				_G.randomNumberFastAttck = math.random(0.10, 0.85)
 				repeat wait(_G.randomNumberFastAttck)
 					if _G.Smooth == false then
 						Click()
