@@ -1321,50 +1321,56 @@ function Tween(...)
     local z = game:GetService("TweenService")
     local q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], B, {CFrame = p})
     q:Play()
-	
-if _G.Settings.Bypass then
-    if Distance > 3000 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (
-        game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or 
-        game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or 
-        game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or 
-        game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or 
-        game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or 
-        game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or 
-        game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or 
-        game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")
-    ) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
-        pcall(function()
-            tween:Cancel()
-            fkwarp = false
-            if game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("spawnPoint").Value == tostring(GetIsLand(p)) then 
-                wait(.1)
-                Com("F_", "TeleportTospawn")
-            elseif game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("LastspawnPoint").Value == tostring(GetIsLand(p)) then
-                game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-                wait(0.1)
-                repeat
-                    wait()
-                until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
-            else
-                if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
-                    if fkwarp == false then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
-                    end
-                    fkwarp = true
-                end
-                wait(.08)
-                game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-                repeat
-                    wait()
-                until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
-                wait(.1)
-                Com("F_", "SetspawnPoint")
-            end
-            wait(0.2)
-            return
-        end)
-    end
-end
+	pcall(function()
+		q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {
+			CFrame = p
+		})
+		q:Play()
+	end)
+
+	if _G.Settings.Bypass then
+		if Distance > 3000 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (
+			game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or 
+			game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or 
+			game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or 
+			game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or 
+			game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or 
+			game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or 
+			game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or 
+			game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")
+		) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
+			pcall(function()
+				tween:Cancel()
+				fkwarp = false
+				if game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("spawnPoint").Value == tostring(GetIsLand(p)) then 
+					wait(.1)
+					Com("F_", "TeleportTospawn")
+				elseif game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("LastspawnPoint").Value == tostring(GetIsLand(p)) then
+					game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+					wait(0.1)
+					repeat
+						wait()
+					until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+				else
+					if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+						if fkwarp == false then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
+						end
+						fkwarp = true
+					end
+					wait(.08)
+					game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+					repeat
+						wait()
+					until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+					wait(.1)
+					Com("F_", "SetspawnPoint")
+				end
+				wait(0.2)
+				return
+			end)
+		end
+	end
     -- สร้างตัวแปรเก็บฟังก์ชันของ Tween เพื่อให้สามารถหยุดหรือรอได้
     local tweenfunc = {}
     function tweenfunc:Stop()
