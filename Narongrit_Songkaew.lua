@@ -4560,8 +4560,8 @@ end)
 								if v.Name == MobName then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat task.wait()
-											if not string.find(QuestTitle, QuestCheck()[3]) then
-												game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
+											if not string.find(QuestTitle, MobName) then
+												--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
 												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 											else
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
