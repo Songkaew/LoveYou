@@ -4381,39 +4381,28 @@ spawn(function()
 						_G.PosMonFarmLvSetCFarme = 1
 						task.wait(.001)
 						repeat task.wait()
-							if _G.Smooth then
-								_G.PosMonLv = v.CFrame * CFrame.new(0,35,0)
-								task.wait(.7)
-								_G.PosMonFarmLvSetCFarme = 2
-								_G.PosMonFarmLvSetCFarme = 2
-								_G.PosMonFarmLvSetCFarme = 2
-								task.wait(.01)
-							end
-							if _G.Smooth == false then
-								task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
-								task.wait(0.5)
-								_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
-								task.wait(0.5)
-								_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-								_G.PosMonFarmLvSetCFarme = 2
-								_G.PosMonFarmLvSetCFarme = 2
-								task.wait(.01)
-							end
+							task.wait()
+							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
+							task.wait(0.5)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
+							task.wait(0.5)
+							_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
+							task.wait(1.5)
+							_G.PosMonFarmLvSetCFarme = 2
+							task.wait(.01)
+							_G.PosMonLv2 = v.CFrame * CFrame.new(0,50,0)
+							task.wait(.01)
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
-					if not string.find(v.Name, MobName) then
-						if v.Name == MobName then
-							_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-						end
+					if v.Name == MobName then
+						_G.PosMonLv2 = v.CFrame * CFrame.new(0,50,0)
 					end
 				end
             end)
         end
     end
 end)
+
 task.spawn(function() 
 	while task.wait() do
 		if _G.Auto_Farm_Level then
