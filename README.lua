@@ -4399,7 +4399,9 @@ Main:Button("Redeem All Code",function()
 		Redeem(t) 
 	end
 end)
-
+Main:Button("Go to Ui Kaitun\nไปที่ Ui ไก่ตัน",function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/%5B2%5DUP***********************"))()
+end)
 Main:Toggle("Auto Farm Level\nออโต้ฟาร์มเลเวล",_G.Settings.Auto_Farm_Level,function(value)
 	_G.Settings.Auto_Farm_Level = value
     _G.Auto_Farm_Level = value 
