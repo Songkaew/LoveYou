@@ -545,7 +545,34 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 210 and Lvl <= 249 then
+	if MyLevel == 190 or MyLevel <= 209 then
+		MobName = "Prisoner"
+		QuestName = "PrisonerQuest"
+		QuestLevel = 2
+		Mon = "Prisoner"
+		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+		local matchingCFrames = {}
+		local result = string.gsub(MobName, "Lv. ", "")
+		local result2 = string.gsub(result, "[%[%]]", "")
+		local result3 = string.gsub(result2, "%d+", "")
+		local result4 = string.gsub(result3, "%s+", "")
+		
+		for i,v in pairs(game.workspace.EnemySpawns:GetChildren()) do
+			if v.Name == result4 then
+				table.insert(matchingCFrames, v.CFrame)
+			end
+			MobCFrame = matchingCFrames
+		end
+		return {
+			[1] = QuestLevel,
+			[2] = NPCPosition,
+			[3] = MobName,
+			[4] = QuestName,
+			[5] = LevelRequire,
+			[6] = Mon,
+			[7] = MobCFrame
+		}
+	elseif MyLevel == 210 or MyLevel <= 249 then
 		MobName = "Dangerous Prisoner"
 		QuestName = "PrisonerQuest"
 		QuestLevel = 2
@@ -4450,7 +4477,8 @@ task.spawn(function()
 				if _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
-				elseif _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+				end
+				if _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 					Tween(_G.PosMonLv)
 					UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
@@ -4542,7 +4570,6 @@ end)
 												EquipWeapon(_G.Select_Weapon)
 												BringMobFarm = true
 												PosMon = v.HumanoidRootPart.CFrame
-												--Tween(v.HumanoidRootPart.CFrame * CFrame.new(3, 33, 3))
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
 													if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
