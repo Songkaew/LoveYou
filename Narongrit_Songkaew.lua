@@ -640,30 +640,21 @@ for i,v in pairs(Quests) do
 	end
 end
 	--[[if QuestName == "JungleQuest" then
-		if QuestLevel == 1 then
-			Mon = "Monkey"
-			LevelRequire = 10
-			QuestLevel = 1
-			MobName = "Monkey"
-			QuestName = "JungleQuest"
-			NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-		elseif QuestLevel == 2 then
-			Mon = "Gorilla"
-			LevelRequire = 15
-			QuestLevel = 2
-			MobName = "Gorilla"
-			QuestName = "JungleQuest"
-			NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-		end
-	else]]
-		if QuestName == "BuggyQuest1" then
+		Mon = "Gorilla"
+		LevelRequire = 15
+		QuestLevel = 2
+		MobName = "Gorilla"
+		QuestName = "JungleQuest"
+		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+	elseif QuestName == "BuggyQuest1" then
 		Mon = "Pirate"
 		QuestLevel = 1
 		QuestName = "BuggyQuest1"
 		MobName = "Pirate"
 		LevelRequire = 30
 		NPCPosition = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
-	elseif QuestName == "MarineQuest2" then
+	else]]
+		if QuestName == "MarineQuest2" then
 		QuestName = "MarineQuest2"
 		QuestLevel = 1
 		MobName = "Chief Petty Officer"
@@ -4422,13 +4413,11 @@ end)
 Main:Toggle("Auto Farm Level\nออโต้ฟาร์มเลเวล",_G.Settings.Auto_Farm_Level,function(value)
 	_G.Settings.Auto_Farm_Level = value
     _G.Auto_Farm_Level = value 
-	--_G.Auto_Farm_Level2 = value
+	_G.Auto_Farm_Level2 = value
     Auto_Farm_Level = value
 	if value == false then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-		TweenMax(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-	
 	end
 	SaveSettings()
 end)
@@ -4548,6 +4537,9 @@ task.spawn(function()
 							end
 						end
 					end
+					if not string.find(QuestTitle, QuestCheck()[3]) then
+						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+					end
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -4555,16 +4547,14 @@ task.spawn(function()
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat
 											task.wait()
-											if not string.find(QuestTitle, QuestCheck()[3]) then
-												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
-											end
 											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 											end
 											EquipWeapon(_G.Select_Weapon)
 											BringMobFarm = true
 											PosMon = v.HumanoidRootPart.CFrame
-											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+											Tween(v.HumanoidRootPart.CFrame * CFrame.new(3, 33, 3))
+											--[[if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
 												if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 													Attack()
 													AttackXFunction()
@@ -4576,7 +4566,7 @@ task.spawn(function()
 											else
 												Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 60, 0))
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-											end
+											end]]
 											if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
 												game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
 											end
