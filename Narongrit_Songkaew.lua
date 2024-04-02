@@ -545,28 +545,24 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 150 and Lvl <= 174 then
-		Mon = "Sky Bandit"
-		QuestLevel = 1
-		QuestName = "SkyQuest"
-		MobName = "Sky Bandit"
-		NPCPosition = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-		return {
-			[1] = QuestLevel,
-			[2] = NPCPosition,
-			[3] = MobName,
-			[4] = QuestName,
-			[5] = LevelRequire,
-			[6] = Mon,
-			[7] = MobCFrame
-		}
-	end
-	if Lvl >= 175 and Lvl <= 209 then --254 then
-		Mon = "Dark Master"
+	if Lvl >= 210 and Lvl <= 249 then
+		MobName = "Dangerous Prisoner"
+		QuestName = "PrisonerQuest"
 		QuestLevel = 2
-		QuestName = "SkyQuest"
-		MobName = "Dark Master"
-		NPCPosition = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+		Mon = "Dangerous Prisoner"
+		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+		local matchingCFrames = {}
+		local result = string.gsub(MobName, "Lv. ", "")
+		local result2 = string.gsub(result, "[%[%]]", "")
+		local result3 = string.gsub(result2, "%d+", "")
+		local result4 = string.gsub(result3, "%s+", "")
+		
+		for i,v in pairs(game.workspace.EnemySpawns:GetChildren()) do
+			if v.Name == result4 then
+				table.insert(matchingCFrames, v.CFrame)
+			end
+			MobCFrame = matchingCFrames
+		end
 		return {
 			[1] = QuestLevel,
 			[2] = NPCPosition,
