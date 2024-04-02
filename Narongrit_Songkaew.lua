@@ -545,12 +545,12 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 120 and Lvl <= 149 then
-		Mon = "Chief Petty Officer"
+	if Lvl >= 150 or Lvl <= 174 then
+		Mon = "Sky Bandit"
 		QuestLevel = 1
-		QuestName = "MarineQuest2"
-		MobName = "Chief Petty Officer"
-		NPCPosition = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+		QuestName = "SkyQuest"
+		MobName = "Sky Bandit"
+		NPCPosition = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
 		return {
 			[1] = QuestLevel,
 			[2] = NPCPosition,
@@ -561,7 +561,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 175 or Lvl <= 219 then
+	if Lvl >= 175 or Lvl <= 209 then --254 then
 		Mon = "Dark Master"
 		QuestLevel = 2
 		QuestName = "SkyQuest"
@@ -635,7 +635,7 @@ function QuestCheck()
 		QuestLevel = 2
 		MobName = "Dangerous Prisoner"
 		Mon = "Dangerous Prisoner"
-		LevelRequire = 220
+		LevelRequire = 210
 		NPCPosition = CFrame.new(5310.60547, 0.350014925, 474.946594, 0.0175017118, 0, 0.999846935, 0, 1, 0, -0.999846935, 0, 0.0175017118)
 	elseif QuestName == "SkyExp1Quest" then
 		if QuestLevel == 1 then
