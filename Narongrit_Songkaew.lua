@@ -640,14 +640,6 @@ for i,v in pairs(Quests) do
 	end
 end
 	if QuestName == "JungleQuest" then
-		Mon = "Monkey"
-		LevelRequire = 10
-		LevelQuest = 1
-		QuestName = "JungleQuest"
-		MobName = "Monkey"
-		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-		CFrameMon = CFrame.new(-1448.51806640625, 67.85301208496094, 11.46579647064209)
-	elseif QuestName == "JungleQuest" then
 		Mon = "Gorilla"
 		LevelRequire = 15
 		LevelQuest = 2
@@ -668,14 +660,14 @@ end
 		LevelRequire = 190
 		Mon = "Prisoner"
 		MobName = "Prisoner"
-	elseif QuestName == "PrisonerQuest" then
-		QuestName = "PrisonerQuest"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		LevelQuest = 2
-		LevelRequire = 210
-		Mon = "Dangerous Prisoner"
-		MobName = "Dangerous Prisoner"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+	--elseif QuestName == "PrisonerQuest" then
+	--	QuestName = "PrisonerQuest"
+	--	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+	--	LevelQuest = 2
+	--	LevelRequire = 210
+	--	Mon = "Dangerous Prisoner"
+	--	MobName = "Dangerous Prisoner"
+	--	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
 	elseif QuestName == "ImpelQuest" then
 		QuestName = "PrisonerQuest"
 		QuestLevel = 2
@@ -11829,7 +11821,7 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.10, 0.99)
+				_G.randomNumberFastAttck = math.random(0.10, 0.85)
 				repeat wait(_G.randomNumberFastAttck)
 					if _G.Smooth == false then
 						Click()
