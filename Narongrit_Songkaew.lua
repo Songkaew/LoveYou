@@ -4338,8 +4338,9 @@ spawn(function()
 						task.wait(.001)
 						repeat task.wait()
 							if _G.Smooth then
-								_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
-								task.wait(1.5)
+								_G.PosMonLv = v.CFrame * CFrame.new(0,35,0)
+								task.wait(.7)
+								_G.PosMonFarmLvSetCFarme = 2
 							else
 								task.wait()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
@@ -11753,7 +11754,7 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.75)
+				_G.randomNumberFastAttck = math.random(0.05, 0.175)
 				repeat wait(_G.randomNumberFastAttck)
 					Click()
 				until not _G.FastAttackX
@@ -11779,11 +11780,13 @@ spawn(function()
 					until not _G.FastAttackX
 				else
 					if x - tick() > 0.75 then
+						AttackFunctionRandomFast()
 						wait(.75)
 						x = tick()
 						Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
+						AttackFunctionRandomFast()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
@@ -11807,6 +11810,7 @@ spawn(function()
 						else
 							Click()
 							AttackX()
+							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
 					if _G.Smooth == false and tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
@@ -11828,7 +11832,7 @@ end
 	xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
 	task.spawn(function()
 		while true do task.wait()
-			if _G.FastAttackX and not _G.Smooth then
+			if _G.FastAttackX and _G.Smooth == false then
 				if typeof(xShadowx) == "table" then
 					pcall(function()
 						xShadowx.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
