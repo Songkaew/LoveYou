@@ -639,7 +639,7 @@ for i,v in pairs(Quests) do
 		end
 	end
 end
-	if QuestName == "JungleQuest" then
+	--[[if QuestName == "JungleQuest" then
 		if QuestLevel == 1 then
 			Mon = "Monkey"
 			LevelRequire = 10
@@ -655,7 +655,8 @@ end
 			QuestName = "JungleQuest"
 			NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 		end
-	elseif QuestName == "BuggyQuest1" then
+	else]]
+		if QuestName == "BuggyQuest1" then
 		Mon = "Pirate"
 		QuestLevel = 1
 		QuestName = "BuggyQuest1"
@@ -1328,12 +1329,12 @@ function Tween(...)
     local z = game:GetService("TweenService")
     local q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], B, {CFrame = p})
     q:Play()
-	pcall(function()
+	--[[pcall(function()
 		q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {
 			CFrame = p
 		})
 		q:Play()
-	end)
+	end)]]
 
 	if _G.Settings.Bypass then
 		if Distance > 3000 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (
