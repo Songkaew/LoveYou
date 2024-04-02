@@ -545,20 +545,6 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 190 and Lvl <= 209 then
-		MobName = "Prisoner"
-		QuestName = "PrisonerQuest"
-		QuestLevel = 2
-		Mon = "Prisoner"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	end
-	if Lvl >= 210 and Lvl <= 249 then
-		MobName = "Dangerous Prisoner"
-		QuestName = "PrisonerQuest"
-		QuestLevel = 2
-		Mon = "Dangerous Prisoner"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	end
 	local GuideModule = require(game:GetService("ReplicatedStorage").GuideModule)
 	local Quests = require(game:GetService("ReplicatedStorage").Quests)
 	for i,v in pairs(GuideModule["Data"]["NPCList"]) do
@@ -4372,15 +4358,15 @@ spawn(function()
 						_G.PosMonFarmLvSetCFarme = 1
 						task.wait(.001)
 						repeat task.wait()
-							if _G.Smooth == true then
-								task.wait()
-								_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-								task.wait(1.5)
-								_G.PosMonFarmLvSetCFarme = 2
-								_G.PosMonLv = _G.PosMonLv2
-								task.wait(.01)
-							end
-							if _G.Smooth == false then
+							--if _G.Smooth == true then
+							--	task.wait()
+							--	_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
+							--	task.wait(1.5)
+							--	_G.PosMonFarmLvSetCFarme = 2
+							--	_G.PosMonLv = _G.PosMonLv2
+							--	task.wait(.01)
+							--end
+							--if _G.Smooth == false then
 								task.wait()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 								task.wait(0.5)
@@ -4392,7 +4378,7 @@ spawn(function()
 								task.wait(.01)
 								_G.PosMonLv = _G.PosMonLv2
 								task.wait(.01)
-							end
+							--end
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2 or game:GetService("Workspace").Enemies:FindFirstChild(MobName)
 					end
 					if v.Name == MobName then
@@ -4408,7 +4394,7 @@ task.spawn(function()
 	while task.wait() do
 		if _G.Auto_Farm_Level then
 			pcall(function()
-				if _G.TweentoQuest == false and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+				--[[if _G.TweentoQuest == false and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
 				end
@@ -4420,7 +4406,7 @@ task.spawn(function()
 					Tween(_G.PosMonLv)
 					UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
-				end
+				end]]
 				QuestCheck()
 				local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 				local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
