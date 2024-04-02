@@ -1,4 +1,5 @@
 _G.Start_Kaitun = true
+print("1")
 _G.Config = true
 _G.Settings = {
 	Main = {
@@ -11,45 +12,7 @@ _G.Settings = {
 			"Lepoard-Lepoard",
 			"Dough-Dough",
 			"Linght-Linght",
-		}, --[[
-			Kilo-Kilo
-			Spin-Spin
-			Chop-Chop
-			Spring-Spring
-			Bomb-Bomb
-			Smoke-Smoke
-			Spike-Spike
-			Flame-Flame
-			Falcon-Falcon
-			Ice-Ice
-			Sand-Sand
-			Dark-Dark
-			Revive-Revive
-			Diamond-Diamond
-			Linght-Linght
-			Rubber-Rubber
-			Barber-Barber
-			Magma-Magma
-			Quake-Quake
-			Buddha-Buddha
-			Love-Love
-			Spider-Spider
-			Phoenix-Phoenix
-			Portal-Portal
-			Rumble-Rumble
-			Paw-Paw
-			Blizzard-Blizzard
-			Gravity-Gravity
-			Dough-Dough
-			Shadow-Shadow
-			Venom-Venom
-			Control-Control
-			Spirit-Spirit
-			Dragon-Dragon
-			Leopard-Leopard
-		]]
-
-
+		},
 		-- // [[ World 1 ]] \\ --
 		["Auto Saber"] = true,
 		["Auto Pole"] = true,
