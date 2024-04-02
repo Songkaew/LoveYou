@@ -4464,7 +4464,7 @@ spawn(function()
         end
     end
 end)
-	
+
 task.spawn(function() 
 		while task.wait() do
 			if _G.Auto_Farm_Level then
@@ -4495,7 +4495,6 @@ task.spawn(function()
 											[3] = 1
 										}
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-									Tween(_G.PosMonLv)
 								elseif MyLevel >= 210 or MyLevel <= 249 then
 									local args = {
 											[1] = "StartQuest",
@@ -4503,8 +4502,8 @@ task.spawn(function()
 											[3] = 2
 										}
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-									Tween(_G.PosMonLv)
 								end
+								Tween(_G.PosMonLv)
 							end
 						else
 							local args = {
@@ -4582,6 +4581,7 @@ task.spawn(function()
 									Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 								end
 							end
+							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				            BringMobFarm = false
 						end
 					end
