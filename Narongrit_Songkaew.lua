@@ -1183,7 +1183,7 @@ function Tween(...)
         wait()
 	end
 	-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
-    if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 330 then 
+    if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
 		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
     end
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
@@ -1192,7 +1192,9 @@ function Tween(...)
     local randomNumber = math.random(365, 380)
     if Distance < 350 then
         Speed = 200
-    elseif Distance < 400 then
+	elseif Distance < 400 then
+        Speed = 275
+    elseif Distance < 450 then
         Speed = 370
     elseif Distance < 500 then
         Speed = 375
@@ -4423,41 +4425,41 @@ task.spawn(function()
 							end
 						end
 					end
-					if not string.find(QuestTitle, QuestCheck()[3]) then
-						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
-					end
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 						if game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v.Name == MobName then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-										repeat
-											task.wait()
-											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-											end
-											EquipWeapon(_G.Select_Weapon)
-											BringMobFarm = true
-											PosMon = v.HumanoidRootPart.CFrame
-											Tween(v.HumanoidRootPart.CFrame * CFrame.new(3, 33, 3))
-											--[[if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-												if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
-													Attack()
-													AttackXFunction()
-													FASTAttack()
-													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(-30,25,30) * CFrame.Angles(math.rad(90), 0, 0) --
-												else
-													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)* CFrame.Angles(math.rad(90), 0, 0) --CFrame.new(0,30,0)
-												end
+										repeat task.wait()
+											if not string.find(QuestTitle, QuestCheck()[3]) then
+												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 											else
-												Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 60, 0))
+												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+												end
+												EquipWeapon(_G.Select_Weapon)
+												BringMobFarm = true
+												PosMon = v.HumanoidRootPart.CFrame
+												--Tween(v.HumanoidRootPart.CFrame * CFrame.new(3, 33, 3))
+												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+													if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
+														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(-30,25,30) * CFrame.Angles(math.rad(90), 0, 0) --
+														Attack()
+														AttackXFunction()
+														FASTAttack()
+													else
+														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)* CFrame.Angles(math.rad(90), 0, 0) --CFrame.new(0,30,0)
+													end
+												else
+													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 60, 0))
+													game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+												end
+												if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+													game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
+												end
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-											end]]
-											if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
-												game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
+												v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
 											end
-											game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-	v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
 										until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
 									end
 								end
