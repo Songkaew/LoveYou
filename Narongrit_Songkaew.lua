@@ -1207,15 +1207,6 @@ function Tween(...)
     elseif type(targetPos) == "number" then
         p = CFrame.new(unpack(RealtargetPos))
     end
-	if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then
-		if q then
-			q:Cancel()
-		end
-		repeat
-			wait()
-		until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0;
-		wait(0.2)
-	end
     -- เช็คว่าผู้เล่นมีชีวิตหรือไม่ ถ้าไม่มีให้รอจนกว่าผู้เล่นจะมีชีวิตกลับ
     while game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 do
         wait()
@@ -1227,7 +1218,7 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-    _G.HeeTween = math.random(370, 380)
+    HeeTween = math.random(370, 380)
     if Distance < 250 then
         Speed = 200
 	elseif Distance < 400 then
@@ -1237,7 +1228,7 @@ function Tween(...)
     elseif Distance < 500 then
         Speed = 375
     elseif Distance >= 1000 then
-        Speed = _G.HeeTween
+        Speed = HeeTween
     end
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance / Speed, Enum.EasingStyle.Linear)
@@ -4350,7 +4341,7 @@ end)
 
 spawn(function() 
     while wait() do
-        if _G.Auto_Farm_Level and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then 
+        if _G.Auto_Farm_Level then 
             pcall(function()
 				QuestCheck()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
@@ -4379,7 +4370,7 @@ spawn(function()
 								_G.PosMonLv = _G.PosMonLv2
 								task.wait(.01)
 							--end
-						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2 or game:GetService("Workspace").Enemies:FindFirstChild(MobName)
+						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
 					if v.Name == MobName then
 						_G.PosMonLv2 = v.CFrame * CFrame.new(0,50,0)
@@ -4487,7 +4478,8 @@ end)
 											if not string.find(QuestTitle, MobName) then
 												--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
 												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
-											else
+											end
+											--else
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 												end
@@ -4512,7 +4504,7 @@ end)
 												end
 												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 												v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-											end
+											--end
 										until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
 									end
 								end
@@ -8135,7 +8127,7 @@ Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
 	SaveSettings()
 end)
 
-task.spawn(function()
+--[[task.spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
@@ -8157,14 +8149,14 @@ task.spawn(function()
 			end
 		end)
 	end
-end)
+end)]]
 
 spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
+					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 400 then
 						--if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 300 then
 							v.HumanoidRootPart.CFrame = PosMon
 							v.Humanoid.JumpPower = 0
