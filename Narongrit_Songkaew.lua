@@ -11759,72 +11759,54 @@ coroutine.wrap(function()
 		end
 	end
 end)()
-x = tick()
-spawn(function()
-    while wait(0.1) do
+
+task.spawn(function()
+    while task.wait() do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.75)
-				repeat wait(_G.randomNumberFastAttck)
+				_G.randomNumberFastAttck = math.random(0.001, 0.75)
+				repeat task.wait(_G.randomNumberFastAttck)
 					Click()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
-					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
-						if _G.Smooth == false then
-							Click()
-						end
-						task.wait(1.75)
-						cooldownfastattack = tick()
-					end
-					repeat wait(_G.randomNumberFastAttck)  wait(.05)
+					repeat task.wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									task.wait(_G.randomNumberFastAttck)
-									Click()
+									 CombatFramework.activeController.attacking = false
+									CombatFramework.activeController.timeToNextAttack = 0
+									CombatFramework.activeController.increment = 4
+									CombatFramework.activeController.hitboxMagnitude = 80
+									CombatFramework.activeController.blocking = false
+									CombatFramework.activeController.timeToNextBlock = 0
+									CombatFramework.activeController.focusStart = 0
+									CombatFramework.activeController.humanoid.AutoRotate = true
 								end
 							end
 						end
 					until not _G.FastAttackX
 				else
-					if x - tick() > 0.75 then
-						AttackFunctionRandomFast()
-						wait(.75)
-						x = tick()
-						Attack()
-					end
-					repeat wait(_G.randomNumberFastAttck)
+					repeat task.wait(_G.randomNumberFastAttck)
 						AttackFunctionRandomFast()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
-								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 40 then
-									--if InMyNetWork(v.HumanoidRootPart) then
-										Attack()
-										task.wait(_G.randomNumberFastAttck)
-										AttackFunctionRandomFast()
-										--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
-										if v.Humanoid:FindFirstChild("Animator") then
-											v.Humanoid.Animator:Destroy()
-										end
-									--end
+								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+									AttackFunctionRandomFast()
+									Attack()
+									Click()
+									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 								end
 							end
 						end
-						AttackX()
 						if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 							Attack()
 							AttackXFunction()
 							FASTAttack()
 						else
-							Click()
 							AttackX()
 							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
-					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
-						Click()
-						cooldownfastattack = tick()
-					end
 				end
 			end
         end)
