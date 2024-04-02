@@ -443,9 +443,158 @@ getgenv().TextUI_IIII = "พบบัคโปรดแจ้ง"
 local library = loadstring(game:HttpGet("https://pastebin.com/raw/6VBHQxHD"))()
 local Window = library:NaJa()
 local AKaitun = Window:Tab("Kaitun","6022668898")
+local Main = AKaitun:Section("Main","Left")
+
+Main:Toggle("Auto Kaitun\nออโต้ไก่ตัน",_G.Settings.Start_Kaitun,function(value)
+	_G.Settings.Start_Kaitun = value
+    _G.Start_Kaitun = value
+
+	if _G.Config == false then
+		_G.Start_Saber = value
+		_G.StartFarm = value
+		_G.Start_Pole = value
+		_G.Auto_New_World = value
+		_G.Auto_Bartilo_Quest = value
+		_G.AutoRengoku = value
+		_G.Grab_Fruit = value 
+		_G.StoreFruit = value
+		_G.AutoFarmBossAll = value
+		_G.Open_Flamingo_Access = value
+		_G.Midnight_Blade = value
+		_G.Auto_Factory_Farm = value
+		_G.Start_GoTo_Thire_World = value
+		_G.Auto_Yama = value
+		_G.Auto_Tushita = value
+		_G.Auto_Superhuman = value
+		_G.Auto_Electric_Claw = value
+		_G.Auto_Farm_Mastery_Sword = value
+		_G.Auto_Buy_Devil_Fruit = value
+		_G.Auto_Soul_Guitar = value
+	end
+	if value == true then
+		if _G.Settings.Main["Auto Farm"] and _G.Auto_Dungeon_Superhuman == nil  then
+			_G.StartFarm = value
+		end
+		if _G.Settings.Main["Auto Saber"] then
+			_G.Start_Saber = true
+		end
+		if _G.Settings.Main["Auto Pole"] then
+			_G.Start_Pole = true
+		end
+		if _G.Settings.Main["Auto New World"] then
+			_G.Auto_New_World = true
+		end
+		if _G.Settings.Main["Auto Bartilo Quest"] then
+			_G.Auto_Bartilo_Quest = true
+		end
+		if _G.Settings.Main["Auto Rengoku"] then
+			_G.AutoRengoku = true
+		end
+		if _G.Settings.Main["Auto Go To Fruit"] then
+			_G.Grab_Fruit = true
+		end
+		if _G.Settings.Main["Store Fruit"] then
+			_G.StoreFruit = true
+		end
+		if _G.Settings.Main["Open Flamingo Access"] then
+			_G.Open_Flamingo_Access = true
+		end
+		if _G.Settings.Main["Midnight Blade"] then
+			_G.Midnight_Blade = true
+		end
+		if _G.Settings.Main["Auto Factory Farm"] then
+			_G.Auto_Factory_Farm = true
+		end
+		if _G.Settings.Main["Thire World"] then
+			_G.Start_GoTo_Thire_World = true
+		end
+		if _G.Settings.Main["Auto Tushita"] then
+			_G.Auto_Tushita = true
+		end
+		if _G.Settings.Main["Auto Yama"] then
+			_G.Auto_Yama = true
+		end
+		if _G.Settings.Main["Auto ElectricClaw"] then
+			_G.Auto_Electric_Claw = true
+		end
+		if _G.Settings.Main["Auto Super Human"] then
+			_G.Auto_Superhuman = true
+		end
+		if _G.Settings.Main["Auto Farm Mastery Sword All"] then
+			_G.Auto_Farm_Mastery_Sword = true
+		end
+		if _G.Settings.Main["Buy Fruit"] then
+			_G.Auto_Buy_Devil_Fruit = true
+		end
+		if _G.Settings.Main["Auto Soul Guitar"] then
+			_G.Auto_Soul_Guitar = true
+		end
+	end
+
+	if value == false then
+		if _G.Settings.Main["Auto Farm"] then
+			_G.StartFarm = false
+		end
+		if _G.Settings.Main["Auto Saber"] then
+			_G.Start_Saber = false
+		end
+		if _G.Settings.Main["Auto Pole"] then
+			_G.Start_Pole = false
+		end
+		if _G.Settings.Main["Auto New World"] then
+			_G.Auto_New_World = false
+		end
+		if _G.Settings.Main["Auto Bartilo Quest"] then
+			_G.Auto_Bartilo_Quest = false
+		end
+		if _G.Settings.Main["Auto Rengoku"] then
+			_G.AutoRengoku = false
+		end
+		if _G.Settings.Main["Auto Go To Fruit"] then
+			_G.Grab_Fruit = false
+		end
+		if _G.Settings.Main["Store Fruit"] then
+			_G.StoreFruit = false
+		end
+		if _G.Settings.Main["Open Flamingo Access"] then
+			_G.Open_Flamingo_Access = false
+		end
+		if _G.Settings.Main["Midnight Blade"] then
+			_G.Midnight_Blade = false
+		end
+		if _G.Settings.Main["Auto Factory Farm"] then
+			_G.Auto_Factory_Farm = false
+		end
+		if _G.Settings.Main["Thire World"] then
+			_G.Start_GoTo_Thire_World = false
+		end
+		if _G.Settings.Main["Auto Tushita"] then
+			_G.Auto_Tushita = false
+		end
+		if _G.Settings.Main["Auto Yama"] then
+			_G.Auto_Yama = false
+		end
+		if _G.Settings.Main["Auto ElectricClaw"] then
+			_G.Auto_Electric_Claw = false
+		end
+		if _G.Settings.Main["Auto Super Human"] then
+			_G.Auto_Superhuman = false
+		end
+		if _G.Settings.Main["Auto Farm Mastery Sword All"] then
+			_G.Auto_Farm_Mastery_Sword = false
+		end	
+		if _G.Settings.Main["Buy Fruit"] then
+			_G.Auto_Buy_Devil_Fruit = false
+		end
+		if _G.Settings.Main["Auto Soul Guitar"] then
+			_G.Auto_Soul_Guitar = false
+		end
+	end
+
+	StopTween(_G.Start_Kaitun)
+	SaveSettings()
+end)
 local User = AKaitun:Section("Main","Left")
-
-
 local PlayersName = User:Label("Players Name : "..game.Players.LocalPlayer.Name)
 
 local HealthUser = User:Label("Health : ?")
@@ -2169,8 +2318,7 @@ task.spawn(function()
 	end
 end)
 
-local Accessory = AKaitun:Section("Accessory",
-Side = "Right")
+local Accessory = AKaitun:Section("Accessory","Right")
 
 local Dark_Coat = Accessory:Label("❌ | Dark Coat")
 
