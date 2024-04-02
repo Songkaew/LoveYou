@@ -4385,7 +4385,9 @@ spawn(function()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,35,0)
 								task.wait(.7)
 								_G.PosMonFarmLvSetCFarme = 2
-							else
+								task.wait(.01)
+							end
+							if _G.Smooth == false then
 								task.wait()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 								task.wait(0.5)
@@ -4394,7 +4396,7 @@ spawn(function()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
 								task.wait(1.5)
 								_G.PosMonFarmLvSetCFarme = 2
-								task.wait()
+								task.wait(.01)
 							end
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
@@ -4412,6 +4414,10 @@ task.spawn(function()
 	while task.wait() do
 		if _G.Auto_Farm_Level then
 			pcall(function()
+				if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				    BringMobFarm = false
+				end
 				QuestCheck()
 				local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 				local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
@@ -4475,11 +4481,6 @@ task.spawn(function()
 								}
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 						end
-					end
-				else
-					if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
-						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-				        BringMobFarm = false
 					end
 				end
 			end)
@@ -11806,7 +11807,7 @@ task.spawn(function()
     while task.wait() do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.001, 0.75)
+				_G.randomNumberFastAttck = math.random(0.05, 0.50)
 				repeat task.wait(_G.randomNumberFastAttck)
 					Click()
 				until not _G.FastAttackX
