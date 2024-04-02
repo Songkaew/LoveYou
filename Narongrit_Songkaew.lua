@@ -4385,6 +4385,8 @@ spawn(function()
 								_G.PosMonLv = v.CFrame * CFrame.new(0,35,0)
 								task.wait(.7)
 								_G.PosMonFarmLvSetCFarme = 2
+								_G.PosMonFarmLvSetCFarme = 2
+								_G.PosMonFarmLvSetCFarme = 2
 								task.wait(.01)
 							end
 							if _G.Smooth == false then
@@ -4395,6 +4397,8 @@ spawn(function()
 								task.wait(0.5)
 								_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
 								task.wait(1.5)
+								_G.PosMonFarmLvSetCFarme = 2
+								_G.PosMonFarmLvSetCFarme = 2
 								_G.PosMonFarmLvSetCFarme = 2
 								task.wait(.01)
 							end
@@ -8159,26 +8163,15 @@ task.spawn(function()
 			if BringMobFarm then
 				local questTarget = MobName
 				for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
-					if not string.find(mob.Name,"Boss") and mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 345 then
+					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 345 then
 						-- ตั้ง CFrame ของมอนเตอร์ให้ตรงกับตำแหน่งที่กำหนด
 						mob.HumanoidRootPart.CFrame = PosMon
-						
 						-- ปรับแต่งคุณสมบัติของมอนเตอร์
 						mob.Humanoid.JumpPower = 0
 						mob.Humanoid.WalkSpeed = 0
 						mob.Humanoid.NameDisplayDistance = 0
 						mob.HumanoidRootPart.CanCollide = false
 						mob.Head.CanCollide = false
-						
-						-- ลบ Animator ออกหากมีอยู่
-						if mob.Humanoid:FindFirstChild("Animator") then
-							mob.Humanoid.Animator:Destroy()
-						end
-						
-						-- ปรับขอบเขตการจำลองของผู้เล่นให้มากพอสมควร
-						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-						sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius", math.huge)
-						
 						-- เปลี่ยนสถานะของ Humanoid เป็น Ragdoll
 						mob.Humanoid:ChangeState(12)
 					end
@@ -8193,8 +8186,8 @@ spawn(function()
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 700 then
-						if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 300 then
+					if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
+						--if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 300 then
 							v.HumanoidRootPart.CFrame = PosMon
 							v.Humanoid.JumpPower = 0
 							v.Humanoid.WalkSpeed = 0
@@ -8206,9 +8199,8 @@ spawn(function()
 								v.Humanoid.Animator:Destroy()
 							end
 							v.Humanoid:ChangeState(11)
-							v.Humanoid:ChangeState(14)
-							sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
-						end
+							--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
+						--end
 					end
 				end
 			end
@@ -11860,17 +11852,5 @@ local slashHit = game:GetService("ReplicatedStorage").Assets:FindFirstChild('Sla
 if slashHit then
     slashHit:Destroy()
 end
-
-spawn(function()
-    while wait() do
-      	if _G.Smooth then
-			for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
-				if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "DamageCounter" or v.Name == "SwordSlash" or v.Name == "SlashTail" or v.Name == "Sounds" then
-					v:Destroy() 
-				end
-			end
-    	end
-    end
-end) 
 
 --HEE
