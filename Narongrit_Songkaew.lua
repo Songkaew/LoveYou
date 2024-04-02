@@ -545,6 +545,22 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
+	if Lvl >= 120 and Lvl <= 149 then
+		Mon = "Chief Petty Officer"
+		QuestLevel = 1
+		QuestName = "MarineQuest2"
+		MobName = "Chief Petty Officer"
+		NPCPosition = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+		return {
+			[1] = QuestLevel,
+			[2] = NPCPosition,
+			[3] = MobName,
+			[4] = QuestName,
+			[5] = LevelRequire,
+			[6] = Mon,
+			[7] = MobCFrame
+		}
+	end
 	local GuideModule = require(game:GetService("ReplicatedStorage").GuideModule)
 	local Quests = require(game:GetService("ReplicatedStorage").Quests)
 	for i,v in pairs(GuideModule["Data"]["NPCList"]) do
