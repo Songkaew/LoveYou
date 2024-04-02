@@ -545,7 +545,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 150 or Lvl <= 174 then
+	if Lvl >= 150 and Lvl <= 174 then
 		Mon = "Sky Bandit"
 		QuestLevel = 1
 		QuestName = "SkyQuest"
@@ -561,7 +561,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 175 or Lvl <= 209 then --254 then
+	if Lvl >= 175 and Lvl <= 209 then --254 then
 		Mon = "Dark Master"
 		QuestLevel = 2
 		QuestName = "SkyQuest"
