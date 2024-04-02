@@ -561,23 +561,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 150 or Lvl <= 174 then
-		Mon = "Sky Bandit"
-		QuestLevel = 1
-		QuestName = "SkyQuest"
-		MobName = "Sky Bandit"
-		NPCPosition = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-		return {
-			[1] = QuestLevel,
-			[2] = NPCPosition,
-			[3] = MobName,
-			[4] = QuestName,
-			[5] = LevelRequire,
-			[6] = Mon,
-			[7] = MobCFrame
-		}
-	end
-	if Lvl >= 175 or Lvl <= 254 then
+	if Lvl >= 175 or Lvl <= 219 then
 		Mon = "Dark Master"
 		QuestLevel = 2
 		QuestName = "SkyQuest"
@@ -651,7 +635,7 @@ function QuestCheck()
 		QuestLevel = 2
 		MobName = "Dangerous Prisoner"
 		Mon = "Dangerous Prisoner"
-		LevelRequire = 210
+		LevelRequire = 220
 		NPCPosition = CFrame.new(5310.60547, 0.350014925, 474.946594, 0.0175017118, 0, 0.999846935, 0, 1, 0, -0.999846935, 0, 0.0175017118)
 	elseif QuestName == "SkyExp1Quest" then
 		if QuestLevel == 1 then
