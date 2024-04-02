@@ -11829,9 +11829,9 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-			AntiKick()
-				_G.randomNumberFastAttck = math.random(0.10, 1)
-				repeat wait(_G.randomNumberFastAttck) wait(1.75)
+			--AntiKick()
+				_G.randomNumberFastAttck = math.random(0.10, 0.99)
+				repeat wait(_G.randomNumberFastAttck) wait(.175)
 					AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
@@ -11856,7 +11856,7 @@ spawn(function()
 					if x - tick() > 0.75 then
 						wait(.75)
 						x = tick()
-						--Attack()
+						Attack()
 					end
 					repeat wait(_G.randomNumberFastAttck)
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
@@ -11877,7 +11877,7 @@ spawn(function()
 						end
 					until not _G.FastAttackX
 					if tick() - cooldownfastattack > tonumber(0.50) then
-						--AttackFunctionRandomFast()
+						AttackFunctionRandomFast()
 						Click()
 wait(0.50) cooldownfastattack = tick()
 					end
