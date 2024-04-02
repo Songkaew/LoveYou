@@ -538,7 +538,7 @@ end
 if Lvl >= 190 and Lvl <= 209 then
 	QuestName = "PrisonerQuest"
 	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	LevelQuest = 1
+	QuestLevel = 1
 	LevelRequire = 190
 	Mon = "Prisoner"
 	MobName = "Prisoner"
@@ -640,13 +640,27 @@ for i,v in pairs(Quests) do
 	end
 end
 	if QuestName == "JungleQuest" then
-		Mon = "Gorilla"
-		LevelRequire = 15
-		LevelQuest = 2
 		QuestName = "JungleQuest"
-		MobName = "Gorilla"
 		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-		CFrameMon = CFrame.new(-1129.8836669921875, 40.46354675292969, -525.4237060546875)
+		if QuestLevel == 1 then
+			Mon = "Monkey"
+			LevelRequire = 10
+			QuestLevel = 1
+			MobName = "Monkey"
+		elseif QuestLevel == 2 then
+			Mon = "Gorilla"
+			LevelRequire = 15
+			QuestLevel = 2
+			MobName = "Gorilla"
+		end
+		
+	elseif QuestName == "BuggyQuest1" then
+		Mon = "Pirate"
+		QuestLevel = 1
+		QuestName = "BuggyQuest1"
+		MobName = "Pirate"
+		LevelRequire = 30
+		NPCPosition = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
 	elseif QuestName == "MarineQuest2" then
 		QuestName = "MarineQuest2"
 		QuestLevel = 1
@@ -656,14 +670,14 @@ end
 	elseif QuestName == "PrisonerQuest" then
 		QuestName = "PrisonerQuest"
 		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		LevelQuest = 1
+		QuestLevel = 1
 		LevelRequire = 190
 		Mon = "Prisoner"
 		MobName = "Prisoner"
 	elseif QuestName == "PrisonerQuest" then
 		QuestName = "PrisonerQuest"
 		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		LevelQuest = 2
+		QuestLevel = 2
 		LevelRequire = 210
 		Mon = "Dangerous Prisoner"
 		MobName = "Dangerous Prisoner"
