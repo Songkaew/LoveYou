@@ -2077,7 +2077,7 @@ function AttackFunctionRandomFast()
 			if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and acx.blades and acx.blades[1] then 
 				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 				game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 1, "") 
+				game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(40), 2, "") 
 			end
 			if acx then
 				acx.attacking = false    
@@ -11824,6 +11824,7 @@ function Click()
 	game:GetService'VirtualUser':CaptureController()
 	game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
+_G.randomNumberFastAttck = 0
 x = tick()
 spawn(function()
     while wait(0.1) do
@@ -11832,12 +11833,13 @@ spawn(function()
 			--AntiKick()
 				_G.randomNumberFastAttck = math.random(0.10, 0.99)
 				repeat wait(_G.randomNumberFastAttck) wait(.175)
-					AttackFunctionRandomFast()
+					Click()--AttackFunctionRandomFast()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
 					AttackFunction()
 					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
-						wait(1)
+						Click()
+								wait(1)
 						cooldownfastattack = tick()
 					end
 					repeat wait(_G.randomNumberFastAttck)  wait(.05)
@@ -11871,12 +11873,11 @@ spawn(function()
 						end
 						AttackFunctionNai()
 						Click()
+								wait(.05)
 						AttackX()
-						if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
-							game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
-						end
+						
 					until not _G.FastAttackX
-					if tick() - cooldownfastattack > tonumber(0.50) then
+					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
 						AttackFunctionRandomFast()
 						Click()
 wait(0.50) cooldownfastattack = tick()
