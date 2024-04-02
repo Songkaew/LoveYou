@@ -35,9 +35,11 @@ end
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
 	repeat wait()
 		if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-			for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
-				v.Function()
-			end
+			local args = {
+				[1] = "SetTeam",
+				[2] = "Pirates"
+			}
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 		end
 	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 end
@@ -11749,12 +11751,30 @@ task.spawn(function()
 		end
 	end
 end)
+coroutine.wrap(function()
+	while task.wait() do
+		local ac = CombatFrameworkR.activeController
+		if ac and ac.equipped then
+			if _G.FastAttackX then
+				pcall(function()
+					repeat task.wait(.01)
+						AttackFunction()
+						if tick() - cooldownfastattackk > 0.9 then 
+							cooldownfastattackk = tick()
+						end
+						AttackFunctionRandomFast()
+					until not _G.FastAttackX
+				end)
+			end
+		end
+	end
+end)()
 x = tick()
 spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.175)
+				_G.randomNumberFastAttck = math.random(0.05, 0.75)
 				repeat wait(_G.randomNumberFastAttck)
 					Click()
 				until not _G.FastAttackX
