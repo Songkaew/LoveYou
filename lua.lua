@@ -8280,6 +8280,7 @@ spawn(function()
 							v.Humanoid:ChangeState(11)
 							v.Humanoid:ChangeState(14)
 							sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
+						end
 					end
 				end
 			end
