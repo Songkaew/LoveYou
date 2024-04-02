@@ -4449,7 +4449,7 @@ end)
 												--Tween(v.HumanoidRootPart.CFrame * CFrame.new(3, 33, 3))
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
 													if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
-														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(-30,25,30)
+														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
 														Attack()
 														AttackXFunction()
 														FASTAttack()
@@ -11714,16 +11714,30 @@ function Click()
 end
 
 _G.randomNumberFastAttck = 0
+task.spawn(function()
+	while true do task.wait()
+		if  _G.FastAttackX then
+			if SeraphFrame.activeController then
+				if v.Humanoid.Health > 0 then
+					SeraphFrame.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+					SeraphFrame.activeController.timeToNextAttack = 0
+					SeraphFrame.activeController.focusStart = 0
+					SeraphFrame.activeController.hitboxMagnitude = 110
+					SeraphFrame.activeController.humanoid.AutoRotate = true
+					SeraphFrame.activeController.increment = 4
+				end
+			end
+		end
+	end
+end)
 x = tick()
 spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.10, 0.85)
+				_G.randomNumberFastAttck = math.random(0.05, 0.75)
 				repeat wait(_G.randomNumberFastAttck)
-					if _G.Smooth == false then
-						Click()
-					end
+					Click()
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
 					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
