@@ -1842,7 +1842,7 @@ function AttackX()
 	ac:Attack()
 	Animation.AnimationId = ac.anims.basic[2]
 	ac.humanoid:LoadAnimation(Animation):Play(0.05, 0.05)  -- แก้เป็น (1,1) เพื่อให้เล่นอนิเมชันแบบเต็มรูปแบบ
-	game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
+	game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 2, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
     if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 		game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 		game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
@@ -1910,7 +1910,7 @@ Attack = function()
 	else
 		Animation.AnimationId = ac.anims.basic[2]
 		ac.humanoid:LoadAnimation(Animation):Play(1, 1) -- แก้เป็น (1,1)
-		game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getHits(120), 1, "")
+		game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getHits(50), 1, "")
 
 		if AttackRandom == 2 then
 			debug.setupvalue(ac.attack, 5, 55495)
@@ -1948,15 +1948,15 @@ end)
 function AttackFunctionRandomFast()
 	if CheckPlyayers() == false then
 		if AttackRandomFast == 1 then
-			AttackFunction() wait(.1)
+			AttackFunction()
 		elseif AttackRandomFast == 2 then
-			AttackFunctionNai() wait(.1)
+			AttackFunctionNai()
 		elseif AttackRandomFast == 3 then
-			AttackFunctionNaJa() wait(.1)
+			AttackFunctionNaJa()
 		elseif AttackRandomFast == 4 then
 			Attack()
-			wait(1)
-			Boost() wait(.1)
+			wait(.000001234567890)
+			Boost()
 		end
 	end
 	local ModuleF = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
@@ -2102,7 +2102,7 @@ function AttackFunctionNaJa()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "") 
 				end
 			end
 		end
