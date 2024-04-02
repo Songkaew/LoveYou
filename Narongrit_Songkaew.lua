@@ -1296,12 +1296,9 @@ function Tween(...)
     -- เช็คว่าผู้เล่นมีชีวิตหรือไม่ ถ้าไม่มีให้รอจนกว่าผู้เล่นจะมีชีวิตกลับ
     while game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 do
         wait()
-		game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-    	Com("F_", "SetspawnPoint")
 	end
 	-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
     if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 330 then 
-        game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
 		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
     end
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
