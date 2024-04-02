@@ -577,23 +577,7 @@ function QuestCheck()
 			[7] = MobCFrame
 		}
 	end
-	if Lvl >= 175 or Lvl <= 189 then
-		Mon = "Sky Bandit"
-		QuestLevel = 2
-		QuestName = "SkyQuest"
-		MobName = "Sky Bandit"
-		NPCPosition = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-		return {
-			[1] = QuestLevel,
-			[2] = NPCPosition,
-			[3] = MobName,
-			[4] = QuestName,
-			[5] = LevelRequire,
-			[6] = Mon,
-			[7] = MobCFrame
-		}
-	end
-	if Lvl >= 175 and Lvl <= 189 then
+	if Lvl >= 175 or Lvl <= 254 then
 		Mon = "Dark Master"
 		QuestLevel = 2
 		QuestName = "SkyQuest"
@@ -8104,12 +8088,11 @@ spawn(function()
         end
     end
 end)
-
-Settings:Toggle("Smooth :)",_G.Settings.Smooth,function(value)
-	_G.Settings.Smooth = value
+_G.Smooth = false
+Settings:Toggle("Smooth :)",_G.Smooth,function(value)
 	_G.Smooth = value
-	SaveSettings()
 end)
+
 
 Settings:Toggle("Bring Mob Max",_G.Settings.Brimob,function(value)
 	_G.Settings.Brimob = value
