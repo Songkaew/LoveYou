@@ -1186,6 +1186,15 @@ function Tween(...)
     elseif type(targetPos) == "number" then
         p = CFrame.new(unpack(RealtargetPos))
     end
+	if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then
+		if q then
+			q:Cancel()
+		end
+		repeat
+			wait()
+		until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0;
+		wait(0.2)
+	end
     -- เช็คว่าผู้เล่นมีชีวิตหรือไม่ ถ้าไม่มีให้รอจนกว่าผู้เล่นจะมีชีวิตกลับ
     while game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 do
         wait()
@@ -1197,8 +1206,8 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-    local randomNumber = math.random(365, 380)
-    if Distance < 350 then
+    _G.HeeTween = math.random(370, 380)
+    if Distance < 250 then
         Speed = 200
 	elseif Distance < 400 then
         Speed = 275
@@ -1206,23 +1215,14 @@ function Tween(...)
         Speed = 370
     elseif Distance < 500 then
         Speed = 375
-    elseif Distance < 600 then
-        Speed = randomNumber
     elseif Distance >= 1000 then
-        Speed = randomNumber
+        Speed = _G.HeeTween
     end
-	local randomNumber = 370
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance / Speed, Enum.EasingStyle.Linear)
     local z = game:GetService("TweenService")
     local q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], B, {CFrame = p})
     q:Play()
-	--[[pcall(function()
-		q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {
-			CFrame = p
-		})
-		q:Play()
-	end)]]
 
 	if _G.Settings.Bypass then
 		if Distance > 3000 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (
@@ -4337,15 +4337,20 @@ spawn(function()
 						_G.PosMonFarmLvSetCFarme = 1
 						task.wait(.001)
 						repeat task.wait()
-							task.wait()
-							_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
-							task.wait(0.5)
-							_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
-							task.wait(0.5)
-							_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
-							task.wait(1.5)
-							_G.PosMonFarmLvSetCFarme = 2
-							task.wait()
+							if _G.Smooth then
+								_G.PosMonLv = v.CFrame * CFrame.new(0,60,0)
+								task.wait(1.5)
+							else
+								task.wait()
+								_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
+								task.wait(0.5)
+								_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
+								task.wait(0.5)
+								_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
+								task.wait(1.5)
+								_G.PosMonFarmLvSetCFarme = 2
+								task.wait()
+							end
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
 					if not string.find(v.Name, MobName) then
@@ -4378,6 +4383,8 @@ task.spawn(function()
 						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				        BringMobFarm = false
 					end
+					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				    BringMobFarm = false
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					if _G.TweentoQuest then
@@ -4424,6 +4431,11 @@ task.spawn(function()
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 						end
 					end
+				else
+					if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				        BringMobFarm = false
+					end
 				end
 			end)
 		end
@@ -4443,7 +4455,8 @@ end)
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat task.wait()
 											if not string.find(QuestTitle, QuestCheck()[3]) then
-												game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)--game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+												game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
+												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 											else
 												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -11820,7 +11833,7 @@ end
 					pcall(function()
 						xShadowx.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
 						xShadowx.activeController.timeToNextAttack = 0
-						xShadowx.activeController.hitboxMagnitude = 150
+						xShadowx.activeController.hitboxMagnitude = 60
 						xShadowx.activeController.active = false
 						xShadowx.activeController.timeToNextBlock = 0
 						xShadowx.activeController.focusStart = 0
