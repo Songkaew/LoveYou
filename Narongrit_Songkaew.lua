@@ -4421,7 +4421,7 @@ end)
 
 spawn(function() 
     while wait() do
-        if _G.Auto_Farm_Level then 
+        if _G.Auto_Farm_Level and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then 
             pcall(function()
 				QuestCheck()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
@@ -4440,7 +4440,7 @@ spawn(function()
 							task.wait(.01)
 							_G.PosMonLv2 = v.CFrame * CFrame.new(0,50,0)
 							task.wait(.01)
-						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
+						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2 or game:GetService("Workspace").Enemies:FindFirstChild(MobName)
 					end
 					if v.Name == MobName then
 						_G.PosMonLv2 = v.CFrame * CFrame.new(0,50,0)
@@ -4455,8 +4455,16 @@ task.spawn(function()
 	while task.wait() do
 		if _G.Auto_Farm_Level then
 			pcall(function()
-				if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+				if _G.TweentoQuest == false and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
 					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				    BringMobFarm = false
+				end
+				if _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+					UnEquipWeapon(_G.Select_Weapon)
+				    BringMobFarm = false
+				elseif _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(MobName) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+					Tween(_G.PosMonLv)
+					UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
 				end
 				QuestCheck()
@@ -4471,12 +4479,7 @@ task.spawn(function()
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
 					elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
-					else
-						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-				        BringMobFarm = false
 					end
-					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-				    BringMobFarm = false
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					if _G.TweentoQuest then
