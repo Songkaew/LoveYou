@@ -4479,21 +4479,30 @@ task.spawn(function()
 					QuestCheck()
 					local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
 					local MyLevel = game.Players.LocalPlayer.Data.Level.Value
-					if not string.find(QuestTitle, QuestCheck()[3]) then
-						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+					local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
+					if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
+						if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+						elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
+						elseif World2 and string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+						elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
+						end
 					end
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 						if _G.TweentoQuest then
 							Tween(NPCPosition)
 							if (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 								BringMobFarm = false
-								--local args = {
-								--	[1] = "StartQuest",
-								--	[2] = QuestName,
-								--	[3] = QuestLevel
-								--}
-								--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+								local args = {
+									[1] = "StartQuest",
+									[2] = QuestName,
+									[3] = QuestLevel
+								}
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+								--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
 								if W1 and MyLevel >= 190 or MyLevel <= 209 then
 									local args = {
@@ -4513,14 +4522,14 @@ task.spawn(function()
 								Tween(_G.PosMonLv)
 							end
 						else
-							--local args = {
-							--	[1] = "StartQuest",
-							--	[2] = QuestName,
-							--	[3] = QuestLevel
-							--}
-							--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							local args = {
+								[1] = "StartQuest",
+								[2] = QuestName,
+								[3] = QuestLevel
+							}
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 							Tween(_G.PosMonLv)
-							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
+							--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
 							if W1 and MyLevel == 190 or MyLevel <= 209 then
 								local args = {
 										[1] = "StartQuest",
@@ -4545,6 +4554,9 @@ task.spawn(function()
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat
 											task.wait()
+											if not string.find(QuestTitle, QuestCheck()[3]) then
+												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+											end
 											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 											end
@@ -4576,18 +4588,6 @@ task.spawn(function()
 						else
 							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				            BringMobFarm = false
-							local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-							if not game:GetService("Workspace").Enemies:FindFirstChild(MobName) then
-								if World1 and (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-								elseif World1 and not (MobName == "Fishman Commando" or MobName == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
-								elseif World2 and string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-								elseif World2 and not string.find(MobName, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
-								end
-							end
 						end
 					end
 				end)
