@@ -8144,23 +8144,14 @@ task.spawn(function()
 		end)
 	end
 end)
-function InMyNetWorkHack(object)
-	if isnetworkowner then
-		return isnetworkowner(object)
-	else
-		if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then 
-			return true
-		end
-		return false
-	end
-end
+
 spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 700 then
-						if InMyNetWork(v.HumanoidRootPart) and not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
+					if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 700 then
+						if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 300 then
 							v.HumanoidRootPart.CFrame = PosMon
 							v.Humanoid.JumpPower = 0
 							v.Humanoid.WalkSpeed = 0
@@ -11688,7 +11679,6 @@ end
 
 function AttackFunctionNai()
 	local ac = CombatFrameworkR.activeController
-	NumberFastAttckAcAttack10 = math.random(1 , 2)
 	if ac and ac.equipped and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(50)
@@ -11704,7 +11694,7 @@ function AttackFunctionNai()
 					AcAttack8 = math.floor(NumberAc12 / AcAttack9)
 					AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
 				end)()
-				AcAttack10 = AcAttack10 + NumberFastAttckAcAttack10 --1
+				AcAttack10 = AcAttack10 + 1 --1
 				debug.setupvalue(ac.attack, 5, AcAttack8)
 				debug.setupvalue(ac.attack, 6, AcAttack9)
 				debug.setupvalue(ac.attack, 4, AcAttack7)
@@ -11715,7 +11705,7 @@ function AttackFunctionNai()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, NumberFastAttckAcAttack10, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 3, "") 
 				end
 			end
 		end
@@ -11740,7 +11730,7 @@ task.spawn(function()
 		if  _G.FastAttackX then
 			if SeraphFrame.activeController then
 				if v.Humanoid.Health > 0 then
-					SeraphFrame.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+					--SeraphFrame.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
 					SeraphFrame.activeController.timeToNextAttack = 0
 					SeraphFrame.activeController.focusStart = 0
 					SeraphFrame.activeController.hitboxMagnitude = 110
@@ -11791,9 +11781,7 @@ spawn(function()
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									task.wait(_G.randomNumberFastAttck)
-									if _G.Smooth == false then
-										Click()
-									end
+									Click()
 								end
 							end
 						end
@@ -11814,7 +11802,7 @@ spawn(function()
 										Attack()
 										task.wait(_G.randomNumberFastAttck)
 										AttackFunctionRandomFast()
-										sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
+										--sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 										if v.Humanoid:FindFirstChild("Animator") then
 											v.Humanoid.Animator:Destroy()
 										end
@@ -11833,7 +11821,7 @@ spawn(function()
 							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
-					if _G.Smooth == false and tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
+					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
 						Click()
 						cooldownfastattack = tick()
 					end
@@ -11847,29 +11835,6 @@ local slashHit = game:GetService("ReplicatedStorage").Assets:FindFirstChild('Sla
 if slashHit then
     slashHit:Destroy()
 end
-	require(game.ReplicatedStorage.Util.CameraShaker):Stop()
-	xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-	xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
-	task.spawn(function()
-		while true do task.wait()
-			if _G.FastAttackX and _G.Smooth == false then
-				if typeof(xShadowx) == "table" then
-					pcall(function()
-						xShadowx.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-						xShadowx.activeController.timeToNextAttack = 0
-						xShadowx.activeController.hitboxMagnitude = 60
-						xShadowx.activeController.active = false
-						xShadowx.activeController.timeToNextBlock = 0
-						xShadowx.activeController.focusStart = 0
-						xShadowx.activeController.increment = 4
-						xShadowx.activeController.blocking = false
-						xShadowx.activeController.attacking = false
-						xShadowx.activeController.humanoid.AutoRotate = true
-					end)
-				end
-			end
-		end
-	end)
 
 spawn(function()
     while wait() do
