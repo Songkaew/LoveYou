@@ -8266,7 +8266,7 @@ spawn(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 700 then
-						if InMyNetWork(v.HumanoidRootPart) and not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 500 then
+						if InMyNetWork(v.HumanoidRootPart) and not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
 							v.HumanoidRootPart.CFrame = PosMon
 							v.Humanoid.JumpPower = 0
 							v.Humanoid.WalkSpeed = 0
