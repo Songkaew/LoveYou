@@ -11897,13 +11897,13 @@ spawn(function()
             if _G.FastAttackX then
 				_G.randomNumberFastAttck = math.random(0.10, 0.99)
 				repeat wait(_G.randomNumberFastAttck)
-					if not _G.Smooth then
+					if _G.Smooth == false then
 						Click()
 					end
 				until not _G.FastAttackX
 				if CheckPlyayers() == true then
 					if tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
-						if not _G.Smooth then
+						if _G.Smooth == false then
 							Click()
 						end
 						task.wait(1.75)
@@ -11914,7 +11914,7 @@ spawn(function()
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									task.wait(_G.randomNumberFastAttck)
-									if not _G.Smooth then
+									if _G.Smooth == false then
 										Click()
 									end
 								end
@@ -11945,7 +11945,7 @@ spawn(function()
 						end
 						AttackX()
 					until not _G.FastAttackX
-					if not _G.Smooth and tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
+					if _G.Smooth == false and tick() - cooldownfastattack > tonumber(_G.randomNumberFastAttck) then
 						Click()
 						cooldownfastattack = tick()
 					end
