@@ -639,15 +639,16 @@ for i,v in pairs(Quests) do
 		end
 	end
 end
-	if QuestName == "JungleQuest" then
-		Mon = "Gorilla"
-		LevelRequire = 15
-		LevelQuest = 2
-		QuestName = "JungleQuest"
-		MobName = "Gorilla"
-		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-		CFrameMon = CFrame.new(-1129.8836669921875, 40.46354675292969, -525.4237060546875)
-	elseif QuestName == "MarineQuest2" then
+	--if QuestName == "JungleQuest" then
+	--	Mon = "Gorilla"
+	--	LevelRequire = 15
+	--	LevelQuest = 2
+	--	QuestName = "JungleQuest"
+	--	MobName = "Gorilla"
+	--	NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+	--	CFrameMon = CFrame.new(-1129.8836669921875, 40.46354675292969, -525.4237060546875)
+	--else
+	if QuestName == "MarineQuest2" then
 		QuestName = "MarineQuest2"
 		QuestLevel = 1
 		MobName = "Chief Petty Officer"
@@ -4472,13 +4473,13 @@ task.spawn(function()
 							Tween(NPCPosition)
 							if (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 								BringMobFarm = false
-								local args = {
-									[1] = "StartQuest",
-									[2] = QuestName,
-									[3] = QuestLevel
-								}
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-								--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+								--local args = {
+								--	[1] = "StartQuest",
+								--	[2] = QuestName,
+								--	[3] = QuestLevel
+								--}
+								--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
 								Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
 								if W1 and MyLevel >= 190 or MyLevel <= 209 then
 									local args = {
@@ -4498,13 +4499,13 @@ task.spawn(function()
 								Tween(_G.PosMonLv)
 							end
 						else
-							local args = {
-								[1] = "StartQuest",
-								[2] = QuestName,
-								[3] = QuestLevel
-							}
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+							--local args = {
+							--	[1] = "StartQuest",
+							--	[2] = QuestName,
+							--	[3] = QuestLevel
+							--}
+							--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestName, QuestLevel)
 							if W1 and MyLevel == 190 or MyLevel <= 209 then
 								local args = {
 										[1] = "StartQuest",
@@ -11821,7 +11822,7 @@ spawn(function()
     while wait(0.1) do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.10, 0.85)
+				_G.randomNumberFastAttck = math.random(0.10, 0.99)
 				repeat wait(_G.randomNumberFastAttck)
 					if _G.Smooth == false then
 						Click()
