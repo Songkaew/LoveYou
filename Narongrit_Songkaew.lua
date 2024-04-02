@@ -535,63 +535,6 @@ if Lvl >= 1 and Lvl <= 9 then
 		[7] = MobCFrame
 	}
 end
-if Lvl >= 190 and Lvl <= 209 then
-	QuestName = "PrisonerQuest"
-	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	QuestLevel = 1
-	LevelRequire = 190
-	Mon = "Prisoner"
-	MobName = "Prisoner"
-	local matchingCFrames = {}
-	local result = string.gsub(MobName, "Lv. ", "")
-	local result2 = string.gsub(result, "[%[%]]", "")
-	local result3 = string.gsub(result2, "%d+", "")
-	local result4 = string.gsub(result3, "%s+", "")
-	
-	for i,v in pairs(game.workspace.EnemySpawns:GetChildren()) do
-		if v.Name == result4 then
-			table.insert(matchingCFrames, v.CFrame)
-		end
-		MobCFrame = matchingCFrames
-	end
-	return {
-		[1] = QuestLevel,
-		[2] = NPCPosition,
-		[3] = MobName,
-		[4] = QuestName,
-		[5] = LevelRequire,
-		[6] = Mon,
-		[7] = MobCFrame
-	}
-elseif Lvl >= 210 and Lvl <= 249 then
-	MobName = "Dangerous Prisoner"
-	QuestName = "PrisonerQuest"
-	QuestLevel = 2
-	Mon = "Dangerous Prisoner"
-	NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	local matchingCFrames = {}
-	local result = string.gsub(MobName, "Lv. ", "")
-	local result2 = string.gsub(result, "[%[%]]", "")
-	local result3 = string.gsub(result2, "%d+", "")
-	local result4 = string.gsub(result3, "%s+", "")
-	
-	for i,v in pairs(game.workspace.EnemySpawns:GetChildren()) do
-		if v.Name == result4 then
-			table.insert(matchingCFrames, v.CFrame)
-		end
-		MobCFrame = matchingCFrames
-	end
-	return {
-		[1] = QuestLevel,
-		[2] = NPCPosition,
-		[3] = MobName,
-		[4] = QuestName,
-		[5] = LevelRequire,
-		[6] = Mon,
-		[7] = MobCFrame
-	}
-end
---game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
 local GuideModule = require(game:GetService("ReplicatedStorage").GuideModule)
 local Quests = require(game:GetService("ReplicatedStorage").Quests)
 for i,v in pairs(GuideModule["Data"]["NPCList"]) do
@@ -639,62 +582,6 @@ for i,v in pairs(Quests) do
 		end
 	end
 end
-	--[[if QuestName == "JungleQuest" then
-		Mon = "Gorilla"
-		LevelRequire = 15
-		QuestLevel = 2
-		MobName = "Gorilla"
-		QuestName = "JungleQuest"
-		NPCPosition = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-	elseif QuestName == "BuggyQuest1" then
-		Mon = "Pirate"
-		QuestLevel = 1
-		QuestName = "BuggyQuest1"
-		MobName = "Pirate"
-		LevelRequire = 30
-		NPCPosition = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
-	else]]
-		if QuestName == "MarineQuest2" then
-		QuestName = "MarineQuest2"
-		QuestLevel = 1
-		MobName = "Chief Petty Officer"
-		Mon = "Chief Petty Officer"
-		LevelRequire = 120
-	elseif QuestName == "PrisonerQuest" then
-		QuestName = "PrisonerQuest"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		QuestLevel = 1
-		LevelRequire = 190
-		Mon = "Prisoner"
-		MobName = "Prisoner"
-	elseif QuestName == "PrisonerQuest" then
-		QuestName = "PrisonerQuest"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-		QuestLevel = 2
-		LevelRequire = 210
-		Mon = "Dangerous Prisoner"
-		MobName = "Dangerous Prisoner"
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-	elseif QuestName == "ImpelQuest" then
-		QuestName = "PrisonerQuest"
-		QuestLevel = 2
-		MobName = "Dangerous Prisoner"
-		Mon = "Dangerous Prisoner"
-		LevelRequire = 210
-		NPCPosition = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)--NPCPosition = CFrame.new(5310.60547, 0.350014925, 474.946594, 0.0175017118, 0, 0.999846935, 0, 1, 0, -0.999846935, 0, 0.0175017118)
-	elseif QuestName == "SkyExp1Quest" then
-		if QuestLevel == 1 then
-			NPCPosition = CFrame.new(-4721.88867, 843.874695, -1949.96643, 0.996191859, -0, -0.0871884301, 0, 1, -0, 0.0871884301, 0, 0.996191859)
-		elseif QuestLevel == 2 then
-			NPCPosition = CFrame.new(-7859.09814, 5544.19043, -381.476196, -0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, -0.422592998)
-		end
-	elseif QuestName == "Area2Quest" and QuestLevel == 2 then
-		QuestName = "Area2Quest"
-		QuestLevel = 1
-		MobName = "Swan Pirate"
-		Mon = "Swan Pirate"
-		LevelRequire = 775
-	end
 MobName = MobName:sub(1,#MobName)
 if not MobName:find("Lv") then
 	for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -713,7 +600,6 @@ if not MobName:find("Lv") then
 		end
 	end
 end
-
 local matchingCFrames = {}
 local result = string.gsub(MobName, "Lv. ", "")
 local result2 = string.gsub(result, "[%[%]]", "")
