@@ -12355,35 +12355,6 @@ function Click()
 	game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
 
-local x = game.Players.LocalPlayer
-local c = game:GetService("ReplicatedStorage")
-local Q = require(x.PlayerScripts.CombatFramework);
-local Y = getupvalues(Q)[2];
-local C = require(game.ReplicatedStorage.Util.CameraShaker):Stop();
-function Maxincrement()
-    local H = #Y.activeController.anims.basic;
-    return H;
-end;
-
-coroutine.wrap(function()
-    while task.wait() do
-        local ac = CombatFrameworkR.activeController
-        if ac and ac.equipped then
-            if _G.FastAttackX then
-                AttackFunction()
-                if tick() - cooldownfastattack > .3 then 
-                    wait(0.1) 
-                    cooldownfastattack = tick()
-                end
-            elseif _G.FastAttackX == false then
-                if ac.hitboxMagnitude ~= 55 then
-                    ac.hitboxMagnitude = 55
-                end
-                --ac:attack()
-            end
-        end
-    end
-end)()
 _G.randomNumberFastAttck = 0
 task.spawn(function()
 	while true do task.wait()
