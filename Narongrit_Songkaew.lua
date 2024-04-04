@@ -5153,7 +5153,7 @@ spawn(function()
 							v.Head.CanCollide = false
 							v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
 							BringMobFarm = true
-							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 30)
+							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 30))
 							game:GetService 'VirtualUser':CaptureController()
 							game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 						until not _G.Settings.MonSelectFarm or not v.Parent or v.Humanoid.Health <= 0 
@@ -5191,6 +5191,7 @@ spawn(function()
         end
     end
 end)
+
 Main:Toggle('Auto Farm Nearest\nออโต้ฟาร์มมอนรอบๆ',_G.NeareastFarm,function(value)
 	_G.NeareastFarm = value
 end)
