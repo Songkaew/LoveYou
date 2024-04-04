@@ -1796,7 +1796,6 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-	local HeeTween = math.random(365, 380)
     if _G.Smooth then
 		-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
 		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
@@ -1820,12 +1819,11 @@ function Tween(...)
 		elseif Distance < 450 then
 			Speed = 370
 		elseif Distance < 500 then
-			Speed = 375
+			Speed = 374
 		elseif Distance >= 1000 then
-			Speed = HeeTween
+			Speed = 378
 		end
 	end
-	local HeeTween = 375
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear)
     local z = game:GetService("TweenService")
