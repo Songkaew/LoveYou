@@ -4962,11 +4962,8 @@ spawn(function()
 									_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
 									task.wait(0.5)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
-									task.wait(.01)
-									_G.PosMonLv = CFrameMon
 									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
-									task.wait(.01)
 								--end
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						--end
@@ -5016,12 +5013,12 @@ end)
 										EquipWeapon(_G.Select_Weapon)
 										BringMobFarm = true
 										PosMon = v.HumanoidRootPart.CFrame
-										if _G.Smooth then
+										if _G.Smooth == true then
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 180 then
 												game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
 											end
 											Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
-										else
+										elseif _G.Smooth == false then
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 												if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
@@ -5034,6 +5031,8 @@ end)
 											else
 												Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
 											end
+										else
+											Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
 										end
 										if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
 											game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
@@ -5046,6 +5045,7 @@ end)
 							end
 						end
 						if not game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
+							_G.PosMonFarmLvSetCFarme = 1
 							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				            BringMobFarm = false
 							if World1 and (Ms == "Fishman Commando" or Ms == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
