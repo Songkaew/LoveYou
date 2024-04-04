@@ -5048,7 +5048,7 @@ Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที
 	_G.Settings.MonSelectFarm = value
 	SaveSettings()
 end)
-Main:Dropdown("Select Mon\nเลือกมอน",tableMon,_G.Settings.SelectMon,function(value)
+Main:Dropdown("Select Mon",tableMon,_G.Settings.SelectMon,function(value)
     _G.Settings.SelectMon = value
     SaveSettings()
 end)
