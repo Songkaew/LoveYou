@@ -1803,8 +1803,8 @@ function Tween(...)
 			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
 		end
 		if Distance < 300 then
-			Speed = 999
-			Speedx = 999
+			Speed = 200
+			Speedx = 180
 		elseif Distance < 550 then
 			Speed = 330
 			Speedx = 330
@@ -1846,6 +1846,13 @@ function Tween(...)
 			Speed = 375
 			Speedx = 375
 		end
+	end
+	if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+		local NoclipX = Instance.new("BodyVelocity")
+		NoclipX.Name = "BodyClip"
+		NoclipX.Parent = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")--game.Players.LocalPlayer.Character.HumanoidRootPart
+		NoclipX.MaxForce = Vector3.new(100000, 100000, 100000)
+		NoclipX.Velocity = Vector3.new(0, 0, 0)
 	end
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear)
@@ -1906,7 +1913,10 @@ function Tween(...)
     local tweenfunc = {}
     function tweenfunc:Stop()
         q:Cancel()
-    end 
+		if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+			game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+		end
+    end
     function tweenfunc:Wait()
         q.Completed:Wait()
     end 
@@ -2588,7 +2598,7 @@ function AttackFunctionRandomFast()
 			AttackFunctionNaJa()
 		elseif AttackRandomFast == 4 then
 			Attack()
-			wait(.000001234567890)
+			wait(.0175)
 			Boost()
 		end
 	end
@@ -2710,7 +2720,7 @@ end
 function AttackFunctionNaJa()
 	local ac = CombatFrameworkR.activeController
 	if ac and ac.equipped then
-		for indexincrement = 1, 1 do -- ปรับจำนวนการเรียกใช้งานได้ตามต้องการ
+		for indexincrement = 1, 3 do -- ปรับจำนวนการเรียกใช้งานได้ตามต้องการ
 			local bladehit = getAllBladeHits(60)
 			if #bladehit > 0 then
 				local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -2735,7 +2745,7 @@ function AttackFunctionNaJa()
 				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
 					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
 					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "") 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "") 
 				end
 			end
 		end
@@ -9687,7 +9697,19 @@ spawn(function()
 									Tween(game:GetService("Workspace")["_WorldOrigin"].Locations["Island 1"].CFrame * CFrame.new(4, 65, 10))
 								end
 							end
-							for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
+							for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
+								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+									repeat task.wait()
+										if (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+											v.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-60,0)
+										end
+										sethiddenproperty(game:GetService('Players').LocalPlayer, "SimulationRadius", math.huge)
+										v.Humanoid.Health = 0
+										v.HumanoidRootPart.CanCollide = false
+									until not _G.Settings.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
+								end
+							end
+							--[[for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
 								if _G.Settings.Auto_Raids and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and L_459_forvar1:FindFirstChild("Humanoid") and L_459_forvar1:FindFirstChild("HumanoidRootPart") and (L_459_forvar1.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
 									repeat wait(.1) --.3
 										if InMyNetWork(v.HumanoidRootPart) then
@@ -9700,7 +9722,7 @@ spawn(function()
 										end
 									until not _G.Settings.Auto_Raids or L_459_forvar1.Humanoid.Health <= 0 or not L_459_forvar1.Parent
 								end
-							end
+							end]]
 							if _G.Settings.Auto_Awakened then	
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Awakener", "Awaken")
 							end
@@ -9748,6 +9770,23 @@ end)
     end
 end)]]
 spawn(function()
+	while wait() do
+		if _G.Settings.Kill_Aura then
+			pcall(function()
+				for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
+					if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+						repeat task.wait()
+							sethiddenproperty(game:GetService('Players').LocalPlayer, "SimulationRadius", math.huge)
+							v.Humanoid.Health = 0
+							v.HumanoidRootPart.CanCollide = false
+						until not _G.Settings.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
+					end
+				end
+			end)
+		end
+	end
+end)
+--[[spawn(function()
     while wait() do
         if _G.Settings.Kill_Aura then
             for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
@@ -9761,7 +9800,7 @@ spawn(function()
             end
         end
     end
-end)
+end)]]
 spawn(function()
 	pcall(function()
 		while wait() do
@@ -12344,12 +12383,33 @@ coroutine.wrap(function()
 		end
 	end
 end)()
+coroutine.wrap(function()
+	while task.wait(.1) do
+		local ac = CombatFrameworkR.activeController
+		if ac and ac.equipped then
+			if _G.FastAttackX then
+				AttackFunction()
+				if _G.Smooth == true then
+					if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
+				elseif _G.Smooth == false then
+					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
+				else
+					if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
+				end
+			elseif _G.FastAttackX then
+				if ac.hitboxMagnitude ~= 55 then
+					ac.hitboxMagnitude = 55
+				end
+			end
+		end
+	end
+end)()
 
 task.spawn(function()
     while task.wait() do
         pcall(function()
             if _G.FastAttackX then
-				_G.randomNumberFastAttck = math.random(0.05, 0.50)
+				_G.randomNumberFastAttck = math.random(0.001, 0.175)
 				repeat task.wait(_G.randomNumberFastAttck)
 					Click()
 				until not _G.FastAttackX
@@ -12358,7 +12418,7 @@ task.spawn(function()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									 CombatFramework.activeController.attacking = false
+									CombatFramework.activeController.attacking = false
 									CombatFramework.activeController.timeToNextAttack = 0
 									CombatFramework.activeController.increment = 4
 									CombatFramework.activeController.hitboxMagnitude = 80
@@ -12392,6 +12452,7 @@ task.spawn(function()
 							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
+					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
 				end
 			end
         end)
