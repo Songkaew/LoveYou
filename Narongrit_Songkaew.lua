@@ -1796,17 +1796,27 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
+	local Speedx
     if _G.Smooth == true then
 		-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
-		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
+		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 280 then 
 			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
 		end
-		if Distance < 250 then
-			Speed = 200
-		elseif Distance < 500 then
-			Speed = 345
-		elseif Distance >= 1000 then
-			Speed = 355
+		if Distance < 300 then
+			Speed = 999
+			Speedx = 999
+		elseif Distance < 550 then
+			Speed = 330
+			Speedx = 330
+		elseif Distance < 800 then
+			Speed = 333
+			Speedx = 333
+		elseif Distance < 800 then
+			Speed = 363
+			Speedx = 363
+		elseif Distance >= 1300 then
+			Speed = 373
+			Speedx = 373
 		end
 	elseif _G.Smooth == false then
 		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 50 then 
@@ -1814,20 +1824,27 @@ function Tween(...)
     	end
 		if Distance < 50 then
 			Speed = 200
+			Speedx = 200
 		elseif Distance < 300 then
-			Speed = 360
+			Speed = 380
+			Speedx = 380
 		elseif Distance < 450 then
-			Speed = 370
-		elseif Distance < 500 then
 			Speed = 374
-		elseif Distance >= 1000 then
+			Speedx = 374
+		elseif Distance < 800 then
 			Speed = 378
+			Speedx = 378
+		elseif Distance >= 1200 then
+			Speed = 373
+			Speedx = 373
 		end
 	else
 		if Distance < 850 then
-			Speed = 370
+			Speed = 375
+			Speedx = 375
 		elseif Distance >= 850 then
-			Speed = 370
+			Speed = 375
+			Speedx = 375
 		end
 	end
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
@@ -1835,7 +1852,7 @@ function Tween(...)
     local z = game:GetService("TweenService")
     local q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], B, {CFrame = p})
     q:Play()
-
+	
 	if _G.Settings.Bypass then
 		if Distance > 3000 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (
 			game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or 
@@ -1879,6 +1896,12 @@ function Tween(...)
 			end)
 		end
 	end
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude / Speedx, Enum.EasingStyle.Linear)
+	local L_107_, L_108_ = pcall(function()
+		q = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = p})
+		q:Play()
+	end)
     -- สร้างตัวแปรเก็บฟังก์ชันของ Tween เพื่อให้สามารถหยุดหรือรอได้
     local tweenfunc = {}
     function tweenfunc:Stop()
