@@ -4848,7 +4848,7 @@ spawn(function()
     while wait() do
         if _G.Auto_Farm_Level then 
             pcall(function()
-				QuestCheck()
+				CheckLevel()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
 					if string.find(v.Name, NameMon) then
 						_G.PosMonFarmLvSetCFarme = 1
@@ -4903,7 +4903,7 @@ task.spawn(function()
 					UnEquipWeapon(_G.Select_Weapon)
 				    BringMobFarm = false
 				end]]
-				QuestCheck()
+				CheckLevel()
 				local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 				local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
@@ -4961,7 +4961,7 @@ end)
 		while task.wait() do
 			if _G.Auto_Farm_Level then
 				pcall(function()
-					QuestCheck()
+					CheckLevel()
 					local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
 					if not string.find(QuestTitle, NameMon) then
 						--game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
@@ -5058,7 +5058,7 @@ spawn(function()
 		if _G.Settings.MonSelectFarm then
 			pcall(function()
 				if QSelectFarmMon then
-					game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1])
+					game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1])
 				end
 				if game:GetService("Workspace").Enemies:FindFirstChild(_G.Settings.SelectMon) then
 					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -5100,7 +5100,7 @@ spawn(function()
     while wait() do
         if _G.Settings.MonSelectFarm then 
             pcall(function()
-				QuestCheck()
+				CheckLevel()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
 					if string.find(v.Name, _G.Settings.SelectMon) then
 						_G.PosMonFarmLvSetCFarme = 1
@@ -5240,7 +5240,7 @@ spawn(function()
 						end
 					else
 						_G.UseSkill = false
-						Tween(QuestCheck()[7][1] * CFrame.new(0,30,20))
+						Tween(CheckLevel()[7][1] * CFrame.new(0,30,20))
 						if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 							if Modstween then Modstween:Stop() end wait(.5)
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -5265,16 +5265,16 @@ spawn(function()
 						end
 					end
 				else
-					Tween(QuestCheck()[2])
-					if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+					Tween(CheckLevel()[2])
+					if (CheckLevel()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
 						BringMobFarm = false
 						wait(0.2)
-						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1]) wait(0.5) 
-						Tween(QuestCheck()[7][1] * CFrame.new(0,28,8))
+						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1]) wait(0.5) 
+						Tween(CheckLevel()[7][1] * CFrame.new(0,28,8))
 					end
 				end
 			else
-				--[[if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
+				--[[if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, CheckLevel()[6]) then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 				end game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")]]
 			end
@@ -5532,12 +5532,12 @@ spawn(function()
 					else
 						UseSkillGun = false
 						if _G.Auto_CFrame then
-							Tween(QuestCheck()[7][SetCFarme] * CFrame.new(0,28,18))
-							if (QuestCheck()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+							Tween(CheckLevel()[7][SetCFarme] * CFrame.new(0,28,18))
+							if (CheckLevel()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 								if SetCFarme == nil or SetCFarme == '' then
 									SetCFarme = 1
 									print(SetCFarme)
-								elseif SetCFarme >= #QuestCheck()[7] then
+								elseif SetCFarme >= #CheckLevel()[7] then
 									SetCFarme = 1
 									print(SetCFarme)
 								end
@@ -5547,31 +5547,31 @@ spawn(function()
 							end
 						else
 							if Random_CFrame == 1 then
-								Tween(QuestCheck()[7][1] * CFrame.new(0,30,20))
+								Tween(CheckLevel()[7][1] * CFrame.new(0,30,20))
 							elseif Random_CFrame == 2 then
-								Tween(QuestCheck()[7][1] * CFrame.new(0,30,-20))
+								Tween(CheckLevel()[7][1] * CFrame.new(0,30,-20))
 							elseif Random_CFrame == 3 then
-								Tween(QuestCheck()[7][1] * CFrame.new(20,30,0))
+								Tween(CheckLevel()[7][1] * CFrame.new(20,30,0))
 							elseif Random_CFrame == 4 then
-								Tween(QuestCheck()[7][1] * CFrame.new(0,30,-20))
+								Tween(CheckLevel()[7][1] * CFrame.new(0,30,-20))
 							elseif Random_CFrame == 5 then
-								Tween(QuestCheck()[7][1] * CFrame.new(-20,30,0))
+								Tween(CheckLevel()[7][1] * CFrame.new(-20,30,0))
 							else
-								Tween(QuestCheck()[7][1] * CFrame.new(0,30,20))
+								Tween(CheckLevel()[7][1] * CFrame.new(0,30,20))
 							end
 						end
 					end
 				else
-					Tween(QuestCheck()[2])
-					if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+					Tween(CheckLevel()[2])
+					if (CheckLevel()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
 						BringMobFarm = false
 						wait(0.2)
-						Tween(QuestCheck()[7][1] * CFrame.new(0,28,18))
-						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1]) wait(0.5)
+						Tween(CheckLevel()[7][1] * CFrame.new(0,28,18))
+						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1]) wait(0.5)
 					end
 				end
 			else
-				--[[if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
+				--[[if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, CheckLevel()[6]) then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 				end game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")]]
 			end
@@ -5611,7 +5611,7 @@ spawn(function()
 			}
 			
 			game:GetService("Players").LocalPlayer.Character[_G.Select_WeaponGun].RemoteEvent:FireServer(unpack(args))
-			if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
+			if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, CheckLevel()[6]) then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 			end
 		end
@@ -8514,18 +8514,18 @@ end
 spawn(function()
     while wait() do wait(2)
         pcall(function()
-            if _G.Settings.Bypass and not _G.Settings.Fast_Farm_Level and Auto_Farm_Level and (QuestCheck()[2].Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2500 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
-                BTP(QuestCheck()[2])
+            if _G.Settings.Bypass and not _G.Settings.Fast_Farm_Level and Auto_Farm_Level and (CheckLevel()[2].Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2500 and not AutoFarmMaterial and not _G.Settings.Auto_God_Human and not _G.Settings.Auto_Raids and not (game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
+                BTP(CheckLevel()[2])
                 game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
 				wait(0.1)
 				repeat wait()
-				    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (QuestCheck()[2]) 
+				    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (CheckLevel()[2]) 
 	                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetspawnPoint") 
-	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = QuestCheck()[2] 
+	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CheckLevel()[2] 
 	                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetspawnPoint") 
-	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = QuestCheck()[2]
+	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CheckLevel()[2]
 	                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetspawnPoint")
-	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = QuestCheck()[2]
+	                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CheckLevel()[2]
 				until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
             end
         end)
