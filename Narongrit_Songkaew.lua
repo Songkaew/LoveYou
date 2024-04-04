@@ -504,7 +504,6 @@ if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
 	local result3 = string.gsub(result2, "%d+", "")
 	local result4 = string.gsub(result3, "%s+", "")
 
-	print(result4)
 	EnemySpawnsX2.Name = result4
 	EnemySpawnsX2.Parent = workspace.EnemySpawns
 	EnemySpawnsX2.Anchored = true
@@ -518,7 +517,6 @@ if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
 	local result3 = string.gsub(result2, "%d+", "")
 	local result4 = string.gsub(result3, "%s+", "")
 
-	print(result4)
 	EnemySpawnsX2.Name = result4
 	EnemySpawnsX2.Parent = workspace.EnemySpawns
 	EnemySpawnsX2.Anchored = true
@@ -1710,19 +1708,8 @@ function bBTPP(xxxxx)
 end
 spawn(function()
 	while true do wait()
-		if _G.Settings.MonSelectFarm or _G.Auto_Farm_Levelx or _G.Settings.Auto_Farm_Boss_Hallow or _G.Settings.Auto_Farm_Bone or _G.Settings.Auto_Buddy_Swords or _G.Settings.Auto_Cake_Prince or _G.AutoFactory or _G.Settings.Auto_Raids or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids_Kill_Mon or _G.AutoFarmBounty or _G.Safe_Mode or _G.Auto_Kill_Ply or _G.TeleportPly or getgenv().AutoObservation or getgenv().Auto_Farm_Chest or getgenv().FarmChestTween or getgenv().ChestFarm or _G.Evo_Race_V2 or _G.Auto_Dark_Coat or _G.Auto_Farm_law_Sword or _G.Auto_Bartilo_Quest or _G.Auto_New_World2 or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids or _G.Auto_Farm_Level or _G.AutoObservation or _G.TPNPCDF or _G.Auto_Kill_Player or AutoFarmMaterial or _G.AutoBuddySwords or _G.AutoCavander or _G.Bboat or _G.TPTOBOAT or _G.AutoEvent or _G.QRepairBoat or _G.QRepairBoat2 or _G.WoodPlank or _G.AutoMirageIsland or _G.Auto_Gear or _G.TptoKisuneIsland  or _G.NeareastFarm or _G.TptoKisuneshrine or _G.AutoFarmBossHallow or _G.Auto_Yama or _G.Auto_Sea_King or _G.Auto_Dack_Coat or _G.Auto_Rip_Indar or _G.Auto_Farm_Mastery_Gun or _G.Auto_Farm_All_Sword or _G.Auto_Awakening_One_Quest or _G.Auto_Lever_UnLock or _G.Auto_Complete_Trial or _G.Auto_Farm_Mastery_Fruit or Auto_Mirage_Island or Auto_Gear or _G.Auto_Farm_All_Boss or _G.Auto_New_World or _G.Auto_Third_World or _G.Auto_Farm_Chest or _G.Auto_Farm_Boss or _G.Auto_Castle_Raid or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole or _G.Auto_Farm_Scrap_and_Leather or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.Auto_Bartilo_Quest or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Farm_Vampire_Fang or _G.Auto_Farm_Mystic_Droplet or _G.Auto_Farm_GunPowder or _G.Auto_Farm_Dragon_Scales or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Auto_Farm_Mini_Tusk or _G.Auto_Farm_Magma_Ore or _G.Auto_Farm_Bone or _G.Auto_Farm_Conjured_Cocoa or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.Auto_Kill_Law then
-			pcall(function()
-				if not game.Workspace:FindFirstChild("Part") then
-					local Part = Instance.new("Part")
-					Part.Name = "Part"
-					Part.Parent = game.Workspace
-					Part.Anchored = true
-					Part.Transparency = 1
-					Part.Size = Vector3.new(200, 0.5, 200)
-				else
-					game.Workspace.Part.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.8, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
-				end
-				game.Workspace.Part.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.8, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+		pcall(function()
+			if _G.Settings.MonSelectFarm or _G.Auto_Farm_Levelx or _G.Settings.Auto_Farm_Boss_Hallow or _G.Settings.Auto_Farm_Bone or _G.Settings.Auto_Buddy_Swords or _G.Settings.Auto_Cake_Prince or _G.AutoFactory or _G.Settings.Auto_Raids or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids_Kill_Mon or _G.AutoFarmBounty or _G.Safe_Mode or _G.Auto_Kill_Ply or _G.TeleportPly or getgenv().AutoObservation or getgenv().Auto_Farm_Chest or getgenv().FarmChestTween or getgenv().ChestFarm or _G.Evo_Race_V2 or _G.Auto_Dark_Coat or _G.Auto_Farm_law_Sword or _G.Auto_Bartilo_Quest or _G.Auto_New_World2 or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids or _G.Auto_Farm_Level or _G.AutoObservation or _G.TPNPCDF or _G.Auto_Kill_Player or AutoFarmMaterial or _G.AutoBuddySwords or _G.AutoCavander or _G.Bboat or _G.TPTOBOAT or _G.AutoEvent or _G.QRepairBoat or _G.QRepairBoat2 or _G.WoodPlank or _G.AutoMirageIsland or _G.Auto_Gear or _G.TptoKisuneIsland  or _G.NeareastFarm or _G.TptoKisuneshrine or _G.AutoFarmBossHallow or _G.Auto_Yama or _G.Auto_Sea_King or _G.Auto_Dack_Coat or _G.Auto_Rip_Indar or _G.Auto_Farm_Mastery_Gun or _G.Auto_Farm_All_Sword or _G.Auto_Awakening_One_Quest or _G.Auto_Lever_UnLock or _G.Auto_Complete_Trial or _G.Auto_Farm_Mastery_Fruit or Auto_Mirage_Island or Auto_Gear or _G.Auto_Farm_All_Boss or _G.Auto_New_World or _G.Auto_Third_World or _G.Auto_Farm_Chest or _G.Auto_Farm_Boss or _G.Auto_Castle_Raid or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole or _G.Auto_Farm_Scrap_and_Leather or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.Auto_Bartilo_Quest or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Farm_Vampire_Fang or _G.Auto_Farm_Mystic_Droplet or _G.Auto_Farm_GunPowder or _G.Auto_Farm_Dragon_Scales or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Auto_Farm_Mini_Tusk or _G.Auto_Farm_Magma_Ore or _G.Auto_Farm_Bone or _G.Auto_Farm_Conjured_Cocoa or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.Auto_Kill_Law then
 				if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
 					local Noclip = Instance.new("BodyVelocity")
 					Noclip.Name = "BodyClip"
@@ -1735,12 +1722,12 @@ spawn(function()
 						v.CanCollide = false
 					end
 				end
-			end)
-		else
-			if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-				game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+			else
+				if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+					game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+				end
 			end
-		end
+		end)
 	end
 end)
 
@@ -1759,25 +1746,39 @@ function Tween(...)
     while game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 do
         wait()
 	end
-	-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
-    if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
-		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
-    end
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-    HeeTween = math.random(370, 380)
-    if Distance < 250 then
-        Speed = 200
-	elseif Distance < 400 then
-        Speed = 275
-    elseif Distance < 450 then
-        Speed = 370
-    elseif Distance < 500 then
-        Speed = 375
-    elseif Distance >= 1000 then
-        Speed = HeeTween
-    end
+    if _G.Smooth then
+		HeeTween = math.random(357, 370)
+		-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
+		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
+		end
+		if Distance < 250 then
+			Speed = 200
+		elseif Distance < 500 then
+			Speed = 345
+		elseif Distance >= 1000 then
+			Speed = HeeTween
+		end
+	else
+		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 50 then 
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
+    	end
+		HeeTween = math.random(370, 380)
+		if Distance < 50 then
+			Speed = 200
+		elseif Distance < 300 then
+			Speed = 360
+		elseif Distance < 450 then
+			Speed = 370
+		elseif Distance < 500 then
+			Speed = 375
+		elseif Distance >= 1000 then
+			Speed = HeeTween
+		end
+	end
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance / Speed, Enum.EasingStyle.Linear)
     local z = game:GetService("TweenService")
@@ -4917,6 +4918,7 @@ spawn(function()
 								task.wait(.01)
 								_G.PosMonLv = _G.PosMonLv2
 								task.wait(.01)
+								_G.PosMonLv = CFrameMon
 							--end
 						until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 					end
@@ -4933,19 +4935,6 @@ task.spawn(function()
 	while task.wait() do
 		if _G.Auto_Farm_Level then
 			pcall(function()
-				--[[if _G.TweentoQuest == false and not game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-					Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-				    BringMobFarm = false
-				end
-				if _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(Ms) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-					UnEquipWeapon(_G.Select_Weapon)
-				    BringMobFarm = false
-				end
-				if _G.TweentoQuest == true and not game:GetService("Workspace").Enemies:FindFirstChild(Ms) and game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-					Tween(_G.PosMonLv)
-					UnEquipWeapon(_G.Select_Weapon)
-				    BringMobFarm = false
-				end]]
 				CheckLevel()
 				local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 				local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
@@ -5016,13 +5005,20 @@ end)
 								if v.Name == Ms then
 									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 										repeat task.wait()
-											--else
-												if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+											end
+											EquipWeapon(_G.Select_Weapon)
+											BringMobFarm = true
+											PosMon = v.HumanoidRootPart.CFrame
+											if _G.Smooth then
+												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then
+													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
+												else
+													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
+													game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 												end
-												EquipWeapon(_G.Select_Weapon)
-												BringMobFarm = true
-												PosMon = v.HumanoidRootPart.CFrame
+											else
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
 													if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
@@ -5036,12 +5032,12 @@ end)
 													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
 													game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 												end
-												if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
-													game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
-												end
-												game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-												v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-											--end
+											end
+											if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+												game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
+											end
+											game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(40,40,40)
 										until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false
 									end
 								end
@@ -5091,8 +5087,14 @@ Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที
 	_G.Settings.MonSelectFarm = value
 	SaveSettings()
 end)
+Main:Toggle('Auto Quest Select Mon\nออโต้รับเคสมอนที่เลือก',_G.Settings.QSelectFarmMon,function(value)
+	_G.Settings.QSelectFarmMon = value
+	QSelectFarmMon = value
+	SaveSettings()
+end)
 Main:Dropdown("Select Mon",tableMon,_G.Settings.SelectMon,function(value)
     _G.Settings.SelectMon = value
+	SelectMonster = value
     SaveSettings()
 end)
 
@@ -5100,8 +5102,14 @@ spawn(function()
 	while task.wait() do
 		if _G.Settings.MonSelectFarm then
 			pcall(function()
+				CheckLevel()
 				if QSelectFarmMon then
-					game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1])
+					local args = {
+						[1] = "StartQuest",
+						[2] = NameQuest,
+						[3] = QuestLv
+					}
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 				end
 				if game:GetService("Workspace").Enemies:FindFirstChild(_G.Settings.SelectMon) then
 					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -5184,9 +5192,9 @@ spawn(function()
 							PosMon = v.HumanoidRootPart.CFrame
 							v.HumanoidRootPart.CanCollide = false 
 							v.Head.CanCollide = false
-							v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+							v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
 							BringMobFarm = true
-							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 28, 0) * CFrame.Angles(math.rad(90), 0, 0))
+							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 28, 0)
 							game:GetService 'VirtualUser':CaptureController()
 							game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 						until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health <= 0 
@@ -5312,7 +5320,7 @@ spawn(function()
 					if (CheckLevel()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
 						BringMobFarm = false
 						wait(0.2)
-						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1]) wait(0.5) 
+						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv) wait(0.5) 
 						Tween(CheckLevel()[7][1] * CFrame.new(0,28,8))
 					end
 				end
@@ -5610,7 +5618,7 @@ spawn(function()
 						BringMobFarm = false
 						wait(0.2)
 						Tween(CheckLevel()[7][1] * CFrame.new(0,28,18))
-						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[1]) wait(0.5)
+						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv) wait(0.5)
 					end
 				end
 			else
@@ -8594,7 +8602,7 @@ spawn(function()
     end
 end)
 _G.Smooth = false
-Settings:Toggle("Smooth :)",_G.Smooth,function(value)
+Settings:Toggle("Smooth",_G.Smooth,function(value)
 	_G.Smooth = value
 end)
 
