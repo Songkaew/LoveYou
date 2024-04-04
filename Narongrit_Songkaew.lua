@@ -4939,7 +4939,7 @@ spawn(function()
             pcall(function()
 				CheckLevel()
 				for i , v in pairs(game:GetService("Workspace")._WorldOrigin.EnemySpawns:GetChildren()) do 
-					if string.find(v.Name, NameMon) then
+					if string.find(v.Name, Ms) then
 						--if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat wait()
@@ -5042,7 +5042,8 @@ end)
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 						if game:GetService("Workspace").Enemies:FindFirstChild(NameMon) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+								if v.Name == Ms then
+									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 									repeat game:GetService("RunService").Heartbeat:wait()
 										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -5076,6 +5077,7 @@ end)
 										game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 										v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(60,60,60)
 									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false --or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
+									end
 								end
 							end
 						else
