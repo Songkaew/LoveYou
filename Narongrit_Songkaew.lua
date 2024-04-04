@@ -1754,7 +1754,7 @@ function bBTPP(xxxxx)
 end
 
 spawn(function()
-	while true do wait()
+	while wait() do wait()
 		if _G.Settings.MonSelectFarm or _G.Auto_Farm_Levelx or _G.Settings.Auto_Farm_Boss_Hallow or _G.Settings.Auto_Farm_Bone or _G.Settings.Auto_Buddy_Swords or _G.Settings.Auto_Cake_Prince or _G.AutoFactory or _G.Settings.Auto_Raids or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids_Kill_Mon or _G.AutoFarmBounty or _G.Safe_Mode or _G.Auto_Kill_Ply or _G.TeleportPly or getgenv().AutoObservation or getgenv().Auto_Farm_Chest or getgenv().FarmChestTween or getgenv().ChestFarm or _G.Evo_Race_V2 or _G.Auto_Dark_Coat or _G.Auto_Farm_law_Sword or _G.Auto_Bartilo_Quest or _G.Auto_New_World2 or _G.Settings.Auto_Next_Place or _G.Settings.Auto_Raids or _G.Auto_Farm_Level or _G.AutoObservation or _G.TPNPCDF or _G.Auto_Kill_Player or AutoFarmMaterial or _G.AutoBuddySwords or _G.AutoCavander or _G.Bboat or _G.TPTOBOAT or _G.AutoEvent or _G.QRepairBoat or _G.QRepairBoat2 or _G.WoodPlank or _G.AutoMirageIsland or _G.Auto_Gear or _G.TptoKisuneIsland  or _G.NeareastFarm or _G.TptoKisuneshrine or _G.AutoFarmBossHallow or _G.Auto_Yama or _G.Auto_Sea_King or _G.Auto_Dack_Coat or _G.Auto_Rip_Indar or _G.Auto_Farm_Mastery_Gun or _G.Auto_Farm_All_Sword or _G.Auto_Awakening_One_Quest or _G.Auto_Lever_UnLock or _G.Auto_Complete_Trial or _G.Auto_Farm_Mastery_Fruit or Auto_Mirage_Island or Auto_Gear or _G.Auto_Farm_All_Boss or _G.Auto_New_World or _G.Auto_Third_World or _G.Auto_Farm_Chest or _G.Auto_Farm_Boss or _G.Auto_Castle_Raid or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole or _G.Auto_Farm_Scrap_and_Leather or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.Auto_Bartilo_Quest or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Farm_Vampire_Fang or _G.Auto_Farm_Mystic_Droplet or _G.Auto_Farm_GunPowder or _G.Auto_Farm_Dragon_Scales or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Auto_Farm_Mini_Tusk or _G.Auto_Farm_Magma_Ore or _G.Auto_Farm_Bone or _G.Auto_Farm_Conjured_Cocoa or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.Auto_Kill_Law then
 			pcall(function()
 				if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -1796,7 +1796,7 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-	_G.HeeTween = math.random(365, 380)
+	local HeeTween = math.random(365, 380)
     if _G.Smooth then
 		-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
 		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
@@ -1822,10 +1822,10 @@ function Tween(...)
 		elseif Distance < 500 then
 			Speed = 375
 		elseif Distance >= 1000 then
-			Speed = _G.HeeTween
+			Speed = HeeTween
 		end
 	end
-	_G.HeeTween = 375
+	local HeeTween = 375
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
     local B = TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear)
     local z = game:GetService("TweenService")
@@ -4945,13 +4945,13 @@ spawn(function()
 						--if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat wait()
-								if _G.Smooth then
-									task.wait()
-									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-									task.wait(2)
-									_G.PosMonFarmLvSetCFarme = 2
-									task.wait(.01)
-								else
+								--if _G.Smooth then
+								--	task.wait()
+								--	_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
+								--	task.wait(2)
+								--	_G.PosMonFarmLvSetCFarme = 2
+								--	task.wait(.01)
+								--else
 									task.wait()
 									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 									task.wait(0.5)
@@ -4963,7 +4963,7 @@ spawn(function()
 									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
 									task.wait(.01)
-								end
+								--end
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						--end
 					end
@@ -5008,6 +5008,8 @@ task.spawn(function()
 							[3] = QuestLv
 						}
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+				        BringMobFarm = false
 						--[[if MyLevel >= 190 and MyLevel <= 209 then
 							local args = {
 									[1] = "StartQuest",
@@ -5040,7 +5042,7 @@ end)
 						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 					end
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
+						if game:GetService("Workspace").Enemies:FindFirstChild(NameMon) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 									repeat game:GetService("RunService").Heartbeat:wait()
