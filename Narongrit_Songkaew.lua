@@ -1777,7 +1777,7 @@ spawn(function()
 		end
 	end
 end)
-
+_G.Smooth = false
 function Tween(...)
     local RealtargetPos = {...}
     local targetPos = RealtargetPos[1]
@@ -1796,7 +1796,7 @@ function Tween(...)
     -- คำนวณความห่างระหว่างตำแหน่งปัจจุบันและตำแหน่งปลายทาง
     local Distance = (p.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
     local Speed
-    if _G.Smooth then
+    if _G.Smooth == true then
 		-- เช็คว่าผู้เล่นอยู่ใกล้พิกัดที่ต้องการหรือไม่ ถ้าใกล้กว่า 50 หน่วยให้ย้ายตัวไปที่พิกัดนั้น
 		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 250 then 
 			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
@@ -1808,7 +1808,7 @@ function Tween(...)
 		elseif Distance >= 1000 then
 			Speed = 355
 		end
-	else
+	elseif _G.Smooth == false then
 		if game:GetService("Players").LocalPlayer:DistanceFromCharacter(p.Position) <= 50 then 
 			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
     	end
@@ -1822,6 +1822,12 @@ function Tween(...)
 			Speed = 374
 		elseif Distance >= 1000 then
 			Speed = 378
+		end
+	else
+		if Distance < 850 then
+			Speed = 370
+		elseif Distance >= 850 then
+			Speed = 370
 		end
 	end
     -- กำหนดค่า TweenInfo และเริ่มเอฟเฟกต์ Tween
@@ -5036,14 +5042,14 @@ end)
 				pcall(function()
 					CheckLevel()
 					local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-					if not string.find(QuestTitle, NameMon) then
+					if not string.find(QuestTitle, Ms) then
 						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
 					end
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						if game:GetService("Workspace").Enemies:FindFirstChild(NameMon) then
+						if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v.Name == Ms then
-									if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+								if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+									if v.Name == Ms then
 									repeat game:GetService("RunService").Heartbeat:wait()
 										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -5076,7 +5082,7 @@ end)
 										end
 										game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 										v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false --or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
+									until not _G.Auto_Farm_Level or not v.Parent  or v.Humanoid.Health <= 0 or QuestC.Visible == false --or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
 									end
 								end
 							end
@@ -12412,4 +12418,3 @@ if slashHit then
 end
 
 --HEE
- 
