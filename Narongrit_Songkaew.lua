@@ -4975,6 +4975,8 @@ spawn(function()
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat wait()
 								if _G.Smooth == true then
+									_G.PosMonLv = CFrameMon
+									task.wait(0.5)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
 									task.wait(2)
 									_G.PosMonFarmLvSetCFarme = 2
@@ -5031,8 +5033,7 @@ end)
 							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 							BringMobFarm = false
 						end
-					end
-					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+					elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 						if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -5053,9 +5054,9 @@ end)
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 												if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
 													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
-													--Attack()
-													--AttackXFunction()
-													--FASTAttack()
+													Attack()
+													AttackXFunction()
+													FASTAttack()
 												else
 													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
 												end
@@ -5076,9 +5077,6 @@ end)
 							end
 						end
 						if not game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-							_G.PosMonFarmLvSetCFarme = 1
-							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-				            BringMobFarm = false
 							if World1 and (Ms == "Fishman Commando" or Ms == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
 							elseif World1 and not (Ms == "Fishman Commando" or Ms == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
@@ -5087,6 +5085,10 @@ end)
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
 							elseif World2 and not string.find(Ms, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
+							else
+								_G.PosMonFarmLvSetCFarme = 1
+								Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
+								BringMobFarm = false
 							end
 						end
 					end
