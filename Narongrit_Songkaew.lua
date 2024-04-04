@@ -5194,7 +5194,7 @@ spawn(function()
 							v.Head.CanCollide = false
 							v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
 							BringMobFarm = true
-							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 28, 0)
+							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 28, 0))
 							game:GetService 'VirtualUser':CaptureController()
 							game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 						until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health <= 0 
@@ -12400,4 +12400,3 @@ if slashHit then
 end
 
 --HEE
- 
