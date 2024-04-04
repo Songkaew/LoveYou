@@ -4908,8 +4908,8 @@ task.spawn(function()
 				local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					if _G.TweentoQuest then
-						Tween(NPCPosition)
-						if (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
+						Tween(CFrameQ)
+						if (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
 							BringMobFarm = false
 							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
 							if MyLevel >= 190 and MyLevel <= 209 then
@@ -5007,13 +5007,13 @@ end)
 							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 				            BringMobFarm = false
 							if not game:GetService("Workspace").Enemies:FindFirstChild(NameMon) then
-								if World1 and (NameMon == "Fishman Commando" or NameMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+								if World1 and (NameMon == "Fishman Commando" or NameMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-								elseif World1 and not (NameMon == "Fishman Commando" or NameMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+								elseif World1 and not (NameMon == "Fishman Commando" or NameMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
-								elseif World2 and string.find(NameMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+								elseif World2 and string.find(NameMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-								elseif World2 and not string.find(NameMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+								elseif World2 and not string.find(NameMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
 								end
 							end
@@ -5082,13 +5082,13 @@ spawn(function()
 				else
 					Tween(_G.PosMonSelect) UnEquipWeapon(_G.Select_Weapon)
 					BringMobFarm = false
-					if World1 and (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+					if World1 and (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-					elseif World1 and not (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+					elseif World1 and not (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
-					elseif World2 and string.find(_G.Settings.SelectMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+					elseif World2 and string.find(_G.Settings.SelectMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-					elseif World2 and not string.find(_G.Settings.SelectMon, "Ship") and (NPCPosition.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+					elseif World2 and not string.find(_G.Settings.SelectMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
 					end
 				end
