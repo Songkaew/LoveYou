@@ -4960,7 +4960,7 @@ spawn(function()
 									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 									task.wait(0.5)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
-									task.wait(0.5)
+									task.wait(0.1)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
 									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
