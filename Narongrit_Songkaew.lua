@@ -12366,17 +12366,6 @@ function Maxincrement()
 end;
 
 coroutine.wrap(function()
-    task.spawn(function()
-        xpcall(function()
-            local ac = CombatFrameworkR.activeController
-            ac:attack()
-        end, function(x)
-            print("[ERROR] Fast Attack: "..x)
-        end)
-    end)
-end)()
-
-coroutine.wrap(function()
     while task.wait() do
         local ac = CombatFrameworkR.activeController
         if ac and ac.equipped then
