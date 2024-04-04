@@ -4949,14 +4949,14 @@ spawn(function()
 						--if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
 							_G.PosMonFarmLvSetCFarme = 1
 							repeat wait()
-								--if _G.Smooth then
-								--	task.wait()
-								--	_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-								--	task.wait(2)
-								--	_G.PosMonFarmLvSetCFarme = 2
-								--	task.wait(.01)
-								--else
-									task.wait()
+								if _G.Smooth == true then
+									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
+									task.wait(2)
+									_G.PosMonFarmLvSetCFarme = 2
+									task.wait(.01)
+								elseif _G.Smooth == false then
+									_G.PosMonLv = CFrameMon
+									task.wait(.01)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 									task.wait(0.5)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
@@ -4964,7 +4964,13 @@ spawn(function()
 									_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
 									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
-								--end
+								else
+									_G.PosMonLv = CFrameMon
+									task.wait(.15)
+									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
+									task.wait(.15)
+									_G.PosMonFarmLvSetCFarme = 2
+								end
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
 						--end
 					end
