@@ -32,7 +32,7 @@ if not game:IsLoaded() then
 		game.Loaded:Wait()
 	until game:IsLoaded()
 end
-if _G.Seraphy_Version == 092 then
+
 	local function ry(so)
 		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,true,so,1);
 		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,false,so,1);
@@ -48,29 +48,6 @@ if _G.Seraphy_Version == 092 then
 			end
 		end
 	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-	repeat
-		wait()
-		if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-			if _G.Team == "Pirate" then
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam
-													 .Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do
-					v.Function()
-				end
-			elseif _G.Team == "Marine" then
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam
-													 .Container.Marines.Frame.ViewportFrame.TextButton.Activated)) do
-					v.Function()
-				end
-			else
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam
-													 .Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do
-					v.Function()
-				end
-			end
-		end
-	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-end
 -- Gui to Lua
 -- Version: 3.2
 -- [Place Id Check]
