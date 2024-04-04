@@ -5964,17 +5964,11 @@ end)
 -- [Auto Saber]
 spawn(function()
 	while task.wait() do
-		pcall(function()
-			if _G.Settings.Auto_Saber  then
+		if _G.Settings.Auto_Saber  then
+			pcall(function()
 				if game.Players.LocalPlayer.Data.Level.Value >= 200 then
 					local QPlates = game:GetService("Workspace").Map.Jungle.QuestPlates
 					if QPlates["Plate1"].Button.BrickColor ~= BrickColor.new("Camo") then
-						if _G.Bypass and (QPlates["Plate1"].Button.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
-							BTP(QPlates["Plate1"].Button.CFrame)
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrameQPlates["Plate1"].Button.CFrame
-						else
-							Tween(QPlates["Plate1"].Button.CFrame)
-						end
 						Tween(QPlates["Plate1"].Button.CFrame)
 					elseif QPlates["Plate2"].Button.BrickColor ~= BrickColor.new("Camo") then
 						Tween(QPlates["Plate2"].Button.CFrame)
@@ -5985,17 +5979,16 @@ spawn(function()
 					elseif QPlates["Plate5"].Button.BrickColor ~= BrickColor.new("Camo") then
 						Tween(QPlates["Plate5"].Button.CFrame)
 					end
-				pcall(function()
 					if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.CanCollide == false and game:GetService("Workspace").Map.Desert.Burn.Part.CanCollide == true then
 						EquipWeapon("Torch")
 						if not game.Players.LocalPlayer.Backpack:FindFirstChild("Torch") or not game.Players.LocalPlayer.Character:FindFirstChild("Torch") then
-							TweenMax(CFrame.new(-1611.04834, 14.1642542, 163.084183, -0.735830009, 9.42659852e-08, -0.677166283, 8.9578748e-08, 1, 4.18674873e-08, 0.677166283, -2.98523553e-08, -0.735830009)) --(-1610.245, 12.6660957, 163.670731, -0.984807968, -0.167722315, 0.0449818224, -0.17364946, 0.951244235, -0.254912257, -3.42372805e-05, -0.258850574, -0.965917826))
+							Tween(CFrame.new(-1611.04834, 14.1642542, 163.084183, -0.735830009, 9.42659852e-08, -0.677166283, 8.9578748e-08, 1, 4.18674873e-08, 0.677166283, -2.98523553e-08, -0.735830009)) --(-1610.245, 12.6660957, 163.670731, -0.984807968, -0.167722315, 0.0449818224, -0.17364946, 0.951244235, -0.254912257, -3.42372805e-05, -0.258850574, -0.965917826))
 						end EquipWeapon("Torch")
 						if game.Players.LocalPlayer.Backpack:FindFirstChild("Torch") or game.Players.LocalPlayer.Character:FindFirstChild("Torch") then
 							EquipWeapon("Torch")
 							game:GetService("Workspace").Map.Desert.Burn.Fire.Size = Vector3.new(10,10,10)
 							game:GetService("Workspace").Map.Desert.Burn.Fire.CanCollide = false
-							TweenMax(CFrame.new(1112.41394, 4.94926691, 4351.87061, 0.589851618, 0.00181679102, -0.807509601, -0.000830773904, 0.999998331, 0.00164302031, 0.80751121, -0.000298280298, 0.589852154))
+							Tween(CFrame.new(1112.41394, 4.94926691, 4351.87061, 0.589851618, 0.00181679102, -0.807509601, -0.000830773904, 0.999998331, 0.00164302031, 0.80751121, -0.000298280298, 0.589852154))
 						end
 					end
 					if game:GetService("Workspace").Map.Desert.Burn.Part.CanCollide == false and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan") ~= 0 then
@@ -6006,14 +5999,13 @@ spawn(function()
 							EquipWeapon("Cup")
 							game:GetService("Workspace").Map.Ice.ParticleDrop.Water.Size = Vector3.new(40,40,40)
 							game:GetService("Workspace").Map.Ice.ParticleDrop.Water.Transparency = 0
-							TweenMax(CFrame.new(1397.471435546875, 37.47333908081055, -1321.564208984375))
+							Tween(CFrame.new(1397.471435546875, 37.47333908081055, -1321.564208984375))
 						end
 					end
 					if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedCup == false then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan")
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
 					end
-				end)
 					if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").TalkedSon == true and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == false then
 						for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Name == "Mob Leader" then
@@ -6056,7 +6048,7 @@ spawn(function()
 					end
 					pcall(function()
 						if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").UsedRelic == false and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress").KilledMob == true then
-							TweenMax(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
+							Tween(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
 							if not game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or not game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
 								wait(.1)
@@ -6064,7 +6056,7 @@ spawn(function()
 							end game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
 							if game.Players.LocalPlayer.Backpack:FindFirstChild("Relic") or game.Players.LocalPlayer.Character:FindFirstChild("Relic") then
 								game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Relic"])
-								TweenMax(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
+								Tween(CFrame.new(-1407.0384521484375, 29.977327346801758, 4.923530578613281))
 								game:GetService("Workspace").Map.Jungle.Final.Invis.Size = Vector3.new(20,20,20)
 								game:GetService("Workspace").Map.Jungle.Final.Invis.CanCollide = false
 							end
@@ -6109,8 +6101,8 @@ spawn(function()
 						end
 					end)
 				end
-			end
-		end)
+			end)
+		end
 	end
 end)
     
