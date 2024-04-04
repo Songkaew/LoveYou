@@ -1806,8 +1806,8 @@ function Tween(...)
 			Speed = 200
 			Speedx = 180
 		elseif Distance < 550 then
-			Speed = 330
-			Speedx = 330
+			Speed = 300
+			Speedx = 280
 		elseif Distance < 800 then
 			Speed = 333
 			Speedx = 333
@@ -8753,7 +8753,7 @@ spawn(function()
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 234 then
+					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid.JumpPower = 0
 						v.Humanoid.WalkSpeed = 0
@@ -8774,7 +8774,7 @@ spawn(function()
 			pcall(function()
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 					if BringMobFarm and (Ms == "Factory Staff" or Ms == "Monkey" or Ms == "Yeti" or Ms == "The Gorilla King" or Ms == "Gorilla" or Ms == "Dragon Crew Warrior" or Ms == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 280 then
-						v.HumanoidRootPart.Size = Vector3.new(100,100,100) --100
+						v.HumanoidRootPart.Size = Vector3.new(44,44,44) --100
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(12) --14
 						v.HumanoidRootPart.CanCollide = false
@@ -8783,8 +8783,8 @@ spawn(function()
 							v.Humanoid.Animator:Destroy()
 						end
 						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-				elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 350 then
-						v.HumanoidRootPart.Size = Vector3.new(30,30,30)
+				elseif BringMobFarm and v.Parent == Enemies and (v.HumanoidRootPart.Position-PosMon.Position).Magnitude <= 400 then
+						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(8)
 						v.HumanoidRootPart.CanCollide = false
