@@ -5132,15 +5132,8 @@ Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที
 	_G.Settings.MonSelectFarm = value
 	SaveSettings()
 end)
-Main:Toggle('Auto Quest Select Mon\nออโต้รับเคสมอนที่เลือก',_G.Settings.QSelectFarmMon,function(value)
-	_G.Settings.QSelectFarmMon = value
-	QSelectFarmMon = value
-	SaveSettings()
-end)
-Main:Dropdown("Select Mon",tableMon,_G.Settings.SelectMon,function(value)
-    _G.Settings.SelectMon = value
-	SelectMonster = value
-    SaveSettings()
+Main:Dropdown("Select Mon",tableMon,"",function(value)
+	SelectMonstera = value
 end)
 
 spawn(function()
@@ -5148,50 +5141,29 @@ spawn(function()
 		if _G.Settings.MonSelectFarm then
 			pcall(function()
 				CheckLevel()
-				if QSelectFarmMon then
-					local args = {
-						[1] = "StartQuest",
-						[2] = NameQuest,
-						[3] = QuestLv
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game:GetService("Workspace").Enemies:FindFirstChild(_G.Settings.SelectMon) then
-					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if v.Name == _G.Settings.SelectMon and v.Humanoid.Health > 0 then
-							repeat wait() 
-								if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-								end
-								EquipWeapon(_G.Select_Weapon)
-								PosMon = v.HumanoidRootPart.CFrame
-								v.HumanoidRootPart.CanCollide = false 
-								v.Head.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-								BringMobFarm = true
-								Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 30) * CFrame.Angles(math.rad(180), 0, 0))
-								game:GetService 'VirtualUser':CaptureController()
-								game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-							until not _G.Settings.MonSelectFarm or not v.Parent or v.Humanoid.Health <= 0 
-						end
-					end
-				else
-					Tween(_G.PosMonSelect) UnEquipWeapon(_G.Select_Weapon)
-					BringMobFarm = false
-					if World1 and (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-					elseif World1 and not (_G.Settings.SelectMon == "Fishman Commando" or _G.Settings.SelectMon == "Fishman Warrior") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(3864.8515625, 6.6796875, - 1926.7841796875))
-					elseif World2 and string.find(_G.Settings.SelectMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-					elseif World2 and not string.find(_G.Settings.SelectMon, "Ship") and (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(- 6508.5581054688, 89.034996032715, - 132.83953857422))
+				for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+					if v.Name == SelectMonstera and v.Humanoid.Health > 0 then
+						repeat wait() 
+							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+							end
+							EquipWeapon(_G.Select_Weapon)
+							PosMon = v.HumanoidRootPart.CFrame
+							v.HumanoidRootPart.CanCollide = false 
+							v.Head.CanCollide = false
+							v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+							BringMobFarm = true
+							Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 30)
+							game:GetService 'VirtualUser':CaptureController()
+							game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+						until not _G.Settings.MonSelectFarm or not v.Parent or v.Humanoid.Health <= 0 
 					end
 				end
 			end)
 		end
 	end
 end)
+
 spawn(function() 
     while wait() do
         if _G.Settings.MonSelectFarm then 
@@ -12445,4 +12417,3 @@ if slashHit then
 end
 
 --HEE
- 
