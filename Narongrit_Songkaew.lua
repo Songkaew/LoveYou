@@ -32,7 +32,22 @@ if not game:IsLoaded() then
 		game.Loaded:Wait()
 	until game:IsLoaded()
 end
-
+if _G.Seraphy_Version == 092 then
+	local function ry(so)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,true,so,1);
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,false,so,1);
+	end;
+	repeat wait()
+		if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
+			if _G.Teams == "Pirates" then
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
+			elseif _G.Teams == "Marine" then
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton)
+			else
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
+			end
+		end
+	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
 	repeat
 		wait()
@@ -12444,7 +12459,9 @@ task.spawn(function()
 							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
-					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
+					Attack()
+					AttackFunction()
+					if tick() - cooldownfastattack > 3 then wait(.01) cooldownfastattack = tick() end
 				end
 			end
         end)
