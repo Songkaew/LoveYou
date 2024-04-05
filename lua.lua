@@ -8719,13 +8719,13 @@ Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
 	SaveSettings()
 end)
 
---[[task.spawn(function()
+task.spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				local questTarget = Ms
 				for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
-					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 345 then
+					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 250 then
 						-- ตั้ง CFrame ของมอนเตอร์ให้ตรงกับตำแหน่งที่กำหนด
 						mob.HumanoidRootPart.CFrame = PosMon
 						-- ปรับแต่งคุณสมบัติของมอนเตอร์
@@ -8741,14 +8741,14 @@ end)
 			end
 		end)
 	end
-end)]]
+end)
 
 spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
+					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 400 then
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid.JumpPower = 0
 						v.Humanoid.WalkSpeed = 0
