@@ -12349,7 +12349,6 @@ task.spawn(function()
 		if  _G.FastAttackX then
 			if SeraphFrame.activeController then
 				if v.Humanoid.Health > 0 then
-					--SeraphFrame.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
 					SeraphFrame.activeController.timeToNextAttack = 0
 					SeraphFrame.activeController.focusStart = 0
 					SeraphFrame.activeController.hitboxMagnitude = 110
