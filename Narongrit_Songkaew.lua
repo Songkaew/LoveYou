@@ -2412,26 +2412,6 @@ coroutine.wrap(function()
 	end
 end)()
 
-coroutine.wrap(function()
-	while task.wait() do --.1
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				AttackFunctionNaJa()
-				if tick() - cooldownfastattack > .175 then
-					AttackFunction()
-					wait(.01)
-					cooldownfastattack = tick()
-				end
-			elseif _G.FastAttack2 == false then
-				if ac.hitboxMagnitude ~= 55 then
-					ac.hitboxMagnitude = 55
-				end
-				--ac:attack()
-			end
-		end
-	end
-end)()
 
 print("End script")
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/ser/main/OBF-Fast.lua"))() -- fast |  ตีเร็ว
@@ -2469,7 +2449,7 @@ Attack = function()
         game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getAllBladeHits(77), 3, "") -- ส่งสัญญาณโดยให้มีการเรียกใช้ฟังก์ชันที่มีความสมดุลกัน
     end
 end
-function AttackX()
+function Attack()
     local ac = SeraphFrame.activeController
     if not ac or not ac.equipped then
         return
@@ -5012,65 +4992,59 @@ end)
 			if _G.Auto_Farm_Level then
 				pcall(function()
 					CheckLevel()
-					local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-					if not string.find(QuestTitle, Ms) then
-						game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
-					end
-					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-						if _G.TweentoQuest then
-							Tween(CFrameQ)
-							if (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 28 then
-								BringMobFarm = false
-								game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
-							end
-						else
-							local args = {
-								[1] = "StartQuest",
-								[2] = NameQuest,
-								[3] = QuestLv
-							}
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
-							BringMobFarm = false
-						end
-					elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 						if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
 							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 									if v.Name == Ms then
 									repeat wait()
-										if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-										end
-										EquipWeapon(_G.Select_Weapon)
-										BringMobFarm = true
-										PosMon = v.HumanoidRootPart.CFrame
-										if _G.Smooth == true then
-											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 180 then
-												game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
+										if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, Ms) then
+											game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer("AbandonQuest")
+										else
+											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 											end
-											Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
-										elseif _G.Smooth == false then
-											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-												if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
-													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,25,25)
-													Attack()
-													AttackXFunction()
-													FASTAttack()
-												else
+											EquipWeapon(_G.Select_Weapon)
+											BringMobFarm = true
+											PosMon = v.HumanoidRootPart.CFrame
+											if _G.Smooth == true then
+												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 180 then
 													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
 												end
+												Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
+											elseif _G.Smooth == false then
+												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+													if v.Humanoid.Health <= v.Humanoid.MaxHealth * 40/100 then 
+														RandomPosPakType = math.random(1, 4)
+														if RandomPosPakType == 1 then
+															game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,5)
+														elseif RandomPosPakType == 2 then
+															game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(5,15,5)
+														elseif RandomPosPakType == 3 then
+															game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
+														elseif RandomPosPakType == 4 then
+															game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(-15,15,5)
+														else
+															game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,5)
+														end
+														Attack()
+														AttackXFunction()
+														FASTAttack()
+													else
+														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,30,0)
+													end
+												else
+													Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
+												end
 											else
-												Tween(v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 0))
+												Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
 											end
-										else
-											Tween(v.HumanoidRootPart.CFrame * CFrame.new(10, 20, 30))
+											if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+												game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
+											end
+											game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+											v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(60,60,60)
 										end
-										if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
-											game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game) game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game)
-										end
-										game:GetService 'VirtualUser':CaptureController() game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(60,60,60)
 									until not _G.Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false -- or not v.Parent or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
 									end
 								end
@@ -5089,6 +5063,22 @@ end)
 								Tween(_G.PosMonLv) UnEquipWeapon(_G.Select_Weapon)
 								BringMobFarm = false
 							end
+						end
+					else
+						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+								if v.Name == Ms then
+									if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+										game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+									end
+								end
+							end
+						end
+						if (CFrameQ * CFrame.new(0, 50, 0).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+							BringMobFarm = false
+							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+						else
+							Tween(CFrameQ * CFrame.new(0, 50, 0))
 						end
 					end
 				end)
@@ -6032,7 +6022,7 @@ spawn(function()
 										game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 										--AttackOKKO()
 										Tween(y.HumanoidRootPart.CFrame * CFrame.new(0,15,0))
-									until not _G.Settings.Auto_Saber 
+									until not _G.Settings.Auto_Saber
 								end
 							end
 						end
@@ -8709,13 +8699,13 @@ Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
 	SaveSettings()
 end)
 
---[[task.spawn(function()
+task.spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				local questTarget = Ms
 				for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
-					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 345 then
+					if mob.Name == questTarget and (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 250 then
 						-- ตั้ง CFrame ของมอนเตอร์ให้ตรงกับตำแหน่งที่กำหนด
 						mob.HumanoidRootPart.CFrame = PosMon
 						-- ปรับแต่งคุณสมบัติของมอนเตอร์
@@ -8731,14 +8721,14 @@ end)
 			end
 		end)
 	end
-end)]]
+end)
 
 spawn(function()
 	while task.wait() do
 		pcall(function()
 			if BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 280 then
+					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 400 then
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid.JumpPower = 0
 						v.Humanoid.WalkSpeed = 0
@@ -12334,61 +12324,6 @@ function Click()
 end
 
 _G.randomNumberFastAttck = 0
-task.spawn(function()
-	while true do task.wait()
-		if  _G.FastAttackX then
-			if SeraphFrame.activeController then
-				if v.Humanoid.Health > 0 then
-					--SeraphFrame.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-					SeraphFrame.activeController.timeToNextAttack = 0
-					SeraphFrame.activeController.focusStart = 0
-					SeraphFrame.activeController.hitboxMagnitude = 110
-					SeraphFrame.activeController.humanoid.AutoRotate = true
-					SeraphFrame.activeController.increment = 4
-				end
-			end
-		end
-	end
-end)
-coroutine.wrap(function()
-	while task.wait() do
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				pcall(function()
-					repeat task.wait(.01)
-						AttackFunction()
-						if tick() - cooldownfastattackk > 0.9 then 
-							cooldownfastattackk = tick()
-						end
-						AttackFunctionRandomFast()
-					until not _G.FastAttackX
-				end)
-			end
-		end
-	end
-end)()
-coroutine.wrap(function()
-	while task.wait(.1) do
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				AttackFunction()
-				if _G.Smooth == true then
-					if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
-				elseif _G.Smooth == false then
-					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
-				else
-					if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
-				end
-			elseif _G.FastAttackX then
-				if ac.hitboxMagnitude ~= 55 then
-					ac.hitboxMagnitude = 55
-				end
-			end
-		end
-	end
-end)()
 
 task.spawn(function()
     while task.wait() do
@@ -12421,10 +12356,8 @@ task.spawn(function()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									AttackFunctionRandomFast()
 									Attack()
 									Click()
-									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 								end
 							end
 						end
@@ -12434,7 +12367,6 @@ task.spawn(function()
 							FASTAttack()
 						else
 							AttackX()
-							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
 					Attack()
