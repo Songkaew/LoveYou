@@ -468,41 +468,6 @@ local RigControllerR = getupvalues(RigController)[2]
 local realbhit = require(game.ReplicatedStorage.CombatFramework.RigLib)
 local cooldownfastattack = tick()
 
---[Disabled Damage Interface]
-function DisabledDamage()
-	task.spawn(function()
-		pcall(function()
-			while task.wait() do
-				game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
-			end
-		end)
-	end)
-end
-
---[Camera Shaker Function]
-function CameraShaker()
-	task.spawn(function()
-		local Camera = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-		pcall(function()
-			while task.wait() do
-				Camera.CameraShakeInstance.CameraShakeState.Inactive = 0
-			end
-		end)
-	end)
-end
-
---[Deleted Effect Auto]
-
-game:GetService("RunService").Heartbeat:Connect(function()
-	for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
-		pcall(function()
-			if v.Name == ("CurvedRing") or v.Name == ("SlashHit") or v.Name == ("SwordSlash") or v.Name == ("SlashTail") or v.Name == ("Sounds") then
-				v:Destroy()
-			end
-		end)
-	end
-end)
-
 --[Function RmFzdCBBdHRhY2s=]
 
 function CurrentWeapon()
@@ -655,13 +620,13 @@ function Click()
 	game:GetService('VirtualUser'):ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
 end
 
---local library = loadstring(game:HttpGet("https://pastebin.com/raw/bz0R9g7G"))()
---local Window = library:NaJa()
+local library = loadstring(game:HttpGet("https://pastebin.com/raw/bz0R9g7G"))()
+local Window = library:NaJa()
 
---local A = Window:Tab("Main:Autofarm","6022668898")
+local A = Window:Tab("Main:Autofarm","6022668898")
 
---local Main1Right = A:Section("Main","Right")
---local Main1Left = A:Section("Main","Left")
+local Main1Right = A:Section("Main","Right")
+local Main1Left = A:Section("Main","Left")
 -- [Fast Attack]
 
 function CheckPlyayers()
@@ -690,18 +655,16 @@ coroutine.wrap(function()
 							cooldownfastattack = tick()
 						end
 					end
-					CameraShaker()
-					DisabledDamage()
 				end
 			end
 		end)
 	end
 end)()
---[[Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",_G.Settings.AutoFarmKaitun,function(a)
+Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",_G.Settings.AutoFarmKaitun,function(a)
     _G.Settings.AutoFarmKaitun = a
 	getgenv().AutoFarmKaitun = a
 	SaveSettings()
-end)]]
+end)
 
 spawn(function()
 	while wait(10) do
