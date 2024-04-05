@@ -5065,6 +5065,9 @@ end)
 							end
 						end
 					else
+						if _G.TweentoQuest == false then
+							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+						end
 						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 							if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 								if v.Name == Ms then
@@ -8531,15 +8534,6 @@ spawn(function()
 Settings:Toggle("Tween to Quest",_G.Settings.TweentoQuest,function(a)
 	_G.Settings.TweentoQuest = a
     _G.TweentoQuest = a
-	if a == true then
-		_G.TweentoQuest = true 
-		_G.NoTweentoQuest = false 
-	end
-	if a == false then
-		_G.NoTweentoQuest = true 
-		_G.TweentoQuest = false 
-	end
-	
 	SaveSettings()
 end)
 
