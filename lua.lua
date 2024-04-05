@@ -436,7 +436,7 @@ if randomNumberUIKaitun == "" or randomNumberUIKaitun == nil then
 	print("UI เดิม")
 end
 
-wait(1)
+--[[wait(1)
 
 local player = game:GetService("Players").LocalPlayer
 if player.PlayerGui:FindFirstChild("Welcome") then
@@ -444,7 +444,9 @@ if player.PlayerGui:FindFirstChild("Welcome") then
     print("GUI ชื่อ 'Welcome' ถูกลบแล้ว")
 else
     print("ไม่พบ GUI ชื่อ 'Welcome'")
-end
+end]]
+
+
 local replicatedStorage = game:GetService("ReplicatedStorage")
 
 if replicatedStorage:FindFirstChild("Effect") then
@@ -616,9 +618,9 @@ spawn(function()
 			if game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):GetState() == Enum.HumanoidStateType.Dead then 
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+					--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+					--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+					--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 					repeat wait()
 					until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
 				end
@@ -652,13 +654,14 @@ function Click()
 	game:GetService('VirtualUser'):CaptureController()
 	game:GetService('VirtualUser'):ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
 end
-local library = loadstring(game:HttpGet("https://pastebin.com/raw/bz0R9g7G"))()
-local Window = library:NaJa()
 
-local A = Window:Tab("Main:Autofarm","6022668898")
+--local library = loadstring(game:HttpGet("https://pastebin.com/raw/bz0R9g7G"))()
+--local Window = library:NaJa()
 
-local Main1Right = A:Section("Main","Right")
-local Main1Left = A:Section("Main","Left")
+--local A = Window:Tab("Main:Autofarm","6022668898")
+
+--local Main1Right = A:Section("Main","Right")
+--local Main1Left = A:Section("Main","Left")
 -- [Fast Attack]
 
 function CheckPlyayers()
@@ -668,6 +671,7 @@ function CheckPlyayers()
 		end
 	end
 end
+
 coroutine.wrap(function()
 	while wait() do
 		pcall(function()
@@ -693,11 +697,12 @@ coroutine.wrap(function()
 		end)
 	end
 end)()
-Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",_G.Settings.AutoFarmKaitun,function(a)
+--[[Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",_G.Settings.AutoFarmKaitun,function(a)
     _G.Settings.AutoFarmKaitun = a
 	getgenv().AutoFarmKaitun = a
 	SaveSettings()
-end)
+end)]]
+
 spawn(function()
 	while wait(10) do
 		if getgenv().AutoFarmKaitun then
