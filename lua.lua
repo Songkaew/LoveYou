@@ -108,7 +108,7 @@ local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
 
 
-getgenv().Settings = {
+_G.Settings = {
 	SelectTeam = "Pirate",
 	Bypass = true,
 
@@ -123,11 +123,11 @@ function LoadSettings()
 			makefolder("Kz Hub Kaitan Free Scripts/Blox Fruits/")
 		end
 		if not isfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			writefile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(getgenv().Settings))
+			writefile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
 		else
 			local L_54_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 			for L_55_forvar0, L_56_forvar1 in pairs(L_54_) do
-				getgenv().Settings[L_55_forvar0] = L_56_forvar1
+				_G.Settings[L_55_forvar0] = L_56_forvar1
 			end
 		end
 	else
@@ -142,7 +142,7 @@ function SaveSettings()
 		else
 			local L_57_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 			local L_58_ = {}
-			for L_59_forvar0, L_60_forvar1 in pairs(getgenv().Settings) do
+			for L_59_forvar0, L_60_forvar1 in pairs(_G.Settings) do
 				L_58_[L_59_forvar0] = L_60_forvar1
 			end
 			writefile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(L_58_))
@@ -160,9 +160,9 @@ end;
 
 repeat wait()
 	if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
-		if getgenv().Settings.Teams == "Pirates" then
+		if _G.Settings.Teams == "Pirates" then
 			ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
-		elseif getgenv().Settings.Teams == "Marine" then
+		elseif _G.Settings.Teams == "Marine" then
 			ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton)
 		else
 			ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
@@ -239,7 +239,7 @@ end
 
 spawn(function()
 	while wait() do wait()
-		if getgenv().Settings.AutoFarmKaitun then
+		if getgenv().AutoFarmKaitun then
 			pcall(function()
 				repeat wait()
 					if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -254,7 +254,7 @@ spawn(function()
 							v.CanCollide = false
 						end
 					end
-				until not getgenv().Settings.AutoFarmKaitun
+				until not getgenv().AutoFarmKaitun
 			end)
 		else
 			if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -337,8 +337,8 @@ function Tween(...)
     local q = z:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], B, {CFrame = p})
     q:Play()
 	
-	if getgenv().Settings.Bypass then
-		if Distance > 3000 and not AutoFarmMaterial and not getgenv().Settings.Auto_Raids and not (
+	if getgenv().Bypass then
+		if Distance > 3000 and not AutoFarmMaterial and not getgenv().Auto_Raids and not (
 			game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or 
 			game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or 
 			game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or 
@@ -678,7 +678,7 @@ coroutine.wrap(function()
 		pcall(function()
 			local ac = CombatFrameworkR.activeController
 			if ac and ac.equipped then
-				if getgenv().Settings.AutoFarmKaitun then
+				if getgenv().AutoFarmKaitun then
 					if CheckPlyayers() == true then
 						AttackFunction()
 						AttackPlayersFunction()
@@ -686,8 +686,9 @@ coroutine.wrap(function()
 					else
 						AttackFunction()
 						AttackPlayersFunction()
-						if getgenv().Settings.TypeFastAttack == "Very Fast" then
-							if tick() - cooldownfastattack > tonumber(0.75) then wait(0.1) cooldownfastattack = tick() end
+						if tick() - cooldownfastattack > tonumber(0.75) then
+							wait(0.1)
+							cooldownfastattack = tick()
 						end
 					end
 					CameraShaker()
@@ -697,13 +698,14 @@ coroutine.wrap(function()
 		end)
 	end
 end)()
-Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",getgenv().Settings.AutoFarmKaitun,function(a)
-    getgenv().Settings.AutoFarmKaitun = a
+Main1Right:Toggle("Auto Farm Kaitun\nออโต้ฟาร์มไก่ตัน",_G.Settings.AutoFarmKaitun,function(a)
+    _G.Settings.AutoFarmKaitun = a
+	getgenv().AutoFarmKaitun = a
 	SaveSettings()
 end)
 spawn(function()
 	while wait(10) do
-		if getgenv().Settings.AutoFarmKaitun then
+		if getgenv().AutoFarmKaitun then
 			pcall(function()
 				if game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
@@ -736,7 +738,7 @@ end
 
 spawn(function()
 	while wait() do
-		if getgenv().Settings.AutoFarmKaitun then
+		if getgenv().AutoFarmKaitun then
 			pcall(function()
 				if World1 then
 					local Lv = game.Players.LocalPlayer.Data.Level.Value
@@ -765,7 +767,7 @@ end)
 spawn(function()
 	while task.wait() do
 		pcall(function()
-			if getgenv().Settings.AutoFarmKaitun then
+			if getgenv().AutoFarmKaitun then
 				if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value < 2550 then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee",game:GetService("Players").LocalPlayer.Data.Points.Value)
 				elseif game:GetService("Players").LocalPlayer.Data.Stats.Defense.Level.Value < 2450 then
@@ -779,7 +781,7 @@ end)
 spawn(function()
 	while task.wait() do
 		pcall(function()
-			if getgenv().Settings.AutoFarmKaitun and BringMobFarm then
+			if getgenv().AutoFarmKaitun and BringMobFarm then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 380 then
 						v.HumanoidRootPart.CFrame = PosMon
@@ -842,7 +844,7 @@ task.spawn(function()
 										game:GetService 'VirtualUser':CaptureController()
 										game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
 										v.Head.CanCollide = false v.Humanoid.WalkSpeed = 0 v.HumanoidRootPart.CanCollide = false v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-									until not getgenv().Settings.AutoFarmKaitun or not getgenv().Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v.Parent --or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
+									until not getgenv().AutoFarmKaitun or not getgenv().Auto_Farm_Level or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v.Parent --or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name)
 								end
 							end
 						end
@@ -867,7 +869,7 @@ task.spawn(function()
 										Tween(g.CFrame * CFrame.new(0,55,0))
 										wait(.5)
 										getgenv().PosMonFarmLvSetCFarme = 2
-									until not getgenv().Settings.AutoFarmKaitun or not getgenv().Auto_Farm_Level or getgenv().PosMonFarmLvSetCFarme == 2
+									until not getgenv().AutoFarmKaitun or not getgenv().Auto_Farm_Level or getgenv().PosMonFarmLvSetCFarme == 2
 								end
 							end
 							BringMobFarm = false
@@ -904,7 +906,7 @@ function FarmPole()
 						Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,-25,25))
 						game:GetService'VirtualUser':CaptureController()
 						game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-					until not getgenv().Settings.AutoFarmKaitun or not v.Parent or v.Humanoid.Health <= 0
+					until not getgenv().AutoFarmKaitun or not v.Parent or v.Humanoid.Health <= 0
 				end
 			end 
 		end
