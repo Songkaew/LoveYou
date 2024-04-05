@@ -116,16 +116,16 @@ _G.Settings = {
 print("Settings Service")
 function LoadSettings()
 	if readfile and writefile and isfile and isfolder then
-		if not isfolder("Kz Hub Kaitan Free Scripts") then
-			makefolder("Kz Hub Kaitan Free Scripts")
+		if not isfolder("Kz Hub Kaitun Free Scripts") then
+			makefolder("Kz Hub Kaitun Free Scripts")
 		end
-		if not isfolder("Kz Hub Kaitan Free Scripts/Blox Fruits/") then
-			makefolder("Kz Hub Kaitan Free Scripts/Blox Fruits/")
+		if not isfolder("Kz Hub Kaitun Free Scripts/Blox Fruits/") then
+			makefolder("Kz Hub Kaitun Free Scripts/Blox Fruits/")
 		end
-		if not isfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			writefile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
+		if not isfile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+			writefile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
 		else
-			local L_54_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
+			local L_54_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 			for L_55_forvar0, L_56_forvar1 in pairs(L_54_) do
 				_G.Settings[L_55_forvar0] = L_56_forvar1
 			end
@@ -137,20 +137,21 @@ end
 
 function SaveSettings()
 	if readfile and writefile and isfile and isfolder then
-		if not isfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+		if not isfile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
 			LoadSettings()
 		else
-			local L_57_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
+			local L_57_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 			local L_58_ = {}
 			for L_59_forvar0, L_60_forvar1 in pairs(_G.Settings) do
 				L_58_[L_59_forvar0] = L_60_forvar1
 			end
-			writefile("Kz Hub Kaitan Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(L_58_))
+			writefile("Kz Hub Kaitun Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(L_58_))
 		end
 	else
 		return warn("Status : Undetected Executor")
 	end
 end
+
 LoadSettings()
 
 local function ry(so)
