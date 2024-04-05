@@ -648,12 +648,6 @@ if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
 		end)
 	end)
 end
---[Set flag Syn]
-
-if syn then
-	setfflag("HumanoidParallelRemoveNoPhysics", "False")
-	setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-end
 function Click()
 	game:GetService('VirtualUser'):CaptureController()
 	game:GetService('VirtualUser'):ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
@@ -899,6 +893,7 @@ function FarmPole()
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 						end
 						BringMobFarm = true
+						PosMon = v.HumanoidRootPart.CFrame
 						v.HumanoidRootPart.CanCollide = false
 						v.Humanoid.WalkSpeed = 0
 						v.Head.CanCollide = false
@@ -975,6 +970,8 @@ spawn(function()
 														v.HumanoidRootPart.CanCollide = false
 														v.Humanoid.WalkSpeed = 0
 														v.Head.CanCollide = false
+														BringMobFarm = true
+														PosMon = v.HumanoidRootPart.CFrame
 														v.HumanoidRootPart.Size = Vector3.new(100,100,100)
 														v.HumanoidRootPart.Transparency = 1
 														EquipWeapon(getgenv().MeleeSelect)
@@ -1009,6 +1006,8 @@ spawn(function()
 									EquipWeapon(getgenv().MeleeSelect)
 									v.HumanoidRootPart.Size = Vector3.new(60,60,60)
 									v.HumanoidRootPart.Transparency = 1
+									BringMobFarm = true
+									PosMon = v.HumanoidRootPart.CFrame
 									Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
 									if not getgenv().FastAttack or not getgenv().FastAttackO or getgenv().FastAttack or getgenv().FastAttackO or getgenv().SuperFastAttack then game:GetService'VirtualUser':CaptureController() game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) end
 								until v.Humanoid.Health <= 0 or getgenv().AutoSaber == false
@@ -1058,6 +1057,7 @@ spawn(function() -- AutoNewWorld
 											EquipWeapon(getgenv().MeleeSelect)
 										end
 										Tween(v.HumanoidRootPart.CFrame * CFrame.new(1,20,0))
+										BringMobFarm = true
 										PosMon = v.HumanoidRootPart.CFrame
 										v.Humanoid.NameDisplayDistance = 0
 										v.HumanoidRootPart.Size = Vector3.new(80,80,80)
@@ -1068,7 +1068,6 @@ spawn(function() -- AutoNewWorld
 										if v.Humanoid:FindFirstChild("Animator") then
 											v.Humanoid.Animator:Destroy()
 										end
-										BringMobFarm = true
 										v.Humanoid:ChangeState(11)
 										sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 									end)
