@@ -680,7 +680,6 @@ end
             end
         end
     end)
-    return ReturnFunctions
 
 
 FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
