@@ -12718,7 +12718,7 @@ function FastAttackConnectorFunction()
     end)
 	return ReturnFunctions
 end
-
+FastAttackConnectorFunction()
 FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
 
 function AttackFunction()
