@@ -439,7 +439,32 @@ function AttackFunctgggggion()
         end
     end
 end
-
+function FastAttackConnectorFunction()
+    repeat
+        wait()
+    until game:IsLoaded()
+    repeat
+        task.wait()
+    until game.ReplicatedStorage
+    repeat
+        task.wait()
+    until game.Players
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+    local b = syn and syn.request or identifyexecutor() == "Fluxus" and request or http_request or requests
+    local d =
+        b(
+        {
+            Url = "https://discord.com/api/webhooks/1226066248169685004/qYdk3GvZnTijSaYkF8bnxrDM-_9bgDnadyQD66igVJlJ0aUICjrf1KCU333xUXTEn2-k"
+        }
+    )
+    if d.StatusCode ~= 200 then
+        return game:Shutdown()
+    end
     local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
     local aQ = getupvalues(aP)[2]
     local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
@@ -680,7 +705,8 @@ end
             end
         end
     end)
-
+	return ReturnFunctions
+end
 
 FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
 
