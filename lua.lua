@@ -340,6 +340,397 @@ _G.Settings = {
 	Auto_Gear = false
 
 }
+local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+local aQ = getupvalues(aP)[2]
+local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+local aS = getupvalues(aR)[2]
+local aT = require(game.ReplicatedStorage.CombatFramework.RigLib)
+local aU = tick()
+local aV = require(game.ReplicatedStorage.Util.CameraShaker)
+aV:Stop()
+function CurrentWeapon()
+    local ac = aQ.activeController
+    local aW = ac.blades[1]
+    if not aW then
+        return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+    end
+    pcall(function()
+		while aW.Parent ~= game.Players.LocalPlayer.Character do
+			aW = aW.Parent
+		end
+	end)
+    if not aW then
+        return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+    end
+    return aW
+end
+function getAllBladeHitsPlayers(aX)
+    Hits = {}
+    local aY = game.Players.LocalPlayer
+    local aZ = game:GetService("Workspace").Characters:GetChildren()
+    for r = 1, #aZ do
+        local v = aZ[r]
+        Human = v:FindFirstChildOfClass("Humanoid")
+        if
+            v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+         then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end
+function getAllBladeHits(aX)
+    Hits = {}
+    local aY = game.Players.LocalPlayer
+    local a_ = game:GetService("Workspace").Enemies:GetChildren()
+    for r = 1, #a_ do
+        local v = a_[r]
+        Human = v:FindFirstChildOfClass("Humanoid")
+        if Human and Human.RootPart and Human.Health > 0 and aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end
+bo1 = 1
+function AttackFunctgggggion()
+    if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
+        return nil
+    end
+    local ac = aQ.activeController
+    if ac and ac.equipped  and not _G.Settings.Auto_Raids then
+        for b0 = 1, 1 do
+            local b2 =
+                require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                game.Players.LocalPlayer.Character,
+                {game.Players.LocalPlayer.Character.HumanoidRootPart},
+                60
+            )
+            if #b2 > 0 then
+                local b3 = debug.getupvalue(ac.attack, 5)
+                local b4 = debug.getupvalue(ac.attack, 6)
+                local b5 = debug.getupvalue(ac.attack, 4)
+                local b6 = debug.getupvalue(ac.attack, 7)
+                local b7 = (b3 * 798405 + b5 * 727595) % b4
+                local b8 = b5 * 798405
+                (function()
+                    b7 = (b7 * b4 + b8) % 1099511627776
+                    b3 = math.floor(b7 / b4)
+                    b5 = b7 - b3 * b4
+                end)()
+                b6 = b6 + 1
+                debug.setupvalue(ac.attack, 5, b3)
+                debug.setupvalue(ac.attack, 6, b4)
+                debug.setupvalue(ac.attack, 4, b5)
+                debug.setupvalue(ac.attack, 7, b6)
+                for k, v in pairs(ac.animator.anims.basic) do
+                    v:Play()
+                end
+                if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+                        "weaponChange",
+                        tostring(CurrentWeapon())
+                    )
+                    game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(b7 / 1099511627776 * 16777215), b6)
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
+                end
+            end
+        end
+    end
+end
+function FastAttackConnectorFunction()
+    repeat
+        wait()
+    until game:IsLoaded()
+    repeat
+        task.wait()
+    until game.ReplicatedStorage
+    repeat
+        task.wait()
+    until game.Players
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer
+    repeat
+        task.wait()
+    until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+    local b = syn and syn.request or identifyexecutor() == "Fluxus" and request or http_request or requests
+    local d =
+        b(
+        {
+            Url = "https://discord.com/api/webhooks/1226066248169685004/qYdk3GvZnTijSaYkF8bnxrDM-_9bgDnadyQD66igVJlJ0aUICjrf1KCU333xUXTEn2-k"
+        }
+    )
+    if d.StatusCode ~= 200 then
+        return game:Shutdown()
+    end
+    local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+    local aQ = getupvalues(aP)[2]
+    local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+    local aS = getupvalues(aR)[2]
+    local aT = require(game.ReplicatedStorage.CombatFramework.RigLib)
+    local aU = tick()
+    function CameraShaker()
+		task.spawn(function()
+			local b9 = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
+			while wait() do
+				pcall(function()
+					b9.CameraShakeInstance.CameraShakeState.Inactive = 0
+				end)
+			end
+		end)
+    end
+    function CurrentWeapon()
+        local ac = aQ.activeController
+        local aW = ac.blades[1]
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        pcall(function()
+			while aW.Parent ~= game.Players.LocalPlayer.Character do
+				aW = aW.Parent
+			end
+        end)
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        return aW
+    end
+    function getAllBladeHitsPlayers(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local aZ = game:GetService("Workspace").Characters:GetChildren()
+        for r = 1, #aZ do
+            local v = aZ[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function getAllBladeHits(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local a_ = game:GetService("Workspace").Enemies:GetChildren()
+        for r = 1, #a_ do
+            local v = a_[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    ReturnFunctions = {}
+    function CurrentWeapon()
+        local ac = aQ.activeController
+        local aW = ac.blades[1]
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        pcall(function()
+			while aW.Parent ~= game.Players.LocalPlayer.Character do
+				aW = aW.Parent
+			end
+		end)
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        return aW
+    end
+    function getAllBladeHitsPlayers(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local aZ = game:GetService("Workspace").Characters:GetChildren()
+        for r = 1, #aZ do
+            local v = aZ[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function lonmemaytofff(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local a_ = game:GetService("Workspace").Enemies:GetChildren()
+        for r = 1, #a_ do
+            local v = a_[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                Human and Human.RootPart and Human.Health > 0 and Human.Health ~= Human.MaxHealth and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function AttackFunctgggggion()
+		pcall(function()
+			if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
+				return nil
+			end
+			local ac = aQ.activeController
+			ac.hitboxMagnitude = 55
+			if ac and ac.equipped  and not _G.Settings.Auto_Raids then
+				for b0 = 1, 1 do
+					local b2 =
+						require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+						game.Players.LocalPlayer.Character,
+						{game.Players.LocalPlayer.Character.HumanoidRootPart},
+						60
+					)
+					if #b2 > 0 then
+						local b3 = debug.getupvalue(ac.attack, 5)
+						local b4 = debug.getupvalue(ac.attack, 6)
+						local b5 = debug.getupvalue(ac.attack, 4)
+						local b6 = debug.getupvalue(ac.attack, 7)
+						local b7 = (b3 * 798405 + b5 * 727595) % b4
+						local b8 = b5 * 798405
+						(function()
+							b7 = (b7 * b4 + b8) % 1099511627776
+							b3 = math.floor(b7 / b4)
+							b5 = b7 - b3 * b4
+						end)()
+						b6 = b6 + 1
+						debug.setupvalue(ac.attack, 5, b3)
+						debug.setupvalue(ac.attack, 6, b4)
+						debug.setupvalue(ac.attack, 4, b5)
+						debug.setupvalue(ac.attack, 7, b6)
+						for k, v in pairs(ac.animator.anims.basic) do
+							v:Play()
+						end
+						if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+								"weaponChange",
+								tostring(CurrentWeapon())
+							)
+							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
+						end
+					end
+				end
+			end
+		end)
+    end
+    gg5iihetiter9pihtr = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/fastattackez.lua"))()
+    spawn(function()
+		while task.wait() do
+			CountAttack = gg5iihetiter9pihtr:GetCount()
+			task.wait()
+		end
+    end)
+    function ReturnFunctions:GetCount()
+        return CountAttack
+    end
+    function ReturnFunctions:Attack(k)
+        _G.FastAttack3 = k
+    end
+    FastAttackSettings = {["CDAAT"] = 80, ["TimeWait"] = 10}
+    spawn(function()
+		local aV = require(game.ReplicatedStorage.Util.CameraShaker)
+		aV:Stop()
+    end)
+    function ReturnFunctions:InputValue(ba, bb)
+        FastAttackSettings["CDAAT"] = ba
+        FastAttackSettings["TimeWait"] = bb
+    end
+    function Click()
+        local bc = game:GetService("VirtualUser")
+        bc:CaptureController()
+        bc:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
+    end
+    ToiCanOxi = 0
+    spawn(function()
+		while task.wait() do
+			if _G.FastAttack3 then
+				pcall(function()
+					if CountAttack < FastAttackSettings["CDAAT"] then
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+						if h and h["Mastery Farm"] and h["DelayAttack"] then
+							wait(h["DelayAttack"])
+						end
+					else
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+						if h and h["DelayAttack"] then
+							wait(h["DelayAttack"] * 2)
+						end
+                    end
+                end)
+            end
+        end
+    end)
+    memaydonand = 0
+    spawn(function()
+        while task.wait() do
+            if _G.FastAttack3 then
+                pcall(function()
+					if memaydonand % 2 == 1 then
+						wait(1)
+					end
+					local bd = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
+					bd.activeController.hitboxMagnitude = 55
+					local bc = game:GetService("VirtualUser")
+					bc:CaptureController()
+					bc:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
+					memaydonand = memaydonand + 1
+                end)
+            end
+        end
+    end)
+    spawn(function()
+		while wait() do
+			if _G.FastAttack3 then
+				if CountAttack >= FastAttackSettings["CDAAT"] then
+					TickFastAttackF = tick()
+					repeat
+						wait()
+					until tick() - TickFastAttackF >= FastAttackSettings["TimeWait"]
+					CountAttack = 0
+                end
+            end
+        end
+    end)
+    return ReturnFunctions
+end
+
+
+FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
+
+function AttackFunction()
+    FastAttackConnector:Attack()
+end
+function Click()
+    local bc = game:GetService("VirtualUser")
+    bc:CaptureController()
+    bc:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
+end
+spawn(function()
+	while wait() do
+		if _G.FastAttack3 then
+			FastAttackConnectorFunction()
+			FastAttackConnector:InputSetting(h)
+			FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
+			FastAttackConnector:Attack(true)
+		else
+			FastAttackConnector:Attack(false)
+		end
+	end
+end)
 
 print("Settings Service")
 
@@ -2388,7 +2779,7 @@ print("CombatFramework")
 coroutine.wrap(function()
 	while task.wait() do --.1
 		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
+		if ac and ac.equipped  and not _G.Settings.Auto_Raids then
 			if _G.FastAttack2 then
 				AttackFunction()
 					if tick() - cooldownfastattack > 1.75 then
@@ -2412,26 +2803,6 @@ coroutine.wrap(function()
 	end
 end)()
 
-coroutine.wrap(function()
-	while task.wait() do --.1
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				AttackFunctionNaJa()
-				if tick() - cooldownfastattack > .175 then
-					AttackFunction()
-					wait(.01)
-					cooldownfastattack = tick()
-				end
-			elseif _G.FastAttack2 == false then
-				if ac.hitboxMagnitude ~= 55 then
-					ac.hitboxMagnitude = 55
-				end
-				--ac:attack()
-			end
-		end
-	end
-end)()
 
 print("End script")
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/ser/main/OBF-Fast.lua"))() -- fast |  ตีเร็ว
@@ -2493,7 +2864,7 @@ spawn(function()
             end
             pcall(function()
                 local ac = SeraphFrame.activeController
-                if ac and ac.equipped then
+                if ac and ac.equipped and not _G.Settings.Auto_Raids  then
                     ac:Attack()
                     cdnormal = tick()
 				else
@@ -2598,7 +2969,7 @@ function AttackFunctionRandomFast()
 	local CombatFrameworkF = debug.getupvalues(ModuleF)[2]
 	local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
 	local acx = CombatFrameworkF.activeController
-	if acx and acx.equipped then
+	if acx and acx.equipped  and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local AcAttack8 = debug.getupvalue(acx.attack, 5)
 			local AcAttack9 = debug.getupvalue(acx.attack, 6)
@@ -2677,7 +3048,7 @@ end)
 
 function AttackPlayersFunctionNaJa()
 	local ac = CombatFrameworkR.activeController
-	if ac and ac.equipped then
+	if ac and ac.equipped  and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 1 do
 			local bladehit = getAllBladeHits(60)
 			if #bladehit > 0 then
@@ -2711,7 +3082,7 @@ function AttackPlayersFunctionNaJa()
 end
 function AttackFunctionNaJa()
 	local ac = CombatFrameworkR.activeController
-	if ac and ac.equipped then
+	if ac and ac.equipped  and not _G.Settings.Auto_Raids then
 		for indexincrement = 1, 3 do -- ปรับจำนวนการเรียกใช้งานได้ตามต้องการ
 			local bladehit = getAllBladeHits(60)
 			if #bladehit > 0 then
@@ -2743,35 +3114,6 @@ function AttackFunctionNaJa()
 		end
 	end
 end
-
-task.spawn(function() 
-	while task.wait() do
-		if _G.FastAttack3 then 
-			pcall(function()
-				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Humanoid.Health > 0 then
-						if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 80 then
-							repeat wait()
-								Attack()
-								AttackFunction()
-								AttackFunctionNaJa()
-								AttackPlayersFunctionNaJa()
-								SeraphFrame.activeController.attacking = false
-								SeraphFrame.activeController.timeToNextAttack = 0
-								SeraphFrame.activeController.timeToNextBlock = 0
-								SeraphFrame.activeController.focusStart = 0
-								SeraphFrame.activeController.blocking = false
-								SeraphFrame.activeController.hitboxMagnitude = 80
-								SeraphFrame.activeController.humanoid.AutoRotate = true
-								SeraphFrame.activeController.increment = 3
-							until not _G.FastAttack3 or v.Humanoid.Health <= 0
-						end
-					end
-				end
-			end)
-		end
-	end
-end)
 
 -- KzSystem(getgenv().PCMode)| คุณใช้ PC ใช้มั้ย ใช้เปลี่ยนเป็น true แต่ถ้าคุณใช้มือถือเปลี่ยนเป็น false
 -- KzSystem(getgenv().UIHit)| ปิดการแสดงของ UI false ต้องการดูเปลี่ยนเป็น true
@@ -5085,6 +5427,9 @@ end)
 							end
 						end
 					else
+						if _G.TweentoQuest == false then
+							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+						end
 						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 							if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 								if v.Name == Ms then
@@ -8551,15 +8896,6 @@ spawn(function()
 Settings:Toggle("Tween to Quest",_G.Settings.TweentoQuest,function(a)
 	_G.Settings.TweentoQuest = a
     _G.TweentoQuest = a
-	if a == true then
-		_G.TweentoQuest = true 
-		_G.NoTweentoQuest = false 
-	end
-	if a == false then
-		_G.NoTweentoQuest = true 
-		_G.TweentoQuest = false 
-	end
-	
 	SaveSettings()
 end)
 
@@ -12134,7 +12470,7 @@ spawn(function()
 					if v.Name == 'ErrorPrompt' and v:FindFirstChild('MessageArea') and v.MessageArea:FindFirstChild("ErrorFrame") then
 						game.Players.LocalPlayer:kick("ก็บอกอยู่ว่าบัคก็ยังจะเปิดอยู่เนาะหลุดไปดิไอ้โง่")
 						print("AutoRejoin!")
-						wait(0.5)
+						wait(1)
 						game:GetService("TeleportService"):Teleport(game.PlaceId)
 					end
 				else
@@ -12344,60 +12680,6 @@ function Click()
 end
 
 _G.randomNumberFastAttck = 0
-task.spawn(function()
-	while true do task.wait()
-		if  _G.FastAttackX then
-			if SeraphFrame.activeController then
-				if v.Humanoid.Health > 0 then
-					SeraphFrame.activeController.timeToNextAttack = 0
-					SeraphFrame.activeController.focusStart = 0
-					SeraphFrame.activeController.hitboxMagnitude = 110
-					SeraphFrame.activeController.humanoid.AutoRotate = true
-					SeraphFrame.activeController.increment = 4
-				end
-			end
-		end
-	end
-end)
-coroutine.wrap(function()
-	while task.wait() do
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				pcall(function()
-					repeat task.wait(.01)
-						AttackFunction()
-						if tick() - cooldownfastattackk > 0.9 then 
-							cooldownfastattackk = tick()
-						end
-						AttackFunctionRandomFast()
-					until not _G.FastAttackX
-				end)
-			end
-		end
-	end
-end)()
-coroutine.wrap(function()
-	while task.wait(.1) do
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			if _G.FastAttackX then
-				AttackFunction()
-				if _G.Smooth == true then
-					if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
-				elseif _G.Smooth == false then
-					if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
-				else
-					if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
-				end
-			elseif _G.FastAttackX then
-				if ac.hitboxMagnitude ~= 55 then
-					ac.hitboxMagnitude = 55
-				end
-			end
-		end
-	end
-end)()
 
 task.spawn(function()
     while task.wait() do
@@ -12430,10 +12712,8 @@ task.spawn(function()
 						for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 							if v.Humanoid.Health > 0 then
 								if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									AttackFunctionRandomFast()
 									Attack()
 									Click()
-									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 								end
 							end
 						end
@@ -12443,7 +12723,6 @@ task.spawn(function()
 							FASTAttack()
 						else
 							AttackX()
-							AttackFunctionRandomFast()
 						end
 					until not _G.FastAttackX
 					Attack()
