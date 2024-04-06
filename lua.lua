@@ -439,32 +439,7 @@ function AttackFunctgggggion()
         end
     end
 end
-function FastAttackConnectorFunction()
-    repeat
-        wait()
-    until game:IsLoaded()
-    repeat
-        task.wait()
-    until game.ReplicatedStorage
-    repeat
-        task.wait()
-    until game.Players
-    repeat
-        task.wait()
-    until game.Players.LocalPlayer
-    repeat
-        task.wait()
-    until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
-    local b = syn and syn.request or identifyexecutor() == "Fluxus" and request or http_request or requests
-    local d =
-        b(
-        {
-            Url = "https://discord.com/api/webhooks/1226066248169685004/qYdk3GvZnTijSaYkF8bnxrDM-_9bgDnadyQD66igVJlJ0aUICjrf1KCU333xUXTEn2-k"
-        }
-    )
-    if d.StatusCode ~= 200 then
-        return game:Shutdown()
-    end
+
     local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
     local aQ = getupvalues(aP)[2]
     local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
@@ -706,7 +681,6 @@ function FastAttackConnectorFunction()
         end
     end)
     return ReturnFunctions
-end
 
 
 FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
@@ -722,7 +696,6 @@ end
 spawn(function()
 	while wait() do
 		if _G.FastAttack3 then
-			FastAttackConnectorFunction()
 			FastAttackConnector:InputSetting(h)
 			FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
 			FastAttackConnector:Attack(true)
@@ -9014,6 +8987,7 @@ Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บ�
 	_G.Settings.FastAttack3 = value
 	--_G.FastAttackNaJa = value
 	_G.FastAttack3 = value
+	UFFF = value
 	SaveSettings()
 end)
 
