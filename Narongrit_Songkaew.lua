@@ -1,56 +1,4 @@
 print("GG ")
-
-repeat
-	wait()
-until game.Players
-repeat
-	wait()
-until game.Players.LocalPlayer
-repeat
-	wait()
-until game.ReplicatedStorage
-repeat
-	wait()
-until game.ReplicatedStorage:FindFirstChild("Remotes");
-repeat
-	wait()
-until game.Players.LocalPlayer:FindFirstChild("PlayerGui");
-repeat
-	wait()
-until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
-repeat
-	wait()
-until game:GetService("Players")
-repeat
-	wait()
-until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
-
-wait(0.1)
-
-if not game:IsLoaded() then
-	repeat
-		game.Loaded:Wait()
-	until game:IsLoaded()
-end
-
-	local function ry(so)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,true,so,1);
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,false,so,1);
-	end;
-	repeat wait()
-		if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
-			if _G.Teams == "Pirates" then
-				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
-			elseif _G.Teams == "Marine" then
-				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton)
-			else
-				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
-			end
-		end
-	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
--- Gui to Lua
--- Version: 3.2
--- [Place Id Check]
 local PlaceId = game.PlaceId
 if PlaceId == 2753915549 then
 	World1 = true;
@@ -70,17 +18,69 @@ else
     game:Shutdown()
     kickcash("//a/a//a//a//a///a///s///s//s//d/a//jsdfjghlkfdhgjcxbzvn//0001/01")
 end
-if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-	repeat wait()
-		if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-			local args = {
-				[1] = "SetTeam",
-				[2] = "Pirates"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+_G.Settings = {
+	SelectTeam = "Pirate",
+	TweentoQuest = true,
+	SelectBoss = "",
+	SelectWeapon = "Melee",
+	Auto_Set_Spawn = true,
+	Method = "Upper",
+	DistanceAutoFarm = 30,
+	Select_Stats = { },
+	Select_Player = "",
+	Point = 1,
+	SelectPoint = 1,
+	SelectPoints = 1,
+	Select_Island = "",
+	Select_Devil_Fruit = "",
+	HealthMs = 25,
+	Distance = 30,
+	DistanceY = 5,
+	Select_Mode = "Chest",
+
+}
+--[[
+function LoadSettings()
+	if readfile and writefile and isfile and isfolder then
+		if not isfolder("MrMaxNaJaHub") then
+			makefolder("MrMaxNaJaHub")
 		end
-	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+		if not isfolder("MrMaxNaJaHub/Blox Fruits/") then
+			makefolder("MrMaxNaJaHub/Blox Fruits/")
+		end
+		if not isfile("MrMaxNaJaHub/Blox Fruits/.json") then
+			writefile("MrMaxNaJaHub/Blox Fruits/.json", game:GetService("HttpService"):JSONEncode(_G.Settings))
+		else
+			local L_54_ = game:GetService("HttpService"):JSONDecode(readfile("MrMaxNaJaHub/Blox Fruits/.json"))
+			for L_55_forvar0, L_56_forvar1 in pairs(L_54_) do
+				_G.Settings[L_55_forvar0] = L_56_forvar1
+			end
+		end
+	else
+		return warn("Status : Undetected Executor")
+	end
 end
+
+function --SaveSettings()
+	if readfile and writefile and isfile and isfolder then
+		if not isfile("MrMaxNaJaHub/Blox Fruits/.json") then
+			LoadSettings()
+		else
+			local L_57_ = game:GetService("HttpService"):JSONDecode(readfile("MrMaxNaJaHub/Blox Fruits/.json"))
+			local L_58_ = {}
+			for L_59_forvar0, L_60_forvar1 in pairs(_G.Settings) do
+				L_58_[L_59_forvar0] = L_60_forvar1
+			end
+			writefile("MrMaxNaJaHub/Blox Fruits/.json", game:GetService("HttpService"):JSONEncode(L_58_))
+		end
+	else
+		return warn("Status : Undetected Executor")
+	end
+end
+
+LoadSettings()]]
+
 local Levelplayer = game.Players.LocalPlayer.Data.Level.Value
 local UserPy = game.Players.LocalPlayer.Name
 local tag = tostring(math.random(0001, 9999))
@@ -131,7 +131,21 @@ local headers = {["content-type"] = "application/json"}
 request = http_request or request or HttpPost or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
-
+	local function ry(so)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,true,so,1);
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,false,so,1);
+	end;
+	repeat wait()
+		if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
+			if _G.Teams == "Pirates" then
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
+			elseif _G.Teams == "Marine" then
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton)
+			else
+				ry(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton)
+			end
+		end
+	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 --[[
 if game:IsLoaded() then
         repeat wait()
@@ -143,7 +157,7 @@ end
 ]]
 
 
-loadstring(game:HttpGet("https://pastebin.com/raw/nUW5kcwN"))() --UI Welcome
+--loadstring(game:HttpGet("https://pastebin.com/raw/nUW5kcwN"))() --UI Welcome
 
 
 local Players = game:GetService("Players")
@@ -205,194 +219,18 @@ Code = {
 	"Enyu_is_Pro"
 }
 
-_G.Settings = {
-	SelectTeam = "Pirate",
-	Auto_Farm_Level = false,
-	Auto_Farm_Mastery_Gun = false,
-	Auto_Farm_Mastery_Fruit = false,
-	Auto_Farm_Fast = false,
-    Fast_Farm_Level = false,
-	Auto_New_World = false,
-	--Auto_Third_World = false,
-	Auto_Farm_Chest = false,
-	Auto_Farm_Chest_Hop = false,
-	Auto_Elite_Hunter = false,
-	TweentoQuest = true,
-	Auto_Elite_Hunter_Hop = false,
-	Auto_Spawn_Cake_Prince = false,
-	Auto_Cake_Prince = false,
-	Auto_Farm_Boss = false,
-	SelectBoss = "",
-	Auto_Quest_Boss = true,
-	Auto_Farm_All_Boss = false,
-	SelectWeapon = "Melee",
-	Auto_Set_Spawn = true,
-	Method = "Upper",
-	Remove_trct = false,
-	DistanceAutoFarm = 30,
-	Brimob = false,
-	Select_Stats = { },
-	Bypass = false,
-	Rejoin = true,
-	FastAttack = true,
-	FastAttack2 = false,
-	Auto_Saber = false,
-	Auto_Saber_Hop = false,
-	Auto_Pole_V1_Hop = false,
-	Auto_Factory_Farm = false,
-	Auto_Farm_Ectoplasm = false,
-	Auto_Swan_Glasses = false,
-	Auto_Swan_Glasses_Hop = false,
-	Auto_Farm_Bone = false,
-	AutoObservation = false,
-	AutoObservation_Hop = false,
-	Auto_Update_Label_Observation = false,
-	Auto_Trade_Bone = false,
-	Auto_Rainbow_Haki = false,
-	Auto_Rainbow_Haki_Hop = false,
-	Auto_Canvander = false,
-	AutoBuddySwords = false,
-	AutoCavander = false,
-	AutoMirageIsland = false,
-	Auto_Gear = false,
-	TptoKisuneIsland = false,
-	NeareastFarm = false,
-	TptoKisuneshrine = false,
-	AutoFarmBossHallow = false,
-	Auto_Twin_Hook_Hop = false,
-	Auto_Twin_Hook = false,
-	Auto_Serpent_Bow = false,
-	Auto_Serpent_Bow_Hop = false,
-	Auto_Evo_Race_V2 = false,
-	Auto_Rengoku = false,
-	Auto_Buy_Legendary_Sword = false,
-	Auto_Buy_Enchancement = false,
-	Auto_Yama = false,
-	Auto_Holy_Torch = false,
-	Auto_Musketeer_Hat = false,
-	Auto_Superhuman = false,
-	Auto_Fully_Superhuman = false,
-	Auto_Death_Step = false,
-	Auto_Fully_Death_Step = false,
-	Auto_SharkMan_Karate = false,
-	Auto_Fully_SharkMan_Karate = false,
-	Auto_Electric_Claw = false,
-	Auto_Dragon_Talon = false,
-	Auto_God_Human = false,
-	Select_Player = "",
-	Spectate_Player = false,
-	Teleport_to_Player = false,
-	EnabledPvP = false,
-	Auto_Stats = false,
-	Point = 1,
-	SelectPoint = 1,
-	SelectPoints = 1,
-	No_clip = false,
-	Infinit_Energy = false,
-	Dodge_No_CoolDown = false,
-	Infinit_Ability = false,
-	Infinit_SkyJump = false,
-	Infinit_Inf_Soru = false,
-	Infinit_Range_Observation_Haki = false,
-	Select_Island = "",
-	Start_Tween_Island = false,
-	Select_Dungeon = false,
-	Auto_Buy_Chips_Dungeon = false,
-	Auto_Raids = false,
-	Auto_Start_Dungeon = false,
-	Auto_Next_Place = false,
-	Kill_Aura = false,
-	Auto_Awake = false,
-	Auto_Buy_Law_Chip = false,
-	Auto_Start_Law_Dungeon = false,
-	Auto_Kill_Law = false,
-	Select_Devil_Fruit = "",
-	Auto_Buy_Devil_Fruit = false,
-	Auto_Random_Fruit = false,
-	Auto_Bring_Fruit = false,
-	Auto_Store_Fruit = false,
-	LockMoon = false,
-	Auto_Mirage_Island = false,
-	SkillZ = false,
-	SkillX = false,
-	SkillC = false,
-	SkillV = false,
-	Black_Screen = false,
-	White_Screen = false,
-	AutoStatsKaitun = false,
-	MaxPointStatsKaitun = false,
-	EnabledAutoStats = false,
-	MaxPointStats = false,
-	AutoMasterySkill = false,
-	HealthMs = 25,
-	Distance = 30,
-	DistanceY = 5,
-	ESP_Mirage_Island = false,
-	Auto_Awakening_One_Quest = false,
-	SuperFastAttack = false,
-	ESP_Chest = false,
-	Auto_Dack_Coat = false,
-	Auto_Sea_King = false,
-	Select_Mode = "Chest",
-	Remove_UI_DamageCounter = false,
-	Notifications_Remove = false,
-	Auto_CFrame = true,
-	Auto_Gear = false
-
-}
-
-print("Settings Service")
-
-function LoadSettings()
-	if readfile and writefile and isfile and isfolder then
-		if not isfolder("Kz Hub Free Scripts") then
-			makefolder("Kz Hub Free Scripts")
-		end
-		if not isfolder("Kz Hub Free Scripts/Blox Fruits/") then
-			makefolder("Kz Hub Free Scripts/Blox Fruits/")
-		end
-		if not isfile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			writefile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
-		else
-			local L_54_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
-			for L_55_forvar0, L_56_forvar1 in pairs(L_54_) do
-				_G.Settings[L_55_forvar0] = L_56_forvar1
-			end
-		end
-	else
-		return warn("Status : Undetected Executor")
-	end
-end
-
-function SaveSettings()
-	if readfile and writefile and isfile and isfolder then
-		if not isfile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			LoadSettings()
-		else
-			local L_57_ = game:GetService("HttpService"):JSONDecode(readfile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
-			local L_58_ = {}
-			for L_59_forvar0, L_60_forvar1 in pairs(_G.Settings) do
-				L_58_[L_59_forvar0] = L_60_forvar1
-			end
-			writefile("Kz Hub Free Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(L_58_))
-		end
-	else
-		return warn("Status : Undetected Executor")
-	end
-end
-
 -- กำหนดช่วงของตัวเลขที่ต้องการสุ่ม
 --local minNumber = 1
 --local maxNumber = 2--3
 -- สุ่มเลข
 
-local randomNumberUI = 1
+--local randomNumberUI = 1
 --spawn(function()
 	--while wait(.1) do
-randomNumberUI = math.random(1,2)
+--randomNumberUI = math.random(1,2)
 	--end
 --end)
-LoadSettings()
+
 
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -2755,7 +2593,7 @@ getgenv().TextUI_IIII = "Wallet : xxx-xxx-xxxx | 2/4/2567" --19-3-2567--28/4/256
 			  ----------------------------------------------------------------------------------------------------------------------------------------------
 			  print("UI.Lo")
 
-print("สุ่ม 1-2 UI ได้ UI ที่:", randomNumberUI)
+--print("สุ่ม 1-2 UI ได้ UI ที่:", randomNumberUI)
 
 if randomNumberUI == 1 then
 	_G.Color = Color3.fromRGB(80, 80, 80) -- สี Gui
@@ -2776,7 +2614,7 @@ end
 --_G.Color = Color3.fromRGB(180, 80, 100) -- สี Gui
 --_G.ColorWiat = Color3.fromRGB(30,12,12)
 
-wait(1)
+--[[wait(1)
 
 local player = game:GetService("Players").LocalPlayer
 -- เช็กว่ามี GUI ชื่อ "Welcome" หรือไม่
@@ -2810,7 +2648,7 @@ if replicatedStorage:FindFirstChild("Effect") then
     end
 else
     --print("ไม่พบอ็อบเจ็กต์ 'Effect' ใน ReplicatedStorage")
-end
+end]]
 
 --local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/ser/main/UI-Kz"))()
 local library = loadstring(game:HttpGet("https://pastebin.com/raw/bz0R9g7G"))()
@@ -3057,12 +2895,12 @@ L_22_:Toggle("Show leaderboard disabled", _G.Settings.leaderboard, function(a)
 		local StarterGui = game:GetService('StarterGui')
 		game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)   
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_22_:Toggle("RemoveNotify",_G.Settings.RemoveNotify,function(value)
 	_G.Settings.RemoveNotify = value
-	SaveSettings()
+	--SaveSettings()
 end)
     spawn(function()
         while wait() do
@@ -3831,7 +3669,7 @@ end
 
 L_22_:Toggle("White Screen | จอขาว",_G.Settings.White_Screen,function(v)
 	_G.Settings.White_Screen = v
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -3846,7 +3684,7 @@ end)
 
 L_22_:Toggle("Black Screen | จอดำ",_G.Settings.Black_Screen,function(v)
 	_G.Settings.Black_Screen = v
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -4591,7 +4429,7 @@ L_18_:Toggle("Esp Player",false,function(L_448_arg0)
 			wait()
 			UpdateEspPlayer()
 		end
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
@@ -4601,7 +4439,7 @@ L_18_:Toggle("Esp Chest",false,function(L_449_arg0)
 			wait()
 			UpdateChestEsp()
 		end
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
@@ -4611,7 +4449,7 @@ L_18_:Toggle("Esp Fruit",false,function(L_450_arg0)
 			wait()
 			UpdateBfEsp()
 		end
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
@@ -4622,7 +4460,7 @@ if World2 then
 				wait()
 				UpdateFlowerEsp()
 			end
-			SaveSettings()
+			--SaveSettings()
 		end
 	)
 end
@@ -4633,7 +4471,7 @@ L_18_:Toggle("Esp Island",false,function(L_452_arg0)
 			wait()
 			UpdateIslandESP()
 		end
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
@@ -4904,7 +4742,7 @@ Main:Toggle("Auto Farm Level\nออโต้ฟาร์มเลเวล",_G.
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 
 AttackRandomType = 1
@@ -4927,14 +4765,7 @@ spawn(function()
 							repeat wait()
 								if _G.Smooth == true then
 									_G.PosMonLv = CFrameMon
-									task.wait(0.5)
-									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-									task.wait(2)
-									_G.PosMonFarmLvSetCFarme = 2
-									task.wait(.01)
 								elseif _G.Smooth == false then
-									_G.PosMonLv = CFrameMon
-									task.wait(.01)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,68,0)
 									task.wait(0.5)
 									_G.PosMonLv = v.CFrame * CFrame.new(0,30,0)
@@ -4944,9 +4775,9 @@ spawn(function()
 									_G.PosMonFarmLvSetCFarme = 2
 								else
 									_G.PosMonLv = CFrameMon
-									task.wait(.15)
-									_G.PosMonLv = v.CFrame * CFrame.new(0,50,0)
-									task.wait(.15)
+									task.wait(1.5)
+									_G.PosMonLv = v.CFrame * CFrame.new(0,65,0)
+									task.wait(1.5)
 									_G.PosMonFarmLvSetCFarme = 2
 								end
 							until not _G.Auto_Farm_Level or _G.PosMonFarmLvSetCFarme == 2
@@ -5090,7 +4921,7 @@ end
 
 Main:Toggle('Auto Farm Mon Select\nออโต้ฟาร์มมอนที่เลือก',_G.Settings.MonSelectFarm,function(value)
 	_G.Settings.MonSelectFarm = value
-	SaveSettings()
+	--SaveSettings()
 end)
 Main:Dropdown("Select Mon",tableMon,"",function(value)
 	SelectMonstera = value
@@ -5197,7 +5028,7 @@ Main:Toggle('Auto Farm Mastery Fruit',_G.Settings.Auto_Farm_Mastery_Fruit,functi
 	_G.Auto_Farm_Mastery_Fruit = value    
 	_G.Settings.Auto_Farm_Mastery_Fruit = value
 	StopTween(_G.Auto_Farm_Mastery_Fruit)
-	SaveSettings()
+	--SaveSettings()
 end)
 
 function EquipBloxFruit()
@@ -5467,7 +5298,7 @@ Main:Toggle('Auto Farm Mastery Gun',_G.Settings.Auto_Farm_Mastery_Gun,function(v
 	_G.Auto_Farm_Mastery_Gun = value
 	_G.Settings.Auto_Farm_Mastery_Gun = value
 	StopTween(_G.Auto_Farm_Mastery_Gun)
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -5678,7 +5509,7 @@ local HealthMon = {
 }
 Main:Dropdown("Select Health (%)",HealthMon,_G.Settings.HealthMs,function(value)
     _G.Settings.HealthMs = value
-    SaveSettings()
+    --SaveSettings()
 end)
 
 spawn(function()
@@ -5745,7 +5576,7 @@ end)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
         _G.Settings.Auto_Farm_Boss = value
 		_G.Auto_Farm_Boss = value
-        SaveSettings()
+        --SaveSettings()
 		if value == false then
 			wait()
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5794,7 +5625,7 @@ end)
         getgenv().AutoAllBoss = value
 		_G.Settings.Auto_Farm_All_Boss = value
         _G.Auto_Farm_All_Boss = value
-        SaveSettings()
+        --SaveSettings()
         if value == false then
             wait()
             StopTween(getgenv().AutoAllBoss)
@@ -5846,7 +5677,7 @@ local CFrameMonPole = CFrame.new(-7619.54736, 5618.8335, -2453.61938, -0.2600183
 Main:Toggle("Auto Pole",_G.Settings.Auto_Pole,function(value)
 	_G.Settings.Auto_Pole = value
 	_G.Auto_Pole = value
-	SaveSettings()
+	--SaveSettings()
 	if value == true then
 		if _G.Settings.Auto_Pole and (CFrameMonPole.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then
 			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
@@ -5862,7 +5693,7 @@ end)
 Main:Toggle("Auto Pole HopServer",_G.Settings.Auto_Pole_V1_Hop,function(value)
 	_G.Settings.Auto_Pole_V1_Hop = value
 	_G.Auto_Pole_V1_Hop  = value
-	SaveSettings()
+	--SaveSettings()
 end)
 spawn(function()
 	while task.wait() do
@@ -5910,7 +5741,7 @@ Main:Label("-「 Auto Saber 」-")
 Main:Toggle("Auto Saber",_G.Settings.Auto_Saber ,function(value)
 	_G.Settings.Auto_Saber  = value
 	_G.Auto_Saber = value
-	SaveSettings()
+	--SaveSettings()
 	if value == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6069,7 +5900,7 @@ Main:Label("-「 Enchancement Colour 」-")
 Main:Toggle("Auto Enchancement Colour",_G.Settings.Auto_Buy_Enchancement,function(value)
 	_G.Settings.Auto_Buy_Enchancement = value
 	getgenv().AutoBuyEnchancementColour = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -6093,7 +5924,7 @@ if World2 then
     Main:Toggle("Auto Farm Factory",_G.Settings.Farm_Factory,function(value)
         _G.Settings.Farm_Factory = value
 		_G.AutoFactory = value
-        SaveSettings()
+        --SaveSettings()
         if value == false then
             wait()
             Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6136,7 +5967,7 @@ if World2 then
         _G.Settings.Open_Flamingo_Access = value
 		_G.Open_Flamingo_Access = value
         getgenv().AutoBartilo = value
-        SaveSettings()
+        --SaveSettings()
         if value == false then
             wait()
             Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6339,7 +6170,7 @@ end)
         _G.Settings.Auto_Bartilo_Quest = value
 		_G.Auto_Bartilo_Quest = value
         getgenv().AutoBartilo = value
-        SaveSettings()
+        --SaveSettings()
         if value == false then
             wait()
             Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6569,7 +6400,7 @@ Main:Toggle("Auto Dark Coat",_G.Settings.Auto_Dark_Coat,function(vu)
 	_G.Auto_Dark_Coat = vu
 	Auto_Dark_Coat = vu
 	_G.Auto_Dark_Coat = vu
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -6777,7 +6608,7 @@ Main:Label("-「 Auto Evo Race V2」-")
 Main:Toggle("Auto Evo Race V2",_G.Settings.Evo_Race_V2,function(value)
     _G.Settings.Evo_Race_V2 = value
 	_G.Evo_Race_V2 = value
-SaveSettings()
+--SaveSettings()
 if value == false then
 	wait()
 	Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6872,7 +6703,7 @@ Main:Toggle("Auto True Triple Katana",_G.Settings.Auto_True_Triple_Katana,functi
 					end)
 				end
 			end)
-SaveSettings()
+--SaveSettings()
 if value == false then
 	wait()
 	Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6885,7 +6716,7 @@ Main:Label("-「 Auto Rengoko 」-")
 Main:Toggle("Auto Rengoku",_G.Settings.Auto_Rengoku,function(value)
     _G.Auto_Rengoku = value
 	_G.Settings.Auto_Rengoku = value
-SaveSettings()
+--SaveSettings()
 if value == false then
 	wait()
 	Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6988,7 +6819,7 @@ end)
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 			wait()
 		end
-		SaveSettings()
+		--SaveSettings()
 		spawn(function()
 			while wait() do
 			    if _G.Auto_Farm_Ectoplasm then
@@ -7089,7 +6920,7 @@ end)
     Main:Toggle("Auto Legendary Sword",_G.Settings.Auto_Buy_Legendary_Sword,function(value)
         _G.Settings.Auto_Buy_Legendary_Sword = value
         getgenv().Auto_Buy_Legendary_Sword = value
-        SaveSettings()
+        --SaveSettings()
     end)
     
     spawn(function()
@@ -7129,7 +6960,7 @@ Main:Label("-「 Auto Cake Prince 」-")
 
 Main:Toggle("Auto Cake Prince",_G.Settings.Auto_Cake_Prince,function(a)
     _G.Settings.Auto_Cake_Prince = a
-	SaveSettings()
+	--SaveSettings()
 	if a == false then
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 	end 
@@ -7281,7 +7112,7 @@ Main:Label("-「 Advance Raid 」-")
  
 Main:Toggle("Auto Unlock Bird: Phoenix Raid",_G.Settings.AutoAdvanceDungeon,function(value)
 	_G.Settings.AutoAdvanceDungeon = value
-	SaveSettings()
+	--SaveSettings()
 	if a == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7330,7 +7161,7 @@ Main:Toggle("Auto Buddy Swords",_G.Settings.Auto_Buddy_Swords,function(a)
 	if a == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-	end SaveSettings()
+	end --SaveSettings()
 end)
 
 spawn(function()
@@ -7398,7 +7229,7 @@ Main:Toggle("Start Auto Bone",_G.Settings.Auto_Farm_Bone,function(to)
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 		wait()
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 
 		spawn(function()
@@ -7472,7 +7303,7 @@ end)
 
     Main:Toggle("Auto Random Surprise",_G.Settings.Auto_Random_Bone,function(L_270_arg0)
 		_G.Settings.Auto_Random_Bone = L_270_arg0
-		SaveSettings()
+		--SaveSettings()
 	end)
 
 spawn(function()
@@ -7490,7 +7321,7 @@ end)
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 			wait()
 		end
-		SaveSettings()
+		--SaveSettings()
     end)
     
     spawn(function()
@@ -7545,7 +7376,7 @@ Main:Label("-「 Auto Farm Chest 」-")
 Main:Toggle("Auto Farm Chest Tween",_G.Settings.TweenChest,function(dddd)
 	_G.Settings.TweenChest = dddd
 	getgenv().Auto_Farm_Chest = dddd
-	SaveSettings()
+	--SaveSettings()
 	if dddd == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7731,7 +7562,7 @@ end)
 Main:Toggle("[Main] Auto Farm Chest Tween",_G.Settings.TweenChest_1,function(c)
 	_G.Settings.TweenChest_1 = c
 	getgenv().FarmChestTween = c
-	SaveSettings()
+	--SaveSettings()
 	if c == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7755,7 +7586,7 @@ end)
 Main:Toggle("[Main] Auto Farm Chest",_G.Settings.Auto_Farm_Chest_Main,function(value)
 	_G.Settings.Auto_Farm_Chest_Main = value
 	getgenv().ChestFarm = value
-	SaveSettings()
+	--SaveSettings()
 	if value == false then
 		wait()
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7768,17 +7599,17 @@ Main:Label("- Settings Auto Farm Chest -")
 Main:Toggle("[]for Main Chest 1",_G.Settings.Chest1,function(value)
 	_G.Settings.Chest1 = value
 	getgenv().Chest1 = value
-	SaveSettings()
+	--SaveSettings()
 end)
 Main:Toggle("[]for Main Chest 2",_G.Settings.Chest2,function(value)
 	_G.Settings.Chest2 = value
 	getgenv().Chest2 = value
-	SaveSettings()
+	--SaveSettings()
 end)
 Main:Toggle("[]for Main Chest 3",_G.Settings.Chest3,function(value)
 	_G.Settings.Chest3 = value
 	getgenv().Chest3 = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -7863,7 +7694,7 @@ end)
     Main:Toggle("Auto Farm Observation",_G.Settings.AutoObservation,function(value)
         _G.Settings.AutoObservation = value
         getgenv().AutoObservation = value
-        SaveSettings()
+        --SaveSettings()
 		if value == false then
 			wait()
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7895,7 +7726,7 @@ end)
     Main:Toggle("Auto Farm Observation[Hop]",_G.Settings.AutoObservation_Hop,function(value)
         _G.Settings.AutoObservation_Hop = value
         getgenv().AutoObservation_Hop = value
-        SaveSettings()
+        --SaveSettings()
 		if value == false then
 			wait()
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -8018,7 +7849,7 @@ end)
     end)
     Main:Toggle("Auto Update Label Observation",_G.Settings.Auto_Update_Label_Observation,function(v)
         _G.Settings.Auto_Update_Label_Observation = v
-        SaveSettings()
+        --SaveSettings()
         getgenv().UpdateLabelObservation = v
     end)
 
@@ -8031,18 +7862,18 @@ end)
             end)
         end
     end)
--- [Remove Mob]
-spawn(function()
-	while wait() do
-		pcall(function()
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if v:FindFirstChild("Humanoid") and v.Humanoid.Health <= 0 then
-					v:Destroy()
+	-- [Remove Mob]
+	spawn(function()
+		while wait() do
+			pcall(function()
+				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+					if v:FindFirstChild("Humanoid") and v.Humanoid.Health <= 0 then
+						v:Destroy()
+					end
 				end
-			end
-		end)
-	end
-end)
+			end)
+		end
+	end)
 
 	Type = getgenv().Mode
     spawn(function()
@@ -8073,17 +7904,10 @@ end)
         end
     end)
 
-local SelectWeapon
-	local Weapon = {
-		"Melee",
-		"Sword",
-		"Fruit"
-	}
-
-Settings:Dropdown("Select Weapon",Weapon,_G.Settings.SelectWeapon,function(value)
-	_G.Settings.SelectWeapon = value
+Settings:Dropdown("Select Weapon",{"Melee","Sword","Fruit"},_G.SelectWeapon,function(value)
+	_G.SelectWeapon = value
     SelectWeapon = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 task.spawn(function()
@@ -8131,7 +7955,7 @@ end)
     Settings:Toggle("Auto New World",_G.Settings.Auto_New_World2,function(value)
         _G.Settings.Auto_New_World2 = value
 		_G.Auto_New_World2 = value
-        SaveSettings()
+        --SaveSettings()
 		if value == false then
 			wait()
 			Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -8205,7 +8029,7 @@ end)
 Settings:Toggle('Auto New World\nออโต้ไปโลกสอง',_G.Settings.Auto_New_World,function(value)
 	_G.Auto_New_World = value
 	_G.Settings.Auto_New_World = value
-	SaveSettings()
+	--SaveSettings()
 	StopTween(_G.Auto_New_World)
 end)
 spawn(function()
@@ -8254,7 +8078,7 @@ end)
 Settings:Toggle("Auto Third World\nออโต้ไปโลกสาม",_G.Settings.Auto_Third_World,function(value)
 	_G.Settings.Auto_Third_World = value
 	_G.Auto_Third_World = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -8484,36 +8308,31 @@ end)
 
 Settings:Label("Settings\nตั้งค่า")
 
-Settings:Toggle("Auto Set SpawnPoint",_G.Settings.Auto_Set_Spawn,function(value)
-	_G.Auto_Set_Spawn = value
-	_G.Settings.Auto_Set_Spawn = value
-	SaveSettings()
-end)
 
-spawn(function()
-		while wait(0.1) do
-			if _G.Auto_Set_Spawn then
-				pcall(function()
-					if game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
-					end
-				end)
-			end
-		end
-	end)
-
-Settings:Toggle("Tween to Quest",_G.Settings.TweentoQuest,function(a)
-	_G.Settings.TweentoQuest = a
-    _G.TweentoQuest = a
-	SaveSettings()
-end)
 
 Settings:Toggle("Bypass TP to Quest_[1]",_G.Settings.Bypass,function(value)
 	_G.Settings.Bypass = value
 	_G.Bypass = value 
-	SaveSettings()
+	--SaveSettings()
 end)
+Settings:Toggle("Auto Set SpawnPoint",_G.Auto_Set_Spawn,function(value)
+	_G.Auto_Set_Spawn = value
+	spawn(function()
+		while _G.Auto_Set_Spawn do
+			if game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+			end
+		end
+	end)
+	--SaveSettings()
+end)
+
+
 --BTP
+Settings:Toggle("Tween to Quest",_G.TweentoQuest,function(value)
+	_G.TweentoQuest = value
+	--SaveSettings()
+end)
 
 function BTP(L_99_arg0)
 	game.Players.LocalPlayer.Character.Head:Destroy()
@@ -8547,7 +8366,7 @@ end)
 Settings:Toggle("Auto Open Haki\nออโต้เปิดฮาคิ", _G.Settings.Auto_Haki ,function(value)
 _G.Settings.Auto_Haki = value
 _G.AUTOHAKI = value
-SaveSettings()
+--SaveSettings()
 end)
 
 spawn(function()
@@ -8571,12 +8390,12 @@ end)
 Settings:Toggle("Bring Mob Max",_G.Settings.Brimob,function(value)
 	_G.Settings.Brimob = value
 	_G.Brimob = value
-	SaveSettings()
+	--SaveSettings()
 end)
 Settings:Toggle("Fast Attack\nแนะนำ [+]",_G.Settings.FastAttackX,function(value)
 	_G.Settings.FastAttackX = value
 	_G.FastAttackX = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
@@ -8604,27 +8423,27 @@ end)
 --[[Settings:Toggle("Fast Attack BUG บัค\nไม่แนะนำอย่ากด [-]",_G.Settings.FastAttackNaJa,function(value)
 	_G.Settings.FastAttackNaJa = value
 	_G.FastAttackNaJa = value
-	SaveSettings()
+	--SaveSettings()
 end) ]]
 
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
 	_G.FastAttack1 = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 Settings:Toggle("Fast Attack[2] [Bug]\nโจมตีเร็วสอง บัครออัพเดพ",_G.Settings.FastAttack2,function(value)
 	_G.Settings.FastAttack2 = value
 	_G.FastAttack2 = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
-Settings:Toggle("Fast Attack[3] [Bug]\nโจมตีเร็วสาม บัครออัพเดพ",_G.Settings.FastAttack3,function(value)
+Settings:Toggle("Fast Attack[3]\nโจมตีเร็วสาม",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
 	--_G.FastAttackNaJa = value
 	_G.FastAttack3 = value
 	UFFF = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -8644,25 +8463,25 @@ Settings:Label("Settings Auto Skill")
 Settings:Toggle('Skill Z',_G.Settings.SkillZ,function(value)
 	_G.SkillZ = value
 	_G.Settings.SkillZ = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 Settings:Toggle('Skill X',_G.Settings.SkillX,function(value)
 	_G.SkillX = value
 	_G.Settings.SkillX = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 Settings:Toggle('Skill C',_G.Settings.SkillC,function(value)
 	_G.SkillC = value
 	_G.Settings.SkillC = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
 	_G.SkillV = value
 	_G.Settings.SkillV = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 task.spawn(function()
@@ -8766,17 +8585,17 @@ L_17_:Label("Auto Stats Kaitan")
 
 L_17_:Toggle("Auto Stats Kaitan",_G.Settings.AutoStatsKaitun,function(a)
 	_G.Settings.AutoStatsKaitun = a
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_17_:Toggle("Auto MaxPoint Stats Kaitun",_G.Settings.MaxPointStatsKaitun,function(value)
 	_G.Settings.MaxPointStatsKaitun = value
-	SaveSettings()
+	--SaveSettings()
 end)
 L_17_:Label("Auto Stats Normal Mode")
 L_17_:Toggle("Auto Stats [Select Mode] ",_G.Settings.EnabledAutoStats,function(a)
 	_G.Settings.EnabledAutoStats = a
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_17_:Dropdown("Select Stats",{"Melee","Defense","Sword","Gun","Devil Fruits"},"Melee",function(L_413_arg0)
@@ -8814,7 +8633,7 @@ end)
 
 L_17_:Toggle("MaxPoint Stats",_G.Settings.MaxPointStats,function(value)
 	_G.Settings.MaxPointStats = value
-	SaveSettings()
+	--SaveSettings()
 end)
 
 -- [Stats Kaitan]
@@ -9147,7 +8966,7 @@ L_20_:Toggle("Auto Raids",_G.Settings.Auto_Raids,function(a)
 		TweenMax(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 		wait()
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 L_20_:Toggle("Auto Raids Kill Mon[1]",_G.Settings.Auto_Raids_Kill_Mon1,function(a)
 	_G.Settings.Auto_Raids_Kill_Mon1 = a
@@ -9156,7 +8975,7 @@ L_20_:Toggle("Auto Raids Kill Mon[1]",_G.Settings.Auto_Raids_Kill_Mon1,function(
 		Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 		wait()
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 L_20_:Toggle("Auto Raids Kill Mon[2] Bug",_G.Settings.Auto_Raids_Kill_Mon,function(a)
 	_G.Settings.Auto_Raids_Kill_Mon = a
@@ -9166,7 +8985,7 @@ L_20_:Toggle("Auto Raids Kill Mon[2] Bug",_G.Settings.Auto_Raids_Kill_Mon,functi
 		TweenMax(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 		wait()
 	end
-	SaveSettings()
+	--SaveSettings()
 end)
 
 
@@ -9290,7 +9109,7 @@ end)
 
 L_20_:Toggle("Auto Buy Chips",_G.Settings.Auto_Buy_Chips,function(L_453_arg0)
 	_G.Settings.Auto_Buy_Chips = L_453_arg0
-	SaveSettings()
+	--SaveSettings()
 end)
 
     spawn(function()
@@ -9331,24 +9150,24 @@ L_20_:Dropdown("Select Raids",{"Flame","Ice","Quake","Light",
     "Bird: Phoenix","Dough"
 	},_G.Settings.Select_Raids ,function(L_454_arg0)
 	_G.Settings.Select_Raids = L_454_arg0
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_20_:Label("Raids Configs")
 
 L_20_:Toggle("Kill Aura [Bug]",_G.Settings.Kill_Aura,function(L_455_arg0)
 	_G.Settings.Kill_Aura = L_455_arg0
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_20_:Toggle("Auto Awakened | ออโต้ผลตื่น",_G.Settings.Auto_Awakened,function(L_456_arg0)
 	_G.Settings.Auto_Awakened = L_456_arg0
-	SaveSettings()
+	--SaveSettings()
 end)
 
 L_20_:Toggle("Auto Next Place | ออโตย้ายเกาะ",_G.Settings.Auto_Next_Place,function(L_457_arg0)
 	_G.Settings.Auto_Next_Place = L_457_arg0
-	SaveSettings()
+	--SaveSettings()
 	
 end)
 
@@ -10392,7 +10211,7 @@ L_15_:Label("Auto Get Fighting Styles")
 
 L_15_:Toggle("Auto Electric Claw", _G.Settings.Auto_Electric_Claw,function(L_287_arg0)
 		_G.Settings.Auto_Electric_Claw = L_287_arg0
-		SaveSettings()
+		--SaveSettings()
 		if _G.Settings.Auto_Electric_Claw then
 			Com("F_", "BuyElectro")
 		end
@@ -10443,7 +10262,7 @@ L_15_:Toggle("Auto Electric Claw", _G.Settings.Auto_Electric_Claw,function(L_287
 
 L_15_:Toggle("Auto Death Step",_G.Settings.Auto_Death_Step,function(L_296_arg0)
 		_G.Settings.Auto_Death_Step = L_296_arg0
-		SaveSettings()
+		--SaveSettings()
 		if _G.Settings.Auto_Death_Step then
 			Com("F_", "BuyBlackLeg")
 		end
@@ -10550,7 +10369,7 @@ L_15_:Toggle("Auto Death Step",_G.Settings.Auto_Death_Step,function(L_296_arg0)
 
 L_15_:Toggle("Auto SharkMan Karate",_G.Settings.Auto_SharkMan_Karate,function(L_301_arg0)
 		_G.Settings.Auto_SharkMan_Karate = L_301_arg0
-		SaveSettings()
+		--SaveSettings()
 		if _G.Settings.Auto_SharkMan_Karate then
 			Com("F_", "BuySharkmanKarate")
 		end
@@ -10654,7 +10473,7 @@ L_15_:Toggle("Auto SharkMan Karate",_G.Settings.Auto_SharkMan_Karate,function(L_
 
 L_15_:Toggle("Auto Dragon Talon",_G.Settings.Auto_Dragon_Talon,function(L_304_arg0)
 		_G.Settings.Auto_Dragon_Talon = L_304_arg0
-		SaveSettings()
+		--SaveSettings()
 		if _G.Settings.Auto_Dragon_Talon then
 			Com("F_", "BlackbeardReward", "DragonClaw", "2")
 		end
@@ -10733,7 +10552,7 @@ L_15_:Toggle("Auto Dragon Talon",_G.Settings.Auto_Dragon_Talon,function(L_304_ar
 
 L_15_:Toggle("Auto Superhuman",_G.Settings.Auto_Superhuman,function(L_274_arg0)
 		_G.Settings.Auto_Superhuman = L_274_arg0
-		SaveSettings()
+		--SaveSettings()
 		spawn(function()
 			while wait() do
 				pcall(function()
@@ -10883,7 +10702,7 @@ L_15_:Toggle("Auto God Human",_G.Settings.Auto_God_Human,function(L_331_arg0)
 				GetAllMeleeFarm()
 			end
 		end
-		SaveSettings()
+		--SaveSettings()
 		spawn(function()
 			while wait() do
 				pcall(function()
@@ -11742,13 +11561,13 @@ L_15_:Label("Fully")
 
 L_15_:Toggle("Auto Fully Death Step",_G.Settings.Auto_Fully_Death_Step,function(L_410_arg0)
 		_G.Settings.Auto_Fully_Death_Step = L_410_arg0
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
 L_15_:Toggle("Auto Fully SharkMan Karate",_G.Settings.Auto_Fully_SharkMan_Karate,function(L_411_arg0)
 		_G.Settings.Auto_Fully_SharkMan_Karate = L_411_arg0
-		SaveSettings()
+		--SaveSettings()
 	end
 )
 
@@ -11777,7 +11596,7 @@ LLLL:Label(" Auto Other ")
 LLLL:Toggle("Auto Random Fruit", _G.Settings.Auto_Buy_Random_Fruits, function(a)
 	_G.Settings.Auto_Buy_Random_Fruits = a
 	_G.AutoRandomFruit = a
-	SaveSettings()
+	--SaveSettings()
 end)
 
 spawn(function()
@@ -11795,7 +11614,7 @@ end)
 LLLL:Toggle("Auto Store Fruit",_G.Settings.Auto_Store_Fruits,function(a)
 	_G.Settings.Auto_Store_Fruits = a
 	getgenv().AutoStoreFruit = a
-	SaveSettings()
+	--SaveSettings()
 end)
 
 
@@ -12350,3 +12169,608 @@ if slashHit then
 end
 
 --HEE
+
+local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+local aQ = getupvalues(aP)[2]
+local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+local aS = getupvalues(aR)[2]
+local aT = require(game.ReplicatedStorage.CombatFramework.RigLib)
+local aU = tick()
+local aV = require(game.ReplicatedStorage.Util.CameraShaker)
+aV:Stop()
+function CurrentWeapon()
+    local ac = aQ.activeController
+    local aW = ac.blades[1]
+    if not aW then
+        return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+    end
+    pcall(function()
+		while aW.Parent ~= game.Players.LocalPlayer.Character do
+			aW = aW.Parent
+		end
+	end)
+    if not aW then
+        return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+    end
+    return aW
+end
+function getAllBladeHitsPlayers(aX)
+    Hits = {}
+    local aY = game.Players.LocalPlayer
+    local aZ = game:GetService("Workspace").Characters:GetChildren()
+    for r = 1, #aZ do
+        local v = aZ[r]
+        Human = v:FindFirstChildOfClass("Humanoid")
+        if
+            v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+         then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end
+function getAllBladeHits(aX)
+    Hits = {}
+    local aY = game.Players.LocalPlayer
+    local a_ = game:GetService("Workspace").Enemies:GetChildren()
+    for r = 1, #a_ do
+        local v = a_[r]
+        Human = v:FindFirstChildOfClass("Humanoid")
+        if Human and Human.RootPart and Human.Health > 0 and aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end
+bo1 = 1
+    if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
+        return nil
+    end
+    local ac = aQ.activeController
+    if ac and ac.equipped then
+        for b0 = 1, 1 do
+            local b2 =
+                require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                game.Players.LocalPlayer.Character,
+                {game.Players.LocalPlayer.Character.HumanoidRootPart},
+                60
+            )
+            if #b2 > 0 then
+                local b3 = debug.getupvalue(ac.attack, 5)
+                local b4 = debug.getupvalue(ac.attack, 6)
+                local b5 = debug.getupvalue(ac.attack, 4)
+                local b6 = debug.getupvalue(ac.attack, 7)
+                local b7 = (b3 * 798405 + b5 * 727595) % b4
+                local b8 = b5 * 798405
+                (function()
+                    b7 = (b7 * b4 + b8) % 1099511627776
+                    b3 = math.floor(b7 / b4)
+                    b5 = b7 - b3 * b4
+                end)()
+                b6 = b6 + 1
+                debug.setupvalue(ac.attack, 5, b3)
+                debug.setupvalue(ac.attack, 6, b4)
+                debug.setupvalue(ac.attack, 4, b5)
+                debug.setupvalue(ac.attack, 7, b6)
+                for k, v in pairs(ac.animator.anims.basic) do
+                    v:Play()
+                end
+                if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+                        "weaponChange",
+                        tostring(CurrentWeapon())
+                    )
+                    game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(b7 / 1099511627776 * 16777215), b6)
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
+                end
+            end
+        end
+    end
+
+    local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+    local aQ = getupvalues(aP)[2]
+    local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+    local aS = getupvalues(aR)[2]
+    local aT = require(game.ReplicatedStorage.CombatFramework.RigLib)
+    local aU = tick()
+    function CameraShaker()
+		task.spawn(function()
+			local b9 = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
+			while wait(0) do
+				pcall(function()
+					b9.CameraShakeInstance.CameraShakeState.Inactive = 0
+				end)
+			end
+		end)
+    end
+    function CurrentWeapon()
+        local ac = aQ.activeController
+        local aW = ac.blades[1]
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        pcall(function()
+			while aW.Parent ~= game.Players.LocalPlayer.Character do
+				aW = aW.Parent
+			end
+        end)
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        return aW
+    end
+    function getAllBladeHitsPlayers(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local aZ = game:GetService("Workspace").Characters:GetChildren()
+        for r = 1, #aZ do
+            local v = aZ[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function getAllBladeHits(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local a_ = game:GetService("Workspace").Enemies:GetChildren()
+        for r = 1, #a_ do
+            local v = a_[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    ReturnFunctions = {}
+    function CurrentWeapon()
+        local ac = aQ.activeController
+        local aW = ac.blades[1]
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        pcall(function()
+			while aW.Parent ~= game.Players.LocalPlayer.Character do
+				aW = aW.Parent
+			end
+		end)
+        if not aW then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        return aW
+    end
+    function getAllBladeHitsPlayers(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local aZ = game:GetService("Workspace").Characters:GetChildren()
+        for r = 1, #aZ do
+            local v = aZ[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function lonmemaytofff(aX)
+        Hits = {}
+        local aY = game.Players.LocalPlayer
+        local a_ = game:GetService("Workspace").Enemies:GetChildren()
+        for r = 1, #a_ do
+            local v = a_[r]
+            Human = v:FindFirstChildOfClass("Humanoid")
+            if
+                Human and Human.RootPart and Human.Health > 0 and Human.Health ~= Human.MaxHealth and
+                    aY:DistanceFromCharacter(Human.RootPart.Position) < aX + 5
+             then
+                table.insert(Hits, Human.RootPart)
+            end
+        end
+        return Hits
+    end
+    function AttackFunctgggggion()
+		pcall(function()
+			if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
+				return nil
+			end
+			local ac = aQ.activeController
+			ac.hitboxMagnitude = 55
+			if ac and ac.equipped  and not _G.Settings.Auto_Raids then
+				for b0 = 1, 1 do
+					local b2 =
+						require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+						game.Players.LocalPlayer.Character,
+						{game.Players.LocalPlayer.Character.HumanoidRootPart},
+						60
+					)
+					if #b2 > 0 then
+						local b3 = debug.getupvalue(ac.attack, 5)
+						local b4 = debug.getupvalue(ac.attack, 6)
+						local b5 = debug.getupvalue(ac.attack, 4)
+						local b6 = debug.getupvalue(ac.attack, 7)
+						local b7 = (b3 * 798405 + b5 * 727595) % b4
+						local b8 = b5 * 798405
+						(function()
+							b7 = (b7 * b4 + b8) % 1099511627776
+							b3 = math.floor(b7 / b4)
+							b5 = b7 - b3 * b4
+						end)()
+						b6 = b6 + 1
+						debug.setupvalue(ac.attack, 5, b3)
+						debug.setupvalue(ac.attack, 6, b4)
+						debug.setupvalue(ac.attack, 4, b5)
+						debug.setupvalue(ac.attack, 7, b6)
+						for k, v in pairs(ac.animator.anims.basic) do
+							v:Play()
+						end
+						if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+							wait(0.05)
+							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+								"weaponChange",
+								tostring(CurrentWeapon())
+							)
+							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
+						end
+					end
+				end
+			end
+		end)
+    end
+CountAtgggtack = 0
+spawn(
+    function()
+        local MT = getrawmetatable(game)
+        local OldNameCall = MT.__namecall
+        setreadonly(MT, false)
+        MT.__namecall =
+            newcclosure(
+            function(self, ...)
+                local Method = getnamecallmethod()
+                local Args = {...}
+                pcall(
+                    function()
+                        if Method == "FireServer" and self.Name == "RigControllerEvent" and Args[1] == "hit" then
+                            CountAtgggtack = CountAtgggtack + 1
+                        end
+                    end
+                )
+                return OldNameCall(self, unpack(Args))
+            end
+        )
+    end
+)
+jg = {}
+function jg:GetCount()
+    return CountAtgggtack
+end
+    gg5iihetiter9pihtr = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/fastattackez.lua"))()
+    spawn(function()
+		while task.wait(0) do
+			CountAttack = jg:GetCount()
+			task.wait(0)
+		end
+    end)
+    function ReturnFunctions:GetCount()
+        return CountAttack
+    end
+    function ReturnFunctions:Attack(k)
+        _G.FastAttack3 = k
+    end
+    FastAttackSettings = {["CDAAT"] = 50, ["TimeWait"] = 50} -- {["CDAAT"] = 80, ["TimeWait"] = 10}
+    spawn(function()
+		local aV = require(game.ReplicatedStorage.Util.CameraShaker)
+		aV:Stop()
+    end)
+    function ReturnFunctions:InputValue(ba, bb)
+        FastAttackSettings["CDAAT"] = ba
+        FastAttackSettings["TimeWait"] = bb
+    end
+    ToiCanOxi = 0
+    spawn(function()
+		while task.wait() do
+			if _G.FastAttack3 then
+				pcall(function()
+					if CountAttack < FastAttackSettings["CDAAT"] then
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+						if h and h["Mastery Farm"] and h["DelayAttack"] then
+							wait(h["DelayAttack"])
+						end
+					else
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+						if h and h["DelayAttack"] then
+							wait(h["DelayAttack"] * 2)
+						end
+                    end
+                end)
+            end
+        end
+    end)
+    memaydonand = 0
+    spawn(function()
+        while task.wait() do
+            if _G.FastAttack3 then
+                pcall(function()
+					if memaydonand % 2 == 1 then
+						wait(1)
+					end
+					local bd = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
+					bd.activeController.hitboxMagnitude = 55
+					memaydonand = memaydonand + 1
+                end)
+            end
+        end
+    end)
+    spawn(function()
+		while wait() do
+			if _G.FastAttack3 then
+				if CountAttack >= FastAttackSettings["CDAAT"] then
+					TickFastAttackF = tick()
+					repeat
+						wait()
+					until tick() - TickFastAttackF >= FastAttackSettings["TimeWait"]
+					CountAttack = 0
+                end
+            end
+        end
+    end)
+------------------
+new = {}
+
+    local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+    local CombatFrameworkR = getupvalues(CombatFramework)[2]
+    local RigController = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+    local RigControllerR = getupvalues(RigController)[2]
+    local realbhit = require(game.ReplicatedStorage.CombatFramework.RigLib)
+    local cooldownfastattack = tick()
+
+
+    --[Function RmFzdCBBdHRhY2s=]
+    
+    ReturnFunctions = {}
+    function CurrentWeapon()
+        local ac = CombatFrameworkR.activeController
+        local ret = ac.blades[1]
+        if not ret then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        pcall(
+            function()
+                while ret.Parent ~= game.Players.LocalPlayer.Character do
+                    ret = ret.Parent
+                end
+            end
+        )
+        if not ret then
+            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
+        end
+        return ret
+    end
+    function AttackFunctgggggion()
+        if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
+            return nil
+        end
+        local ac = CombatFrameworkR.activeController
+        ac.hitboxMagnitude = 55
+        if ac and ac.equipped then
+            for indexincrement = 1, 1 do
+                local bladehit =require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(game.Players.LocalPlayer.Character,{game.Players.LocalPlayer.Character.HumanoidRootPart},60)
+                if #bladehit > 0 then
+                    local AcAttack8 = debug.getupvalue(ac.attack, 5)
+                    local AcAttack9 = debug.getupvalue(ac.attack, 6)
+                    local AcAttack7 = debug.getupvalue(ac.attack, 4)
+                    local AcAttack10 = debug.getupvalue(ac.attack, 7)
+                    local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
+                    local NumberAc13 = AcAttack7 * 798405
+                    (function()
+                        NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
+                        AcAttack8 = math.floor(NumberAc12 / AcAttack9)
+                        AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
+                    end)()
+                    AcAttack10 = AcAttack10 + 1
+                    debug.setupvalue(ac.attack, 5, AcAttack8)
+                    debug.setupvalue(ac.attack, 6, AcAttack9)
+                    debug.setupvalue(ac.attack, 4, AcAttack7)
+                    debug.setupvalue(ac.attack, 7, AcAttack10)
+                    for k, v in pairs(ac.animator.anims.basic) do
+                        v:Play(0.01,0.01,0.01)
+                    end
+                    if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+						wait(0.010)
+                        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+                            "weaponChange",
+                            tostring(CurrentWeapon())
+                        )
+                        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 0, "")
+                    end
+                end
+            end
+        end
+    end
+    CountAttack = 0  
+    TickCountAttack = tick()
+    spawn(function()
+        local MT = getrawmetatable(game)
+        local OldNameCall = MT.__namecall
+        setreadonly(MT, false)
+        MT.__namecall = newcclosure(function(self, ...)
+            local Method = getnamecallmethod()
+            local Args = {...}
+            if Method == 'FireServer' and self.Name == "RigControllerEvent" and  Args[1] == "hit"  then
+                CountAttack = CountAttack + 1 
+                TickCountAttack = tick()
+            end
+            return OldNameCall(self, unpack(Args))
+        end)
+    end)
+    function ReturnFunctions:GetCount()
+        return CountAttack
+    end
+    function ReturnFunctions:Attack(k)
+        _G.FastAttack = k 
+    end
+    FastAttackSettings = {
+        ["CDAAT"] = 50, --80
+        ["TimeWait"] = 50 --10
+    }
+    spawn(function()
+        local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
+        CameraShakerR:Stop()
+    end)
+    function ReturnFunctions:InputValue(CDAAT,TimeWait)
+        FastAttackSettings["CDAAT"] = CDAAT
+        FastAttackSettings["TimeWait"] = TimeWait
+    end
+    function ReturnFunctions:InputSetting(tbbb)
+        conchosetting = tbbb
+    end
+    function atack()
+        pcall(function()
+            AttackFunctgggggion()
+        end)
+    end
+    ToiCanOxi = 0
+    conchosetting = {}
+    function ReturnFunctions:GetMethod()
+        MethodAttack = "Slow"
+        if CountAttack < FastAttackSettings["CDAAT"] then 
+            MethodAttack = "Fast"
+        end 
+        return MethodAttack
+    end
+    spawn(function()
+        while task.wait() do 
+            if _G.FastAttack then 
+                pcall(function()
+                    if conchosetting and type(conchosetting) == "table" then 
+                        if conchosetting and conchosetting["Mastery Farm"] then 
+                            ToiCanOxi = 2 
+                            atack()
+                            if conchosetting["DelayAttack"] and type(conchosetting["DelayAttack"]) == "number" and conchosetting["DelayAttack"] >= 0.1 then 
+                                wait(conchosetting["DelayAttack"])
+                            else
+                                conchosetting["DelayAttack"] = 0.2 
+                                wait(conchosetting["DelayAttack"])
+                            end
+                        elseif CountAttack < FastAttackSettings["CDAAT"] then 
+                            ToiCanOxi = ToiCanOxi +1
+                            atack()
+                        elseif CountAttack >= FastAttackSettings["CDAAT"] then 
+                            ToiCanOxi = ToiCanOxi +1
+                            atack()
+                            if conchosetting["DelayAttack"] and type(conchosetting["DelayAttack"]) == "number" and conchosetting["DelayAttack"] >= 0.1 then 
+                                wait(conchosetting["DelayAttack"]*2)
+                            else
+                                conchosetting["DelayAttack"] = 0.2 
+                                wait(conchosetting["DelayAttack"]*2)
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end) 
+    spawn(function()
+        while task.wait(0.0) do 
+            pcall(function() 
+                if tick()-TickCountAttack >= FastAttackSettings["TimeWait"] then 
+                    CountAttack = 0 
+                end
+            end)
+        end
+    end)
+    spawn(function()
+        while task.wait() do 
+            if _G.FastAttack then 
+                pcall(function()
+                    local Fastflux = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
+                    Fastflux.activeController.hitboxMagnitude = 55
+                    Fastflux.activeController.timeToNextAttack = 0
+                    Fastflux.activeController.attacking = false
+                    Fastflux.activeController.increment = 3
+                    Fastflux.activeController.blocking = false
+                    Fastflux.activeController.timeToNextBlock = 0
+                    Fastflux.activeController:attack()
+                    task.wait(0.2)
+                end)
+            end
+        end
+    end)
+
+    spawn(function()
+        while task.wait() do 
+            if _G.FastAttack then 
+                pcall(function()
+                    local Fastflux = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
+                    Fastflux.activeController.hitboxMagnitude = 55
+                    Fastflux.activeController.timeToNextAttack = 0
+                    Fastflux.activeController.attacking = false
+                    Fastflux.activeController.increment = 3
+                    Fastflux.activeController.blocking = false
+                    Fastflux.activeController.timeToNextBlock = 0
+                    a = math.random(1,5)
+                    if a > 1 then 
+                        game:GetService "VirtualUser":CaptureController()
+                        game:GetService "VirtualUser":Button1Down(Vector2.new(50, 50))
+                    end
+                    task.wait(0.2)
+                end)
+            end
+        end
+    end)
+    spawn(function()
+        while task.wait() do 
+            if _G.FastAttack then
+                pcall(function() 
+                    if CountAttack >= FastAttackSettings["CDAAT"] then 
+                        TickFastAttackF = tick()
+                        repeat wait(0.009) until tick()-TickFastAttackF >= FastAttackSettings["TimeWait"]
+                        CountAttack = 0
+                    end    
+                end)  
+            end
+        end
+    end)
+--[[    spawn(function()
+		while wait() do
+			if _G.FastAttack3 then
+				pcall(function()
+                    game:GetService "VirtualUser":CaptureController()
+                    game:GetService "VirtualUser":Button1Down(Vector2.new(50, 50))
+					AttackFunctgggggion()
+                end)
+            end
+        end
+    end)]]
+    
+FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
+
+function AttackFunction()
+    FastAttackConnector:Attack()
+end
+
+spawn(function()
+	while wait() do
+		if _G.FastAttack3 then
+			FastAttackConnector:InputSetting(h)
+			FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
+			FastAttackConnector:Attack(true)
+		else
+			FastAttackConnector:Attack(false)
+		end
+	end
+end)
