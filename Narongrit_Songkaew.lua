@@ -1653,8 +1653,8 @@ function Tween(...)
 			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = p
     	end
 		if Distance < 50 then
-			Speed = 200
-			Speedx = 200
+			Speed = 275
+			Speedx = 275
 		elseif Distance < 300 then
 			Speed = 380
 			Speedx = 380
@@ -4869,12 +4869,14 @@ end)
 					else
 						if _G.TweentoQuest == false then
 							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+							Tween(_G.PosMonLv)
 						end
 						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 							if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 								if v.Name == Ms then
 									if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 										game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+										Tween(_G.PosMonLv)
 									end
 								end
 							end
@@ -4882,6 +4884,7 @@ end)
 						if (CFrameQ * CFrame.new(0, 50, 0).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
 							BringMobFarm = false
 							game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
+							Tween(_G.PosMonLv)
 						else
 							Tween(CFrameQ * CFrame.new(0, 50, 0))
 						end
@@ -8441,8 +8444,7 @@ end)
 Settings:Toggle("Fast Attack[3]\nโจมตีเร็วสาม",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
 	--_G.FastAttackNaJa = value
-	_G.FastAttack3 = value
-	UFFF = value
+	_G.FastT = value
 	--SaveSettings()
 end)
 
@@ -9457,32 +9459,6 @@ spawn(function()
 									Tween(game:GetService("Workspace")["_WorldOrigin"].Locations["Island 1"].CFrame * CFrame.new(4, 65, 10))
 								end
 							end
-							for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
-								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-									repeat task.wait()
-										if (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
-											v.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-60,0)
-										end
-										sethiddenproperty(game:GetService('Players').LocalPlayer, "SimulationRadius", math.huge)
-										v.Humanoid.Health = 0
-										v.HumanoidRootPart.CanCollide = false
-									until not _G.Settings.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
-								end
-							end
-							--[[for i, L_459_forvar1 in pairs(game.Workspace.Enemies:GetChildren()) do
-								if _G.Settings.Auto_Raids and game.Players.LocalPlayer.PlayerGui.Main.Timer.Visible == true and L_459_forvar1:FindFirstChild("Humanoid") and L_459_forvar1:FindFirstChild("HumanoidRootPart") and (L_459_forvar1.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
-									repeat wait(.1) --.3
-										if InMyNetWork(v.HumanoidRootPart) then
-											L_459_forvar1.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(77,-77,0)
-											L_459_forvar1.Humanoid:ChangeState(12)
-											L_459_forvar1.Humanoid.Health = 0
-											L_459_forvar1.HumanoidRootPart.CanCollide = false
-											L_459_forvar1.HumanoidRootPart.Size = Vector3.new(77,77,77)
-											sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-										end
-									until not _G.Settings.Auto_Raids or L_459_forvar1.Humanoid.Health <= 0 or not L_459_forvar1.Parent
-								end
-							end]]
 							if _G.Settings.Auto_Awakened then	
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Awakener", "Awaken")
 							end
@@ -9507,28 +9483,26 @@ spawn(function()
 	end
 end)
 
---[[spawn(function()
+spawn(function()
     while wait() do
-        if _G.Settings.Kill_Aura then
+        if _G.Settings.Auto_Raids then
             for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                     pcall(function()
                         repeat wait()
-						if InMyNetWork(v.HumanoidRootPart) then
                             v.Humanoid.Health = 0
-                            v:BreakJoints()
-                            v.Humanoid:ChangeState(8)
                             v.HumanoidRootPart.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                            v.HumanoidRootPart.Transparency = 1
-						end
-                        until not _G.Settings.Kill_Aura or not _G.Settings.Auto_Raids or not RaidSuperhuman or not v.Parent or v.Humanoid.Health <= 0
+                            --v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                            --v.HumanoidRootPart.Transparency = 1
+							wait(.3)
+                        until not _G.Settings.Auto_Raids or not v.Parent or v.Humanoid.Health <= 0
                     end)
                 end
             end
         end
     end
-end)]]
+end)
+
 spawn(function()
 	while wait() do
 		if _G.Settings.Kill_Aura then
@@ -12169,7 +12143,139 @@ if slashHit then
 end
 
 --HEE
+local old = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+local com = getupvalue(old, 2)
+require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+spawn(
+    function()
+        game:GetService("RunService").Stepped:Connect(
+            function()
+                pcall(
+                    function()
+                        com.activeController.hitboxMagnitude = 50
+                        if _G.FastAttack33 then
+                            com.activeController.hitboxMagnitude = 50
+                            com.activeController.active = false
+                            com.activeController.blocking = false
+                            com.activeController.focusStart = 0
+                            com.activeController.hitSound = nil
+                            com.activeController.increment = 0
+                            com.activeController.timeToNextAttack = 0
+                            com.activeController.timeToNextBlock = 0
+                            com.activeController:attack()
+                        end
+                    end
+                )
+            end
+        )
+    end
+)
 
+local ply = game.Players.LocalPlayer
+
+local Combatfram1 = debug.getupvalues(require(ply.PlayerScripts.CombatFramework))
+local Combatfram2 = Combatfram1[2]
+
+function GetCurrentBlade()
+    local p13 = Combatfram2.activeController
+    local ret = p13.blades[1]
+    if not ret then
+        return
+    end
+    while ret.Parent ~= game.Players.LocalPlayer.Character do
+        ret = ret.Parent
+    end
+    return ret
+end
+
+function Attack()
+    pcall(
+        function()
+            local a = game.Players.LocalPlayer
+            local b = getupvalues(require(a.PlayerScripts.CombatFramework))[2]
+            local e = b.activeController
+            for f = 1, 1 do
+                local g =
+                    require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                    a.Character,
+                    {a.Character.HumanoidRootPart},
+                    60
+                )
+                local h = {}
+                local i = {}
+                for j, k in pairs(g) do
+                    if k.Parent:FindFirstChild("HumanoidRootPart") and not i[k.Parent] then
+                        table.insert(h, k.Parent.HumanoidRootPart)
+                        i[k.Parent] = true
+                    end
+                end
+                g = h
+                if #g > 0 then
+                    local l = debug.getupvalue(e.attack, 5)
+                    local m = debug.getupvalue(e.attack, 6)
+                    local n = debug.getupvalue(e.attack, 4)
+                    local o = debug.getupvalue(e.attack, 7)
+                    local p = (l * 798405 + n * 727595) % m
+                    local q = n * 798405
+                    (function()
+                        p = (p * m + q) % 1099511627776
+                        l = math.floor(p / m)
+                        n = p - l * m
+                    end)()
+                    o = o + 1
+                    debug.setupvalue(e.attack, 5, l)
+                    debug.setupvalue(e.attack, 6, m)
+                    debug.setupvalue(e.attack, 4, n)
+                    debug.setupvalue(e.attack, 7, o)
+                    pcall(
+                        function()
+                            if a.Character:FindFirstChildOfClass("Tool") and e.blades and e.blades[1] then
+                                e.animator.anims.basic[1]:Play(0.01, 0.01, 0.01)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
+                                    "weaponChange",
+                                    tostring(GetCurrentBlade())
+                                )
+                                game.ReplicatedStorage.Remotes.Validator:FireServer(
+                                    math.floor(p / 1099511627776 * 16777215),
+                                    o
+                                )
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", g, f, "")
+                            end
+                        end
+                    )
+                end
+            end
+            b.activeController.timeToNextAttack = -math.huge
+            b.activeController.attacking = false
+            b.activeController.timeToNextBlock = 0
+            b.activeController.humanoid.AutoRotate = 80
+            b.activeController.increment = 4
+            b.activeController.blocking = false
+            b.activeController.hitboxMagnitude = 50
+        end
+    )
+end
+
+if not _G.AttackConfig then
+    _G.AttackConfig = {
+        ["Fast Attack Aura"] = false,
+        ["Fast Attack Delay"] = 0,
+    }
+end
+
+_G.AttackConfig["Fast Attack Delay"] = _G.AttackConfig["Fast Attack Delay"] or 0.2
+local LastAz = 0 
+game:GetService"RunService".Heartbeat:Connect(function()
+    if _G.FastAttack33 then
+        if tick()-LastAz >= 0 then 
+            LastAz = tick()
+            Attack()
+        end
+    end
+end)
+
+
+------------------
 local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
 local aQ = getupvalues(aP)[2]
 local aR = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
@@ -12223,50 +12329,6 @@ function getAllBladeHits(aX)
     end
     return Hits
 end
-bo1 = 1
-    if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
-        return nil
-    end
-    local ac = aQ.activeController
-    if ac and ac.equipped then
-        for b0 = 1, 1 do
-            local b2 =
-                require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-                game.Players.LocalPlayer.Character,
-                {game.Players.LocalPlayer.Character.HumanoidRootPart},
-                60
-            )
-            if #b2 > 0 then
-                local b3 = debug.getupvalue(ac.attack, 5)
-                local b4 = debug.getupvalue(ac.attack, 6)
-                local b5 = debug.getupvalue(ac.attack, 4)
-                local b6 = debug.getupvalue(ac.attack, 7)
-                local b7 = (b3 * 798405 + b5 * 727595) % b4
-                local b8 = b5 * 798405
-                (function()
-                    b7 = (b7 * b4 + b8) % 1099511627776
-                    b3 = math.floor(b7 / b4)
-                    b5 = b7 - b3 * b4
-                end)()
-                b6 = b6 + 1
-                debug.setupvalue(ac.attack, 5, b3)
-                debug.setupvalue(ac.attack, 6, b4)
-                debug.setupvalue(ac.attack, 4, b5)
-                debug.setupvalue(ac.attack, 7, b6)
-                for k, v in pairs(ac.animator.anims.basic) do
-                    v:Play()
-                end
-                if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
-                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
-                        "weaponChange",
-                        tostring(CurrentWeapon())
-                    )
-                    game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(b7 / 1099511627776 * 16777215), b6)
-                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
-                end
-            end
-        end
-    end
 
     local aP = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
     local aQ = getupvalues(aP)[2]
@@ -12277,7 +12339,7 @@ bo1 = 1
     function CameraShaker()
 		task.spawn(function()
 			local b9 = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-			while wait(0) do
+			while wait() do
 				pcall(function()
 					b9.CameraShakeInstance.CameraShakeState.Inactive = 0
 				end)
@@ -12386,9 +12448,9 @@ bo1 = 1
 			if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
 				return nil
 			end
+
 			local ac = aQ.activeController
-			ac.hitboxMagnitude = 55
-			if ac and ac.equipped  and not _G.Settings.Auto_Raids then
+			if ac and ac.equipped then
 				for b0 = 1, 1 do
 					local b2 =
 						require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
@@ -12417,50 +12479,26 @@ bo1 = 1
 							v:Play()
 						end
 						if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
-							wait(0.05)
 							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
 								"weaponChange",
 								tostring(CurrentWeapon())
 							)
-							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2, "")
+							game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(b7 / 1099511627776 * 16777215), b6)
+							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", b2, 2 , "") --2
+							
+							-- เพิ่มการดูดเลือดมอนส์ที่นี่
+							game:GetService("ReplicatedStorage").Monsters.BossMonster:FireServer("DrainBlood", b2)
 						end
 					end
 				end
 			end
 		end)
     end
-CountAtgggtack = 0
-spawn(
-    function()
-        local MT = getrawmetatable(game)
-        local OldNameCall = MT.__namecall
-        setreadonly(MT, false)
-        MT.__namecall =
-            newcclosure(
-            function(self, ...)
-                local Method = getnamecallmethod()
-                local Args = {...}
-                pcall(
-                    function()
-                        if Method == "FireServer" and self.Name == "RigControllerEvent" and Args[1] == "hit" then
-                            CountAtgggtack = CountAtgggtack + 1
-                        end
-                    end
-                )
-                return OldNameCall(self, unpack(Args))
-            end
-        )
-    end
-)
-jg = {}
-function jg:GetCount()
-    return CountAtgggtack
-end
+
     gg5iihetiter9pihtr = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/fastattackez.lua"))()
     spawn(function()
-		while task.wait(0) do
+		while task.wait() do
 			CountAttack = jg:GetCount()
-			task.wait(0)
 		end
     end)
     function ReturnFunctions:GetCount()
@@ -12469,7 +12507,6 @@ end
     function ReturnFunctions:Attack(k)
         _G.FastAttack3 = k
     end
-    FastAttackSettings = {["CDAAT"] = 50, ["TimeWait"] = 50} -- {["CDAAT"] = 80, ["TimeWait"] = 10}
     spawn(function()
 		local aV = require(game.ReplicatedStorage.Util.CameraShaker)
 		aV:Stop()
@@ -12478,35 +12515,41 @@ end
         FastAttackSettings["CDAAT"] = ba
         FastAttackSettings["TimeWait"] = bb
     end
-    ToiCanOxi = 0
+    
     spawn(function()
 		while task.wait() do
 			if _G.FastAttack3 then
+				ToiCanOxi = 0
 				pcall(function()
 					if CountAttack < FastAttackSettings["CDAAT"] then
 						ToiCanOxi = ToiCanOxi + 1
 						AttackFunctgggggion()
-						if h and h["Mastery Farm"] and h["DelayAttack"] then
-							wait(h["DelayAttack"])
-						end
+						wait(h["DelayAttack"])
+						wait(_G.AttackConfig["Fast Attack Delay"])
 					else
 						ToiCanOxi = ToiCanOxi + 1
 						AttackFunctgggggion()
 						if h and h["DelayAttack"] then
 							wait(h["DelayAttack"] * 2)
 						end
+						wait(_G.AttackConfig["Fast Attack Delay"])
                     end
                 end)
             end
         end
     end)
-    memaydonand = 0
+
     spawn(function()
         while task.wait() do
             if _G.FastAttack3 then
+                    FastAttackSettings = {
+                        ["CDAAT"] = 80, --80
+                        ["TimeWait"] = 10--10
+                    }
+				memaydonand = 0
                 pcall(function()
 					if memaydonand % 2 == 1 then
-						wait(1)
+						wait(1) --wait(1)
 					end
 					local bd = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
 					bd.activeController.hitboxMagnitude = 55
@@ -12520,257 +12563,137 @@ end
 			if _G.FastAttack3 then
 				if CountAttack >= FastAttackSettings["CDAAT"] then
 					TickFastAttackF = tick()
-					repeat
-						wait()
+					repeat wait()
 					until tick() - TickFastAttackF >= FastAttackSettings["TimeWait"]
 					CountAttack = 0
                 end
             end
         end
     end)
-------------------
-new = {}
-
-    local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
-    local CombatFrameworkR = getupvalues(CombatFramework)[2]
-    local RigController = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
-    local RigControllerR = getupvalues(RigController)[2]
-    local realbhit = require(game.ReplicatedStorage.CombatFramework.RigLib)
-    local cooldownfastattack = tick()
-
-
-    --[Function RmFzdCBBdHRhY2s=]
-    
-    ReturnFunctions = {}
-    function CurrentWeapon()
-        local ac = CombatFrameworkR.activeController
-        local ret = ac.blades[1]
-        if not ret then
-            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
-        end
-        pcall(
-            function()
-                while ret.Parent ~= game.Players.LocalPlayer.Character do
-                    ret = ret.Parent
-                end
-            end
-        )
-        if not ret then
-            return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name
-        end
-        return ret
-    end
-    function AttackFunctgggggion()
-        if game.Players.LocalPlayer.Character.Stun.Value ~= 0 then
-            return nil
-        end
-        local ac = CombatFrameworkR.activeController
-        ac.hitboxMagnitude = 55
-        if ac and ac.equipped then
-            for indexincrement = 1, 1 do
-                local bladehit =require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(game.Players.LocalPlayer.Character,{game.Players.LocalPlayer.Character.HumanoidRootPart},60)
-                if #bladehit > 0 then
-                    local AcAttack8 = debug.getupvalue(ac.attack, 5)
-                    local AcAttack9 = debug.getupvalue(ac.attack, 6)
-                    local AcAttack7 = debug.getupvalue(ac.attack, 4)
-                    local AcAttack10 = debug.getupvalue(ac.attack, 7)
-                    local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
-                    local NumberAc13 = AcAttack7 * 798405
-                    (function()
-                        NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
-                        AcAttack8 = math.floor(NumberAc12 / AcAttack9)
-                        AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
-                    end)()
-                    AcAttack10 = AcAttack10 + 1
-                    debug.setupvalue(ac.attack, 5, AcAttack8)
-                    debug.setupvalue(ac.attack, 6, AcAttack9)
-                    debug.setupvalue(ac.attack, 4, AcAttack7)
-                    debug.setupvalue(ac.attack, 7, AcAttack10)
-                    for k, v in pairs(ac.animator.anims.basic) do
-                        v:Play(0.01,0.01,0.01)
-                    end
-                    if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
-						wait(0.010)
-                        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer(
-                            "weaponChange",
-                            tostring(CurrentWeapon())
-                        )
-                        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 0, "")
-                    end
-                end
-            end
-        end
-    end
-    CountAttack = 0  
-    TickCountAttack = tick()
     spawn(function()
-        local MT = getrawmetatable(game)
-        local OldNameCall = MT.__namecall
-        setreadonly(MT, false)
-        MT.__namecall = newcclosure(function(self, ...)
-            local Method = getnamecallmethod()
-            local Args = {...}
-            if Method == 'FireServer' and self.Name == "RigControllerEvent" and  Args[1] == "hit"  then
-                CountAttack = CountAttack + 1 
-                TickCountAttack = tick()
-            end
-            return OldNameCall(self, unpack(Args))
-        end)
-    end)
-    function ReturnFunctions:GetCount()
-        return CountAttack
-    end
-    function ReturnFunctions:Attack(k)
-        _G.FastAttack = k 
-    end
-    FastAttackSettings = {
-        ["CDAAT"] = 50, --80
-        ["TimeWait"] = 50 --10
-    }
-    spawn(function()
-        local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
-        CameraShakerR:Stop()
-    end)
-    function ReturnFunctions:InputValue(CDAAT,TimeWait)
-        FastAttackSettings["CDAAT"] = CDAAT
-        FastAttackSettings["TimeWait"] = TimeWait
-    end
-    function ReturnFunctions:InputSetting(tbbb)
-        conchosetting = tbbb
-    end
-    function atack()
-        pcall(function()
-            AttackFunctgggggion()
-        end)
-    end
-    ToiCanOxi = 0
-    conchosetting = {}
-    function ReturnFunctions:GetMethod()
-        MethodAttack = "Slow"
-        if CountAttack < FastAttackSettings["CDAAT"] then 
-            MethodAttack = "Fast"
-        end 
-        return MethodAttack
-    end
-    spawn(function()
-        while task.wait() do 
-            if _G.FastAttack then 
-                pcall(function()
-                    if conchosetting and type(conchosetting) == "table" then 
-                        if conchosetting and conchosetting["Mastery Farm"] then 
-                            ToiCanOxi = 2 
-                            atack()
-                            if conchosetting["DelayAttack"] and type(conchosetting["DelayAttack"]) == "number" and conchosetting["DelayAttack"] >= 0.1 then 
-                                wait(conchosetting["DelayAttack"])
-                            else
-                                conchosetting["DelayAttack"] = 0.2 
-                                wait(conchosetting["DelayAttack"])
-                            end
-                        elseif CountAttack < FastAttackSettings["CDAAT"] then 
-                            ToiCanOxi = ToiCanOxi +1
-                            atack()
-                        elseif CountAttack >= FastAttackSettings["CDAAT"] then 
-                            ToiCanOxi = ToiCanOxi +1
-                            atack()
-                            if conchosetting["DelayAttack"] and type(conchosetting["DelayAttack"]) == "number" and conchosetting["DelayAttack"] >= 0.1 then 
-                                wait(conchosetting["DelayAttack"]*2)
-                            else
-                                conchosetting["DelayAttack"] = 0.2 
-                                wait(conchosetting["DelayAttack"]*2)
-                            end
-                        end
+		while task.wait() do
+			if _G.FastMFF then
+				ToiCanOxi = 0
+				pcall(function()
+					if CountAttack < 100 then
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+                        wait(.5)
+					else
+						ToiCanOxi = ToiCanOxi + 1
+						AttackFunctgggggion()
+                        wait(.10)
                     end
                 end)
             end
         end
-    end) 
-    spawn(function()
-        while task.wait(0.0) do 
-            pcall(function() 
-                if tick()-TickCountAttack >= FastAttackSettings["TimeWait"] then 
-                    CountAttack = 0 
-                end
+    end)
+local GSPYx = game:GetService("Players")
+local GSRSx = game:GetService("ReplicatedStorage")
+
+local Modulex = require(GSPYx.LocalPlayer.PlayerScripts.CombatFramework)
+local CBFWx = debug.getupvalues(Modulex)[2]
+local CSx = require(GSRSx.Util.CameraShaker)
+
+task.spawn(function()
+    while true do task.wait()
+        if _G.FastMF then
+            pcall(function()
+                CSx:Stop()
+                CBFWx.activeController.attacking = false
+                CBFWx.activeController.timeToNextAttack = 0
+                CBFWx.activeController.increment = 4
+                CBFWx.activeController.hitboxMagnitude = 50
+                CBFWx.activeController.blocking = false
+                CBFWx.activeController.timeToNextBlock = 0
+                CBFWx.activeController.focusStart = 0
+                CBFWx.activeController.humanoid.AutoRotate = true
+                game:GetService'VirtualUser':CaptureController()
+	            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
             end)
         end
-    end)
-    spawn(function()
-        while task.wait() do 
-            if _G.FastAttack then 
-                pcall(function()
-                    local Fastflux = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
-                    Fastflux.activeController.hitboxMagnitude = 55
-                    Fastflux.activeController.timeToNextAttack = 0
-                    Fastflux.activeController.attacking = false
-                    Fastflux.activeController.increment = 3
-                    Fastflux.activeController.blocking = false
-                    Fastflux.activeController.timeToNextBlock = 0
-                    Fastflux.activeController:attack()
-                    task.wait(0.2)
-                end)
-            end
-        end
-    end)
-
-    spawn(function()
-        while task.wait() do 
-            if _G.FastAttack then 
-                pcall(function()
-                    local Fastflux = getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
-                    Fastflux.activeController.hitboxMagnitude = 55
-                    Fastflux.activeController.timeToNextAttack = 0
-                    Fastflux.activeController.attacking = false
-                    Fastflux.activeController.increment = 3
-                    Fastflux.activeController.blocking = false
-                    Fastflux.activeController.timeToNextBlock = 0
-                    a = math.random(1,5)
-                    if a > 1 then 
-                        game:GetService "VirtualUser":CaptureController()
-                        game:GetService "VirtualUser":Button1Down(Vector2.new(50, 50))
-                    end
-                    task.wait(0.2)
-                end)
-            end
-        end
-    end)
-    spawn(function()
-        while task.wait() do 
-            if _G.FastAttack then
-                pcall(function() 
-                    if CountAttack >= FastAttackSettings["CDAAT"] then 
-                        TickFastAttackF = tick()
-                        repeat wait(0.009) until tick()-TickFastAttackF >= FastAttackSettings["TimeWait"]
-                        CountAttack = 0
-                    end    
-                end)  
-            end
-        end
-    end)
---[[    spawn(function()
-		while wait() do
-			if _G.FastAttack3 then
-				pcall(function()
-                    game:GetService "VirtualUser":CaptureController()
-                    game:GetService "VirtualUser":Button1Down(Vector2.new(50, 50))
-					AttackFunctgggggion()
-                end)
-            end
-        end
-    end)]]
-    
+    end
+end)
+------------------
 FastAttackConnector = loadstring(game:HttpGet("https://raw.githubusercontent.com/memaybeohub/Function-Scripts/main/test2.lua"))()
-
-function AttackFunction()
-    FastAttackConnector:Attack()
-end
-
+FastAttackConnector:InputSetting(h)
+--FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
 spawn(function()
 	while wait() do
-		if _G.FastAttack3 then
-			FastAttackConnector:InputSetting(h)
-			FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
+		if _G.FastMFF then
 			FastAttackConnector:Attack(true)
 		else
 			FastAttackConnector:Attack(false)
 		end
 	end
 end)
+
+spawn(function()
+	while wait() do
+		if _G.FastT then
+            _G.FastFull = true
+            wait(0.175)
+            _G.FastFull = false
+            wait(0.175)
+		else
+            _G.FastFull = false
+		end
+	end
+end)
+
+spawn(function()
+	while wait() do
+		if _G.FastT then
+            UFFF = true
+            _G.FastMF = true
+		else
+            UFFF = false
+            _G.FastMF = false
+		end
+	end
+end)
+spawn(function()
+	while wait() do
+		if _G.FastT then
+            _G.FastMFF = true
+            wait(0.075)
+            _G.FastMFF = false
+            wait(1.75)
+		else
+            _G.FastMFF = false
+		end
+	end
+end)
+
+spawn(function()
+	while wait() do
+		if _G.FastFull then
+            _G.FastAttack33 = true
+            wait(0.08)
+            _G.FastAttack33 = false
+            wait(1)
+		else
+            _G.FastAttack33 = false
+		end
+	end
+end)
+
+spawn(function()
+	while wait() do
+		if _G.FastFull then
+            if _G.FastAttack33 == false then
+                _G.FastAttack3 = true
+                wait(0.0175)
+                _G.FastAttack3 = false
+                wait(2)
+            end
+		else
+            _G.FastAttack3 = false
+		end
+	end
+end)
+
+
+FastAttackConnector:InputSetting(h)
+FastAttackConnector:InputValue(h["CDAAT"], h["TimeWait"])
+
