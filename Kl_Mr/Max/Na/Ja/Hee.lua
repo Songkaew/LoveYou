@@ -463,10 +463,22 @@ end
             NameMon = "Devastate [Lv. 3725]"
             NameQuest = "Kill 1 Devastate"
             CFrameMon = CFrame.new(7631.65137, 122.167465, -2645.56616, -0.373597473, -1.80023054e-08, 0.927590907, 1.22821877e-08, 1, 2.43543781e-08, -0.927590907, 2.049158e-08, -0.373597473)
-    elseif Lv >= 3775  then 
+    elseif Lv == 3775  or Lv <= 3799 then 
             NameMon = "Floffy [Lv. 3775]"
             NameQuest = "Kill 1 Floffy"
             CFrameMon = CFrame.new(7863.01367, 470.011475, -2578.41455, -0.955782413, 1.50890926e-08, 0.294074744, -1.7449489e-08, 1, -1.08023585e-07, -0.294074744, -1.08378494e-07, -0.955782413)
+    elseif Lv == 3800 or Lv <= 3849 then
+            NameMon = "Dead Troupe [Lv. 3800]"
+            NameQuest = "Kill 4 Dead Troupe"
+            CFrameMon = CFrame.new(9482.67285, 89.5682755, -4066.95435, 0.832089663, 3.07615089e-08, -0.554641128, 3.33796386e-08, 1, 1.05539165e-07, 0.554641128, -1.06331768e-07, 0.832089663)
+    elseif Lv == 3850 or Lv <= 3974 then 
+            NameMon = "Dead Troupe Captain [Lv. 3850]"
+            NameQuest = "Kill 4 Dead Troupe Captain"
+            CFrameMon = CFrame.new(10033.6436, 102.078606, -3935.14941, 0.744436026, -1.72237673e-08, -0.667693794, -1.49188217e-08, 1, -4.24294448e-08, 0.667693794, 4.15472101e-08, 0.744436026)
+    elseif Lv >= 3975 then
+            NameMon = "Ryu [Lv. 3975]"
+            NameQuest = "Kill 1 Ryu"
+            CFrameMon = CFrame.new(9917.09082, 86.03022, -4842.94238, -0.974786699, 1.07214566e-08, -0.223138794, 6.08973716e-09, 1, 2.14452243e-08, 0.223138794, 1.95456629e-08, -0.974786699)
         end
     end
 
@@ -516,36 +528,117 @@ Main:Label("Auto Farm Lv.")
 Main:Toggle("Auto Farm Lv.",_G.AutoFarm,function(value)
     _G.AutoFarm = value
 end)
+WeaponList = {}
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    if v:IsA("Tool") then
+        table.insert(WeaponList ,v.Name)
+    end
+end
+local SelectWeapona = Main:Dropdown("Select Weapon","",WeaponList,function(value)
+    _G.SelectWeapon = value
+    print(_G.SelectWeapon)
+end)
+Main:Button("Refresh Weapon",function()
+    SelectWeapona:Clear()
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        SelectWeapona:Add(v.Name)
+    end
+end)
+--[[Main:Line()
+Main:Toggle("Auto Farm Boss Nearest Select",_G.AutoFarmBoss,function(value)
+    _G.AutoFarmBoss = value
+end)
+Bosslist = {}
+for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+    table.insert(Bosslist,v.Name)
+end
+local SelectedBoss = Main:Dropdown("Select Boss Nearest","",Bosslist,function(value)
+    _G.SelectNameBoss = value
+end)
+Main:Button("Refresh Select Boss Nearest",function()
+    SelectedBoss:Clear()
+    for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+        SelectedBoss:Add(v.Name)
+    end
+end)
 
---[[Monlist = {}
 
-for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmBoss then
+                for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                    if v.Name == _G.SelectNameBoss then
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            repeat wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Head.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                            until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmBoss then
+                for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                    if v.Name == _G.SelectNameBoss then
+                        repeat wait()
+                            EquipWeapon(_G.SelectWeapon)
+                            Haki()
+                            AutoSkill()
+                            Cl()
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                        until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+Main:Line()
+Main:Toggle("Auto Farm Mon Nearest Select",_G.AutoFarmBoss,function(value)
+    _G.AutoFarmBoss = value
+end)
+Monlist = {}
+for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
     table.insert(Monlist,v.Name)
 end
-local SelectedMon = Main:Dropdown("Select Mon","",Monlist,function(value)
+local SelectedMon = Main:Dropdown("Select Mon Nearest","",Monlist,function(value)
     _G.SelectMon = value
     print(_G.SelectMon)
 end)
-]]
-WeaponList = {}
-
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            table.insert(WeaponList ,v.Name)
-        end
+Main:Button("Refresh Select Mon Nearest",function()
+    SelectedMon:Clear()
+    for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+        SelectedMon:Add(v.Name)
     end
+end)
 
-    local SelectWeapona = Main:Dropdown("Select Weapon","",WeaponList,function(value)
-        _G.SelectWeapon = value
-        print(_G.SelectWeapon)
-    end)
+AllMonlist = {}
+for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
+    table.insert(AllMonlist,v.Name)
+end
+local SelectedMonAll = Main:Dropdown("Select All Mon","",AllMonlist,function(value)
+    _G.SelectMon = value
+    print(_G.SelectMon)
+end)
+Main:Button("Refresh Select All Mon",function()
+    SelectedMonAll:Clear()
+    for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
+        SelectedMonAll:Add(v.Name)
+    end
+end)
 
-    Main:Button("Refresh Weapon",function()
-        SelectWeapona:Clear()
-        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-            SelectWeapona:Add(v.Name)
-        end
-    end)
+]]
 
 function EquipWeapon(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
