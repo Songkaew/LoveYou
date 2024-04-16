@@ -502,20 +502,36 @@ end
         end
     end
 end
-
+randomNumberUI = math.random(1,4)
 _G.UIB = "17075379093"
-_G.TeamBlack =  false --false / true
+--[[_G.TeamBlack =  false --false / true
 _G.TeamWhite = true --false / true
 _G.TeamGreen = false --false / true
 _G.TeamBlack =  false --false / true
 _G.TeamRed =  false --false / true
+]]
+if randomNumberUI == 1 then
+    _G.TeamBlack =  true
+elseif randomNumberUI == 2 then
+    _G.TeamWhite = true
+elseif randomNumberUI == 3 then
+    _G.TeamGreen = true
+elseif randomNumberUI == 4 then
+    _G.TeamRed = true
+else
+    _G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
+    _G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
+    _G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
+    _G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
+    _G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
+end
 
 local Update = loadstring(game:HttpGet("https://pastebin.com/raw/LZBa7hU1"))() --https://raw.githubusercontent.com/NaJaxHub/ser/main/UIfreeNaJabat"))()
-_G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
-_G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
-_G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
-_G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
-_G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
+--_G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
+--_G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
+--_G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
+--_G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
+--_G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
 
 local Library = Update:Window("MrMaxNaJa Community","",Enum.KeyCode.RightControl);--"MrMaxNaJa Hub | Map Blox Fruits - Free Script Version 0.1.15.1 By MrMaxNaJa"
 Main = Library:Tab("Main")
