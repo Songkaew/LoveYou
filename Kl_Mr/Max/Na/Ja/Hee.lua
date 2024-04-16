@@ -178,7 +178,7 @@ elseif Lv == 525 or Lv <= 574 then
 elseif Lv == 575 or Lv <= 624 then
     NameMon = "Sand Bandit [Lv. 575]"
     NameQuest = "Kill 4 Sand Bandit"
-    CFrameMon = CFrame.new()
+    CFrameMon = CFrame.new(-2691.09082, 41.1931648, -558.914246, 0.69031769, 3.35413114e-10, 0.723506391, -6.8781969e-10, 1, 1.92674154e-10, -0.723506391, -6.30648311e-10, 0.69031769)
 elseif Lv == 625 or Lv <= 674 then
     NameMon = "Bomb Man [Lv. 625]"
     NameQuest = "Kill 1 Bomb Man"
@@ -546,6 +546,7 @@ end
 
 Main:Line()
 
+if W2 then
 Main:Label("Auto Ghost Ship")
 Main:Toggle("Auto Ghost Ship",_G.GhostShip,function(value)
     _G.GhostShipi = value
@@ -597,7 +598,7 @@ spawn(function()
     while wait() do  
         pcall(function()
             if _G.AutoKingSamurai then 
-                if game:GetService("Workspace").SeaMonster.AutoKingSamurai.RootPart:FindFirstChild("King Samurai [Lv. 3500]") then
+                if game:GetService("Workspace").SeaMonster.AutoKingSamurai.HumanoidRootPart:FindFirstChild("King Samurai [Lv. 3500]") then
                     for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                         if v.Name == "King Samurai [Lv. 3500]" then
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
@@ -632,7 +633,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoHydraSeaKing then
-                if game:GetService("Workspace").SeaMonster.HydraSeaKing.RootPart:FindFirstChild("HydraSeaKing") then
+                if game:GetService("Workspace").SeaMonster.AutoKingSamurai.HumanoidRootPart:FindFirstChild("HydraSeaKing") then
                     for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                         if v.Name == "HydraSeaKing" then
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
@@ -658,7 +659,9 @@ spawn(function()
     end
 end)
 
---[[Main:Toggle("Auto Saber",_G.AutoSaber,function(value)
+end
+if W1
+Main:Toggle("Auto Saber BUG",_G.AutoSaber,function(value)
     _G.AutoSaber = value
 end)
 
@@ -691,8 +694,16 @@ spawn(function()
             end
         end)
     end
-end)]]
+end)
 
+
+
+
+
+
+
+
+end
 Main:Label("Bring Fruit")
 
 Main:Toggle("Bring All Fruit",_G.BringFruitBF,function(value)
@@ -1581,4 +1592,3 @@ print("A")
 
 
 
- 
