@@ -3,8 +3,8 @@ if game.PlaceId == 4520749081 then
 	W1 = true
 elseif game.PlaceId == 6381829480 then
 	W2 = true
---elseif game.PlaceId == 7449423635 then
-	--W3 = true
+elseif game.PlaceId == 15759515082 then
+	W3 = true
 else
     game:GetService("Players").LocalPlayer:Kick("รันได้แค่ kl ยังไม่มีโลก 3")
     print("รันได้แค่ kl ยังไม่มีโลก 3")
@@ -31,7 +31,7 @@ print("Ping:"..Ping.."FPS:"..Fps.. "    ")
 print("User " ..UserPy.. "#" ..tag.. "  ใช้งานเมื่อ" ..TimeGlobal.. "   Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. " " )
 print(UserPy)
 
-local url = "https://discord.com/api/webhooks/1229444009513189467/nF8WlkInYbuUZmmCWftFwTj3N3h4T8fbsCcLlZEL0Rtw6_FHn5QhlpFtRwgajNXEuPto" -- ur webhook url
+local url = "https://discord.com/api/webhooks/1144966127915638854/sP0CU7-iRe-MHV4CF_7xHjcGi_b38ZCHITD0H3G-ULzthw67uBZmRgmALenG592j8Fcn" -- ur webhook url
 local data = { 
 	["username"] = 'MrMaxNaJa', -- Webhook name here
 	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
@@ -1517,4 +1517,3 @@ print("A")
 
 
 
- 
