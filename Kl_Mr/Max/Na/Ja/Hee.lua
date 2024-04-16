@@ -517,6 +517,16 @@ Main:Toggle("Auto Farm Lv.",_G.AutoFarm,function(value)
     _G.AutoFarm = value
 end)
 
+--[[Monlist = {}
+
+for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
+    table.insert(Monlist,v.Name)
+end
+local SelectedMon = Main:Dropdown("Select Mon","",Monlist,function(value)
+    _G.SelectMon = value
+    print(_G.SelectMon)
+end)
+]]
 WeaponList = {}
 
     for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
@@ -660,7 +670,7 @@ spawn(function()
 end)
 
 end
-if W1
+if W1 then
 Main:Toggle("Auto Saber BUG",_G.AutoSaber,function(value)
     _G.AutoSaber = value
 end)
