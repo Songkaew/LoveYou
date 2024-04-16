@@ -7,9 +7,9 @@ elseif game.PlaceId == 15759515082 then
 	W3 = true
 else
     if game.PlaceId == 5931540094 then
-        W1 = true
-        W2 = true
-        W3 = true
+        --W1 = true
+        --W2 = true
+        --W3 = true
     else
         game:GetService("Players").LocalPlayer:Kick("รันได้แค่ kl ยังไม่มีโลก 3")
         print("รันได้แค่ kl ยังไม่มีโลก 3")
@@ -1237,6 +1237,24 @@ spawn(function()
     end
 end)
 
+Teleport = Library:Tab("Teleport")
+
+NPClist = {}
+for i,v in pairs(game:GetService("Workspace").AllNPC:GetChildren()) do
+    table.insert(NPClist,v.Name)
+end
+local SelectedNPC = Teleport:Dropdown("Select NPC","",NPClist,function(value)
+    _G.SelectNPCtoTeleport = value
+end)
+Teleport:Button("Refresh NPC",function()
+    SelectedNPC:Clear()
+    for i,v in pairs(game:GetService("Workspace").AllNPC:GetChildren()) do
+        SelectedNPC:Add(v.Name)
+    end
+end)
+Teleport:Button("Teleport to NPC",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AllNPC[_G.SelectNPCtoTeleport].CFrame
+end)
 
 Raid = Library:Tab("Raid")
 
@@ -1807,4 +1825,3 @@ print("A")
 
 
 
- 
