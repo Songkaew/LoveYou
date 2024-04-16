@@ -69,7 +69,7 @@ request(abcdef)
 
 spawn(function()
 	while wait() do wait()
-		if _G.AutoFarm or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
+		if _G.AutoFarm or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
 			pcall(function()
                 repeat wait()
                     if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -544,7 +544,7 @@ Main:Button("Refresh Weapon",function()
         SelectWeapona:Add(v.Name)
     end
 end)
---[[Main:Line()
+Main:Line()
 Main:Toggle("Auto Farm Boss Nearest Select",_G.AutoFarmBoss,function(value)
     _G.AutoFarmBoss = value
 end)
@@ -561,8 +561,6 @@ Main:Button("Refresh Select Boss Nearest",function()
         SelectedBoss:Add(v.Name)
     end
 end)
-
-
 spawn(function()
     while wait() do
         pcall(function()
@@ -583,7 +581,6 @@ spawn(function()
         end)
     end
 end)
-
 spawn(function()
     while wait() do
         pcall(function()
@@ -605,16 +602,15 @@ spawn(function()
 end)
 
 Main:Line()
-Main:Toggle("Auto Farm Mon Nearest Select",_G.AutoFarmBoss,function(value)
-    _G.AutoFarmBoss = value
+Main:Toggle("Auto Farm Mon Nearest Select",_G.AutoFarmMonNearestSelect,function(value)
+    _G.AutoFarmMonNearestSelect = value
 end)
 Monlist = {}
 for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
     table.insert(Monlist,v.Name)
 end
 local SelectedMon = Main:Dropdown("Select Mon Nearest","",Monlist,function(value)
-    _G.SelectMon = value
-    print(_G.SelectMon)
+    _G.SelectMonNearest = value
 end)
 Main:Button("Refresh Select Mon Nearest",function()
     SelectedMon:Clear()
@@ -622,24 +618,140 @@ Main:Button("Refresh Select Mon Nearest",function()
         SelectedMon:Add(v.Name)
     end
 end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmMonNearestSelect then
+                for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+                    if v.Name == _G.SelectMonNearest then
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            repeat wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Head.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                            until not _G.AutoFarmMonNearestSelect or not v.Parent or v.Humanoid.Health <= 0
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmMonNearestSelect then
+                for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+                    if v.Name == _G.SelectMonNearest then
+                        repeat wait()
+                            EquipWeapon(_G.SelectWeapon)
+                            Haki()
+                            AutoSkill()
+                            Cl()
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                        until not _G.AutoFarmMonNearestSelect or not v.Parent or v.Humanoid.Health <= 0
+                    end
+                end
+            end
+        end)
+    end
+end)
 
+if _G.MrMaxNaJaBuy == false then
+    Main:Label("Auto Farm All Monster Select\nคุณจะได้ฟังชั้นที่ดีกว่าถ้าซื้อสคริป")
+end
+
+if _G.MrMaxNaJaBuy then
+Main:Line()
+Main:Toggle("Auto Farm All Monster Select",_G.AutoFarmAllMonsterSelect,function(value)
+    _G.AutoFarmAllMonsterSelect = value
+end)
 AllMonlist = {}
 for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
     table.insert(AllMonlist,v.Name)
 end
-local SelectedMonAll = Main:Dropdown("Select All Mon","",AllMonlist,function(value)
+local SelectedMonAll = Main:Dropdown("Select All Monster","",AllMonlist,function(value)
     _G.SelectMon = value
-    print(_G.SelectMon)
 end)
-Main:Button("Refresh Select All Mon",function()
+Main:Button("Refresh Select All Monster",function()
     SelectedMonAll:Clear()
     for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
         SelectedMonAll:Add(v.Name)
     end
 end)
 
-]]
-
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmAllMonsterSelect then
+                if game:GetService("Workspace").Monster.Mon:FindFirstChild(_G.SelectMon) then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+                        if v.Name == _G.SelectMon then
+                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Head.CanCollide = false
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
+                            end
+                        end
+                    end
+                elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(_G.SelectMon) then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == _G.SelectMon then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Head.CanCollide = false
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                else
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("ReplicatedStorage").MOB[_G.SelectMon].HumanoidRootPart.CFrame * CFrame.new(0,50,0)
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmAllMonsterSelect then
+                if game:GetService("Workspace").Monster.Mon:FindFirstChild(_G.SelectMon) then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+                        if v.Name == _G.SelectMon then
+                            repeat wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                Haki()
+                                AutoSkill()
+                                Cl()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                            until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
+                        end
+                    end
+                elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(_G.SelectMon) then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == _G.SelectMon then
+                            repeat wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                Haki()
+                                AutoSkill()
+                                Cl()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                            until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+end
 function EquipWeapon(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
         Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
