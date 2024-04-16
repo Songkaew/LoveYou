@@ -7,9 +7,9 @@ elseif game.PlaceId == 15759515082 then
 	W3 = true
 else
     if game.PlaceId == 5931540094 then
-        --W1 = true
-        --W2 = true
-        --W3 = true
+        W1 = true
+        W2 = true
+        W3 = true
     else
         game:GetService("Players").LocalPlayer:Kick("รันได้แค่ kl ยังไม่มีโลก 3")
         print("รันได้แค่ kl ยังไม่มีโลก 3")
@@ -769,7 +769,7 @@ end)
 spawn(function()
     while wait() do  
         pcall(function()
-            if game:GetService("Workspace").GhostMonster.RootPart:FindFirstChild("Ghost Ship") then
+            if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
 
             end
         end)
@@ -779,10 +779,10 @@ spawn(function()
     while wait() do  
         pcall(function()
             if _G.GhostShip then 
-                if game:GetService("Workspace").GhostMonster.RootPart:FindFirstChild("Ghost Ship") then
-                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
+                    for i, v in pairs(game:GetService("Workspace").GhostMonster:GetChildren()) do
                         if v.Name == "Ghost Ship" then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
@@ -794,7 +794,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
-                            end
+                            --end
                         end
                     end
                 else  
@@ -813,10 +813,10 @@ spawn(function()
     while wait() do  
         pcall(function()
             if _G.AutoKingSamurai then 
-                if game:GetService("Workspace").SeaMonster.AutoKingSamurai.HumanoidRootPart:FindFirstChild("King Samurai [Lv. 3500]") then
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("King Samurai [Lv. 3500]") then
                     for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                         if v.Name == "King Samurai [Lv. 3500]" then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                           -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
@@ -828,7 +828,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
                                 until not _G.AutoKingSamurai or not v.Parent or v.Humanoid.Health <= 0
-                            end
+                          --  end
                         end
                     end
                 else  
@@ -848,10 +848,10 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoHydraSeaKing then
-                if game:GetService("Workspace").SeaMonster.AutoKingSamurai.HumanoidRootPart:FindFirstChild("HydraSeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("HydraSeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
                         if v.Name == "HydraSeaKing" then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
@@ -863,7 +863,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
                                 until not _G.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
-                            end
+                            --end
                         end
                     end
                 else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
