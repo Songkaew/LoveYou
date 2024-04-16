@@ -1014,13 +1014,20 @@ end)
 
 Raid = Library:Tab("Raid")
 
-_G.MrMaxNaJaBuy = true
+--_G.MrMaxNaJaBuy = true
 Raid:Label("Auto Raid")
 Raid:Line()
+if W1 then
+    Raid:Button("Teleport Raid",function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433)
+    end)
+end
+if W2 then
+    Raid:Button("Teleport Raid",function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4594.26465, 223.143417, -68.1358566, 0.433611095, 7.56600045e-08, -0.901100099, -5.65751712e-09, 1, 8.12416303e-08, 0.901100099, -3.01292857e-08, 0.433611095)
+    end)
+end
 
-Raid:Button("Teleport Raid",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433)
-end)
 if _G.MrMaxNaJaBuy then
 
 Raid:Toggle("Auto Raid \n กำลังสร้างมองข้าไปก่อน",_G.AutoRaid,function(value)
