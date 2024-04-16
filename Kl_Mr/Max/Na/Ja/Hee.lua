@@ -6,13 +6,19 @@ elseif game.PlaceId == 6381829480 then
 elseif game.PlaceId == 15759515082 then
 	W3 = true
 else
-    game:GetService("Players").LocalPlayer:Kick("รันได้แค่ kl ยังไม่มีโลก 3")
-    print("รันได้แค่ kl ยังไม่มีโลก 3")
-    wait(1)
-    game.Players.LocalPlayer:kick("/00/210/5815//151/5/151/51/15")
-    wait(1.5)
-    game:Shutdown()
-    kickcash("01/01/01/0/1/01/0/1/1/010")
+    if game.PlaceId == 5931540094 then
+        W1 = true
+        W2 = true
+        W3 = true
+    else
+        game:GetService("Players").LocalPlayer:Kick("รันได้แค่ kl ยังไม่มีโลก 3")
+        print("รันได้แค่ kl ยังไม่มีโลก 3")
+        wait(1)
+        game.Players.LocalPlayer:kick("/00/210/5815//151/5/151/51/15")
+        wait(1.5)
+        game:Shutdown()
+        kickcash("01/01/01/0/1/01/0/1/1/010")
+    end
 end
 
 local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
@@ -63,7 +69,7 @@ request(abcdef)
 
 spawn(function()
 	while wait() do wait()
-		if _G.AutoFarm then
+		if _G.AutoFarm or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
 			pcall(function()
                 repeat wait()
                     if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -1016,9 +1022,60 @@ Raid:Button("Teleport Raid",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433)
 end)
 if _G.MrMaxNaJaBuy then
-    Raid:Toggle("Auto Raid \n กำลังสร้างมองข้าไปก่อน",_G.AutoRaid,function(value)
-        _G.AutoRaid = value
-    end)
+
+Raid:Toggle("Auto Raid \n กำลังสร้างมองข้าไปก่อน",_G.AutoRaid,function(value)
+    _G.AutoRaid = value
+end)
+
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoRaid then 
+                for i, v in pairs(game:GetService("Workspace").MOB:GetChildren()) do
+                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                        repeat wait()
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                            v.HumanoidRootPart.CanCollide = false
+                            v.Head.CanCollide = false
+                            v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                        until not _G.AutoRaid or not v.Parent or v.Humanoid.Health <= 0
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoRaid then 
+                for i, v in pairs(game:GetService("Workspace").MOB:GetChildren()) do
+                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                        repeat wait()
+                            EquipWeapon(_G.SelectWeapon)
+                            Haki()
+                            AutoSkill()
+                            Cl()
+                        until not _G.AutoRaid or not v.Parent or v.Humanoid.Health <= 0
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
 
 else
     Raid:Label("Auto Raid")
