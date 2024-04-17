@@ -94,6 +94,7 @@ spawn(function()
 	end
 end)
 
+
 function CheckLevel()
     local Lv = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
   ---โลก1 By.Wx
@@ -213,16 +214,16 @@ elseif Lv == 1000 or Lv <= 1049 then
     CFrameMon = CFrame.new(1756.62329, 43.8492165, 732.102173, -0.354773641, -7.47190754e-08, -0.934952199, 3.34134569e-08, 1, -9.25964798e-08, 0.934952199, -6.40907771e-08, -0.354773641)
 elseif Lv == 1050 or Lv <= 1099 then
     NameMon = "High-class Soldier [Lv. 1050]"
-    NameQuest = "Kill 4 High-class Soldier"
+    NameQuest = "Kill 4 High-class Soldier" 
     CFrameMon = CFrame.new(1984.84241, 26.6003017, 660.884277, -0.931326389, 7.28296268e-09, -0.364185601, 4.62623051e-10, 1, 1.88148821e-08, 0.364185601, 1.73543171e-08, -0.931326389)
 elseif Lv == 1100 or Lv <= 1149 then
     NameMon = "Leader [Lv. 1100]"
     NameQuest = "Kill 1 Leader"
     CFrameMon = CFrame.new(1776.99146, 38.5392647, 598.307068, -0.276595861, 5.94413478e-08, -0.960986316, 6.29248964e-09, 1, 6.00433836e-08, 0.960986316, 1.05607558e-08, -0.276595861)
-elseif Lv == 1150 or Lv <= 1199 then
+elseif Lv == 1150 or Lv <= 1199 then 
     NameMon = "Pasta [Lv. 1150]"
     NameQuest = "Kill 1 Pasta"
-    CFrameMon = CFrame.new(-1319.77258, 69.6465912, 2138.75317, -0.0266651064, 4.63293475e-08, 0.999644399, 5.2359951e-08, 1, -4.49491466e-08, -0.999644399, 5.11427594e-08, -0.0266651064)
+    CFrameMon = CFrame.new(1344.14099, 40.1048965, 1074.74329, -0.419090927, -2.4491424e-08, -0.907944262, -8.64604459e-08, 1, 1.29340147e-08, 0.907944262, 8.39217975e-08, -0.419090927)
 elseif Lv == 1200 or Lv <= 1249 then
     NameMon = "Naval personnel [Lv. 1200]"
     NameQuest = "Kill 4 Naval personnel"
@@ -479,10 +480,9 @@ end
             NameMon = "Ryu [Lv. 3975]"
             NameQuest = "Kill 1 Ryu"
             CFrameMon = CFrame.new(9917.09082, 86.03022, -4842.94238, -0.974786699, 1.07214566e-08, -0.223138794, 6.08973716e-09, 1, 2.14452243e-08, 0.223138794, 1.95456629e-08, -0.974786699)
-        end
     end
-
-   if W3 then -- เช็คโลก
+end
+        if W3 then -- เช็คโลก
           if  Lv == 4300 or Lv <= 4324 then
             NameMon = "Jungle Gorilla [Lv. 4300]"
             NameQuest = "Kill 5 Jungle Gorilla"
@@ -502,6 +502,7 @@ end
         end
     end
 end
+
 randomNumberUI = math.random(1,4)
 _G.UIB = "17075379093"
 --[[_G.TeamBlack =  false --false / true
