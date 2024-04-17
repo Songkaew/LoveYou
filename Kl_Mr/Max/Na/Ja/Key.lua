@@ -47,6 +47,8 @@ local whitelist = {
     ["a6a8b9cefedc"] = "753a72fa-8dfb-461f-968f-a6a8b9cefedc", --Dis somrak_fbi.   Game | : Pro_Somrak THB 10
     ["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096  THB10
     ["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
+    ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20
+    
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB10
 
 }
