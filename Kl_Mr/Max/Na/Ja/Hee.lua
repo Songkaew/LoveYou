@@ -783,7 +783,7 @@ Main:Line()
 if W2 then
 Main:Label("Auto Ghost Ship")
 Main:Toggle("Auto Ghost Ship",_G.GhostShip,function(value)
-    _G.GhostShipi = value
+    _G.GhostShip = value
 end)
 spawn(function()
     while wait() do  
@@ -999,15 +999,12 @@ Main:Label2("Auto Skill\nออโต้สกิว",12)
 Main:Toggle2("Auto Skill [ Z ]\nออโต้สกิว [ Z ]",_G.SkillZ,function(value)
     _G.SkillZ = value
 end)
-
 Main:Toggle2("Auto Skill [ X ]\nออโต้สกิว [ X ]",_G.SkillX,function(value)
     _G.SkillX = value
 end)
-
 Main:Toggle2("Auto Skill [ C ]\nออโต้สกิว [ C ]",_G.SkillC,function(value)
     _G.SkillC = value
 end)
-
 Main:Toggle2("Auto Skill [ V ]\nออโต้สกิว [ V ]",_G.SkillV,function(value)
     _G.SkillV = value
 end)
