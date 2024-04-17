@@ -1,5 +1,5 @@
 --_G.register_key = "8ca7d84a2cc8"
---_G.register_key = "ba2c2048b81d"
+--_G.register_key = "c80c1c29ca03"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
 if game.PlaceId == 4520749081 then--kl1
     getgenv().NameMap = "Map| King Legacy"
@@ -28,7 +28,10 @@ local ClientId = game:GetService("RbxAnalyticsService"):GetClientId()
 local whitelist = string.split((ClientId), '-')
 local Hxven = whitelist[5]
 
+c80c1c29ca03
+
 local whitelist = {
+    ["Admin"] = "Admin", --Dis : kkkk -- Game : kkkkkk --THB10
     ["ba2c2048b81d"] = "3c04d383-7de3-4c10-aec7-ba2c2048b81d", --MrMaxNaJa
     ["741797658105"] = "8b630005-2003-41f5-84ce-741797658105", --MrMaxNaJa
     ["8ca7d84a2cc8"] = "fdaba1e9-c20d-4d10-946e-8ca7d84a2cc8", -- Wx
@@ -48,8 +51,10 @@ local whitelist = {
     ["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096  THB10
     ["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
     ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20
-    
-    ["Admin"] = "Admin" --Dis :  -- Game :  --THB10
+    ["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
+
+    --// วันที่ 18 เดือน 4 ปี 2567 //--
+    ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
 
