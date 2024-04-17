@@ -895,7 +895,7 @@ end)
 
 end
 if W1 then
-Main:Toggle("Auto Saber BUG",_G.AutoSaber,function(value)
+Main:Toggle("Auto Saber",_G.AutoSaber,function(value)
     _G.AutoSaber = value
 end)
 
@@ -904,10 +904,10 @@ spawn(function()
         pcall(function()
             if _G.AutoSaber then
                 CheckLevel()
-                if game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Expert Swordman [Lv. 3000]") then
                     for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                        if v.Name == NameMon then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                        if v.Name == "Expert Swordman [Lv. 3000]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
@@ -919,11 +919,11 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
                                 until not _G.AutoSaber or not v.Parent or v.Humanoid.Health <= 0
-                            end
+                            --end
                         end
                     end
                 else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5245.53174, 54.8256226, -6631.55469, 0.14680548, 2.70129541e-09, -0.989165366, 3.24562932e-09, 1, 3.21257865e-09, 0.989165366, -3.68208819e-09, 0.14680548)
                 end
             end
         end)
