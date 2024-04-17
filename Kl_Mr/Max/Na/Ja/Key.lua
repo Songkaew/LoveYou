@@ -20,7 +20,7 @@ getgenv().passwordSet = "fdaba1e9-c20d"
 local UserPy = game.Players.LocalPlayer.Name
 local ClientId = game:GetService("RbxAnalyticsService"):GetClientId()
 local whitelist = string.split((ClientId), '-')
-_G.Hxven = whitelist[5]
+local Hxven = whitelist[5]
 
 local whitelist = {
     ["ba2c2048b81d"] = "3c04d383-7de3-4c10-aec7-ba2c2048b81d", --MrMaxNaJa
@@ -176,8 +176,8 @@ TextButton.TextScaled = true
 TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Click:Connect(function()
-    --TextButton.Text = _G.register_key
-    if _G.register_key == _G.Hxven then
+    TextButton.Text = _G.register_key
+    if _G.register_key == Hxven then
         if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
             print("whitelist![1] ")
             ImageLabelMain.Visible = false
