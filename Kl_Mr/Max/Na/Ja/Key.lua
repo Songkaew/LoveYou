@@ -50,6 +50,7 @@ local whitelist = {
     ["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
     ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20
     ["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
+    ["df2e5a931a9f"] = "b8487a66-4063-4e1a-af3c-df2e5a931a9f", --Dis : palm123112 -- Game :  --THB20
 
     --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
