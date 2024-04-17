@@ -250,11 +250,11 @@ elseif Lv == 1450 or Lv <= 1499 then
     CFrameMon = CFrame.new(-1075.66101, 22.355545, 2553.46948, 0.361727208, -7.43886659e-08, 0.932283998, 1.52786797e-08, 1, 7.38637027e-08, -0.932283998, -1.24744428e-08, 0.361727208)
 elseif Lv == 1500 or Lv <= 1549 then
     NameMon = "Zombie [Lv. 1500]"
-    NameQuest = "Kill 5 Zombie"
+    NameQuest = "Kill 5 Zombies"
     CFrameMon = CFrame.new(-2751.44678, 39.1473465, 4111.27637, 0.829314768, -2.6256e-08, -0.558781743, -1.21393153e-08, 1, -6.50044782e-08, 0.558781743, 6.06924004e-08, 0.829314768)
 elseif Lv == 1550 or Lv <= 1599 then
     NameMon = "Elite Zombie [Lv. 1550]"
-    NameQuest = "Kill 4 Elite Zombie"
+    NameQuest = "Kill 4 Elite Zombies"
     CFrameMon = CFrame.new(-2751.44678, 39.1473465, 4111.27637, 0.829314768, -2.6256e-08, -0.558781743, -1.21393153e-08, 1, -6.50044782e-08, 0.558781743, 6.06924004e-08, 0.829314768)
 elseif Lv == 1600 or Lv <= 1649 then
     NameMon = "Revenant [Lv. 1600]"
@@ -480,10 +480,10 @@ end
             NameMon = "Ryu [Lv. 3975]"
             NameQuest = "Kill 1 Ryu"
             CFrameMon = CFrame.new(9917.09082, 86.03022, -4842.94238, -0.974786699, 1.07214566e-08, -0.223138794, 6.08973716e-09, 1, 2.14452243e-08, 0.223138794, 1.95456629e-08, -0.974786699)
+        end
     end
-end
-        if W3 then -- เช็คโลก
-          if  Lv == 4300 or Lv <= 4324 then
+    if W3 then -- เช็คโลก
+        if  Lv == 4300 or Lv <= 4324 then
             NameMon = "Jungle Gorilla [Lv. 4300]"
             NameQuest = "Kill 5 Jungle Gorilla"
             CFrameMon = CFrame.new(4282.1626, 180.477219, 9106.09863, -0.827997208, -1.69428116e-08, -0.560732186, 1.09286038e-08, 1, -4.63530796e-08, 0.560732186, -4.45082406e-08, -0.827997208)
@@ -502,6 +502,7 @@ end
         end
     end
 end
+
 
 randomNumberUI = math.random(1,4)
 _G.UIB = "17075379093"
