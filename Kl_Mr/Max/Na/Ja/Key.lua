@@ -29,7 +29,7 @@ local whitelist = string.split((ClientId), '-')
 local Hxven = whitelist[5]
 
 local whitelist = {
-    ["Admin"] = "Admin", --Dis : kkkk -- Game : kkkkkk --THB10
+    --["Admin"] = "Admin", --Dis : kkkk -- Game : kkkkkk --THB10
     ["ba2c2048b81d"] = "3c04d383-7de3-4c10-aec7-ba2c2048b81d", --MrMaxNaJa
     ["741797658105"] = "8b630005-2003-41f5-84ce-741797658105", --MrMaxNaJa
     ["8ca7d84a2cc8"] = "fdaba1e9-c20d-4d10-946e-8ca7d84a2cc8", -- Wx
