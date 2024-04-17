@@ -177,6 +177,7 @@ TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Click:Connect(function()
     TextButton.Text = _G.register_key
+    wait(0.05)
     if _G.register_key == Hxven then
         if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
             print("whitelist![1] ")
