@@ -1,5 +1,5 @@
 --_G.register_key = "8ca7d84a2cc8"
---_G.register_key = "c80c1c29ca03"
+_G.register_key = "ba2c2048b81d"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
 if game.PlaceId == 4520749081 then--kl1
     getgenv().NameMap = "Map| King Legacy"
@@ -45,9 +45,10 @@ local whitelist = {
     ["a670ccec9050"] = "35942f62-1d1a-4d77-af4d-a670ccec9050", --Dis ti_it
     ["69984051992F"] = "1832A2A7-519D-4986-B367-69984051992F", --Dis exousss | Game : demarbec
     ["a6a8b9cefedc"] = "753a72fa-8dfb-461f-968f-a6a8b9cefedc", --Dis somrak_fbi.   Game | : Pro_Somrak THB 10
-
     ["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096  THB10
+    ["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB10
+
 }
 
 local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
