@@ -1,5 +1,5 @@
 --register_key = "8ca7d84a2cc8"
-register_key = "ba2c2048b81d"
+--register_key = "ba2c2048b81d"
 
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
 if game.PlaceId == 4520749081 then--kl1
