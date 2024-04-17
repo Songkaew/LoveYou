@@ -542,7 +542,7 @@ Main:Line()
 
 Main:Label("Welcome MrMaxNaJa Community")
 Main:Label("Auto Farm Lv.")
-Main:Toggle("Auto Farm Lv.",_G.AutoFarm,function(value)
+Main:Toggle("Auto Farm Lv.\nออโต้ฟาร์มเลเวล",_G.AutoFarm,function(value)
     _G.AutoFarm = value
 end)
 WeaponList = {}
@@ -551,7 +551,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
         table.insert(WeaponList ,v.Name)
     end
 end
-local SelectWeapona = Main:Dropdown("Select Weapon","",WeaponList,function(value)
+local SelectWeapona = Main:Dropdown("Select Weapon\nเลือกอาวุธ","",WeaponList,function(value)
     _G.SelectWeapon = value
     print(_G.SelectWeapon)
 end)
@@ -562,17 +562,17 @@ Main:Button("Refresh Weapon",function()
     end
 end)
 Main:Line()
-Main:Toggle("Auto Farm Boss Nearest Select",_G.AutoFarmBoss,function(value)
+Main:Toggle("Auto Farm Boss Select\nออโต้ฟาร์มบอสที่เลือกใว้",_G.AutoFarmBoss,function(value)
     _G.AutoFarmBoss = value
 end)
 Bosslist = {}
 for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
     table.insert(Bosslist,v.Name)
 end
-local SelectedBoss = Main:Dropdown("Select Boss Nearest","",Bosslist,function(value)
+local SelectedBoss = Main:Dropdown("Select Boss Nearest\nเลือกบอสที่อยู่ใกล้ๆ","",Bosslist,function(value)
     _G.SelectNameBoss = value
 end)
-Main:Button("Refresh Select Boss Nearest",function()
+Main:Button("Refresh Select Boss Nearest\nรีเฟสการเลือกบอส",function()
     SelectedBoss:Clear()
     for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
         SelectedBoss:Add(v.Name)
@@ -619,17 +619,17 @@ spawn(function()
 end)
 
 Main:Line()
-Main:Toggle("Auto Farm Mon Nearest Select",_G.AutoFarmMonNearestSelect,function(value)
+Main:Toggle("Auto Farm Mon Select\nออโต้ฟาร์มมอนที่เลือก",_G.AutoFarmMonNearestSelect,function(value)
     _G.AutoFarmMonNearestSelect = value
 end)
 Monlist = {}
 for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
     table.insert(Monlist,v.Name)
 end
-local SelectedMon = Main:Dropdown("Select Mon Nearest","",Monlist,function(value)
+local SelectedMon = Main:Dropdown("Select Mon Nearest\nเลือกมอนที่อยู่ใกล้ๆ","",Monlist,function(value)
     _G.SelectMonNearest = value
 end)
-Main:Button("Refresh Select Mon Nearest",function()
+Main:Button("Refresh Select Mon\nรีเฟสการเลือกมอน",function()
     SelectedMon:Clear()
     for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
         SelectedMon:Add(v.Name)
@@ -681,17 +681,18 @@ end
 
 if _G.MrMaxNaJaBuy then
 Main:Line()
-Main:Toggle("Auto Farm All Monster Select",_G.AutoFarmAllMonsterSelect,function(value)
+--Main:Label("")
+Main:Toggle("Auto Farm Monster Select [VIP]\nออโต้ฟาร์มมอนสเตอร์ที่เลือกไว้",_G.AutoFarmAllMonsterSelect,function(value)
     _G.AutoFarmAllMonsterSelect = value
 end)
 AllMonlist = {}
 for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
     table.insert(AllMonlist,v.Name)
 end
-local SelectedMonAll = Main:Dropdown("Select All Monster","",AllMonlist,function(value)
+local SelectedMonAll = Main:Dropdown("Select Monster [VIP]\nเลือกมอนสเตอร์แบบ [VIP]","",AllMonlist,function(value)
     _G.SelectMon = value
 end)
-Main:Button("Refresh Select All Monster",function()
+Main:Button("Refresh Select Monster \n รีเฟสการเลือกมอนสเตอร์",function()
     SelectedMonAll:Clear()
     for i,v in pairs(game:GetService("ReplicatedStorage").MOB:GetChildren()) do
         SelectedMonAll:Add(v.Name)
@@ -936,9 +937,9 @@ end)
 
 
 end
-Main:Label("Bring Fruit")
+Main:Label("Bring Fruit | ดึงผลไม้")
 
-Main:Toggle("Bring All Fruit",_G.BringFruitBF,function(value)
+Main:Toggle("Bring All Fruit\nดึงผลไม้ทั้งหมด",_G.BringFruitBF,function(value)
   _G.BringFruitBF = value
 end)
 spawn(function()
@@ -958,7 +959,7 @@ end)
 Main:Label2("Main",12)
 _G.Haki = true
 _G.LocalPlayerWx = game:GetService("Players").LocalPlayer.Name
-Main:Toggle2("Haki",_G.Haki,function(value)
+Main:Toggle2("Auto Open Haki\nออโต้เปิดฮาคิ",_G.Haki,function(value)
     _G.Haki = value
 end)
 
@@ -968,7 +969,7 @@ function Haki()
     end
 end
 
-Main:Toggle2("Ken",_G.Ken,function(value)
+Main:Toggle2("Auto Open Ken\nออโต้เปิดฮาคิ",_G.Ken,function(value)
     _G.Ken = value
 end)
 
@@ -978,38 +979,38 @@ function Ken()
     end
 end
 
-Main:Button2("BoostFps",function()
+Main:Button2("BoostFps\nทำให้เกมลืนโดยการปรับภาพ",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/ScriptHubScripts/master/FPS%20Boost"))()
 end)
 
-Main:Label2("Auto Attack",12)
+Main:Label2("Auto Attack\nการโจมตี",12)
 
-Main:Toggle2("Auto Attack Melee",_G.AttackMelee,function(value)
+Main:Toggle2("Auto Attack Melee\nออโต้โจมตีโดยใช้หมัด",_G.AttackMelee,function(value)
     _G.AttackMelee = value
 end)
 
-Main:Toggle2("Auto Attack Sword",_G.AttackSword,function(value)
+Main:Toggle2("Auto Attack Sword\nออโต้โจมตีโดยใช้ดาบ",_G.AttackSword,function(value)
     _G.AttackSword = value
 end)
 
-Main:Label2("Auto Skill",12)
+Main:Label2("Auto Skill\nออโต้สกิว",12)
 
-Main:Toggle2("Auto Skill [ Z ]",_G.SkillZ,function(value)
+Main:Toggle2("Auto Skill [ Z ]\nออโต้สกิว [ Z ]",_G.SkillZ,function(value)
     _G.SkillZ = value
 end)
 
-Main:Toggle2("Auto Skill [ X ]",_G.SkillX,function(value)
+Main:Toggle2("Auto Skill [ X ]\nออโต้สกิว [ X ]",_G.SkillX,function(value)
     _G.SkillX = value
 end)
 
-Main:Toggle2("Auto Skill [ C ]",_G.SkillC,function(value)
+Main:Toggle2("Auto Skill [ C ]\nออโต้สกิว [ C ]",_G.SkillC,function(value)
     _G.SkillC = value
 end)
 
-Main:Toggle2("Auto Skill [ V ]",_G.SkillV,function(value)
+Main:Toggle2("Auto Skill [ V ]\nออโต้สกิว [ V ]",_G.SkillV,function(value)
     _G.SkillV = value
 end)
-Main:Toggle2("Auto Skill [ E ]",_G.SkillE,function(value)
+Main:Toggle2("Auto Skill [ E ]\nออโต้สกิว [ E ]",_G.SkillE,function(value)
     _G.SkillE = value
 end)
 
@@ -1062,9 +1063,9 @@ spawn(function()
     end
 end)
 
-Stats:Label2("Auto Stats",12)
+Stats:Label2("Stats \n สตัส",12)
 
-Stats:Toggle("Auto Stats Melee",_G.Melee,function(value)
+Stats:Toggle("Auto Stats Melee\nออโต้อัพสแตสหมัด",_G.Melee,function(value)
     _G.Melee = value
 end)
 spawn(function()
@@ -1081,7 +1082,7 @@ spawn(function()
         end)
     end
 end)
-Stats:Toggle("Auto Stats Defense",_G.Defense,function(value)
+Stats:Toggle("Auto Stats Defense\nออโต้อัพสแตสเลือด",_G.Defense,function(value)
     _G.Defense = value
 end)
  spawn(function()
@@ -1097,7 +1098,7 @@ end)
         end)
     end
 end)
-Stats:Toggle("Auto Stats Sword",_G.Sword,function(value)
+Stats:Toggle("Auto Stats Sword\nออโต้อัพสแตสดาบ",_G.Sword,function(value)
     _G.Sword = value
 end)
 spawn(function()
@@ -1113,7 +1114,7 @@ spawn(function()
         end)
     end
 end)
-Stats:Toggle("Auto Stats Fruit",_G.Fruit,function(value)
+Stats:Toggle("Auto Stats Fruit\nออโต้อัพสแตสผลไม้",_G.Fruit,function(value)
     _G.Fruit = value
 end)
 spawn(function()
@@ -1129,7 +1130,7 @@ spawn(function()
         end)
     end
 end)
-Stats:Toggle("Max Point Stats",_G.MaxPoint,function(value)
+Stats:Toggle("Max Point Stats\nพอยท์ที่อัพจะมาก",_G.MaxPoint,function(value)
     _G.MaxPoint = value
 end)
 spawn(function()
@@ -1260,16 +1261,16 @@ NPClist = {}
 for i,v in pairs(game:GetService("Workspace").AllNPC:GetChildren()) do
     table.insert(NPClist,v.Name)
 end
-local SelectedNPC = Teleport:Dropdown("Select NPC","",NPClist,function(value)
+local SelectedNPC = Teleport:Dropdown("Select NPC\nเลือก NPC","",NPClist,function(value)
     _G.SelectNPCtoTeleport = value
 end)
-Teleport:Button("Refresh NPC",function()
+Teleport:Button("Refresh NPC\nรีเฟส NPC",function()
     SelectedNPC:Clear()
     for i,v in pairs(game:GetService("Workspace").AllNPC:GetChildren()) do
         SelectedNPC:Add(v.Name)
     end
 end)
-Teleport:Button("Teleport to NPC",function()
+Teleport:Button("Teleport to NPC\nวาปไปยัง NPC",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AllNPC[_G.SelectNPCtoTeleport].CFrame
 end)
 
@@ -1279,12 +1280,12 @@ Raid = Library:Tab("Raid")
 Raid:Label("Auto Raid")
 Raid:Line()
 if W1 then
-    Raid:Button("Teleport Raid",function()
+    Raid:Button("Teleport Raid\nวาปไปยังดัน",function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433)
     end)
 end
 if W2 then
-    Raid:Button("Teleport Raid",function()
+    Raid:Button("Teleport Raid\nวาปไปยังดัน",function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4594.26465, 223.143417, -68.1358566, 0.433611095, 7.56600045e-08, -0.901100099, -5.65751712e-09, 1, 8.12416303e-08, 0.901100099, -3.01292857e-08, 0.433611095)
     end)
 end
@@ -1353,7 +1354,7 @@ end
 
 Ply = Library:Tab("Player")
 
-Ply:Toggle("Spectate Player",false,function(value)
+Ply:Toggle("Spectate Player\nดูมุมมองของผู้เล่นอื่นที่เลือกใว้",false,function(value)
     SpectatePlys = value
     local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
     local plr2 = game:GetService("Players"):FindFirstChild(_G.SelectPly)
@@ -1369,11 +1370,11 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Playerslist,v.Name)
 end
 
-local SelectedPly = Ply:Dropdown("Select Players","",Playerslist,function(value)
+local SelectedPly = Ply:Dropdown("Select Players\nเลือกผู้เล่น","",Playerslist,function(value)
     _G.SelectPly = value
 end)
 
-Ply:Button("Refresh Player",function()
+Ply:Button("Refresh Player\nรีเฟสปุ่มเลือกผู้เล่น",function()
     Playerslist = {}
     SelectedPly:Clear()
     for i,v in pairs(game:GetService("Players"):GetChildren()) do  
@@ -1381,7 +1382,7 @@ Ply:Button("Refresh Player",function()
     end
 end)
 
-Ply:Button("Teleport to Player",function() --game:GetService("Workspace").PlayerCharacters.AxileoRBLX.HumanoidRootPart
+Ply:Button("Teleport to Player\nวาปไปยังผู้เล่นที่เลือกไว้",function() --game:GetService("Workspace").PlayerCharacters.AxileoRBLX.HumanoidRootPart
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players")[_G.SelectPly].Character.HumanoidRootPart.CFrame
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")[_G.SelectPly].HumanoidRootPart.CFrame
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerCharacters[_G.SelectPly].HumanoidRootPart.CFrame
@@ -1518,17 +1519,17 @@ end)
 
 Ply:Label("ESP Players V.1")
 
-Ply:Toggle("Esp Player",ESPPlayer,function(a)
+Ply:Toggle("Esp Player \n มองเส้นผู้เล่น",ESPPlayer,function(a)
     ESPPlayer = a
     while ESPPlayer do wait()
         UpdateEspPlayer()
     end
 end)
 
-Ply:Toggle("Esp Mob", MobESP, function(nec)
+Ply:Toggle("Esp Mob \n มองเส้น มอน", MobESP, function(nec)
     MobESP = nec
 end)
-Ply:Toggle("Esp Boss", BossESP, function(nec)
+Ply:Toggle("Esp Boss \n มองเส้น บอส", BossESP, function(nec)
     BossESP = nec
 end)
 
@@ -1537,7 +1538,7 @@ Settings = Library:Tab("Settings")
 
 Settings:Label("Method")
 
-Settings:Dropdown("Select Method","Settings",{"Behind","Below","Upper","Random","Settings"},function(value)
+Settings:Dropdown("Select Method\nแปลไม่ถูก","Settings",{"Behind","Below","Upper","Random","Settings"},function(value)
     _G.Method = value
 end)
 
@@ -1598,9 +1599,9 @@ Settings:Slider("Farm Pos Angles",-380,380,getgenv().GanAngles,function(value)
 	getgenv().GanAngles = value
 end)
 
-Settings:Label("Server")
+Settings:Label("Server|เกี่ยวกับเซิฟ")
 
-Settings:Button("Rejoin Server",function()
+Settings:Button("Rejoin Server\nรีจอยเซิฟ",function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
 
@@ -1608,7 +1609,7 @@ local ShowIDServer = Settings:Label("ID Server")
 local ShowIDServer = Settings:Label(tostring(game.JobId))
 ShowIDServer:Set(tostring(game.JobId))
 
-Settings:Button("Copy Id Server",function()
+Settings:Button("Copy Id Server \n ก็อปไอดีเซิฟ",function()
 	setclipboard(tostring(game.JobId))
 end)
 
@@ -1622,7 +1623,7 @@ Settings:Button("Join Job Id",function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId , _G.Job , game:GetService("Players").localPlayer)
 end)
 
-Settings:Button("Hop Server",function()
+Settings:Button("Hop Server \n ฮอปเซิฟ",function()
 	Hop()
 end)
 
@@ -1690,7 +1691,7 @@ function Hop()
 	Teleport()
 end
 
-Settings:Button("Hop Server Low Player",function()
+Settings:Button("Hop Server Low Player \n หาเซิฟคนน้อย",function()
 		getgenv().AutoTeleport = true
 		getgenv().DontTeleportTheSameNumber = true
 		getgenv().CopytoClipboard = false
@@ -1741,16 +1742,16 @@ Settings:Button("Hop Server Low Player",function()
 
 Settings:Label("Community")
 
-Settings:Button("Click to Copy Link Youtube",function()
+Settings:Button("Click to Copy Link Youtube\nก็อปปี้ลิ้ง ยูทูป",function()
 	setclipboard("https://www.youtube.com/@MrMaxNaJaa")
 end)
-Settings:Button("Click to Copy Link Facebook",function()
+Settings:Button("Click to Copy Link Facebook\nก็อปปี้ลิ้ง เฟส",function()
 	setclipboard("https://www.facebook.com/MrMaxHub")
 end)
-Settings:Button("Click to Copy Link Discord",function()
+Settings:Button("Click to Copy Link Discord\nก็อปปี้ลิ้ง ดิส",function()
 	setclipboard("https://discord.gg/eaResuTyQc")
 end)
-Settings:Button("Click to Copy Link Discord",function()
+Settings:Button("Click to Copy Link Discord\nก็อปปี้ลิ้ง ดิส",function()
 	setclipboard("https://discord.gg/Bccvvy3AhT")
 end)
 
