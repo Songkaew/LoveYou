@@ -41,11 +41,11 @@ local whitelist = {
     ["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis : ameenthailand.   Game : JJShopJQlb --THB 10 ชื้อ 2
     --["41ae65f24275"] = "0f70bd65-ea8b-4bf2-80c2-41ae65f24275", --Dis : smokey0792 -- Game : ooloo0_0 --THB10 -- ย้าย 1
     ["8ad25655c214"] = "1fdd74e5-16e4-4590-9f5a-8ad25655c214", --Dis : smokey0792 -- Game : ooloo0_0 --THB10
-    ["581575ce67cb"] = "e0a24a6b-dc0d-411b-a79f-581575ce67cb", --Dis ti_it | Game : kritmaidaihackna THB10
+    --["581575ce67cb"] = "e0a24a6b-dc0d-411b-a79f-581575ce67cb", --Dis ti_it | Game : kritmaidaihackna THB10
+    ["a670ccec9050"] = "35942f62-1d1a-4d77-af4d-a670ccec9050", --Dis ti_it
     ["69984051992F"] = "1832A2A7-519D-4986-B367-69984051992F", --Dis exousss | Game : demarbec
     ["a6a8b9cefedc"] = "753a72fa-8dfb-461f-968f-a6a8b9cefedc", --Dis somrak_fbi.   Game | : Pro_Somrak THB 10
 
-    ["a670ccec9050"] = "35942f62-1d1a-4d77-af4d-a670ccec9050", --Dis 
     ["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB10
 }
