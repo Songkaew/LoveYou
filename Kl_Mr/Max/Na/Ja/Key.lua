@@ -176,7 +176,7 @@ TextButton.TextScaled = true
 TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Click:Connect(function()
-    TextButton.Text = _G.register_key
+    TextBox.Text = _G.register_key
     wait(0.05)
     if _G.register_key == Hxven then
         if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
@@ -224,7 +224,7 @@ TextButton.MouseButton1Click:Connect(function()
             if PlayerGui.ScreenGui then
                 PlayerGui.ScreenGui:Destroy()
             end
-        else 
+        else
             TextBox.Text = "Password Error"
         end
     end
