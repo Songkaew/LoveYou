@@ -1,5 +1,5 @@
 --register_key = "8ca7d84a2cc8"
-register_key = "c80c1c29ca03"
+--register_key = "c80c1c29ca03"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
 if game.PlaceId == 4520749081 then--kl1
     getgenv().NameMap = "Map| King Legacy"
