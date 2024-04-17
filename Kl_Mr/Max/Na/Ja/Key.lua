@@ -1,6 +1,5 @@
---register_key = "8ca7d84a2cc8"
---register_key = "ba2c2048b81d"
-
+--_G.register_key = "8ca7d84a2cc8"
+--_G.register_key = "ba2c2048b81d"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
 if game.PlaceId == 4520749081 then--kl1
     getgenv().NameMap = "Map| King Legacy"
@@ -176,9 +175,9 @@ TextButton.TextScaled = true
 TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Click:Connect(function()
-    --TextButton.Text = register_key
-    if register_key == Hxven then
-        if whitelist[register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
+    --TextButton.Text = _G.register_key
+    if _G.register_key == Hxven then
+        if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
             print("whitelist![1] ")
             ImageLabelMain.Visible = false
             _G.MrMaxNaJaBuy = true
