@@ -1355,6 +1355,7 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            wait(0.25)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1402,6 +1403,7 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            wait(1)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
