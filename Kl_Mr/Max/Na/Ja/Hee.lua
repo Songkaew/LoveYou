@@ -66,25 +66,22 @@ local headers = {["content-type"] = "application/json"}
 request = http_request or request or HttpPost or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
-
 spawn(function()
 	while wait() do wait()
-		if _G.AutoFarm or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
+		if _G.AutoFarm or _G.AutoFarmTwilight or _G.AutoFarmSwordMonBlade or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
 			pcall(function()
-                repeat wait()
-                    if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                        local Noclip = Instance.new("BodyVelocity")
-                        Noclip.Name = "BodyClip"
-                        Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-                        Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
-                        Noclip.Velocity = Vector3.new(0, 0, 0)
-                    end
-                    for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                        if v:IsA("BasePart") then
-                            v.CanCollide = false
-                        end
-                    end
-                until not _G.AutoFarm
+				if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+					local Noclip = Instance.new("BodyVelocity")
+					Noclip.Name = "BodyClip"
+					Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+					Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
+					Noclip.Velocity = Vector3.new(0, 0, 0)
+				end
+				for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
 			end)
 		else
 			if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -93,7 +90,6 @@ spawn(function()
 		end
 	end
 end)
-
 
 function CheckLevel()
     local Lv = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
@@ -1294,31 +1290,12 @@ function Cl()
         game:GetService("ReplicatedStorage"):WaitForChild("Chest"):WaitForChild("Remotes"):WaitForChild("Functions"):WaitForChild("SkillAction"):InvokeServer(unpack(args))
     end)
 end
--- ฟังก์ชั่นสำหรับเพิ่ม Hitbox ให้กับมอนเตอร์
-function AddHitbox(monster)
-    if monster:FindFirstChild("HumanoidRootPart") then
-        local hitbox = Instance.new("Part")
-        hitbox.Size = Vector3.new(80, 80, 80)  -- ขนาดของ Hitbox
-        hitbox.Transparency = 1
-        hitbox.CanCollide = false
-        hitbox.Parent = monster
-        hitbox.Position = monster.HumanoidRootPart.Position
-        hitbox.Name = "Hitbox"
-    end
-end
 
--- ฟังก์ชั่นสำหรับลบ Hitbox ของมอนเตอร์
-function RemoveHitbox(monster)
-    local hitbox = monster:FindFirstChild("Hitbox")
-    if hitbox then
-        hitbox:Destroy()
-    end
-end
 task.spawn(function()
     while task.wait() do
         pcall(function()
             if _G.BringMobFarm then
-                for i, mob in pairs(game.Workspace.Monster:GetChildren()) do
+                for i, mob in pairs(game.Workspace.Monster.Mon:GetChildren()) do
                     if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
@@ -1327,7 +1304,19 @@ task.spawn(function()
                         mob.HumanoidRootPart.CanCollide = false
                         mob.Head.CanCollide = false
                         mob.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                        mob.Humanoid:ChangeState(14)
+                        mob.Humanoid:ChangeState(12)
+                    end
+                end
+                for i, mob in pairs(game.Workspace.Monster.Boss:GetChildren()) do
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        mob.HumanoidRootPart.CFrame = PosMon
+                        mob.Humanoid.JumpPower = 0
+                        mob.Humanoid.WalkSpeed = 0
+                        mob.Humanoid.NameDisplayDistance = 0
+                        mob.HumanoidRootPart.CanCollide = false
+                        mob.Head.CanCollide = false
+                        mob.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                        mob.Humanoid:ChangeState(12)
                     end
                 end
             end
@@ -1341,14 +1330,18 @@ spawn(function()
             if _G.AutoFarm then
                 CheckLevel()
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                    elapsedTime(1)
-                    if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
-                        local args = {
-                            [1] = "take",
-                            [2] = NameQuest
-                        }
-                        game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                    if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            wait(1)
+                            local args = {
+                                [1] = "take",
+                                [2] = NameQuest
+                            }
+                            game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                        else
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        end
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
@@ -1358,15 +1351,12 @@ spawn(function()
                             if v.Name == NameMon then
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
-                                        AddHitbox(monster)  -- เพิ่ม Hitbox
                                         PosMon = v.HumanoidRootPart.CFrame
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                        --Cl()
                                     until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
-                                    RemoveHitbox(monster)  -- ลบ Hitbox เมื่อเสร็จสิ้นการโจมตี
                                 end
                             end
                         end
@@ -1380,7 +1370,6 @@ spawn(function()
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                        --Cl()
                                     until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 --end
                             end
@@ -1388,7 +1377,7 @@ spawn(function()
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
-                else
+                --[[else
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
                         local args = {
@@ -1398,7 +1387,7 @@ spawn(function()
                         game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                    end
+                    end]]
                 end
             end
         end)
