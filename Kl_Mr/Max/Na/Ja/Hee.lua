@@ -370,7 +370,7 @@ end
             CFrameMon = CFrame.new(-5453.896, 119.401352, 2082.46582, 0.0515211895, 6.46570371e-08, -0.998671889, -6.66838886e-08, 1, 6.13028206e-08, 0.998671889, 6.34369357e-08, 0.0515211895)
     elseif Lv == 3050 or Lv <= 3099 then
             NameMon = "Skull Pirate [Lv. 3050]"
-            NameQuest = "Kill 4 Skull Pirate"
+            NameQuest = "Kill 4 Skull Pirates"
             CFrameMon = CFrame.new(-6422.20312, 78.0515594, 6913.67236, -0.996762514, -7.97378519e-08, 0.0804019794, -7.65185746e-08, 1, 4.31208242e-08, -0.0804019794, 3.68289754e-08, -0.996762514)
     elseif Lv == 3100 or Lv <= 3124 then
             NameMon = "Elite Skeleton [Lv. 3100]"
