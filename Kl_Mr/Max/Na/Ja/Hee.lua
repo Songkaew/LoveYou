@@ -446,11 +446,11 @@ end
             CFrameMon = CFrame.new(5154.98926, 95.1037903, -2964.51538, -0.384478599, 1.01475921e-08, -0.92313391, 2.07894892e-08, 1, 2.33387421e-09, 0.92313391, -1.82941573e-08, -0.384478599)
     elseif Lv == 3625 or Lv <= 3649 then
             NameMon = "Fiore Fighter [Lv. 3625]"
-            NameQuest = "Kill 4 Fiore Fighter"
+            NameQuest = "Kill 4 Fiore Fighters"
             CFrameMon = CFrame.new(5490.54785, 84.5201492, -2558.8457, -0.805967569, -5.33750715e-08, 0.591959655, -3.97060838e-08, 1, 3.61059378e-08, -0.591959655, 5.59581492e-09, -0.805967569)
     elseif Lv == 3650 or Lv <= 3674 then
             NameMon = "Fiore Pirate [Lv. 3650]"
-            NameQuest = "Kill 4 Fiore Pirate"
+            NameQuest = "Kill 4 Fiore Pirates"
             CFrameMon = CFrame.new(6002.45801, 106.856102, -2894.09668, 0.993334472, 4.58113085e-08, -0.115267478, -5.62620386e-08, 1, -8.74115997e-08, 0.115267478, 9.33141422e-08, 0.993334472)
     elseif Lv == 3675 or Lv <= 3699 then
             NameMon = "Lomeo [Lv. 3675]"
@@ -593,6 +593,7 @@ spawn(function()
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
+                                PosMon = v.HumanoidRootPart.CFrame
                                 v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                             until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
                         end
@@ -650,6 +651,7 @@ spawn(function()
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
+                                PosMon = v.HumanoidRootPart.CFrame
                                 v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                             until not _G.AutoFarmMonNearestSelect or not v.Parent or v.Humanoid.Health <= 0
                         end
@@ -715,6 +717,7 @@ spawn(function()
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
+                                    PosMon = v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                 until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
                             end
@@ -728,6 +731,7 @@ spawn(function()
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
+                                    PosMon = v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                 until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
                             --end
@@ -1114,6 +1118,12 @@ Main:Button2("BoostFps\nทำให้เกมลืนโดยการป�
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/ScriptHubScripts/master/FPS%20Boost"))()
 end)
 
+Main:Label2("Mob\nเกี่ยวกับมอน",12)
+
+Main:Toggle2("Bring Mob\nทำให้มอนนิ่ง",_G.BringMobFarm,function(value)
+    _G.BringMobFarm = value
+end)
+
 Main:Label2("Auto Attack\nการโจมตี",12)
 
 Main:Toggle2("Auto Attack Melee\nออโต้โจมตีโดยใช้หมัด",_G.AttackMelee,function(value)
@@ -1284,43 +1294,79 @@ function Cl()
         game:GetService("ReplicatedStorage"):WaitForChild("Chest"):WaitForChild("Remotes"):WaitForChild("Functions"):WaitForChild("SkillAction"):InvokeServer(unpack(args))
     end)
 end
+-- ฟังก์ชั่นสำหรับเพิ่ม Hitbox ให้กับมอนเตอร์
+function AddHitbox(monster)
+    if monster:FindFirstChild("HumanoidRootPart") then
+        local hitbox = Instance.new("Part")
+        hitbox.Size = Vector3.new(80, 80, 80)  -- ขนาดของ Hitbox
+        hitbox.Transparency = 1
+        hitbox.CanCollide = false
+        hitbox.Parent = monster
+        hitbox.Position = monster.HumanoidRootPart.Position
+        hitbox.Name = "Hitbox"
+    end
+end
+
+-- ฟังก์ชั่นสำหรับลบ Hitbox ของมอนเตอร์
+function RemoveHitbox(monster)
+    local hitbox = monster:FindFirstChild("Hitbox")
+    if hitbox then
+        hitbox:Destroy()
+    end
+end
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.BringMobFarm then
+                for i, mob in pairs(game.Workspace.Monster:GetChildren()) do
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        mob.HumanoidRootPart.CFrame = PosMon
+                        mob.Humanoid.JumpPower = 0
+                        mob.Humanoid.WalkSpeed = 0
+                        mob.Humanoid.NameDisplayDistance = 0
+                        mob.HumanoidRootPart.CanCollide = false
+                        mob.Head.CanCollide = false
+                        mob.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                        mob.Humanoid:ChangeState(14)
+                    end
+                end
+            end
+        end)
+    end
+end)
 
 spawn(function() 
     while wait() do
         pcall(function()
             if _G.AutoFarm then
                 CheckLevel()
-                elapsedTime(1)
-                wait(1)
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     elapsedTime(1)
-                    wait(1)
-                    if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon)  then
-                        wait(1)
+                    if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
                         local args = {
                             [1] = "take",
                             [2] = NameQuest
                         }
-                        wait(1)
                         game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
-                    wait(1)
-                    elapsedTime(1)
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
                             if v.Name == NameMon then
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
+                                        AddHitbox(monster)  -- เพิ่ม Hitbox
+                                        PosMon = v.HumanoidRootPart.CFrame
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                         --Cl()
                                     until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                    RemoveHitbox(monster)  -- ลบ Hitbox เมื่อเสร็จสิ้นการโจมตี
                                 end
                             end
                         end
@@ -1329,6 +1375,7 @@ spawn(function()
                             if v.Name == NameMon then
                                 --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
+                                        PosMon = v.HumanoidRootPart.CFrame
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
@@ -1443,6 +1490,7 @@ spawn(function()
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
+                            PosMon = v.HumanoidRootPart.CFrame
                             v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                         until not _G.AutoRaid or not v.Parent or v.Humanoid.Health <= 0
                     end
@@ -1715,9 +1763,9 @@ spawn(function()
         end)
     end
 end)
-_G.DistanceMob = 5
+_G.DistanceMob = 7
 getgenv().GanX = 0
-getgenv().GanY = 5
+getgenv().GanY = 7
 getgenv().GanZ = 0
 getgenv().GanAngles = 90
 Settings:Slider("Farm Distance",-30,30,_G.DistanceMob,function(value)
