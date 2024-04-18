@@ -57,12 +57,12 @@ local whitelist = {
     --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20 
     ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 THB 20 
-    ["fab643351602"] = "433b16b6-f27e-4c39-b3a0-fab643351602", --Dis xxoilkunhgxx THB 20\
+    ["fab643351602"] = "433b16b6-f27e-4c39-b3a0-fab643351602", --Dis xxoilkunhgxx THB 20
     ["e6633977750a"] = "89130351-e264-439a-a825-e6633977750a", --Dis ohmxp0 THB20
+    ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
-
 
 local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
 local ImageLabelMain = Instance.new("ImageLabel")
