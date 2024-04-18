@@ -910,7 +910,6 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoSaber then
-                CheckLevel()
                 if game:GetService("Workspace").Monster.Boss:FindFirstChild("Expert Swordman [Lv. 3000]") then
                     for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                         if v.Name == "Expert Swordman [Lv. 3000]" then
@@ -1114,8 +1113,7 @@ Main:Button2("BoostFps\nทำให้เกมลืนโดยการป�
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/ScriptHubScripts/master/FPS%20Boost"))()
 end)
 
-Main:Label2("Mob\nเกี่ยวกับมอน",12)
-
+Main:Label2("ตั้งค่า\nเกี่ยวกับออโต้ฟาร์ม",12)
 Main:Toggle2("Bring Mob\nทำให้มอนนิ่ง",_G.BringMobFarm,function(value)
     _G.BringMobFarm = value
 end)
@@ -1307,8 +1305,32 @@ task.spawn(function()
                         mob.Humanoid:ChangeState(12)
                     end
                 end
+                for i, mob in pairs(game.Workspace.Monster.Mon:GetChildren()) do
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 then
+                        mob.HumanoidRootPart.CFrame = PosMon
+                        mob.Humanoid.JumpPower = 0
+                        mob.Humanoid.WalkSpeed = 0
+                        mob.Humanoid.NameDisplayDistance = 0
+                        mob.HumanoidRootPart.CanCollide = false
+                        mob.Head.CanCollide = false
+                        mob.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                        mob.Humanoid:ChangeState(12)
+                    end
+                end
                 for i, mob in pairs(game.Workspace.Monster.Boss:GetChildren()) do
                     if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        mob.HumanoidRootPart.CFrame = PosMon
+                        mob.Humanoid.JumpPower = 0
+                        mob.Humanoid.WalkSpeed = 0
+                        mob.Humanoid.NameDisplayDistance = 0
+                        mob.HumanoidRootPart.CanCollide = false
+                        mob.Head.CanCollide = false
+                        mob.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                        mob.Humanoid:ChangeState(12)
+                    end
+                end
+                for i, mob in pairs(game.Workspace.Monster.Boss:GetChildren()) do
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
                         mob.Humanoid.WalkSpeed = 0
@@ -1333,7 +1355,7 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            wait(1)
+                            wait(0.05)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1756,7 +1778,7 @@ _G.DistanceMob = 7
 getgenv().GanX = 0
 getgenv().GanY = 7
 getgenv().GanZ = 0
-getgenv().GanAngles = 90
+getgenv().GanAngles = 0
 Settings:Slider("Farm Distance",-30,30,_G.DistanceMob,function(value)
 	_G.DistanceMob = value
 end)
@@ -1936,27 +1958,38 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
+Chack = Library:Tab("✅ [ Chack ]")
+--✅,❌
+Chack:Label("ตอนนี้อยู่ในรุ่นทดสอบให้ใช้กันทุกคน")
+Chack:Line()
+Chack:Seperator("✅ Chack Boss W1")
+Chack:Line()
 
+Chack:Label("วิธีการเช็คคือ ✅ บอสเกิด")
+Chack:Label("วิธีการเช็คคือ ❌ บอสไม่เกิด")
+Chack:Line()
+local ChackSaberExpertSwordmanLv3000 = Chack:Label("Saber|Expert Swordman [Lv. 3000]")
+Chack:Line()
+local ChackSwordMonBladeMonsterLv2500 = Chack:Label("Sword Mon Blade|Monster [Lv. 2500]")
+Chack:Line()
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("Workspace").Monster.Boss:FindFirstChild("Expert Swordman [Lv. 3000]") then
+                ChackSaberExpertSwordmanLv3000:Set("✅ Saber|Expert Swordman [Lv. 3000]")
+            else
+                ChackSaberExpertSwordmanLv3000:Set("❌ Saber|Expert Swordman [Lv. 3000]")
+            end
+            if game:GetService("Workspace").Monster.Boss:FindFirstChild("Monster [Lv. 2500]") then
+                ChackSwordMonBladeMonsterLv2500:Set("✅ Sword Mon Blade|Monster [Lv. 2500]")
+            else
+                ChackSwordMonBladeMonsterLv2500:Set("❌ Sword Mon Blade|Monster [Lv. 2500]")
+            end
+        end)
+    end
+end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Chack:Seperator("Chack Fruit Drop")
 
 
 
