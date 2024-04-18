@@ -57,6 +57,7 @@ local whitelist = {
    -- 18/4/2567
     ["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20 
     ["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
+    ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 
 
     --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
