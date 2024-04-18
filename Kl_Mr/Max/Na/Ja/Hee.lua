@@ -220,10 +220,6 @@ TextButton.MouseButton1Click:Connect(function()
                 game:GetService("Players").LocalPlayer:Kick("Not Support")
             end
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-            local player = game:GetService("Players").LocalPlayer
-            if PlayerGui.ScreenGui then
-                PlayerGui.ScreenGui:Destroy()
-            end
             print("whitelist![1] OK")
         else
             print("whitelist![2] ติดต่อแอดมิน")
@@ -236,26 +232,14 @@ TextButton.MouseButton1Click:Connect(function()
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 6381829480 then--kl
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 15759515082 then--kl
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 2753915549 then--BF
                 getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
             elseif game.PlaceId == 4442272183 then -- BF
