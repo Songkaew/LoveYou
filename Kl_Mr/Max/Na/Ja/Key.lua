@@ -53,13 +53,11 @@ local whitelist = {
     ["df2e5a931a9f"] = "b8487a66-4063-4e1a-af3c-df2e5a931a9f", --Dis : palm123112 -- Game :  --THB20
     ["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
 
-
-   -- 18/4/2567
+    --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20 
     ["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
-    ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 
+    ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 THB 20 
 
-    --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
@@ -198,8 +196,8 @@ TextButton.TextScaled = true
 TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Click:Connect(function()
-    TextBox.Text = _G.register_key
     wait(0.05)
+    TextBox.Text = _G.register_key
     if _G.register_key == Hxven then
         if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
             print("whitelist![1] ")
@@ -223,10 +221,6 @@ TextButton.MouseButton1Click:Connect(function()
                 game:GetService("Players").LocalPlayer:Kick("Not Support")
             end
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-            local player = game:GetService("Players").LocalPlayer
-            if PlayerGui.ScreenGui then
-                PlayerGui.ScreenGui:Destroy()
-            end
             print("whitelist![1] OK")
         else
             print("whitelist![2] ติดต่อแอดมิน")
@@ -239,26 +233,14 @@ TextButton.MouseButton1Click:Connect(function()
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 6381829480 then--kl
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 15759515082 then--kl
                 ImageLabelMain.Visible = false
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
                 game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-                local player = game:GetService("Players").LocalPlayer
-                if PlayerGui.ScreenGui then
-                    PlayerGui.ScreenGui:Destroy()
-                end
             elseif game.PlaceId == 2753915549 then--BF
                 getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
             elseif game.PlaceId == 4442272183 then -- BF
@@ -359,3 +341,7 @@ TextLabel_2.Text = getgenv().NameMap
 TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 TextLabel_2.TextSize = 22.000
 TextLabel_2.TextWrapped = true
+
+
+
+
