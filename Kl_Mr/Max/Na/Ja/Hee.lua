@@ -265,7 +265,7 @@ elseif Lv == 1650 or Lv <= 1699 then
     NameQuest = "Kill 1 Shadow Master"
     CFrameMon = CFrame.new(-2767.29248, 33.5921288, 4442.45459, 0.876922965, 6.12778663e-08, -0.480630994, -1.57094604e-08, 1, 9.88323308e-08, 0.480630994, -7.9117882e-08, 0.876922965)
 elseif Lv == 1700 or Lv <= 1749 then
-    NameMon = "New World Pirate [Lv. 1700]"
+    NameMon = "New World Pirate [Lv. 1700]" 
     NameQuest = "Kill 4 New World Pirates"
     CFrameMon = CFrame.new(2447.53735, 122.348442, -1625.69202, -0.222260147, -9.31945721e-08, 0.974987388, 4.04289757e-08, 1, 1.04801686e-07, -0.974987388, 6.27109813e-08, -0.222260147)
 elseif Lv == 1750 or Lv <= 1799 then
@@ -282,8 +282,8 @@ elseif Lv == 1850 or Lv <= 1924 then
     CFrameMon = CFrame.new(2525.78076, 103.697166, -2019.98816, -0.99999994, 1.03633738e-07, -0.000366600347, 1.03613004e-07, 1, 5.65793243e-08, 0.000366600347, 5.65413352e-08, -0.99999994)
 elseif Lv == 1925 or Lv <= 1999 then
     NameMon = "Quake Woman [Lv. 1925]" ---เเก้หนวดขาว
-    NameQuest = "Kill 1 Quake Woman" ------
-    CFrameMon = CFrame.new(-1613.41467, 95.7388535, 6264.28613, 0.99622643, 2.36737598e-08, 0.0867924541, -3.31455432e-08, 1, 1.07690298e-07, -0.0867924541, -1.10160705e-07, 0.99622643)
+    NameQuest = "Kill 1 Quake Woman" ------ 
+    CFrameMon = CFrame.new(2118.13013, 3.06480217, -1909.94812, 0.0325585268, -5.32720286e-08, -0.999469817, -4.92016632e-08, 1, -5.49030723e-08, 0.999469817, 5.09631413e-08, 0.0325585268)
 elseif Lv == 2000 or Lv <= 2049 then
     NameMon = "Fishman [Lv. 2000]"
     NameQuest = "Kill 4 Fishmans"
