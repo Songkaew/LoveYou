@@ -13,7 +13,7 @@ if register_key == Hxven then
 else
     print("รอแอดมินแอด whitelist")
     setclipboard("_G.register_key = "..(Hxven).."\n whitelist : "..(ClientId))
-    local url = "https://discord.com/api/webhooks/1229444009513189467/nF8WlkInYbuUZmmCWftFwTj3N3h4T8fbsCcLlZEL0Rtw6_FHn5QhlpFtRwgajNXEuPto" -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1219138287562915891/C_2ifHKZ670koANT3DYW0VtvJcQUvdpzoSYXlFmZy0t9MbG8C1GxJIlKMKg2NieXHhcG" -- ur webhook url
     local data = { 
         ["username"] = 'Key | MrMaxNaJa', -- Webhook name here
         ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
