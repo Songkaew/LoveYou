@@ -270,11 +270,11 @@ elseif Lv == 1700 or Lv <= 1749 then
     CFrameMon = CFrame.new(2447.53735, 122.348442, -1625.69202, -0.222260147, -9.31945721e-08, 0.974987388, 4.04289757e-08, 1, 1.04801686e-07, -0.974987388, 6.27109813e-08, -0.222260147)
 elseif Lv == 1750 or Lv <= 1799 then
     NameMon = "Cutlass Pirate [Lv. 1750]"
-    NameQuest = "Kill 4 Cutlass Pirate"
+    NameQuest = "Kill 4 Cutlass Pirates"
     CFrameMon = CFrame.new(2413.89673, 114.007904, -1781.48169, 0.338218421, -7.20048132e-10, 0.941067636, -2.46446206e-08, 1, 9.622382e-09, -0.941067636, -2.64467204e-08, 0.338218421)
 elseif Lv == 1800 or Lv <= 1849 then
     NameMon = "Rear Admiral [Lv. 1800]"
-    NameQuest = "Kill 4 Rear Admiral"
+    NameQuest = "Kill 4 Rear Admirals"
     CFramemon = CFrame.new(2406.76099, 108.612106, -2225.47607, 0.348917753, 1.44832848e-08, 0.937153339, -9.57239266e-08, 1, 2.01850572e-08, -0.937153339, -9.67509237e-08, 0.348917753)
 elseif Lv == 1850 or Lv <= 1924 then
     NameMon = "True Karate Fishman [Lv. 1850]"
@@ -286,7 +286,7 @@ elseif Lv == 1925 or Lv <= 1999 then
     CFrameMon = CFrame.new(-1613.41467, 95.7388535, 6264.28613, 0.99622643, 2.36737598e-08, 0.0867924541, -3.31455432e-08, 1, 1.07690298e-07, -0.0867924541, -1.10160705e-07, 0.99622643)
 elseif Lv == 2000 or Lv <= 2049 then
     NameMon = "Fishman [Lv. 2000]"
-    NameQuest = "Kill 4 Fishman"
+    NameQuest = "Kill 4 Fishmans"
     CFrameMon = CFrame.new(-1621.29663, 94.0391998, 6260.59668, 0.999778867, 3.06320374e-08, 0.0210289024, -3.04115773e-08, 1, -1.08033635e-08, -0.0210289024, 1.01614521e-08, 0.999778867)
 elseif Lv == 2050 or Lv <= 2099 then
     NameMon = "Combat Fishman [Lv. 2050]"
@@ -1154,22 +1154,30 @@ function Cl()
     end)
 end
 
-spawn(function()
+spawn(function() 
     while wait() do
         pcall(function()
             if _G.AutoFarm then
                 CheckLevel()
+                elapsedTime(1)
+                wait(1)
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                    elapsedTime(1)
+                    wait(1)
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon)  then
+                        wait(1)
                         local args = {
                             [1] = "take",
                             [2] = NameQuest
                         }
+                        wait(1)
                         game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
+                    wait(1)
+                    elapsedTime(1)
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
@@ -1799,45 +1807,3 @@ end)
 
 
 print("A")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
