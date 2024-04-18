@@ -266,7 +266,7 @@ elseif Lv == 1650 or Lv <= 1699 then
     CFrameMon = CFrame.new(-2767.29248, 33.5921288, 4442.45459, 0.876922965, 6.12778663e-08, -0.480630994, -1.57094604e-08, 1, 9.88323308e-08, 0.480630994, -7.9117882e-08, 0.876922965)
 elseif Lv == 1700 or Lv <= 1749 then
     NameMon = "New World Pirate [Lv. 1700]"
-    NameQuest = "Kill 4 New World Pirate"
+    NameQuest = "Kill 4 New World Pirates"
     CFrameMon = CFrame.new(2447.53735, 122.348442, -1625.69202, -0.222260147, -9.31945721e-08, 0.974987388, 4.04289757e-08, 1, 1.04801686e-07, -0.974987388, 6.27109813e-08, -0.222260147)
 elseif Lv == 1750 or Lv <= 1799 then
     NameMon = "Cutlass Pirate [Lv. 1750]"
@@ -1039,7 +1039,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AttackMelee then
-                local args = {
+                    local args = {
                     [1] = "FS_".._G.SelectWeapon.."_M1"
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Chest"):WaitForChild("Remotes"):WaitForChild("Functions"):WaitForChild("SkillAction"):InvokeServer(unpack(args))
@@ -1048,9 +1048,10 @@ spawn(function()
     end
 end)
 
+
 spawn(function()
     while wait() do
-        pcall(function()
+        pcall(function() 
             if _G.AttackSword then
                 local args = {
                     [1] = "SW_".._G.SelectWeapon.."_M1"
