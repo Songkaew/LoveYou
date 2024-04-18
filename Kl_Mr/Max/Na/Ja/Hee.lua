@@ -271,7 +271,7 @@ elseif Lv == 1750 or Lv <= 1799 then
 elseif Lv == 1800 or Lv <= 1849 then
     NameMon = "Rear Admiral [Lv. 1800]"
     NameQuest = "Kill 4 Rear Admirals"
-    CFramemon = CFrame.new(2406.76099, 108.612106, -2225.47607, 0.348917753, 1.44832848e-08, 0.937153339, -9.57239266e-08, 1, 2.01850572e-08, -0.937153339, -9.67509237e-08, 0.348917753)
+    CFrameMon = CFrame.new(2406.76099, 108.612106, -2225.47607, 0.348917753, 1.44832848e-08, 0.937153339, -9.57239266e-08, 1, 2.01850572e-08, -0.937153339, -9.67509237e-08, 0.348917753)
 elseif Lv == 1850 or Lv <= 1924 then
     NameMon = "True Karate Fishman [Lv. 1850]"
     NameQuest = "Kill 1 True Karate Fishman"
