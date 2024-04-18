@@ -527,7 +527,10 @@ else
     _G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
     _G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
 end
-
+local function ry(so)
+    game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,true,so,1);
+    game:GetService("VirtualInputManager"):SendMouseButtonEvent(so.AbsolutePosition.X+so.AbsoluteSize.X/2,so.AbsolutePosition.Y+50,0,false,so,1);
+end;
 local Update = loadstring(game:HttpGet("https://pastebin.com/raw/LZBa7hU1"))() --https://raw.githubusercontent.com/NaJaxHub/ser/main/UIfreeNaJabat"))()
 --_G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
 --_G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
@@ -812,6 +815,7 @@ spawn(function()
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
+                                    AutoSkill()
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
@@ -846,6 +850,7 @@ spawn(function()
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
+                                    AutoSkill()
                                 until not _G.AutoKingSamurai or not v.Parent or v.Humanoid.Health <= 0
                           --  end
                         end
@@ -881,6 +886,7 @@ spawn(function()
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
+                                    AutoSkill()
                                 until not _G.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
@@ -895,6 +901,7 @@ end)
 
 end
 if W1 then
+
 Main:Toggle("Auto Saber",_G.AutoSaber,function(value)
     _G.AutoSaber = value
 end)
@@ -918,6 +925,7 @@ spawn(function()
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     Cl()
+                                    AutoSkill()
                                 until not _G.AutoSaber or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
@@ -930,10 +938,132 @@ spawn(function()
     end
 end)
 
+if _G.MrMaxNaJaBuy == false then
+    Main:Label("Auto Farm Sword Mon Blade\nสำหรับคนซื้อ")
+else
+    Main:Label("Auto Farm Sword Mon Blade")
+end
 
+if _G.MrMaxNaJaBuy == true then
 
+Main:Toggle("Auto Farm Twilight's Orb\nออโต้ฟาร์มฟาร์มแค่ลูกแก้วดำ",_G.AutoFarmTwilight,function(value)
+    _G.AutoFarmTwilight = value
+end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmTwilight then
+                if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                    local args = {
+                        [1] = "take",
+                        [2] = "Kill 1 Shadow Master"
+                    }
+                    game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                else
+                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Shadow Master [Lv. 1650]") then
+                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                            if v.Name == "Shadow Master [Lv. 1650]" then
+                                --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        Haki()
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false
+                                        PosMon =  v.HumanoidRootPart.CFrame
+                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                        Cl()
+                                        AutoSkill()
+                                    until not _G.AutoFarmTwilight or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                --end
+                            end
+                        end
+                    else
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                    end
+                end
+            end
+        end)
+    end
+end)
 
+Main:Toggle("Auto Farm Sword Mon Blade",_G.AutoFarmSwordMonBlade,function(value)
+    _G.AutoFarmSwordMonBlade = value
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmSwordMonBlade then
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Monster [Lv. 2500]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Monster [Lv. 2500]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.AutoFarmSwordMonBlade or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                else
+                    if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.StarterFrame["Inventory_Frame"].ScrollingFrameMaterial["Twilight's Orb"].Visible == false then
+                        if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                            local args = {
+                                [1] = "take",
+                                [2] = "Kill 1 Shadow Master"
+                            }
+                            game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                        else
+                            if game:GetService("Workspace").Monster.Boss:FindFirstChild("Shadow Master [Lv. 1650]") then
+                                for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                                    if v.Name == "Shadow Master [Lv. 1650]" then
+                                        --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                            repeat wait()
+                                                EquipWeapon(_G.SelectWeapon)
+                                                Haki()
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.Humanoid.WalkSpeed = 0
+                                                v.Head.CanCollide = false
+                                                PosMon =  v.HumanoidRootPart.CFrame
+                                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                                Cl()
+                                                AutoSkill()
+                                            until not _G.AutoFarmSwordMonBlade or not v.Parent or v.Humanoid.Health <= 0 --or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                        --end
+                                    end
+                                end
+                            else
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                            end
+                        end
+                    else
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2945.20361, 16.0892391, 4446.58545, 0.872506022, -8.6434838e-08, -0.488603383, 1.00153684e-07, 1, 1.9440185e-09, 0.488603383, -5.06315985e-08, 0.872506022)
+                        local args = {
+                            [1] = workspace.AllNPC.SummonOrcLord
+                        }
+                        game:GetService("ReplicatedStorage").Chest.Remotes.Functions.CheckQuest:InvokeServer(unpack(args))
+                        ry(game:GetService("Players").LocalPlayer.PlayerGui.SummonOrcLord.Dialogue.Accept)
+                    end
+                end
+            end
+        end)
+    end
+end)
+end
 
 
 
