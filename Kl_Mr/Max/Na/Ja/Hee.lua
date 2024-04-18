@@ -228,47 +228,48 @@ TextButton.MouseButton1Click:Connect(function()
         else
             print("whitelist![2] ติดต่อแอดมิน")
         end
-    end
-    if TextBox.Text == getgenv().passwordSet then
-        TextBox.Text = "OK"
-        _G.MrMaxNaJaBuy = false
-        if game.PlaceId == 4520749081 then--kl
-            ImageLabelMain.Visible = false
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-            local player = game:GetService("Players").LocalPlayer
-            if PlayerGui.ScreenGui then
-                PlayerGui.ScreenGui:Destroy()
-            end
-        elseif game.PlaceId == 6381829480 then--kl
-            ImageLabelMain.Visible = false
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-            local player = game:GetService("Players").LocalPlayer
-            if PlayerGui.ScreenGui then
-                PlayerGui.ScreenGui:Destroy()
-            end
-        elseif game.PlaceId == 15759515082 then--kl
-            ImageLabelMain.Visible = false
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-            local player = game:GetService("Players").LocalPlayer
-            if PlayerGui.ScreenGui then
-                PlayerGui.ScreenGui:Destroy()
-            end
-        elseif game.PlaceId == 2753915549 then--BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
-        elseif game.PlaceId == 4442272183 then -- BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
-        elseif game.PlaceId == 7449423635 then -- BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
-        elseif game.PlaceId == 9790558424 then--mp
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
-        else
-            game:GetService("Players").LocalPlayer:Kick("Not Support")
-        end
     else
-        TextBox.Text = "Password Error"
+        if TextBox.Text == getgenv().passwordSet then
+            TextBox.Text = "OK"
+            _G.MrMaxNaJaBuy = false
+            if game.PlaceId == 4520749081 then--kl
+                ImageLabelMain.Visible = false
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
+                local player = game:GetService("Players").LocalPlayer
+                if PlayerGui.ScreenGui then
+                    PlayerGui.ScreenGui:Destroy()
+                end
+            elseif game.PlaceId == 6381829480 then--kl
+                ImageLabelMain.Visible = false
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
+                local player = game:GetService("Players").LocalPlayer
+                if PlayerGui.ScreenGui then
+                    PlayerGui.ScreenGui:Destroy()
+                end
+            elseif game.PlaceId == 15759515082 then--kl
+                ImageLabelMain.Visible = false
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
+                local player = game:GetService("Players").LocalPlayer
+                if PlayerGui.ScreenGui then
+                    PlayerGui.ScreenGui:Destroy()
+                end
+            elseif game.PlaceId == 2753915549 then--BF
+                getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
+            elseif game.PlaceId == 4442272183 then -- BF
+                getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
+            elseif game.PlaceId == 7449423635 then -- BF
+                getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
+            elseif game.PlaceId == 9790558424 then--mp
+                getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 20"
+            else
+                game:GetService("Players").LocalPlayer:Kick("Not Support")
+            end
+        else
+            TextBox.Text = "Password Error"
+        end
     end
 end)
 
