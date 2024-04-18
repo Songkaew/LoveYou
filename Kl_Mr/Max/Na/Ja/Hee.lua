@@ -1398,17 +1398,21 @@ spawn(function()
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
-                --[[else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                    if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
-                        local args = {
-                            [1] = "take",
-                            [2] = NameQuest
-                        }
-                        game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                else
+                    if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            local args = {
+                                [1] = "take",
+                                [2] = NameQuest
+                            }
+                            game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                        else
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        end
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                    end]]
+                    end
                 end
             end
         end)
