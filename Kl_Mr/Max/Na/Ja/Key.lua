@@ -341,7 +341,3 @@ TextLabel_2.Text = getgenv().NameMap
 TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 TextLabel_2.TextSize = 22.000
 TextLabel_2.TextWrapped = true
-
-
-
-
