@@ -989,7 +989,7 @@ spawn(function()
     end
 end)
 
-Main:Toggle("Auto Farm Sword Mon Blade",_G.AutoFarmSwordMonBlade,function(value)
+Main:Toggle("Auto Farm Sword Mon Blade [Bug]",_G.AutoFarmSwordMonBlade,function(value)
     _G.AutoFarmSwordMonBlade = value
 end)
 
@@ -1355,7 +1355,6 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            wait(0.05)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
