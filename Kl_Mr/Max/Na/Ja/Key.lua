@@ -41,7 +41,7 @@ local whitelist = {
     ["cdf07ebf23b0"] = "7f9f2621-299c-4acf-98b5-cdf07ebf23b0", --Dis : ameenthailand -- Game : JJShopJQlb --THB10
     ["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis : ameenthailand.   Game : JJShopJQlb --THB 10 ชื้อ 2
     --["41ae65f24275"] = "0f70bd65-ea8b-4bf2-80c2-41ae65f24275", --Dis : smokey0792 -- Game : ooloo0_0 --THB10 -- ย้าย 1
-    ["8ad25655c214"] = "1fdd74e5-16e4-4590-9f5a-8ad25655c214", --Dis : smokey0792 -- Game : ooloo0_0 --THB10
+    --["8ad25655c214"] = "1fdd74e5-16e4-4590-9f5a-8ad25655c214", --Dis : smokey0792 -- Game : ooloo0_0 --THB10 คนนี้ลบโหลดตัวรันใหม่เลยสร้างkeyใหม่่
     --["581575ce67cb"] = "e0a24a6b-dc0d-411b-a79f-581575ce67cb", --Dis ti_it | Game : kritmaidaihackna THB10
     ["a670ccec9050"] = "35942f62-1d1a-4d77-af4d-a670ccec9050", --Dis ti_it
     ["69984051992F"] = "1832A2A7-519D-4986-B367-69984051992F", --Dis exousss | Game : demarbec
@@ -51,6 +51,7 @@ local whitelist = {
     ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20
     ["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
     ["df2e5a931a9f"] = "b8487a66-4063-4e1a-af3c-df2e5a931a9f", --Dis : palm123112 -- Game :  --THB20
+    ["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
 
     --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
