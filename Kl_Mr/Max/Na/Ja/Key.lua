@@ -55,11 +55,13 @@ local whitelist = {
     ["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
 
     --// วันที่ 18 เดือน 4 ปี 2567 //--
-    ["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20 
+    --["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20  ลบเกมโหลดใหม่
     ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 THB 20 
     ["fab643351602"] = "433b16b6-f27e-4c39-b3a0-fab643351602", --Dis xxoilkunhgxx THB 20
     ["e6633977750a"] = "89130351-e264-439a-a825-e6633977750a", --Dis ohmxp0 THB20
-    ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20
+    ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20ล
+    ["f5876d83d580"] = "6e30c9a6-5a48-4039-ad83-f5876d83d580", --Dis py661  20 THB อยู่นี้
+    ["058c2ac84526"] = "390781b0-6beb-4fd4-aa22-058c2ac84526", --Dis aom.92 20 THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
