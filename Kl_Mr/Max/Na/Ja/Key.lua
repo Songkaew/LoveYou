@@ -49,15 +49,15 @@ local whitelist = {
     ["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096  THB10
     ["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
    -- ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20 มันโหลดตัวรันใหม่
+    ["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
     ["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
     ["df2e5a931a9f"] = "b8487a66-4063-4e1a-af3c-df2e5a931a9f", --Dis : palm123112 -- Game :  --THB20
     ["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
 
     --// วันที่ 18 เดือน 4 ปี 2567 //--
     ["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20 
-    ["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
     ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 THB 20 
-
+    ["fab643351602"] = "433b16b6-f27e-4c39-b3a0-fab643351602", --Dis xxoilkunhgxx THB 20
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
