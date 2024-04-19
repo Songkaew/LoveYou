@@ -78,6 +78,7 @@ local whitelist = {
     ["27333fb1d71d"] = "f3a5b7ae-6b31-4837-8fcf-27333fb1d71d", --Dis pun37774 20 THB
     ["88b29271751a"] = "ffc407af-d54a-457c-baaa-88b29271751a", --Dis hszx.15 YT No Buy
     ["4754ae0453a4"] = "9cfc269a-a31f-49b5-84cd-4754ae0453a4", --Dis pao089355 20 THB
+    -- 20/4/2567
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
