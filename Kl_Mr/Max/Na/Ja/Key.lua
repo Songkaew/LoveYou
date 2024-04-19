@@ -59,7 +59,7 @@ local whitelist = {
     ["13071b00148a"] = "9bb259ce-6822-4eb0-873f-13071b00148a", --Dis plub3757 THB 20 
     ["fab643351602"] = "433b16b6-f27e-4c39-b3a0-fab643351602", --Dis xxoilkunhgxx THB 20
     ["e6633977750a"] = "89130351-e264-439a-a825-e6633977750a", --Dis ohmxp0 THB20
-    ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20ล
+   -- ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20 เเก้ ลบโหลดใหม่
     ["f5876d83d580"] = "6e30c9a6-5a48-4039-ad83-f5876d83d580", --Dis py661  20 THB อยู่นี้
     ["058c2ac84526"] = "390781b0-6beb-4fd4-aa22-058c2ac84526", --Dis aom.92 20 THB
     -- 19/4/2567
@@ -70,12 +70,13 @@ local whitelist = {
     ["6fbfb2136bed"] = "2469bbd0-dc08-406c-a900-6fbfb2136bed", --Dis wish.x THB 20
     ["2849d34c00cf"] = "c2ec8c18-954a-4a8e-af94-2849d34c00cf", --Dis asdad.asd THB 20 MrMax - 20 ธนา
     ["ecf089750b6a"] = "c0c594cd-3c0e-4b55-b628-ecf089750b6a", --Dis achinakub THB 20 
+    ["1a5c226f665b"] = "896f49fc-79ec-46ea-b703-1a5c226f665b", --Dis nay6267 THB 20 เเก้ใหม่
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
 
 --[[
-_G.register_key = "ecf089750b6a"
+_G.register_key = "1a5c226f665b"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))()
 
 --]]
