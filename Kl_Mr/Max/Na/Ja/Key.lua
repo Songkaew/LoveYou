@@ -72,7 +72,7 @@ local whitelist = {
     ["ecf089750b6a"] = "c0c594cd-3c0e-4b55-b628-ecf089750b6a", --Dis achinakub THB 20 
     ["1a5c226f665b"] = "896f49fc-79ec-46ea-b703-1a5c226f665b", --Dis nay6267 THB 20 เเก้ใหม่
     ["9315c7fb812d"] = "02908ea9-c865-41e5-84df-9315c7fb812d", --Dis karu02913 THB 20
-    ["0a75ea6b5bf4"] = "6c51c9bd-ab8e-460d-8db6-0a75ea6b5bf4". --Dis rakthaiii 20 THB
+    ["0a75ea6b5bf4"] = "6c51c9bd-ab8e-460d-8db6-0a75ea6b5bf4", --Dis rakthaiii 20 THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
