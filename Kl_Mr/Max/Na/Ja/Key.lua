@@ -66,6 +66,7 @@ local whitelist = {
     ["06efa3681ab2"] = "2c1b9b73-f7f7-4e7e-bb4c-06efa3681ab2", --Dis .kikig 20 THB
     ["65b71826d69b"] = "e93a58fc-8546-48e6-bbd7-65b71826d69b", -- Dis kiwkodkool 20 THB
     ["3783c8775e63"] = "100b205d-d413-4183-88ed-3783c8775e63", --Dis rwiphlechuuerd THB 20
+    ["634022b05397"] = "27315009-b0ed-4994-bb75-634022b05397", --Dis godfathercrcr THB 20
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
