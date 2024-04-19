@@ -75,6 +75,7 @@ local whitelist = {
     ["0a75ea6b5bf4"] = "6c51c9bd-ab8e-460d-8db6-0a75ea6b5bf4", --Dis rakthaiii 20 THB
     ["ea0a3cda0320"] = "768ac446-f534-47e6-8d9c-ea0a3cda0320", --Dis thanongtoi_ 20 THB
     ["17e74ec7689d"] = "ac83a092-c75b-4279-8a93-17e74ec7689d", --Dis .33.0514_27886 20 THB
+    ["27333fb1d71d"] = "f3a5b7ae-6b31-4837-8fcf-27333fb1d71d", --Dis pun37774 20 THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
