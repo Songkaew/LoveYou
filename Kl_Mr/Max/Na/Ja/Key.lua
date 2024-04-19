@@ -71,12 +71,13 @@ local whitelist = {
     ["2849d34c00cf"] = "c2ec8c18-954a-4a8e-af94-2849d34c00cf", --Dis asdad.asd THB 20 MrMax - 20 ธนา
     ["ecf089750b6a"] = "c0c594cd-3c0e-4b55-b628-ecf089750b6a", --Dis achinakub THB 20 
     ["1a5c226f665b"] = "896f49fc-79ec-46ea-b703-1a5c226f665b", --Dis nay6267 THB 20 เเก้ใหม่
+    ["9315c7fb812d"] = "02908ea9-c865-41e5-84df-9315c7fb812d", --Dis karu02913 THB 20
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
 
 --[[
-_G.register_key = "1a5c226f665b"
+_G.register_key = "9315c7fb812d"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))()
 
 --]]
