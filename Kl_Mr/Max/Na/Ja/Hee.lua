@@ -781,7 +781,55 @@ function EquipWeapon(ToolSe)
     end
 end
 
-Main:Line()
+if W2 then
+    Main:Label("Auto Farm Glass")
+
+Main:Toggle("Auto Farm Glass\nออโต้ฟาร์มฟาร์มแค่ลูกแก้วเเดง",_G.AutoFarmGlass,function(value)
+    _G.AutoFarmGlass = value
+end)
+
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoFarmGlass then 
+                if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334)
+                    local args = {
+                        [1] = "take",
+                        [2] = "Kill 1 Elite Skeleton"
+                    }
+
+                    game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
+                else
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Elite Skeleton [Lv. 3100]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Elite Skeleton [Lv. 3100]" then
+                           -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame 
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.AutoFarmGlass or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                          --  end
+                        end
+                    end
+                else  
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334)
+                    end
+                end
+            end
+        end)
+    end
+end)
+end
+
 
 if W2 then
 Main:Label("Auto Ghost Ship")
