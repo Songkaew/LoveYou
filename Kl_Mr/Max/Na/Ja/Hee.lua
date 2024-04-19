@@ -390,7 +390,7 @@ end
             CFrameMon = CFrame.new(2031.13794, 48.827404, 1640.93506, -0.5123716, 3.12598436e-09, 0.858763814, 3.90376087e-09, 1, -1.31096356e-09, -0.858763814, 2.68070832e-09, -0.5123716)
     elseif Lv ==  3200 or Lv <= 3224 then
             NameMon = "Chess Soldier [Lv. 3200]"
-            NameQuest = "Kill 1 Chess Soldier"
+            NameQuest = "Kill 4 Chess Soldiers"
             CFrameMon = CFrame.new(-9.92300224, 77.0793686, 8150.47705, 0.464142531, 5.47901671e-08, 0.885760546, 4.74598894e-09, 1, -6.43435598e-08, -0.885760546, 3.4068389e-08, 0.464142531)
     elseif Lv == 3225 or Lv <= 3249 then
             NameMon = "Sunken Vessel [Lv. 3225]"
