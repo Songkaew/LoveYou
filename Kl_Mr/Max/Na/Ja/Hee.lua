@@ -437,16 +437,16 @@ end
             NameQuest = "Kill 1 Hefty"
             CFrameMon = CFrame.new(-10607.1182, 83.3532639, 966.647156, -0.0199217312, -2.62296673e-08, 0.999801517, 1.2840597e-08, 1, 2.64907314e-08, -0.999801517, 1.33657903e-08, -0.0199217312)
     elseif Lv == 3600 or Lv <= 3624 then
-            NameMon = "Fiore Gladiator [Lv. 3600]"
+            NameMon = "Fiore Gladiator [Lv. 3600]"             
             NameQuest = "Kill 6 Fiore Gladiator"
             CFrameMon = CFrame.new(5154.98926, 95.1037903, -2964.51538, -0.384478599, 1.01475921e-08, -0.92313391, 2.07894892e-08, 1, 2.33387421e-09, 0.92313391, -1.82941573e-08, -0.384478599)
     elseif Lv == 3625 or Lv <= 3649 then
-            NameMon = "Fiore Fighter [Lv. 3625]"
-            NameQuest = "Kill 4 Fiore Fighters"
+            NameMon = "Fiore Fighter [Lv. 3625]" 
+            NameQuest = "Kill 6 Fiore Fighter" 
             CFrameMon = CFrame.new(5490.54785, 84.5201492, -2558.8457, -0.805967569, -5.33750715e-08, 0.591959655, -3.97060838e-08, 1, 3.61059378e-08, -0.591959655, 5.59581492e-09, -0.805967569)
     elseif Lv == 3650 or Lv <= 3674 then
             NameMon = "Fiore Pirate [Lv. 3650]"
-            NameQuest = "Kill 4 Fiore Pirates"
+            NameQuest = "Kill 4 Fiore Pirate"
             CFrameMon = CFrame.new(6002.45801, 106.856102, -2894.09668, 0.993334472, 4.58113085e-08, -0.115267478, -5.62620386e-08, 1, -8.74115997e-08, 0.115267478, 9.33141422e-08, 0.993334472)
     elseif Lv == 3675 or Lv <= 3699 then
             NameMon = "Lomeo [Lv. 3675]"
@@ -553,12 +553,35 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 end
 local SelectWeapona = Main:Dropdown("Select Weapon\nเลือกอาวุธ","",WeaponList,function(value)
     _G.SelectWeapon = value
-    print(_G.SelectWeapon)
+end)
+
+Main:Button("Refresh Weapon",function()
+    SelectWeapona:Clear()
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        SelectWeapona:Add(v.Name)
+    end
+end)
+Main:Line()
+Main:Toggle("Enabled Weapon[2]\nเปิดใช้งาน Weapon[2]",_G.EnabledWeapon,function(value)
+    _G.EnabledWeapon = value
+end)
+local SelectWeapona = Main:Dropdown("Select Weapon[2]\nเลือกอาวุธตัวที่[2]","",WeaponList,function(value)
+    _G.SelectWeapon2 = value
 end)
 Main:Button("Refresh Weapon",function()
     SelectWeapona:Clear()
     for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
         SelectWeapona:Add(v.Name)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.EnabledWeapon then
+                EquipWeapon(_G.SelectWeapon2)
+                wait(1)
+            end
+        end)
     end
 end)
 Main:Line()
@@ -782,7 +805,7 @@ function EquipWeapon(ToolSe)
 end
 
 if W2 then
-    Main:Label("Auto Farm Glass")
+Main:Label("Auto Farm Glass")
 
 Main:Toggle("Auto Farm Glass\nออโต้ฟาร์มฟาร์มแค่ลูกแก้วเเดง",_G.AutoFarmGlass,function(value)
     _G.AutoFarmGlass = value
@@ -828,10 +851,42 @@ spawn(function()
         end)
     end
 end)
-end
 
+Main:Label("Auto Farm SeaKing")
+Main:Toggle("Auto Farm SeaKing",_G.AutoFarmSeaKing,function(value)
+    _G.AutoFarmSeaKing = value
+end)
 
-if W2 then
+CFrameQAutoFarmAutoFarmSeaKing = CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712)
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoFarmSeaKing then 
+                if (CFrameQAutoFarmAutoFarmSeaKing.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            repeat wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                Haki()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Humanoid.WalkSpeed = 0
+                                v.Head.CanCollide = false
+                                PosMon =  v.HumanoidRootPart.CFrame 
+                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                Cl()
+                                AutoSkill()
+                            until not _G.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                        end
+                    end
+                else
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712)
+                end
+            end
+        end)
+    end
+end)
+
 Main:Label("Auto Ghost Ship")
 Main:Toggle("Auto Ghost Ship",_G.GhostShip,function(value)
     _G.GhostShip = value
@@ -948,6 +1003,7 @@ spawn(function()
 end)
 
 end
+
 if W1 then
 
 Main:Toggle("Auto Saber",_G.AutoSaber,function(value)
@@ -1327,6 +1383,14 @@ spawn(function()
         end)
     end
 end)
+function Cl()
+    pcall(function()
+        local args = {
+            [1] = "FS_".._G.SelectWeapon2.."_M1"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Chest"):WaitForChild("Remotes"):WaitForChild("Functions"):WaitForChild("SkillAction"):InvokeServer(unpack(args))
+    end)
+end
 
 function Cl()
     pcall(function()
