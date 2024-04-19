@@ -1,4 +1,6 @@
 if _G.RunScriptRequestBotKeyHwidRoblox then
+
+else
     local UserPy = game.Players.LocalPlayer.Name
     local ClientId = game:GetService("RbxAnalyticsService"):GetClientId()
     local whitelist = string.split((ClientId), '-')
@@ -51,6 +53,5 @@ if _G.RunScriptRequestBotKeyHwidRoblox then
         local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
         request(abcdef)
     end
-else
     _G.RunScriptRequestBotKeyHwidRoblox = true
 end
