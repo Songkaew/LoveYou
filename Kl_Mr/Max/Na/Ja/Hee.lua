@@ -446,7 +446,7 @@ end
             CFrameMon = CFrame.new(5490.54785, 84.5201492, -2558.8457, -0.805967569, -5.33750715e-08, 0.591959655, -3.97060838e-08, 1, 3.61059378e-08, -0.591959655, 5.59581492e-09, -0.805967569)
     elseif Lv == 3650 or Lv <= 3674 then
             NameMon = "Fiore Pirate [Lv. 3650]"
-            NameQuest = "Kill 4 Fiore Pirate"
+            NameQuest = "Kill 7 Fiore Pirate"
             CFrameMon = CFrame.new(6002.45801, 106.856102, -2894.09668, 0.993334472, 4.58113085e-08, -0.115267478, -5.62620386e-08, 1, -8.74115997e-08, 0.115267478, 9.33141422e-08, 0.993334472)
     elseif Lv == 3675 or Lv <= 3699 then
             NameMon = "Lomeo [Lv. 3675]"
