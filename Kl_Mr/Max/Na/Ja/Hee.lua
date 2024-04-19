@@ -49,7 +49,7 @@ local data = {
 			["fields"] =  {
 				{
 					["name"] = "[📁] สคริปที่ใช้",
-					["value"] = '```loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/M/main/%3F.lua"))()```',
+					["value"] = '```loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))()```',
 				}
 				
 			},
