@@ -82,6 +82,7 @@ local whitelist = {
     ["bd5afa2eb60a"] = "62b7d5c9-08f9-4f89-bd6d-bd5afa2eb60a", --Dis _wakumi2 30 THB
     ["f50b3f94d110"] = "26d7bc2a-d737-43f0-86bd-f50b3f94d110", --Dis thnwatrphuukhamsrii 30 THB
     ["057cd16103d5"] = "2b28d151-a93b-43e5-820a-057cd16103d5", --Dis rimuru1763 30 THB
+    ["6aad3d26ce09"] = "b4f9dfa4-57eb-42a7-8857-6aad3d26ce09", --Dis saran07 30THB ธนาคาร
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
 
