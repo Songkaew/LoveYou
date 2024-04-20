@@ -555,7 +555,7 @@ end
             CFrameMon = CFrame.new(4833.40137, 54.4393272, 10217.8125, 0.92262882, -3.57880943e-08, 0.385689139, 1.29449109e-08, 1, 6.18237408e-08, -0.385689139, -5.20476569e-08, 0.92262882)
         elseif Lv == 4350 or Lv <= 4374 then
             NameMon = "Jungle Ape [Lv. 4350]"
-            NameQuest = "Kill 6 Jungle Ape"
+            NameQuest = "Kill 5 Jungle Ape"
             CFrameMon = CFrame.new(5225.08838, 85.4308624, 9786.15625, 0.812762737, -3.11326041e-08, -0.582594812, -4.6610884e-09, 1, -5.99403904e-08, 0.582594812, 5.1432842e-08, 0.812762737)
         elseif Lv >= 4375 then
             NameMon = "Cyborg Gorilla [Lv. 4375]"
