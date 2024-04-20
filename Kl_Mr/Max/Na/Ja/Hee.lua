@@ -477,9 +477,31 @@ end
             NameQuest = "Kill 1 Ryu"
             CFrameMon = CFrame.new(9917.09082, 86.03022, -4842.94238, -0.974786699, 1.07214566e-08, -0.223138794, 6.08973716e-09, 1, 2.14452243e-08, 0.223138794, 1.95456629e-08, -0.974786699)
         end
-    end
-    if W3 then -- เช็คโลก
-        if  Lv == 4300 or Lv <= 4324 then
+    end 
+    --Lord of Saber [Lv. 8500]
+    
+    if W3 then -- เช็คโลก game:GetService("Workspace").Monster.Boss["Lord of Saber [Lv. 8500]"].HumanoidRootPart  1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946
+        if Lv == 4000 or Lv <= 4049 then
+            NameMon = "Deep Diver [Lv. 4000]"
+            NameQuest = "Kill 4 Deep Diver"
+            CFrameMon = CFrame.new(1427.50378, 86.9143066, 981.238647, 0.207373455, 2.42449154e-08, -0.978261828, 1.50762247e-09, 1, 2.51032546e-08, 0.978261828, -6.6805983e-09, 0.207373455)
+        elseif Lv == 4050 or Lv <= 4149 then
+            NameMon = "Fugitive [Lv. 4050]"
+            NameQuest = "Kill Fugitive"
+            CFrameMon = CFrame.new(2699.85156, 35.5768166, 1023.83252, -0.536523819, -9.67664633e-08, -0.843885183, -3.76411506e-08, 1, -9.07363855e-08, 0.843885183, -1.69174204e-08, -0.536523819)
+        elseif Lv == 4150 or Lv <= 4499 then
+            NameMon = "Fishman Guardian [Lv. 4150]"
+            NameQuest = "Kill 6 Fishman Guardian"
+            CFrameMon = CFrame.new(1784.93933, 66.3743515, 189.335953, -0.166427165, -8.02409232e-08, -0.986053765, -1.78638988e-08, 1, -7.83607206e-08, 0.986053765, 4.57341098e-09, -0.166427165)
+        elseif Lv == 4200 or Lv <= 4249 then
+            NameMon = "The deep one [Lv. 4200]"
+            NameQuest = "Kill The deep one" --บอสไม่รู้ว่าได้ป่าว
+            CFrameMon = CFrame.new(3041.08716, 174.687195, 26.9070129, -0.652419209, -4.26592912e-08, 0.757858276, -2.20992415e-08, 1, 3.72646483e-08, -0.757858276, 7.56408003e-09, -0.652419209)
+        elseif Lv == 4250 or Lv <= 4299 then
+            NameMon = "Fishman King's Guard [Lv. 4250]"
+            NameQuest = "Kill Fishman King's Guard"
+            CFrameMon = CFrame.new(1850.63477, 57.1331673, -260.756805, 0.0037303844, -6.2026082e-08, -0.999993026, 5.04091275e-08, 1, -6.18384703e-08, 0.999993026, -5.01780946e-08, 0.0037303844)
+        elseif  Lv == 4300 or Lv <= 4324 then
             NameMon = "Jungle Gorilla [Lv. 4300]"
             NameQuest = "Kill 5 Jungle Gorilla"
             CFrameMon = CFrame.new(4282.1626, 180.477219, 9106.09863, -0.827997208, -1.69428116e-08, -0.560732186, 1.09286038e-08, 1, -4.63530796e-08, 0.560732186, -4.45082406e-08, -0.827997208)
@@ -802,6 +824,43 @@ function EquipWeapon(ToolSe)
         Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
     end
+end
+if W3 then
+
+    Main:Toggle("Auto Farm SaberV2\nออโต้ฟาร์มเเชงค์v2",_G.AutoFarmSaberV2,function(value)
+        _G.AutoFarmSaberV2 = value
+    end)
+    --game:GetService("Workspace").Monster.Boss["Lord of Saber [Lv. 8500]"].HumanoidRootPart  1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946
+spawn(function()
+    while wait() do --Lord of Saber [Lv. 8500]
+        pcall(function()
+            if _G.AutoFarmSaberV2 then
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Lord of Saber [Lv. 8500]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Lord of Saber [Lv. 8500]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.AutoFarmSaberV2 or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                else
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946)
+                end
+            end
+        end)
+    end
+end)
 end
 
 if W2 then
@@ -1406,7 +1465,7 @@ task.spawn(function()
         pcall(function()
             if _G.BringMobFarm then
                 for i, mob in pairs(game.Workspace.Monster.Mon:GetChildren()) do
-                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4 then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
                         mob.Humanoid.WalkSpeed = 0
@@ -1418,7 +1477,7 @@ task.spawn(function()
                     end
                 end
                 for i, mob in pairs(game.Workspace.Monster.Mon:GetChildren()) do
-                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 then
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
                         mob.Humanoid.WalkSpeed = 0
@@ -1430,7 +1489,7 @@ task.spawn(function()
                     end
                 end
                 for i, mob in pairs(game.Workspace.Monster.Boss:GetChildren()) do
-                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
                         mob.Humanoid.WalkSpeed = 0
@@ -1442,7 +1501,7 @@ task.spawn(function()
                     end
                 end
                 for i, mob in pairs(game.Workspace.Monster.Boss:GetChildren()) do
-                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 then
+                    if  (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1   then
                         mob.HumanoidRootPart.CFrame = PosMon
                         mob.Humanoid.JumpPower = 0
                         mob.Humanoid.WalkSpeed = 0
@@ -1467,7 +1526,8 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            wait(0.25)
+                            wait(1)
+                            elapsedTime(wait())
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1479,6 +1539,7 @@ spawn(function()
                     else
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end
+                    wait(0.1)
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
@@ -2089,6 +2150,8 @@ local ChackSaberExpertSwordmanLv3000 = Chack:Label("Saber|Expert Swordman [Lv. 3
 Chack:Line()
 local ChackSwordMonBladeMonsterLv2500 = Chack:Label("Sword Mon Blade|Monster [Lv. 2500]")
 Chack:Line()
+local ChackSaberV2Lv8500 = Chack:Label("Lord of Saber [Lv. 8500]")
+Chack:Line()
 spawn(function()
     while wait() do
         pcall(function()
@@ -2101,6 +2164,11 @@ spawn(function()
                 ChackSwordMonBladeMonsterLv2500:Set("✅ Sword Mon Blade|Monster [Lv. 2500]")
             else
                 ChackSwordMonBladeMonsterLv2500:Set("❌ Sword Mon Blade|Monster [Lv. 2500]")
+            end
+            if game:GetService("Workspace").Monster.Boss:FindFirstChild("Lord of Saber [Lv. 8500]") then
+                ChackSaberV2Lv8500:Set("✅Lord of Saber [Lv. 8500]") 
+            else
+                ChackSaberV2Lv8500:Set("❌Lord of Saber [Lv. 8500]")
             end
         end)
     end
