@@ -994,15 +994,15 @@ end)
 
 Main:Label("Auto Farm SeaKing")
 Main:Toggle("Auto Farm SeaKing",_G.AutoFarmSeaKing,function(value)
-    _G.AutoFarmSeaKing = value
+    _G.AutoFarmSeaKing = value -- -670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844
 end)
 --game:GetService("Workspace").SecondSeaPreload
-spawn(function()
+spawn(function() -- SeaKing
     while wait() do
-        pcall(function()
+        pcall(function() -- game:GetService("Workspace").SeaMonster.SeaKing.HumanoidRootPart -728.328003, 32.973999, -7758.54932, 0.129663587, 0, 0.991558075, 0, 1, 0, -0.991558075, 0, 0.129663587
             if _G.AutoFarmSeaKing then
-                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("SeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
+                if game:GetService("Workspace").SeaMonster:FindFirstChild("SeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
                         if v.Name == "SeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
@@ -1021,7 +1021,7 @@ spawn(function()
                         end
                     end
                 else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
-                    Tween(CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712))
+                    Tween(CFrame.new(-670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844))
                 end
             end
         end)
