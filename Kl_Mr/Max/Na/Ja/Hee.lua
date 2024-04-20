@@ -996,32 +996,38 @@ Main:Label("Auto Farm SeaKing")
 Main:Toggle("Auto Farm SeaKing",_G.AutoFarmSeaKing,function(value)
     _G.AutoFarmSeaKing = value
 end)
-
-CFrameQAutoFarmAutoFarmSeaKing = CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712)
+--game:GetService("Workspace").SecondSeaPreload
 spawn(function()
-    while wait() do  
+    while wait() do
         pcall(function()
-            if _G.AutoFarmSeaKing then 
-                if (CFrameQAutoFarmAutoFarmSeaKing.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
-                    for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
-                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                            repeat wait()
-                                Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
-                                v.HumanoidRootPart.CanCollide = false
-                                v.Humanoid.WalkSpeed = 0
-                                v.Head.CanCollide = false
-                                PosMon =  v.HumanoidRootPart.CFrame 
-                                v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                            until not _G.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+            if _G.AutoFarmSeaKing then
+                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("SeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
+                        if v.Name == "SeaKing" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Cl()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    AutoSkill()
+                                    Haki()
+                                until not _G.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0
+                            --end
                         end
                     end
-                else
+                else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
                     Tween(CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712))
                 end
             end
         end)
     end
 end)
+
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1056,12 +1062,16 @@ spawn(function()
                         if v.Name == "Ghost Ship" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    AutoSkill()
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
@@ -1149,8 +1159,8 @@ spawn(function()
             end
         end)
     end
-end)
-
+end)--game:GetService("Workspace").SeaMonster
+--game:GetService("Workspace").SeaMonster.HydraSeaKing.HumanoidRootPart
 Main:Label("Auto HydraSeaKing")
 Main:Toggle("Auto HydraSeaKing",_G.AutoHydraSeaKing,function(value)
     _G.AutoHydraSeaKing = value
@@ -1160,23 +1170,28 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoHydraSeaKing then
-                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("HydraSeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
+                if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
                         if v.Name == "HydraSeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    AutoSkill()
+                                    
+                                    Haki()
                                 until not _G.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
                     end
                 else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
-                    Tween(CFrame.new(3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913))
+                    Tween(CFrame.new(-12426.9854, 66.7678375, -2339.03223, -0.58515799, 0, 0.810919285, 0, 1, 0, -0.810919285, 0, -0.58515799))
                 end
             end
         end)
@@ -1186,8 +1201,8 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoHydraSeaKing then
-                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("HydraSeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
+                if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
                         if v.Name == "HydraSeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
@@ -2376,3 +2391,23 @@ Chack:Seperator("Chack Fruit Drop")
 
 
 print("A")
+
+function AntiKick()
+    for  descendant in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if descendant:IsA("LocalScript") then
+            local blacklistNames = {"General", "Shiftlock", "FallDamage", "4444", "CamBob", "JumpCD", "Looking", "Run"}
+            if table.find(blacklistNames, descendant.Name) then
+                descendant:Destroy()
+            end
+        end
+    end
+    for  descendant in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+        if descendant:IsA("LocalScript") then
+            local blacklistNames = {"RobloxMotor6DBugFix", "Clans", "Codes", "CustomForceField", "MenuBloodSp", "PlayerList"}
+            if table.find(blacklistNames, descendant.Name) then
+                descendant:Destroy()
+            end
+        end
+    end
+end
+AntiKick()
