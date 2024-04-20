@@ -489,13 +489,13 @@ end
             NameMon = "Fugitive [Lv. 4050]"
             NameQuest = "Kill Fugitive"
             CFrameMon = CFrame.new(2699.85156, 35.5768166, 1023.83252, -0.536523819, -9.67664633e-08, -0.843885183, -3.76411506e-08, 1, -9.07363855e-08, 0.843885183, -1.69174204e-08, -0.536523819)
-        elseif Lv == 4150 or Lv <= 4499 then
+        elseif Lv == 4150 or Lv <= 4199 then
             NameMon = "Fishman Guardian [Lv. 4150]"
             NameQuest = "Kill 6 Fishman Guardian"
             CFrameMon = CFrame.new(1784.93933, 66.3743515, 189.335953, -0.166427165, -8.02409232e-08, -0.986053765, -1.78638988e-08, 1, -7.83607206e-08, 0.986053765, 4.57341098e-09, -0.166427165)
         elseif Lv == 4200 or Lv <= 4249 then
             NameMon = "The deep one [Lv. 4200]"
-            NameQuest = "Kill 1 The deep one" --บอสไม่รู้ว่าได้ป่าว
+            NameQuest = "Kill The deep one" --บอสไม่รู้ว่าได้ป่าว
             CFrameMon = CFrame.new(3041.08716, 174.687195, 26.9070129, -0.652419209, -4.26592912e-08, 0.757858276, -2.20992415e-08, 1, 3.72646483e-08, -0.757858276, 7.56408003e-09, -0.652419209)
         elseif Lv == 4250 or Lv <= 4299 then
             NameMon = "Fishman King's Guard [Lv. 4250]"
