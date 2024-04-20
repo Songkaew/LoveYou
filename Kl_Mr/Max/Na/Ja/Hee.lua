@@ -90,6 +90,50 @@ spawn(function()
 		end
 	end
 end)
+spawn(function()
+    pcall(function()
+        game:GetService("RunService").Stepped:Connect(function()
+            if _G.AutoFarm or _G.AutoFarmTwilight or _G.AutoFarmSwordMonBlade or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end
+        end)
+    end)
+end)
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.AutoFarm or _G.AutoFarmTwilight or _G.AutoFarmSwordMonBlade or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+            else
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+            end
+        end)
+    end
+end)
+function Tween(Pos)--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+    if game.Players.LocalPlayer.Character.Humanoid.Sit then
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+    end
+    pcall(function()
+        local tween = game:GetService("TweenService"):Create(
+            game.Players.LocalPlayer.Character.HumanoidRootPart,
+            TweenInfo.new(Distance/99999999999999999999999999, Enum.EasingStyle.Linear),
+            {CFrame = Pos}
+        )
+        tween:Play()
+    end)
+end
 
 function CheckLevel()
     local Lv = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
@@ -631,7 +675,7 @@ spawn(function()
                     if v.Name == _G.SelectNameBoss then
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
                                 PosMon = v.HumanoidRootPart.CFrame
@@ -655,7 +699,7 @@ spawn(function()
                             Haki()
                             AutoSkill()
                             Cl()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                            Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                         until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
                     end
                 end
@@ -689,7 +733,7 @@ spawn(function()
                     if v.Name == _G.SelectMonNearest then
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
                                 PosMon = v.HumanoidRootPart.CFrame
@@ -713,7 +757,7 @@ spawn(function()
                             Haki()
                             AutoSkill()
                             Cl()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                            Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                         until not _G.AutoFarmMonNearestSelect or not v.Parent or v.Humanoid.Health <= 0
                     end
                 end
@@ -755,7 +799,7 @@ spawn(function()
                         if v.Name == _G.SelectMon then
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
                                     PosMon = v.HumanoidRootPart.CFrame
@@ -769,7 +813,7 @@ spawn(function()
                         if v.Name == _G.SelectMon then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
                                     PosMon = v.HumanoidRootPart.CFrame
@@ -779,7 +823,7 @@ spawn(function()
                         end
                     end
                 else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("ReplicatedStorage").MOB[_G.SelectMon].HumanoidRootPart.CFrame * CFrame.new(0,50,0)
+                    Tween(game:GetService("ReplicatedStorage").MOB[_G.SelectMon].HumanoidRootPart.CFrame * CFrame.new(0,50,0))
                 end
             end
         end)
@@ -797,7 +841,7 @@ spawn(function()
                                 Haki()
                                 AutoSkill()
                                 Cl()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                                Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                             until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
                         end
                     end
@@ -809,7 +853,7 @@ spawn(function()
                                 Haki()
                                 AutoSkill()
                                 Cl()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                                Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                             until not _G.AutoFarmAllMonsterSelect or not v.Parent or v.Humanoid.Health <= 0
                         end
                     end
@@ -831,36 +875,55 @@ if W3 then
         _G.AutoFarmSaberV2 = value
     end)
     --game:GetService("Workspace").Monster.Boss["Lord of Saber [Lv. 8500]"].HumanoidRootPart  1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946
-spawn(function()
-    while wait() do --Lord of Saber [Lv. 8500]
-        pcall(function()
-            if _G.AutoFarmSaberV2 then
-                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Lord of Saber [Lv. 8500]") then
-                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                        if v.Name == "Lord of Saber [Lv. 8500]" then
-                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                    Cl()
-                                    AutoSkill()
-                                until not _G.AutoFarmSaberV2 or not v.Parent or v.Humanoid.Health <= 0
-                            --end
+    spawn(function()
+        while wait() do --Lord of Saber [Lv. 8500]
+            pcall(function()
+                if _G.AutoFarmSaberV2 then
+                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Lord of Saber [Lv. 8500]") then
+                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                            if v.Name == "Lord of Saber [Lv. 8500]" then
+                                --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat wait()
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Head.CanCollide = false
+                                        PosMon =  v.HumanoidRootPart.CFrame
+                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    until not _G.AutoFarmSaberV2 or not v.Parent or v.Humanoid.Health <= 0
+                                --end
+                            end
+                        end
+                    else
+                        Tween(CFrame.new(1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946))
+                    end
+                end
+            end)
+        end
+    end)
+        spawn(function()
+        while wait() do --Lord of Saber [Lv. 8500]
+            pcall(function()
+                if _G.AutoFarmSaberV2 then
+                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Lord of Saber [Lv. 8500]") then
+                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                            if v.Name == "Lord of Saber [Lv. 8500]" then
+                                --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                        Haki()
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                        Cl()
+                                        AutoSkill()
+                                    until not _G.AutoFarmSaberV2 or not v.Parent or v.Humanoid.Health <= 0
+                                --end
+                            end
                         end
                     end
-                else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1608.90405, 291.092926, -1070.27002, -0.0443007983, 0, -0.999018312, 0, 1, 0, 0.999018312, 0, -0.0443007946)
                 end
-            end
-        end)
-    end
-end)
+            end)
+        end
+    end)
 end
 
 if W2 then
@@ -869,13 +932,12 @@ Main:Label("Auto Farm Glass")
 Main:Toggle("Auto Farm Glass\nออโต้ฟาร์มฟาร์มแค่ลูกแก้วเเดง",_G.AutoFarmGlass,function(value)
     _G.AutoFarmGlass = value
 end)
-
 spawn(function()
     while wait() do  
         pcall(function()
             if _G.AutoFarmGlass then 
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334)
+                    Tween(CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334))
                     local args = {
                         [1] = "take",
                         [2] = "Kill 1 Elite Skeleton"
@@ -888,22 +950,41 @@ spawn(function()
                         if v.Name == "Elite Skeleton [Lv. 3100]" then
                            -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame 
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                    Cl()
-                                    AutoSkill()
                                 until not _G.AutoFarmGlass or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                           --  end
                         end
                     end
                 else  
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334)
+                    Tween(CFrame.new(-6026.2168, 158.240189, 7228.7085, -0.0723073334, -5.36073692e-08, -0.997382402, 8.2671292e-08, 1, -5.97414882e-08, 0.997382402, -8.67746408e-08, -0.0723073334))
+                    end
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoFarmGlass then 
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Elite Skeleton [Lv. 3100]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Elite Skeleton [Lv. 3100]" then
+                           -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    Tween(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.AutoFarmGlass or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                          --  end
+                        end
                     end
                 end
             end
@@ -925,27 +1006,43 @@ spawn(function()
                     for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
-                                EquipWeapon(_G.SelectWeapon)
-                                Haki()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false
                                 PosMon =  v.HumanoidRootPart.CFrame 
                                 v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                Cl()
-                                AutoSkill()
                             until not _G.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                         end
                     end
                 else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712)
+                    Tween(CFrame.new(-660.18866, 19.2895069, -7296.5293, 0.0282198712, 5.66487479e-09, 0.999601722, -1.34090339e-09, 1, -5.6292766e-09, -0.999601722, -1.18151189e-09, 0.0282198712))
                 end
             end
         end)
     end
 end)
-
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoFarmSeaKing then 
+                if (CFrameQAutoFarmAutoFarmSeaKing.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            repeat wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                Haki()
+                                Tween(v.HumanoidRootPart.CFrame * MethodFarm)
+                                Cl()
+                                AutoSkill()
+                            until not _G.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
 Main:Label("Auto Ghost Ship")
 Main:Toggle("Auto Ghost Ship",_G.GhostShip,function(value)
     _G.GhostShip = value
@@ -953,8 +1050,23 @@ end)
 spawn(function()
     while wait() do  
         pcall(function()
-            if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
-
+            if _G.GhostShip then 
+                if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
+                    for i, v in pairs(game:GetService("Workspace").GhostMonster:GetChildren()) do
+                        if v.Name == "Ghost Ship" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                end
             end
         end)
     end
@@ -968,22 +1080,18 @@ spawn(function()
                         if v.Name == "Ghost Ship" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                    Cl()
-                                    AutoSkill()
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
                     end
                 else  
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2312.24902, 15.8045273, 4929.13525, 0.0706309304, 0.00120048679, -0.997501791, -0.00142576592, 0.99999845, 0.00110253599, 0.997501493, 0.00134433107, 0.0706325248)
+                    Tween(CFrame.new(-2312.24902, 15.8045273, 4929.13525, 0.0706309304, 0.00120048679, -0.997501791, -0.00142576592, 0.99999845, 0.00110253599, 0.997501493, 0.00134433107, 0.0706325248))
                 end
             end
         end)
@@ -993,7 +1101,32 @@ Main:Label("Auto King Samurai")
 Main:Toggle("Auto King Samurai",_G.AutoKingSamurai,function(value)
     _G.AutoKingSamurai = value
 end)
-
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.AutoKingSamurai then 
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("King Samurai [Lv. 3500]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "King Samurai [Lv. 3500]" then
+                           -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.AutoKingSamurai or not v.Parent or v.Humanoid.Health <= 0
+                          --  end
+                        end
+                    end
+                else  
+                    Tween(CFrame.new(-5838.94434, 354.945496, 76.1406631, 0, 0, -1, 0, 1, 0, 1, 0, 0))
+                end
+            end
+        end)
+    end
+end)
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1005,20 +1138,13 @@ spawn(function()
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                                     Cl()
                                     AutoSkill()
                                 until not _G.AutoKingSamurai or not v.Parent or v.Humanoid.Health <= 0
                           --  end
                         end
                     end
-                else  
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5838.94434, 354.945496, 76.1406631, 0, 0, -1, 0, 1, 0, 1, 0, 0)
                 end
             end
         end)
@@ -1039,22 +1165,41 @@ spawn(function()
                         if v.Name == "HydraSeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)-- CFrame.new(0,0,8)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
+                    Tween(CFrame.new(3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913))
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoHydraSeaKing then
+                if game:GetService("Workspace").SecondSeaPreload:FindFirstChild("HydraSeaKing") then
+                    for i, v in pairs(game:GetService("Workspace").SecondSeaPreload:GetChildren()) do
+                        if v.Name == "HydraSeaKing" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
                                     Cl()
                                     AutoSkill()
                                 until not _G.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
                     end
-                else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913)
                 end
             end
         end)
@@ -1068,7 +1213,32 @@ if W1 then
 Main:Toggle("Auto Saber",_G.AutoSaber,function(value)
     _G.AutoSaber = value
 end)
-
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoSaber then
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Expert Swordman [Lv. 3000]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Expert Swordman [Lv. 3000]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.AutoSaber or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                else
+                    Tween(CFrame.new(5245.53174, 54.8256226, -6631.55469, 0.14680548, 2.70129541e-09, -0.989165366, 3.24562932e-09, 1, 3.21257865e-09, 0.989165366, -3.68208819e-09, 0.14680548))
+                end
+            end
+        end)
+    end
+end)
 spawn(function()
     while wait() do
         pcall(function()
@@ -1080,20 +1250,13 @@ spawn(function()
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))
                                     Cl()
                                     AutoSkill()
                                 until not _G.AutoSaber or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
                     end
-                else
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5245.53174, 54.8256226, -6631.55469, 0.14680548, 2.70129541e-09, -0.989165366, 3.24562932e-09, 1, 3.21257865e-09, 0.989165366, -3.68208819e-09, 0.14680548)
                 end
             end
         end)
@@ -1117,7 +1280,7 @@ spawn(function()
         pcall(function()
             if _G.AutoFarmTwilight then
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                    Tween(CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993))
                     local args = {
                         [1] = "take",
                         [2] = "Kill 1 Shadow Master"
@@ -1129,29 +1292,49 @@ spawn(function()
                             if v.Name == "Shadow Master [Lv. 1650]" then
                                 --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        Haki()
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid.WalkSpeed = 0
                                         v.Head.CanCollide = false
                                         PosMon =  v.HumanoidRootPart.CFrame
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                        Cl()
-                                        AutoSkill()
                                     until not _G.AutoFarmTwilight or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 --end
                             end
                         end
                     else
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                        Tween(CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993))
                     end
                 end
             end
         end)
     end
 end)
-
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoFarmTwilight then
+                
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Shadow Master [Lv. 1650]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Shadow Master [Lv. 1650]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    Haki()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.AutoFarmTwilight or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                            --end
+                        end
+                    end
+                end
+                
+            end
+        end)
+    end
+end)
 Main:Toggle("Auto Farm Sword Mon Blade [Bug]",_G.AutoFarmSwordMonBlade,function(value)
     _G.AutoFarmSwordMonBlade = value
 end)
@@ -1167,7 +1350,7 @@ spawn(function()
                                 repeat wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
@@ -1182,7 +1365,7 @@ spawn(function()
                 else
                     if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.StarterFrame["Inventory_Frame"].ScrollingFrameMaterial["Twilight's Orb"].Visible == false then
                         if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                            Tween(CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993))
                             local args = {
                                 [1] = "take",
                                 [2] = "Kill 1 Shadow Master"
@@ -1196,7 +1379,7 @@ spawn(function()
                                             repeat wait()
                                                 EquipWeapon(_G.SelectWeapon)
                                                 Haki()
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                                                Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.Head.CanCollide = false
@@ -1209,11 +1392,11 @@ spawn(function()
                                     end
                                 end
                             else
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993)
+                                Tween(CFrame.new(-2750.03711, 33.5921288, 4452.18555, 0.909992993, -3.68365569e-08, -0.414623559, 1.28604922e-08, 1, -6.06178716e-08, 0.414623559, 4.98295769e-08, 0.909992993))
                             end
                         end
                     else
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2945.20361, 16.0892391, 4446.58545, 0.872506022, -8.6434838e-08, -0.488603383, 1.00153684e-07, 1, 1.9440185e-09, 0.488603383, -5.06315985e-08, 0.872506022)
+                        Tween(CFrame.new(-2945.20361, 16.0892391, 4446.58545, 0.872506022, -8.6434838e-08, -0.488603383, 1.00153684e-07, 1, 1.9440185e-09, 0.488603383, -5.06315985e-08, 0.872506022))
                         local args = {
                             [1] = workspace.AllNPC.SummonOrcLord
                         }
@@ -1241,7 +1424,7 @@ spawn(function()
             pcall(function()
                 for i, v in pairs(game:GetService("Workspace").AllDroppedFruit:GetChildren()) do
                     if string.find(v.ClassName, "Tool") then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
+                        Tween(v.Handle.CFrame)
                     end
                 end
             end)
@@ -1524,7 +1707,7 @@ spawn(function()
                 CheckLevel()
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        Tween(CFrameMon)
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                             wait(1)
                             elapsedTime(wait())
@@ -1534,10 +1717,10 @@ spawn(function()
                             }
                             game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
                         else
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                            Tween(CFrameMon)
                         end
                     else
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        Tween(CFrameMon)
                     end
                     wait(0.1)
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
@@ -1547,7 +1730,7 @@ spawn(function()
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
                                         PosMon = v.HumanoidRootPart.CFrame
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
@@ -1561,7 +1744,7 @@ spawn(function()
                                 --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
                                         PosMon = v.HumanoidRootPart.CFrame
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)  --* CFrame.Angles(math.rad(-90),0,0)
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
@@ -1570,11 +1753,11 @@ spawn(function()
                             end
                         end
                     else
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        Tween(CFrameMon)
                     end
                 else
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        Tween(CFrameMon)
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                             wait(1)
                             local args = {
@@ -1583,10 +1766,10 @@ spawn(function()
                             }
                             game:GetService("ReplicatedStorage").Chest.Remotes.Functions.Quest:InvokeServer(unpack(args))
                         else
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                            Tween(CFrameMon)
                         end
                     else
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                        Tween(CFrameMon)
                     end
                 end
             end
@@ -1607,7 +1790,7 @@ spawn(function()
                                 Haki()
                                 AutoSkill()
                                 Cl()
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                                Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                             until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                         end
                     end
@@ -1619,7 +1802,7 @@ spawn(function()
                             Haki()
                             AutoSkill()
                             Cl()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
+                            Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
                         until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                     end
                 end
@@ -1644,7 +1827,7 @@ Teleport:Button("Refresh NPC\nรีเฟส NPC",function()
     end
 end)
 Teleport:Button("Teleport to NPC\nวาปไปยัง NPC",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AllNPC[_G.SelectNPCtoTeleport].CFrame
+    Tween(game:GetService("Workspace").AllNPC[_G.SelectNPCtoTeleport].CFrame)
 end)
 
 Raid = Library:Tab("Raid")
@@ -1654,12 +1837,12 @@ Raid:Label("Auto Raid")
 Raid:Line()
 if W1 then
     Raid:Button("Teleport Raid\nวาปไปยังดัน",function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433)
+        Tween(CFrame.new(-614.49408, 73.6269684, -3607.28198, -0.686195433, 2.00852313e-08, -0.727417231, 1.45994052e-08, 1, 1.38396308e-08, 0.727417231, -1.12316689e-09, -0.686195433))
     end)
 end
 if W2 then
     Raid:Button("Teleport Raid\nวาปไปยังดัน",function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4594.26465, 223.143417, -68.1358566, 0.433611095, 7.56600045e-08, -0.901100099, -5.65751712e-09, 1, 8.12416303e-08, 0.901100099, -3.01292857e-08, 0.433611095)
+        Tween(CFrame.new(-4594.26465, 223.143417, -68.1358566, 0.433611095, 7.56600045e-08, -0.901100099, -5.65751712e-09, 1, 8.12416303e-08, 0.901100099, -3.01292857e-08, 0.433611095))
     end)
 end
 
@@ -1676,7 +1859,7 @@ spawn(function()
                 for i, v in pairs(game:GetService("Workspace").MOB:GetChildren()) do
                     if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                         repeat wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * (MethodFarm)--CFrame.new(0,0,8)
+                            Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
                             PosMon = v.HumanoidRootPart.CFrame
@@ -1757,9 +1940,9 @@ Ply:Button("Refresh Player\nรีเฟสปุ่มเลือกผู้�
 end)
 
 Ply:Button("Teleport to Player\nวาปไปยังผู้เล่นที่เลือกไว้",function() --game:GetService("Workspace").PlayerCharacters.AxileoRBLX.HumanoidRootPart
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players")[_G.SelectPly].Character.HumanoidRootPart.CFrame
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")[_G.SelectPly].HumanoidRootPart.CFrame
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerCharacters[_G.SelectPly].HumanoidRootPart.CFrame
+    Tween(game:GetService("Players")[_G.SelectPly].Character.HumanoidRootPart.CFrame)
+    Tween(game:GetService("Workspace")[_G.SelectPly].HumanoidRootPart.CFrame)
+    Tween(game:GetService("Workspace").PlayerCharacters[_G.SelectPly].HumanoidRootPart.CFrame)
 end)
 
 function isnil(L_426_arg0)
@@ -1947,7 +2130,7 @@ spawn(function()
             elseif _G.Method == "Settings" then
                 MethodFarm = CFrame.new(getgenv().GanX , getgenv().GanY , getgenv().GanZ) * CFrame.Angles(math.rad(-getgenv().GanAngles),0,0)
             else
-                MethodFarm = CFrame.new(0,0,_G.DistanceMob) * CFrame.Angles(math.rad(-getgenv().GanAngles),0,0)
+                MethodFarm = CFrame.new(0,_G.DistanceMob,0) * CFrame.Angles(math.rad(-90),0,0)
             end
         end)
     end
