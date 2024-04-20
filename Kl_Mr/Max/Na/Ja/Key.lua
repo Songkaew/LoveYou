@@ -70,7 +70,7 @@ local whitelist = {
     ["6fbfb2136bed"] = "2469bbd0-dc08-406c-a900-6fbfb2136bed", --Dis wish.x THB 20
     ["2849d34c00cf"] = "c2ec8c18-954a-4a8e-af94-2849d34c00cf", --Dis asdad.asd THB 20 MrMax - 20 ธนา
     ["ecf089750b6a"] = "c0c594cd-3c0e-4b55-b628-ecf089750b6a", --Dis achinakub THB 20 
-    ["1a5c226f665b"] = "896f49fc-79ec-46ea-b703-1a5c226f665b", --Dis nay6267  เเก้ใหม่
+    ["1a5c226f665b"] = "896f49fc-79ec-46ea-b703-1a5c226f665b", --Dis nay6267 THB 20 เเก้ใหม่
     ["9315c7fb812d"] = "02908ea9-c865-41e5-84df-9315c7fb812d", --Dis karu02913 THB 20
     ["0a75ea6b5bf4"] = "6c51c9bd-ab8e-460d-8db6-0a75ea6b5bf4", --Dis rakthaiii 20 THB
     ["ea0a3cda0320"] = "768ac446-f534-47e6-8d9c-ea0a3cda0320", --Dis thanongtoi_ 20 THB
@@ -78,13 +78,14 @@ local whitelist = {
     ["27333fb1d71d"] = "f3a5b7ae-6b31-4837-8fcf-27333fb1d71d", --Dis pun37774 20 THB
     ["88b29271751a"] = "ffc407af-d54a-457c-baaa-88b29271751a", --Dis hszx.15 YT No Buy
     ["4754ae0453a4"] = "9cfc269a-a31f-49b5-84cd-4754ae0453a4", --Dis pao089355 20 THB
-    -- 20/4/2567
+    --20/4/2567
+    ["753b0ba84d36"] = "56295296-c16f-4ee2-9d3e-753b0ba84d36", --Dis _wakumi2 30 THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 }
 
 --[[
-_G.register_key = "17e74ec7689d"
+_G.register_key = "753b0ba84d36"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))()
 
 --]]
