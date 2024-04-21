@@ -82,7 +82,7 @@ local whitelist = {
     ["bd5afa2eb60a"] = "62b7d5c9-08f9-4f89-bd6d-bd5afa2eb60a", --Dis _wakumi2 30 THB
     ["f50b3f94d110"] = "26d7bc2a-d737-43f0-86bd-f50b3f94d110", --Dis thnwatrphuukhamsrii 30 THB
     --21/4/2567
-    ["1ffba32978e3"] = "8f2f21f7-729a-4fcb-ab92-1ffba32978e3", --Dis  gleeeeeeeeeeeeee 30 THB
+    ["7b5d170a5185"] = "ebb983e7-a46a-4158-8a47-7b5d170a5185", --Dis  gleeeeeeeeeeeeee 30 THB
     ["66e58ba1d394"] = "8777b153-032d-4179-8b24-66e58ba1d394", --Dis itssense 30THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
@@ -90,8 +90,8 @@ local whitelist = {
 }
 
 --[[
-_G.register_key = "1ffba32978e3"
- loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
+    _G.register_key = "7b5d170a5185"
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
 local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
