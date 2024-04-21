@@ -994,7 +994,7 @@ end)
 
 Main:Label("Auto Farm SeaKing")
 Main:Toggle("Auto Farm SeaKing",_G.AutoFarmSeaKing,function(value)
-    _G.AutoFarmSeaKing = value -- -670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844
+    _G.AutoFarmSeaKing = value --กล่อง -670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844
 end)
 --game:GetService("Workspace").SecondSeaPreload
 spawn(function() -- SeaKing
@@ -1021,7 +1021,7 @@ spawn(function() -- SeaKing
                         end
                     end
                 else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
-                    Tween(CFrame.new(-670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844))
+                   print("QNA")-- Tween(CFrame.new(-670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844))
                 end
             end
         end)
@@ -1728,6 +1728,9 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         Tween(CFrameMon)
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                            Haki()
+                            Cl()
+                            AutoSkill()
                             wait(1)
                             elapsedTime(wait())
                             local args = {
@@ -1742,12 +1745,15 @@ spawn(function()
                         Tween(CFrameMon)
                     end
                     wait(0.1)
+                    Haki()
+                    AutoSkill()
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
                             if v.Name == NameMon then
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
+                                        Cl()
                                         PosMon = v.HumanoidRootPart.CFrame
                                         Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
@@ -1762,6 +1768,7 @@ spawn(function()
                             if v.Name == NameMon then
                                 --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
+                                        Cl()
                                         PosMon = v.HumanoidRootPart.CFrame
                                         Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
