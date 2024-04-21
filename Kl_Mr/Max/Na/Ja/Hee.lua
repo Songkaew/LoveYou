@@ -386,7 +386,7 @@ end
             CFrameMon = CFrame.new(-5573.45703, 211.222885, 91.0026932, 0.315181255, -6.78751721e-10, -0.949031472, -1.19988872e-08, 1, -4.70013495e-09, 0.949031472, 1.28687168e-08, 0.315181255)
     elseif Lv == 2700 or Lv <= 2749 then
             NameMon = "Elite Beast Pirate [Lv. 2700]"
-            NameQuest = "Kill 4 Elite Beast Pirates"
+            NameQuest = "Kill 4 Elite Beast Pirate" --ถ้าบัคให้เเก้เป็นs
             CFrameMon = CFrame.new(-4556.68848, 73.4863129, 1362.23218, 0.99756068, 3.48701263e-08, 0.0698048025, -2.89415034e-08, 1, -8.59428084e-08, -0.0698048025, 8.37129122e-08, 0.99756068)
     elseif Lv == 2750 or Lv <= 2799 then
             NameMon = "Bear Man [Lv. 2750]"
