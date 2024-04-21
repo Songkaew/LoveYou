@@ -81,18 +81,16 @@ local whitelist = {
     --20/4/2567
     ["bd5afa2eb60a"] = "62b7d5c9-08f9-4f89-bd6d-bd5afa2eb60a", --Dis _wakumi2 30 THB
     ["f50b3f94d110"] = "26d7bc2a-d737-43f0-86bd-f50b3f94d110", --Dis thnwatrphuukhamsrii 30 THB
-    ["057cd16103d5"] = "2b28d151-a93b-43e5-820a-057cd16103d5", --Dis rimuru1763 30 THB
-    ["6aad3d26ce09"] = "b4f9dfa4-57eb-42a7-8857-6aad3d26ce09", --Dis saran07 30THB
-    ["7ee608ad5090"] = "cd6f5c5f-bbf5-4e93-966f-7ee608ad5090", --Dis stellas_t 30THB ธนาคาร
-    ["ac1e81413d7c"] = "5f5a0fe5-70e4-4b0a-8a98-ac1e81413d7c", --Dis aomqi 30THB
-     
+    --21/4/2567
+    ["143c277a1d16"] = "544654c9-f288-49e9-8983-143c277a1d16", --Dis  gleeeeeeeeeeeeee 30 THB
+    ["66e58ba1d394"] = "8777b153-032d-4179-8b24-66e58ba1d394", --Dis itssense 30THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
-
+    
 }
 
 --[[
-_G.register_key = "057cd16103d5"
+_G.register_key = "143c277a1d16"
  loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
