@@ -37,7 +37,7 @@ print("Ping:"..Ping.."FPS:"..Fps.. "    ")
 print("User " ..UserPy.. "#" ..tag.. "  ใช้งานเมื่อ" ..TimeGlobal.. "   Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. " " )
 print(UserPy)
 
-local url = "https://discord.com/api/webhooks/1144966127915638854/sP0CU7-iRe-MHV4CF_7xHjcGi_b38ZCHITD0H3G-ULzthw67uBZmRgmALenG592j8Fcn" -- ur webhook url
+local url = "https://discord.com/api/webhooks/1231651589262147615/FxKk6HOjS2j_MlQ6A2hirgWbzVAaY41FO5Xiw8LcM7StmBaCVu3HWzdJpQdkqe5B8Is2" -- ur webhook url
 local data = { 
 	["username"] = 'MrMaxNaJa', -- Webhook name here
 	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
