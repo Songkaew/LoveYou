@@ -96,7 +96,7 @@ local whitelist = {
     ["083B6C31D6D8"] = "9C671507-19ED-4D14-9107-083B6C31D6D8", --Dis eurosadlhwqofihsad 30 THB
     ["adcc019c6c93"] = "3be0d390-7b1d-4dce-a931-adcc019c6c93", --Dis daimokin 30 THB
     --22/4/2567
-    ["af0d8ff3e5b2"] = "05cce1ac-b696-4aa7-8ad2-af0d8ff3e5b2", --Dis p_poom082 15 THB เปลี่ยน Hwid โอนแล้ว ทำการเมื่อ 1:16
+    ["af0d8ff3e5b2"] = "05cce1ac-b696-4aa7-8ad2-af0d8ff3e5b2", --Dis p_poom082 15 THB เปลี่ยน Hwid โอนแล้วหารแล้ว 7.5 THB ทำการเมื่อ 1:16
     ----------------------------------------------------------
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
