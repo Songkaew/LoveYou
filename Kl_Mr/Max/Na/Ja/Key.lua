@@ -92,6 +92,7 @@ local whitelist = {
     ["63da7f3b7640"] = "ffbbc6b6-68c1-403f-8bb0-63da7f3b7640", --Dis .33.0514_27886 ซื้อเพิ่ม 25 
     ["c10e6326f5e1"] = "441f6d97-b1d6-49bb-b527-c10e6326f5e1", --Dis noob00_8 30 THB
     ["cbbc85b226bf"] = "2d91d6d3-10ed-44fd-97e7-cbbc85b226bf", --Dis p_poom082 30 THB
+    ["d2d7a229d152"] = "e5d6dc1a-f499-4e90-9bd7-d2d7a229d152", --Dis thnwatrphuukhamsrii เเก้HWID 15 THB
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
     
@@ -99,7 +100,7 @@ local whitelist = {
 
 
 --[[
-    _G.register_key = "cbbc85b226bf"
+    _G.register_key = "d2d7a229d152"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
