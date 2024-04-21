@@ -88,13 +88,15 @@ local whitelist = {
     --21/4/2567
     ["7b5d170a5185"] = "ebb983e7-a46a-4158-8a47-7b5d170a5185", --Dis  gleeeeeeeeeeeeee 30 THB
     ["66e58ba1d394"] = "8777b153-032d-4179-8b24-66e58ba1d394", --Dis itssense 30THB
+    ["978699e05d51"] = "65d1ce06-235e-4bef-9013-978699e05d51", --Dis fhdjnvvb 20 THB  --ติดอยู่10บาท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
     
 }
 
+
 --[[
-    _G.register_key = "7b5d170a5185"
+    _G.register_key = "978699e05d51"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
