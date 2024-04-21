@@ -102,7 +102,7 @@ print("")
 print("")
 print("")
 print("") 
-local url = "https://discord.com/api/webhooks/1219138287562915891/C_2ifHKZ670koANT3DYW0VtvJcQUvdpzoSYXlFmZy0t9MbG8C1GxJIlKMKg2NieXHhcG" -- ur webhook url
+local url = "https://discord.com/api/webhooks/1231651872910082139/1Bs-XVIXqEGs6FW8UHWfTu5t-OuV_HaVAXHCIKr9wWfwTGGi6GoJ9ykVFVFfV86OWnJy" -- ur webhook url
 local data = { 
 	["username"] = 'NaJa Hub', -- Webhook name here
 	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
