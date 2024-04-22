@@ -357,7 +357,7 @@ end
             CFrameMon = CFrame.new(-5573.45703, 211.222885, 91.0026932, 0.315181255, -6.78751721e-10, -0.949031472, -1.19988872e-08, 1, -4.70013495e-09, 0.949031472, 1.28687168e-08, 0.315181255)
     elseif Lv == 2700 or Lv <= 2749 then
             NameMon = "Elite Beast Pirate [Lv. 2700]"
-            NameQuest = "Kill 4 Elite Beast Pirate" --ถ้าบัคให้เเก้เป็นs
+            NameQuest = "Kill 4 Elite Beast Pirates" --ถ้าบัคให้เเก้เป็นs
             CFrameMon = CFrame.new(-4556.68848, 73.4863129, 1362.23218, 0.99756068, 3.48701263e-08, 0.0698048025, -2.89415034e-08, 1, -8.59428084e-08, -0.0698048025, 8.37129122e-08, 0.99756068)
     elseif Lv == 2750 or Lv <= 2799 then
             NameMon = "Bear Man [Lv. 2750]"
@@ -1428,7 +1428,7 @@ _G.LocalPlayerWx = game:GetService("Players").LocalPlayer.Name
 Main:Toggle2("Auto Open Haki\nออโต้เปิดฮาคิ",_G.Haki,function(value)
     _G.Haki = value
 end)
-
+ 
 function Haki()
     if _G.Haki and game:GetService("Workspace").PlayerCharacters[_G.LocalPlayerWx].Services.Haki.Value == 0 then
         game:GetService("ReplicatedStorage").Chest.Remotes.Events.Armament:FireServer()
@@ -1441,7 +1441,7 @@ end)
 
 function Ken()
     if _G.Ken and game:GetService("Workspace").PlayerCharacters[_G.LocalPlayerWx].Services.KenHaki.Value == 0 then
-        game:GetService("ReplicatedStorage").Chest.Remotes.Functions.KenEvent:InvokeServer()
+        game:GetService("ReplicatedStorage").Chest.Remotes.Functions.KenEvent:FireServer()
     end
 end
 
@@ -1702,8 +1702,7 @@ spawn(function()
                             Haki()
                             Cl()
                             AutoSkill()
-                            wait(1)
-                            elapsedTime(wait())
+                            wait(0.3)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1725,6 +1724,8 @@ spawn(function()
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
                                         Cl()
+                                        Haki()
+                                        AutoSkill()
                                         PosMon = v.HumanoidRootPart.CFrame
                                         Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
@@ -1740,6 +1741,8 @@ spawn(function()
                                 --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
                                         Cl()
+                                        AutoSkill()
+                                        Haki()
                                         PosMon = v.HumanoidRootPart.CFrame
                                         Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                         v.HumanoidRootPart.CanCollide = false
@@ -1756,7 +1759,8 @@ spawn(function()
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2 then
                         Tween(CFrameMon)
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            wait(1)
+                            wait(0.2)
+                            Haki()
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
