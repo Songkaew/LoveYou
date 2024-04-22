@@ -1033,6 +1033,7 @@ spawn(function()
                         if v.Name == "Ghost Ship" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    AutoSkill()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
                                     Cl()
@@ -1042,7 +1043,6 @@ spawn(function()
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                    AutoSkill()
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
                             --end
                         end
@@ -1052,6 +1052,9 @@ spawn(function()
         end)
     end
 end)
+--game:GetService("Workspace").Chest3.RootPart
+--game:GetService("Workspace").Chest2.RootPart
+--game:GetService("Workspace").Chest1.RootPart
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1064,12 +1067,12 @@ spawn(function()
                                     EquipWeapon(_G.SelectWeapon)
                                     Haki()
                                     Cl()
+                                    AutoSkill()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
                                     v.Head.CanCollide = false
                                     PosMon =  v.HumanoidRootPart.CFrame
-                                    AutoSkill()
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                 until not _G.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
                             --end
