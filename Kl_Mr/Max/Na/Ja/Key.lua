@@ -100,6 +100,7 @@ local whitelist = {
     ----------------------------------------------------------
     ["189073ef20df"] = "89dcb8bd-408f-4b13-b7e0-189073ef20df", --Dis ghu9118 30 THB
     ["9ccb698851f5"] = "4d3e0a57-635e-42d5-b88e-9ccb698851f5", --Dis tew4808 30 THB
+    ["c3ee20062484"] = "d4bd322f-f08b-49fa-b67d-c3ee20062484", --Dis aqj7xc 30 THB
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
