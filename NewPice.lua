@@ -2601,6 +2601,8 @@ L_17_ = Library:Tab("Stats")
 L_18_ = Library:Tab("Teleport")
 Combat = Library:Tab("PvP")
 L_20_ = Library:Tab("Raid")
+Shop_1 = Library:Tab("[ Shop ]")
+Shop_2 = Library:Tab("[ Shop - Oter ]")
 LLLL = Library:Tab("Fruit")
 L_22_ = Library:Tab("L_22_")
 print("library..Set")
@@ -8585,10 +8587,6 @@ spawn(function()
 		end
 	end
 end)
-
-    
-local Shop_1 = E:Section("[ Shop ]","Left")
-local Shop_2 = E:Section("[ Shop - Oter ]","Left")
 
 Shop_1:Label("Abilities")
     
