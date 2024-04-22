@@ -102,6 +102,7 @@ local whitelist = {
     ["9ccb698851f5"] = "4d3e0a57-635e-42d5-b88e-9ccb698851f5", --Dis tew4808 30 THB
     ["c3ee20062484"] = "d4bd322f-f08b-49fa-b67d-c3ee20062484", --Dis aqj7xc 30 THB
     ["0b00d07baa01"] = "26e23a07-a925-4004-97cf-0b00d07baa01", --Dis somrak_fbi. 15 THB ย้าย Hwid
+    ["475addf80f0a"] = "debd8212-cb72-4f5f-93bb-475addf80f0a", --Dis ken5574 30 THB
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
