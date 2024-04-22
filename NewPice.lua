@@ -2590,6 +2590,7 @@ else
     _G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
     _G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
 end
+
 wait(0.1)
 local Update = loadstring(game:HttpGet("https://pastebin.com/raw/LZBa7hU1"))()
 local Library = Update:Window("MrMaxNaJa Community","",Enum.KeyCode.RightControl);
@@ -5441,7 +5442,7 @@ local HealthMon = {
     "90",
     "100"
 }
-Main:Dropdown("Select Health (%)",_G.Settings.HealthMs,HealthMon,function(value)
+Main:Dropdown("Select Health (%)","25",HealthMon,function(value)
     _G.Settings.HealthMs = value
     --SaveSettings()
 end)
@@ -7838,7 +7839,7 @@ end)
         end
     end)
 
-Settings:Dropdown("Select Weapon",_G.SelectWeapon,{"Melee","Sword","Fruit"},function(value)
+Settings:Dropdown("Select Weapon","Melee",{"Melee","Sword","Fruit"},function(value)
 	_G.SelectWeapon = value
     SelectWeapon = value
 	--SaveSettings()
@@ -9078,7 +9079,7 @@ end)
     end)
 
 
-L_20_:Dropdown("Select Raids",_G.Settings.Select_Raids,{"Flame","Ice","Quake","Light",
+L_20_:Dropdown("Select Raids","",{"Flame","Ice","Quake","Light",
     "Dark","String","Rumble","Magma","Human: Buddha","Sand",
     "Bird: Phoenix","Dough"
 	} ,function(L_454_arg0)
