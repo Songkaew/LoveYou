@@ -37,7 +37,7 @@ else
                     ["fields"] =  {
                         {
                             ["name"] = ">> [ 📁 ] Key เอาไป Add ใส่ในสคริป",
-                            ["value"] = '**[ 👥 ] Player Name | ชื่อผู้เล่นในเกม**```'..UserPy..'```\n** [ 📃 ] ส่งให้ลูกค้าที่ซื้อสคริป**||```_G.register_key = "'..(Hxven)..'"\nloadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() ```||\n** [ 📃 ] whitelist**```'..(ClientId)..'```\n**[ 📃 ] Up For Github**\n```["'..(Hxven)..'"]" = "'..(ClientId)..'"```',
+                            ["value"] = '**[ 👥 ] Player Name | ชื่อผู้เล่นในเกม**```'..UserPy..'```\n** [ 📃 ] ส่งให้ลูกค้าที่ซื้อสคริป**||```_G.register_key = "'..(Hxven)..'"\nloadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() ```||\n** [ 📃 ] whitelist**```'..(ClientId)..'```\n**[ 📃 ] Up For Github**\n```["'..(Hxven)..'"] = "'..(ClientId)..'"```',
                         }
                     },
                     ["footer"] = {
