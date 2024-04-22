@@ -1705,7 +1705,6 @@ spawn(function()
                             Haki()
                             Cl()
                             AutoSkill()
-                            wait(0.3)
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1717,9 +1716,6 @@ spawn(function()
                     else
                         Tween(CFrameMon)
                     end
-                    wait(0.1)
-                    Haki()
-                    AutoSkill()
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == true then
                     if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
@@ -1763,7 +1759,6 @@ spawn(function()
                         Tween(CFrameMon)
                         if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                             wait(0.2)
-                            Haki()
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
