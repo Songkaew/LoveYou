@@ -98,6 +98,7 @@ local whitelist = {
     --22/4/2567
     ["af0d8ff3e5b2"] = "05cce1ac-b696-4aa7-8ad2-af0d8ff3e5b2", --Dis p_poom082 15 THB เปลี่ยน Hwid โอนแล้วหารแล้ว 7.5 THB ทำการเมื่อ 1:16
     ----------------------------------------------------------
+    ["189073ef20df"] = "89dcb8bd-408f-4b13-b7e0-189073ef20df", --Dis ghu9118 30 THB
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
