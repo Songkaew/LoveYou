@@ -37,35 +37,6 @@ print("Ping:"..Ping.."FPS:"..Fps.. "    ")
 print("User " ..UserPy.. "#" ..tag.. "  ใช้งานเมื่อ" ..TimeGlobal.. "   Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. " " )
 print(UserPy)
 
-local url = "https://discord.com/api/webhooks/1231651589262147615/FxKk6HOjS2j_MlQ6A2hirgWbzVAaY41FO5Xiw8LcM7StmBaCVu3HWzdJpQdkqe5B8Is2" -- ur webhook url
-local data = { 
-	["username"] = 'MrMaxNaJa', -- Webhook name here
-	["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
-	["embeds"] = {
-		{
-			["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
-			["color"] = tonumber(0x00ff00), -- color id		
-			["type"] = "rich",
-			["fields"] =  {
-				{
-					["name"] = "[📁] สคริปที่ใช้",
-					["value"] = '```loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))()```',
-				}
-				
-			},
-			["footer"] = {
-				["text"] = "YouTube:MrMaxNaJa"
-			},
-			["timestamp"] = DateTime.now():ToIsoDate(),
-		}
-	},
-} 
-
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-local headers = {["content-type"] = "application/json"}
-request = http_request or request or HttpPost or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(abcdef)
 spawn(function()
 	while wait() do wait()
 		if _G.AutoFarm or _G.AutoFarmTwilight or _G.AutoFarmSwordMonBlade or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
