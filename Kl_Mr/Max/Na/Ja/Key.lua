@@ -1,15 +1,15 @@
 --_G.register_key = "8ca7d84a2cc8"
 --_G.register_key = "c80c1c29ca03"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
-if game.PlaceId == 4520749081 then--kl1
+if game.PlaceId == 4520749081 then --kl1
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 6381829480 then--kl2
+elseif game.PlaceId == 6381829480 then --kl2
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 15759515082 then--kl3
+elseif game.PlaceId == 15759515082 then --kl3
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 9790558424 then--mp
+elseif game.PlaceId == 9790558424 then --mp
     getgenv().NameMap = "Map| Master Pirate"
-elseif game.PlaceId == 2753915549 then--BF
+elseif game.PlaceId == 2753915549 then --BF
     getgenv().NameMap = "Map| Blox fruits"
 elseif game.PlaceId == 4442272183 then -- BF
     getgenv().NameMap = "Map| Blox fruits"
@@ -277,7 +277,46 @@ TextButton.MouseButton1Click:Connect(function()
             end
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
             print("whitelist![1] OK")
-            DisBuy()
+            local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
+            local UserPy = game.Players.LocalPlayer.Name
+            local tag = tostring(math.random(0001, 9999))
+            local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+            local Hour = math.floor(GameTime/(60^2))%24
+            local Minute = math.floor(GameTime/(60^1))%60
+            local Second = math.floor(GameTime/(60^0))%60
+            local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+            local Fps = workspace:GetRealPhysicsFPS()
+            local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
+
+            local url = "https://discord.com/api/webhooks/1231651589262147615/FxKk6HOjS2j_MlQ6A2hirgWbzVAaY41FO5Xiw8LcM7StmBaCVu3HWzdJpQdkqe5B8Is2" -- ur webhook url
+            local data = { 
+                ["username"] = 'MrMaxNaJa', -- Webhook name here
+                ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+                ["embeds"] = {
+                    {
+                        ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+                        ["color"] = tonumber(0x00ff00), -- color id		
+                        ["type"] = "rich",
+                        ["fields"] =  {
+                            {
+                                ["name"] = "[📁] **ชื่อผู้ใช้** "..UserPy,
+                                ["value"] = 'Key Buy \n ```["'..(Hxven)..'"] = "'..(ClientId)..'"```',
+                            }
+                            
+                        },
+                        ["footer"] = {
+                            ["text"] = "YouTube:MrMaxNaJa"
+                        },
+                        ["timestamp"] = DateTime.now():ToIsoDate(),
+                    }
+                },
+            } 
+
+            local newdata = game:GetService("HttpService"):JSONEncode(data)
+            local headers = {["content-type"] = "application/json"}
+            request = http_request or request or HttpPost or syn.request
+            local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+            request(abcdef)
         else
             print("whitelist![2] ติดต่อแอดมิน")
         end
@@ -309,7 +348,46 @@ TextButton.MouseButton1Click:Connect(function()
         else
             game:GetService("Players").LocalPlayer:Kick("Not Support")
         end
-        DisNoBuy()
+        local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
+        local UserPy = game.Players.LocalPlayer.Name
+        local tag = tostring(math.random(0001, 9999))
+        local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+        local Hour = math.floor(GameTime/(60^2))%24
+        local Minute = math.floor(GameTime/(60^1))%60
+        local Second = math.floor(GameTime/(60^0))%60
+        local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        local Fps = workspace:GetRealPhysicsFPS()
+        local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
+
+        local urll = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
+        local data = { 
+            ["username"] = 'MrMaxNaJa', -- Webhook name here
+            ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+            ["embeds"] = {
+                {
+                    ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+                    ["color"] = tonumber(0x00ff00), -- color id		
+                    ["type"] = "rich",
+                    ["fields"] =  {
+                        {
+                            ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
+                            ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy,
+                        }
+                        
+                    },
+                    ["footer"] = {
+                        ["text"] = "YouTube:MrMaxNaJa"
+                    },
+                    ["timestamp"] = DateTime.now():ToIsoDate(),
+                }
+            },
+        } 
+
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+        local headers = {["content-type"] = "application/json"}
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = {Url = urll, Body = newdata, Method = "POST", Headers = headers}
+        request(abcdef)
     else
         TextBox.Text = "Password Error"
     end
@@ -398,89 +476,3 @@ TextLabel_2.Text = getgenv().NameMap
 TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 TextLabel_2.TextSize = 22.000
 TextLabel_2.TextWrapped = true
-
-function DisBuy()
-    local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
-    local UserPy = game.Players.LocalPlayer.Name
-    local tag = tostring(math.random(0001, 9999))
-    local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-    local Hour = math.floor(GameTime/(60^2))%24
-    local Minute = math.floor(GameTime/(60^1))%60
-    local Second = math.floor(GameTime/(60^0))%60
-    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-    local Fps = workspace:GetRealPhysicsFPS()
-    local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
-
-    local url = "https://discord.com/api/webhooks/1231651589262147615/FxKk6HOjS2j_MlQ6A2hirgWbzVAaY41FO5Xiw8LcM7StmBaCVu3HWzdJpQdkqe5B8Is2" -- ur webhook url
-    local data = { 
-        ["username"] = 'MrMaxNaJa', -- Webhook name here
-        ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
-        ["embeds"] = {
-            {
-                ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
-                ["color"] = tonumber(0x00ff00), -- color id		
-                ["type"] = "rich",
-                ["fields"] =  {
-                    {
-                        ["name"] = "[📁] **ชื่อผู้ใช้** "..UserPy,
-                        ["value"] = 'Key Buy \n ```["'..(Hxven)..'"] = "'..(ClientId)..'"```',
-                    }
-                    
-                },
-                ["footer"] = {
-                    ["text"] = "YouTube:MrMaxNaJa"
-                },
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-            }
-        },
-    } 
-
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = {["content-type"] = "application/json"}
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-    request(abcdef)
-end
-
-function DisNoBuy()
-    local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
-    local UserPy = game.Players.LocalPlayer.Name
-    local tag = tostring(math.random(0001, 9999))
-    local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-    local Hour = math.floor(GameTime/(60^2))%24
-    local Minute = math.floor(GameTime/(60^1))%60
-    local Second = math.floor(GameTime/(60^0))%60
-    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-    local Fps = workspace:GetRealPhysicsFPS()
-    local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
-
-    local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
-    local data = { 
-        ["username"] = 'MrMaxNaJa', -- Webhook name here
-        ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
-        ["embeds"] = {
-            {
-                ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
-                ["color"] = tonumber(0x00ff00), -- color id		
-                ["type"] = "rich",
-                ["fields"] =  {
-                    {
-                        ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
-                        ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy,
-                    }
-                    
-                },
-                ["footer"] = {
-                    ["text"] = "YouTube:MrMaxNaJa"
-                },
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-            }
-        },
-    } 
-
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = {["content-type"] = "application/json"}
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-    request(abcdef)
-end
