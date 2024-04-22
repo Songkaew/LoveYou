@@ -34,6 +34,7 @@ local whitelist = {
     ["741797658105"] = "8b630005-2003-41f5-84ce-741797658105", --MrMaxNaJa
     ["8ca7d84a2cc8"] = "fdaba1e9-c20d-4d10-946e-8ca7d84a2cc8", -- Wx
     ["c80c1c29ca03"] = "c02a7e07-eb73-4f09-8739-c80c1c29ca03", -- Wx --จำลอง
+    ["212bf151f285"] = "151be2d7-d3c4-4bcb-a4a3-212bf151f285", -- MrMaxNaJa and
 
     ["b7047c99ef36"] = "8758137a-e608-4ab6-b8de-b7047c99ef36", --Dis : park1526 --Game : DorothiezU8748 --THB 10
     ["2440cdd729c5"] = "6ed89a3c-37a6-469c-a869-2440cdd729c5", --Dis : lilfaxe --Game : FAXEHOPE --THB 10
