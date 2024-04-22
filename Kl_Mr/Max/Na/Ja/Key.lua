@@ -1,15 +1,15 @@
 --_G.register_key = "8ca7d84a2cc8"
 --_G.register_key = "c80c1c29ca03"
 getgenv().TextLabelNameWelocome = "MrMaxNaJa Hub"
-if game.PlaceId == 4520749081 then --kl1
+if game.PlaceId == 4520749081 then--kl1
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 6381829480 then --kl2
+elseif game.PlaceId == 6381829480 then--kl2
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 15759515082 then --kl3
+elseif game.PlaceId == 15759515082 then--kl3
     getgenv().NameMap = "Map| King Legacy"
-elseif game.PlaceId == 9790558424 then --mp
+elseif game.PlaceId == 9790558424 then--mp
     getgenv().NameMap = "Map| Master Pirate"
-elseif game.PlaceId == 2753915549 then --BF
+elseif game.PlaceId == 2753915549 then--BF
     getgenv().NameMap = "Map| Blox fruits"
 elseif game.PlaceId == 4442272183 then -- BF
     getgenv().NameMap = "Map| Blox fruits"
@@ -299,7 +299,7 @@ TextButton.MouseButton1Click:Connect(function()
                         ["type"] = "rich",
                         ["fields"] =  {
                             {
-                                ["name"] = "[📁] **ชื่อผู้ใช้** "..UserPy,
+                                ["name"] = "[📁] **ชื่อผู้ใช้** "..UserPy.. "" ,
                                 ["value"] = 'Key Buy \n ```["'..(Hxven)..'"] = "'..(ClientId)..'"```',
                             }
                             
@@ -371,7 +371,7 @@ TextButton.MouseButton1Click:Connect(function()
                     ["fields"] =  {
                         {
                             ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
-                            ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy,
+                            ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy.. "",
                         }
                         
                     },
