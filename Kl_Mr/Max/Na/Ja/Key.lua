@@ -108,6 +108,8 @@ local whitelist = {
     --23/4/2567
     ["b6eac4ce0786"] = "3572f0d0-36a9-4cbf-b91f-b6eac4ce0786", -- Dis sakurakotori 30 THB
     ["1bdfd5ef076f"] = "b757d483-424c-418e-a9f3-1bdfd5ef076f", -- Dis taelovemayziuziu 30 THB
+    --["978699e05d51"] = "65d1ce06-235e-4bef-9013-978699e05d51", --Dis fhdjnvvb 10 THB  --ครบแล้ว
+
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
