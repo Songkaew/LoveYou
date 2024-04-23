@@ -131,30 +131,6 @@ end
 --loadstring(game:HttpGet("https://pastebin.com/raw/nUW5kcwN"))() --UI Welcome
 
 
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Module = require(Players.LocalPlayer.PlayerScripts.CombatFramework)
-local CombatFramework = debug.getupvalues(Module)[2]
-local CameraShakerR = require(ReplicatedStorage.Util.CameraShaker)
-
-task.spawn(function()
-    while true do task.wait()
-        if _G.Auto_Farm_Mastery_Fruit or _G.FastAttack1 then
-            pcall(function()
-                CameraShakerR:Stop()
-                CombatFramework.activeController.attacking = false
-                CombatFramework.activeController.timeToNextAttack = 0
-                CombatFramework.activeController.increment = 4
-                CombatFramework.activeController.hitboxMagnitude = 80
-                CombatFramework.activeController.blocking = false
-                CombatFramework.activeController.timeToNextBlock = 0
-                CombatFramework.activeController.focusStart = 0
-                CombatFramework.activeController.humanoid.AutoRotate = true
-            end)
-        end
-    end
-end)
 
 Code = {
 	"EXP_5B",
@@ -2198,7 +2174,7 @@ coroutine.wrap(function()
 	while task.wait() do --.1
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped  and not _G.Settings.Auto_Raids then
-			if _G.FastAttack2 then
+			if _G.MWz then
 				AttackFunction()
 					if tick() - cooldownfastattack > 1.75 then
 						cooldownfastattack = tick()
@@ -2211,7 +2187,7 @@ coroutine.wrap(function()
 				--	if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
 				--end
 				--ac:attack()--
-			elseif _G.FastAttack2 == false then
+			elseif _G.MWz == false then
 				if ac.hitboxMagnitude ~= 55 then
 					ac.hitboxMagnitude = 55
 				end
@@ -2276,7 +2252,7 @@ end
 
 spawn(function()
     while wait(0) do
-        if _G.FastAttack2 then
+        if _G.MWz then
             if b - tick() > 0.75 then
                 b = tick()
             end
@@ -2322,7 +2298,7 @@ end
 
 local cdnormal = 0
 local Animation = Instance.new("Animation")
-local CooldownFastAttack = 0.0 -- ลดค่าเวลาคูลดาวน์ลง
+local CooldownFastAttack = 1.2 -- ลดค่าเวลาคูลดาวน์ลง
 Attack = function()
 	local ac = SeraphFrame.activeController
 	if not ac or not ac.equipped then
@@ -2431,7 +2407,7 @@ end
 k = tick()
 spawn(function()
 	while wait() do
-		if  _G.FastAttack2 then
+		if  _G.MWz then
 			if k - tick() > 0.72 then
 				k = tick()
 			end
@@ -2453,7 +2429,7 @@ end)
 
 spawn(function()
     while wait() do
-        if _G.FastAttack2 or _G.FastAttack1 then
+        if _G.MWz then
             local worldOrigin = game.Workspace["_WorldOrigin"]
             for i, v in ipairs(worldOrigin:GetChildren()) do
                 if v:IsA("Model") and (v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" or v.Name == "SlashTail" or v.Name == "Sounds") then
@@ -4998,8 +4974,8 @@ spawn(function()
 										end
 										pcall(function()
 										EquipBloxFruitt()
-										_G.FastAttack1 = false
-										_G.FastAttack2 = false
+										_G.MWz = false
+										_G.MWz = false
 										_G.FastAttack = false
 											if v.Humanoid.Health <= v.Humanoid.MaxHealth * MobHealthFruits/100 then
 												EquipBloxFruit()
@@ -8329,12 +8305,13 @@ Settings:Toggle("Bring Mob Max",_G.Settings.Brimob,function(value)
 	_G.Brimob = value
 	--SaveSettings()
 end)
+--[[
 Settings:Toggle("Fast Attack\nแนะนำ [+]",_G.Settings.FastAttackX,function(value)
 	_G.Settings.FastAttackX = value
 	_G.FastAttackX = value
 	--SaveSettings()
 end)
-
+]]
 local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 local CombatFramework = debug.getupvalues(Module)[2]
 local CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
@@ -8362,20 +8339,20 @@ end)
 	_G.FastAttackNaJa = value
 	--SaveSettings()
 end) ]]
-
+--[[
 Settings:Toggle("Fast Attack[1]\nโจมตีเร็วหนึ่ง",_G.Settings.FastAttack1,function(value)
 	_G.Settings.FastAttack1 = value
-	_G.FastAttack1 = value
+	_G.MWz = value
 	--SaveSettings()
 end)
-
-Settings:Toggle("Fast Attack[2] [Bug]\nโจมตีเร็วสอง บัครออัพเดพ",_G.Settings.FastAttack2,function(value)
+--]]
+Settings:Toggle2("Fast Attack[2] [Bug]\nโจมตีเร็วสอง บัครออัพเดพ",_G.Settings.FastAttack2,function(value)
 	_G.Settings.FastAttack2 = value
-	_G.FastAttack2 = value
+	_G.MWz = value
 	--SaveSettings()
 end)
 
-Settings:Toggle("Fast Attack[3]\nโจมตีเร็วสาม",_G.Settings.FastAttack3,function(value)
+Settings:Toggle2("Fast Attack[3]\nโจมตีเร็วสาม",_G.Settings.FastAttack3,function(value)
 	_G.Settings.FastAttack3 = value
 	--_G.FastAttackNaJa = value
 	_G.FastT = value
@@ -8384,7 +8361,7 @@ end)
 
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack1 then
+        if _G.MWz then
              pcall(function()
                 game:GetService'VirtualUser':CaptureController()
 			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
@@ -8396,25 +8373,25 @@ end)
 
 Settings:Label("Settings Auto Skill")
 
-Settings:Toggle('Skill Z',_G.Settings.SkillZ,function(value)
+Settings:Toggle2('Skill Z',_G.Settings.SkillZ,function(value)
 	_G.SkillZ = value
 	_G.Settings.SkillZ = value
 	--SaveSettings()
 end)
 
-Settings:Toggle('Skill X',_G.Settings.SkillX,function(value)
+Settings:Toggle2('Skill X',_G.Settings.SkillX,function(value)
 	_G.SkillX = value
 	_G.Settings.SkillX = value
 	--SaveSettings()
 end)
 
-Settings:Toggle('Skill C',_G.Settings.SkillC,function(value)
+Settings:Toggle2('Skill C',_G.Settings.SkillC,function(value)
 	_G.SkillC = value
 	_G.Settings.SkillC = value
 	--SaveSettings()
 end)
 
-Settings:Toggle('Skill V',_G.Settings.SkillV,function(value)
+Settings:Toggle2('Skill V',_G.Settings.SkillV,function(value)
 	_G.SkillV = value
 	_G.Settings.SkillV = value
 	--SaveSettings()
@@ -11799,7 +11776,7 @@ spawn(function()
 	while wait() do
 		if _G.Rejoin then
 			Rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(v)
-				if _G.FastAttack2 and _G.FastAttack3 then
+				if _G.MWz and _G.MWz then
 					if v.Name == 'ErrorPrompt' and v:FindFirstChild('MessageArea') and v.MessageArea:FindFirstChild("ErrorFrame") then
 						game.Players.LocalPlayer:kick("ก็บอกอยู่ว่าบัคก็ยังจะเปิดอยู่เนาะหลุดไปดิไอ้โง่")
 						print("AutoRejoin!")
@@ -11840,7 +11817,8 @@ end
 --end
 
 --if game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit') then
---    game:GetService("ReplicatedStorage").Assets:FindFirstChild('SlashHit'):Destroy()
+--    game:GetService("Replicate
+Storage").Assets:FindFirstChild('SlashHit'):Destroy()
 --end
 print("/0/011/10/01/010101/101/010/1101/010/10/01/010/10/1//1/01/01/010/1010/")
 
@@ -12083,7 +12061,7 @@ spawn(
                 pcall(
                     function()
                         com.activeController.hitboxMagnitude = 50
-                        if _G.FastAttack33 then
+                        if _G.MWz then
                             com.activeController.hitboxMagnitude = 50
                             com.activeController.active = false
                             com.activeController.blocking = false
@@ -12196,7 +12174,7 @@ end
 _G.AttackConfig["Fast Attack Delay"] = _G.AttackConfig["Fast Attack Delay"] or 0.2
 local LastAz = 0 
 game:GetService"RunService".Heartbeat:Connect(function()
-    if _G.FastAttack33 then
+    if _G.MWz then
         if tick()-LastAz >= 0 then 
             LastAz = tick()
             Attack()
@@ -12435,7 +12413,7 @@ end
         return CountAttack
     end
     function ReturnFunctions:Attack(k)
-        _G.FastAttack3 = k
+        _G.MWz = k
     end
     spawn(function()
 		local aV = require(game.ReplicatedStorage.Util.CameraShaker)
@@ -12448,7 +12426,7 @@ end
     
     spawn(function()
 		while task.wait() do
-			if _G.FastAttack3 then
+			if _G.MWz then
 				ToiCanOxi = 0
 				pcall(function()
 					if CountAttack < FastAttackSettings["CDAAT"] then
@@ -12471,7 +12449,7 @@ end
 
     spawn(function()
         while task.wait() do
-            if _G.FastAttack3 then
+            if _G.MWz then
                     FastAttackSettings = {
                         ["CDAAT"] = 80, --80
                         ["TimeWait"] = 10--10
@@ -12490,7 +12468,7 @@ end
     end)
     spawn(function()
 		while wait() do
-			if _G.FastAttack3 then
+			if _G.MWz then
 				if CountAttack >= FastAttackSettings["CDAAT"] then
 					TickFastAttackF = tick()
 					repeat wait()
@@ -12598,12 +12576,12 @@ end)
 spawn(function()
 	while wait() do
 		if _G.FastFull then
-            _G.FastAttack33 = true
+            _G.MWz = true
             wait(0.08)
-            _G.FastAttack33 = false
+            _G.MWz = false
             wait(1)
 		else
-            _G.FastAttack33 = false
+            _G.MWz = false
 		end
 	end
 end)
@@ -12611,14 +12589,14 @@ end)
 spawn(function()
 	while wait() do
 		if _G.FastFull then
-            if _G.FastAttack33 == false then
-                _G.FastAttack3 = true
+            if _G.MWz == false then
+                _G.MWz = true
                 wait(0.0175)
-                _G.FastAttack3 = false
+                _G.MWz = false
                 wait(2)
             end
 		else
-            _G.FastAttack3 = false
+            _G.MWz = false
 		end
 	end
 end)
