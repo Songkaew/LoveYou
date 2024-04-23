@@ -111,6 +111,7 @@ local whitelist = {
     ["9bc8442c7774"] = "4d174f80-199c-4fc8-8d98-9bc8442c7774", -- Dis taelovemayziuziu 30 THB --2 key
     --["978699e05d51"] = "65d1ce06-235e-4bef-9013-978699e05d51", -- Dis fhdjnvvb 10 THB  --ครบแล้ว
     ["a097b58e2ed1"] = "c81d3c30-bb8c-4d06-9523-a097b58e2ed1", --Dis trgracemega 30 THB
+    ["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad 30 THB
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
