@@ -307,7 +307,7 @@ TextButton.MouseButton1Click:Connect(function()
                         ["fields"] =  {
                             {
                                 ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
-                                ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy.. "Key " .._G.register_key.. "" ,
+                                ["value"] = ' ชื่อผู้ใช้ฟรี ' ..UserPy.. "\n Key " .._G.register_key.. "" ,
                             }
                             
                         },
