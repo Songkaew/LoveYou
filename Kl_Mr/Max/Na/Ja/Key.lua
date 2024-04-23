@@ -105,6 +105,8 @@ local whitelist = {
     ["0b00d07baa01"] = "26e23a07-a925-4004-97cf-0b00d07baa01", --Dis somrak_fbi. 15 THB ย้าย Hwid
     ["475addf80f0a"] = "debd8212-cb72-4f5f-93bb-475addf80f0a", --Dis ken5574 30 THB
     ["81f508453f00"] = "55de75aa-dab9-4b41-a038-81f508453f00", -- Dis .33.0514_27886 30 THB ซื้อKeyเพิ่ม
+    --23/4/2567
+    
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
     
