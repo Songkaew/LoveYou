@@ -46,7 +46,7 @@ print(UserPy)
 --local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
 --local Fps = workspace:GetRealPhysicsFPS()
 --local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
-if _G.MrMaxNaJaBuy == true then
+if _G.MrMaxNaJaBuy == false then
     local UserPy = game.Players.LocalPlayer.Name
     local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
     local data = { 
@@ -79,9 +79,9 @@ if _G.MrMaxNaJaBuy == true then
     request(abcdef)
 end
 
-if _G.MrMaxNaJaBuy == false then
+if _G.MrMaxNaJaBuy == true then
     local UserPy = game.Players.LocalPlayer.Name
-    local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1231651589262147615/FxKk6HOjS2j_MlQ6A2hirgWbzVAaY41FO5Xiw8LcM7StmBaCVu3HWzdJpQdkqe5B8Is2" -- ur webhook url
     local data = { 
         ["username"] = 'MrMaxNaJa', -- Webhook name here
         ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
@@ -93,7 +93,7 @@ if _G.MrMaxNaJaBuy == false then
                 ["fields"] =  {
                     {
                         ["name"] = "[📁] **ชื่อผู้ใช้เติม**",
-                        ["value"] = 'ชื่อผู้ใช้เติม ' ..UserPy.. " >> Key | " .._G.register_key.." ",
+                        ["value"] = 'ชื่อผู้ใช้เติม ' ..UserPy.. "",
                     }
                     
                 },
