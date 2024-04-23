@@ -285,46 +285,6 @@ TextButton.MouseButton1Click:Connect(function()
             end
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
             print("whitelist![1] OK")
-            local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
-            local UserPy = game.Players.LocalPlayer.Name
-            local tag = tostring(math.random(0001, 9999))
-            local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-            local Hour = math.floor(GameTime/(60^2))%24
-            local Minute = math.floor(GameTime/(60^1))%60
-            local Second = math.floor(GameTime/(60^0))%60
-            local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-            local Fps = workspace:GetRealPhysicsFPS()
-            local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
-
-            local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
-            local data = { 
-                ["username"] = 'MrMaxNaJa', -- Webhook name here
-                ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
-                ["embeds"] = {
-                    {
-                        ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
-                        ["color"] = tonumber(0x00ff00), -- color id		
-                        ["type"] = "rich",
-                        ["fields"] =  {
-                            {
-                                ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
-                                ["value"] = ' ชื่อผู้ใช้ฟรี ' ..UserPy.. "\n Key " .._G.register_key.. "" ,
-                            }
-                            
-                        },
-                        ["footer"] = {
-                            ["text"] = "YouTube:MrMaxNaJa"
-                        },
-                        ["timestamp"] = DateTime.now():ToIsoDate(),
-                    }
-                },
-            } 
-
-            local newdata = game:GetService("HttpService"):JSONEncode(data)
-            local headers = {["content-type"] = "application/json"}
-            request = http_request or request or HttpPost or syn.request
-            local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-            request(abcdef)
         else
             print("whitelist![2] ติดต่อแอดมิน")
         end
@@ -356,46 +316,6 @@ TextButton.MouseButton1Click:Connect(function()
         else
             game:GetService("Players").LocalPlayer:Kick("Not Support")
         end
-        local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
-        local UserPy = game.Players.LocalPlayer.Name
-        local tag = tostring(math.random(0001, 9999))
-        local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-        local Hour = math.floor(GameTime/(60^2))%24
-        local Minute = math.floor(GameTime/(60^1))%60
-        local Second = math.floor(GameTime/(60^0))%60
-        local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-        local Fps = workspace:GetRealPhysicsFPS()
-        local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
-
-        local urll = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
-        local data = { 
-            ["username"] = 'MrMaxNaJa', -- Webhook name here
-            ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
-            ["embeds"] = {
-                {
-                    ["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
-                    ["color"] = tonumber(0x00ff00), -- color id		
-                    ["type"] = "rich",
-                    ["fields"] =  {
-                        {
-                            ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
-                            ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy.. "",
-                        }
-                        
-                    },
-                    ["footer"] = {
-                        ["text"] = "YouTube:MrMaxNaJa"
-                    },
-                    ["timestamp"] = DateTime.now():ToIsoDate(),
-                }
-            },
-        } 
-
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-        local headers = {["content-type"] = "application/json"}
-        request = http_request or request or HttpPost or syn.request
-        local abcdef = {Url = urll, Body = newdata, Method = "POST", Headers = headers}
-        request(abcdef)
     else
         TextBox.Text = "Password Error"
     end
@@ -484,3 +404,4 @@ TextLabel_2.Text = getgenv().NameMap
 TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 TextLabel_2.TextSize = 22.000
 TextLabel_2.TextWrapped = true
+
