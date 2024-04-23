@@ -15,6 +15,8 @@ elseif game.PlaceId == 4442272183 then -- BF
     getgenv().NameMap = "Map| Blox fruits"
 elseif game.PlaceId == 7449423635 then -- BF
     getgenv().NameMap = "Map| Blox fruits"
+elseif game.PlaceId == 3351674303 then -- DE
+    getgenv().NameMap = "Map| Driving Empire"
 else
     getgenv().NameMap = "Not Support"
 end
@@ -410,4 +412,3 @@ TextLabel_2.Text = getgenv().NameMap
 TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 TextLabel_2.TextSize = 22.000
 TextLabel_2.TextWrapped = true
-
