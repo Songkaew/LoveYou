@@ -317,15 +317,15 @@ TextButton.MouseButton1Click:Connect(function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
         elseif game.PlaceId == 2753915549 then--BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 50"
+            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 40"
         elseif game.PlaceId == 4442272183 then -- BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 50"
+            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 40"
         elseif game.PlaceId == 7449423635 then -- BF
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 50"
+            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 40"
         elseif game.PlaceId == 9790558424 then--mp
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 50"
+            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 40"
         elseif game.PlaceId == 3351674303 then --DE
-            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 50"
+            getgenv().NameMap = "คุณต้องชื้อ Key ในราคา 40"
         else
             game:GetService("Players").LocalPlayer:Kick("Not Support")
         end
