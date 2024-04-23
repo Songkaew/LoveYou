@@ -37,6 +37,81 @@ print("Ping:"..Ping.."FPS:"..Fps.. "    ")
 print("User " ..UserPy.. "#" ..tag.. "  ใช้งานเมื่อ" ..TimeGlobal.. "   Hour : "..Hour.." Minute : "..Minute.." Second : "..Second.. " " )
 print(UserPy)
 
+--local Levelplayer = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
+--local tag = tostring(math.random(0001, 9999))
+--local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+--local Hour = math.floor(GameTime/(60^2))%24
+--local Minute = math.floor(GameTime/(60^1))%60
+--local Second = math.floor(GameTime/(60^0))%60
+--local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+--local Fps = workspace:GetRealPhysicsFPS()
+--local TimeGlobal = "TIME | "..os.date("%H")..":"..os.date("%M")..":"..os.date("%S")
+if _G.MrMaxNaJaBuy == true then
+    local UserPy = game.Players.LocalPlayer.Name
+    local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
+    local data = { 
+        ["username"] = 'MrMaxNaJa', -- Webhook name here
+        ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+        ["embeds"] = {
+            {
+                --["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+                ["color"] = tonumber(0x00ff00), -- color id		
+                ["type"] = "rich",
+                ["fields"] =  {
+                    {
+                        ["name"] = "[📁] **ชื่อผู้ใช้ฟรี**",
+                        ["value"] = 'ชื่อผู้ใช้ฟรี ' ..UserPy.. "",
+                    }
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "YouTube:MrMaxNaJa"
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    } 
+
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = {["content-type"] = "application/json"}
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+    request(abcdef)
+end
+
+if _G.MrMaxNaJaBuy == false then
+    local UserPy = game.Players.LocalPlayer.Name
+    local url = "https://discord.com/api/webhooks/1231976183227486239/v4mRQBnAxCq_EbZiMLnO821YXbaa1xwIchFitJGb1MdtbeKJdet9zNhCL971KjmOZHYc" -- ur webhook url
+    local data = { 
+        ["username"] = 'MrMaxNaJa', -- Webhook name here
+        ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+        ["embeds"] = {
+            {
+                --["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+                ["color"] = tonumber(0x00ff00), -- color id		
+                ["type"] = "rich",
+                ["fields"] =  {
+                    {
+                        ["name"] = "[📁] **ชื่อผู้ใช้เติม**",
+                        ["value"] = 'ชื่อผู้ใช้เติม ' ..UserPy.. " >> Key | " .._G.register_key.." ",
+                    }
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "YouTube:MrMaxNaJa"
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    } 
+
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = {["content-type"] = "application/json"}
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+    request(abcdef)
+end
+
 spawn(function()
 	while wait() do wait()
 		if _G.AutoFarm or _G.AutoFarmTwilight or _G.AutoFarmSwordMonBlade or _G.AutoFarmAllMonsterSelect or _G.AutoFarmMonNearestSelect or _G.AutoFarmBoss or _G.AutoRaid or _G.AutoHydraSeaKing or _G.AutoKingSamurai or _G.GhostShip then
