@@ -106,6 +106,8 @@ local whitelist = {
     ["475addf80f0a"] = "debd8212-cb72-4f5f-93bb-475addf80f0a", --Dis ken5574 30 THB
     ["81f508453f00"] = "55de75aa-dab9-4b41-a038-81f508453f00", -- Dis .33.0514_27886 30 THB ซื้อKeyเพิ่ม
     --23/4/2567
+    ["b6eac4ce0786"] = "3572f0d0-36a9-4cbf-b91f-b6eac4ce0786", -- Dis sakurakotori 30 THB
+    ["1bdfd5ef076f"] = "b757d483-424c-418e-a9f3-1bdfd5ef076f", -- Dis taelovemayziuziu 30 THB
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
     
