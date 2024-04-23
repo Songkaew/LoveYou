@@ -118,17 +118,17 @@ local whitelist = {
     ["c2b3ccc66c40"] = "9825f130-2ad7-4d03-8b46-c2b3ccc66c40", --Dis no7308 30 THB
     ["1aa2a2273b9e"] = "276f7f48-3d2e-4d0e-a120-1aa2a2273b9e", --Dis thxng525258216 30 THB
     ["fd9dc5a24dc8"] = "a297163c-7afc-4c84-ac62-fd9dc5a24dc8", --Dis hakurei5027 30 THB
-    ["72dbf79c23fb"] = "5d2a9d43-965e-4eb0-91e7-72dbf79c23fb", --Dis Wx Freezzzzz
+    ["0e57d52e2407"] = "9cfb9589-945f-4e5c-b5e9-0e57d52e2407", --Dis Wx Freezzzzz
     
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
-    
+
 }
 
 
 
 --[[
-_G.register_key = "72dbf79c23fb"
+_G.register_key = "0e57d52e2407"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
