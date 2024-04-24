@@ -64,7 +64,7 @@ local whitelist = {
     ["e6633977750a"] = "89130351-e264-439a-a825-e6633977750a", --Dis ohmxp0 THB20
    -- ["af5f08d245ca"] = "e3a9df58-2d36-4b7c-bd69-af5f08d245ca", --Dis nay6267 THB20 เเก้ ลบโหลดใหม่
     ["f5876d83d580"] = "6e30c9a6-5a48-4039-ad83-f5876d83d580", --Dis py661  20 THB อยู่นี้
-    ["058c2ac84526"] = "390781b0-6beb-4fd4-aa22-058c2ac84526", --Dis aom.92 20 THB
+    --["058c2ac84526"] = "390781b0-6beb-4fd4-aa22-058c2ac84526", --Dis aom.92 20 THB
     -- 19/4/2567
     ["06efa3681ab2"] = "2c1b9b73-f7f7-4e7e-bb4c-06efa3681ab2", --Dis .kikig 20 THB
     ["65b71826d69b"] = "e93a58fc-8546-48e6-bbd7-65b71826d69b", -- Dis kiwkodkool 20 THB
@@ -130,6 +130,7 @@ local whitelist = {
     ["8e724e9995c7"] = "b04136f9-a1c3-4024-8cc7-8e724e9995c7", --Dis .33.0514_27886 เกมอัพเดท
     ["d1f7d2001da3"] = "0482ef3e-c3cf-4ccf-ad7e-d1f7d2001da3", --Dis .33.0514_27886 เกมอัพเดท
     ["cfefc7dfd6de"] = "ad3aa7b3-8c6d-4566-b22f-cfefc7dfd6de", --Dis xz10094 | 40 THB
+    ["46bcd79b5e75"] = "aef07a3a-71af-406d-acd8-46bcd79b5e75", --Dis aom.92
 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
