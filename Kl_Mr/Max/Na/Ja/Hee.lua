@@ -145,20 +145,6 @@ _G.register_key = "dbc815ece718"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 
-
-if _G.register_key == Hxven then
-	if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
-		print("whitelist![1] ")
-		_G.MrMaxNaJaBuy = true
-		if game.PlaceId == 4520749081 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		elseif game.PlaceId == 6381829480 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		elseif game.PlaceId == 15759515082 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		end
-	end
-else
 	local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
 	local ImageLabelMain = Instance.new("ImageLabel")
 	local UICorner = Instance.new("UICorner")
@@ -444,5 +430,3 @@ else
 	TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 	TextLabel_2.TextSize = 22.000
 	TextLabel_2.TextWrapped = true
-end
-
