@@ -33,7 +33,7 @@ local Hxven = whitelist[5]
 local whitelist = {
 --- เริ่มใหม่
     ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", ---Dis fhdjnvvb | 30 THB เกมอัพเดท
-    
+    ["a097b58e2ed1"] = "c81d3c30-bb8c-4d06-9523-a097b58e2ed1", --Dis trgracemega | 30 THB เกมอัพเดท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
