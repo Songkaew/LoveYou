@@ -430,7 +430,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/READM
 	TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 	TextLabel_2.TextSize = 22.000
 	TextLabel_2.TextWrapped = true
-
+wait(0.01)
 if _G.register_key == Hxven then
 	if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
 		print("whitelist![1] ")
