@@ -133,7 +133,7 @@ local whitelist = {
     ["46bcd79b5e75"] = "aef07a3a-71af-406d-acd8-46bcd79b5e75", --Dis aom.92
     ["96973d815e5c"] = "ce92361c-55ca-4c07-a3e6-96973d815e5c", --Dis .kikig
     ["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
-
+    ["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", -- Dis ameenthailand เกมอัพเดท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
