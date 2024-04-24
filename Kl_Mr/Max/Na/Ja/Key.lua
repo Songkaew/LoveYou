@@ -120,16 +120,14 @@ local whitelist = {
     ["fd9dc5a24dc8"] = "a297163c-7afc-4c84-ac62-fd9dc5a24dc8", --Dis hakurei5027 30 THB
     ["0e57d52e2407"] = "9cfb9589-945f-4e5c-b5e9-0e57d52e2407", --Dis Wx Freezzzzz
     -- เริ่มใหม่ 24/4/2567
-    ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", --Dis fhdjnvvb | 30 THB เกมอัพเดท
-    ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega | 30 THB เกมอัพเดท
-    ["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense | 30 THB เกมอัพเดท
+    ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", --Dis fhdjnvvb เกมอัพเดท
+    ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega เกมอัพเดท
+    ["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense เกมอัพเดท
     ["0fd99bd44321"] = "b3fe896a-3533-45e8-9fad-0fd99bd44321", --Dis .kalw | 30 THB
-    ["4ef8b06356a3"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886  | 30 THB เกมอัพเดท
-    ["2d2b3d280fd7"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
-    ["d1f7d2001da3"] = "0482ef3e-c3cf-4ccf-ad7e-d1f7d2001da3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
     ["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad --เกมอัพเดท
     ["cfefc7dfd6de"] = "ad3aa7b3-8c6d-4566-b22f-cfefc7dfd6de", --Dis xz10094 | 40 THB
     ["2e8ccbd86230"] = "bc98d52f-7ede-436e-9e87-2e8ccbd86230", --Dis fiion0888 | 30 THB
+    ["8e724e9995c7"] = "b04136f9-a1c3-4024-8cc7-8e724e9995c7", --Dis .33.0514_27886 เกมอัพเดท
 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
