@@ -114,7 +114,39 @@ if _G.MrMaxNaJaBuy == true then
 end
 
 spawn(function()
-	while wait() do wait()
+	game:GetService("RunService").Stepped:Connect(function()
+		if _G.Settings.AutoFarm or _G.Settings.AutoFarmTwilight or _G.Settings.AutoFarmSwordMonBlade or _G.Settings.AutoFarmAllMonsterSelect or _G.Settings.AutoFarmMonNearestSelect or _G.Settings.AutoFarmBoss or _G.Settings.AutoRaid or _G.Settings.AutoHydraSeaKing or _G.Settings.AutoKingSamurai or _G.Settings.GhostShip then
+			if not game:GetService("Workspace"):FindFirstChild("Part") then
+				local Part = Instance.new("Part")
+				Part.Name = "Part"
+				Part.Parent = game.Workspace
+				Part.Anchored = true
+				Part.Transparency = 1
+				Part.Size = Vector3.new(_G.Settings.DistanceMob,_G.Settings.DistanceMob,_G.Settings.DistanceMob)--0.5
+			elseif game:GetService("Workspace"):FindFirstChild("Part") then--                                                                                                        - 3.8                        
+				game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y ,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z) * CFrame.Angles(math.rad(_G.Settings.GanAngles),0,0)
+			end
+		end
+	end)
+end)
+spawn(function()
+	game:GetService("RunService").Stepped:Connect(function()
+		if _G.Settings.AutoFarm or _G.Settings.AutoFarmTwilight or _G.Settings.AutoFarmSwordMonBlade or _G.Settings.AutoFarmAllMonsterSelect or _G.Settings.AutoFarmMonNearestSelect or _G.Settings.AutoFarmBoss or _G.Settings.AutoRaid or _G.Settings.AutoHydraSeaKing or _G.Settings.AutoKingSamurai or _G.Settings.GhostShip then
+			if not game:GetService("Workspace"):FindFirstChild("Part") then
+				local Part = Instance.new("Part")
+				Part.Name = "Part"
+				Part.Parent = game.Workspace
+				Part.Anchored = true
+				Part.Transparency = 1
+				Part.Size = Vector3.new(_G.Settings.DistanceMob,_G.Settings.DistanceMob,_G.Settings.DistanceMob)--0.5
+			elseif game:GetService("Workspace"):FindFirstChild("Part") then--                                                                                                        - 3.8                        
+				game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y -3.8 ,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+			end
+		end
+	end)
+end)
+spawn(function()
+	while wait() do
 		if _G.Settings.AutoFarm or _G.Settings.AutoFarmTwilight or _G.Settings.AutoFarmSwordMonBlade or _G.Settings.AutoFarmAllMonsterSelect or _G.Settings.AutoFarmMonNearestSelect or _G.Settings.AutoFarmBoss or _G.Settings.AutoRaid or _G.Settings.AutoHydraSeaKing or _G.Settings.AutoKingSamurai or _G.Settings.GhostShip then
 			pcall(function()
 				if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -124,11 +156,6 @@ spawn(function()
 					Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
 					Noclip.Velocity = Vector3.new(0, 0, 0)
 				end
-				for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-					if v:IsA("BasePart") then
-						v.CanCollide = false
-					end
-				end
 			end)
 		else
 			if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
@@ -137,6 +164,7 @@ spawn(function()
 		end
 	end
 end)
+
 spawn(function()
     pcall(function()
         game:GetService("RunService").Stepped:Connect(function()
@@ -167,7 +195,8 @@ spawn(function()
         end)
     end
 end)
-function Tween(Pos)--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+--[[function Tween(Pos)--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if game.Players.LocalPlayer.Character.Humanoid.Sit then
         game.Players.LocalPlayer.Character.Humanoid.Sit = false
@@ -181,7 +210,12 @@ function Tween(Pos)--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
         tween:Play()
     end)
 end
-
+]]
+function Tween(Pos)
+	pcall(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+	end)
+end
 function CheckLevel()
     local Lv = game:GetService("Players").LocalPlayer.PlayerStats.lvl.Value
   ---โลก1 By.Wx
@@ -850,9 +884,6 @@ spawn(function()
                     if v.Name == _G.Settings.SelectMonNearest then
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
-                                Haki()
-                                AutoSkill()
-                                Cl()
                                 Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -921,9 +952,6 @@ spawn(function()
                         if v.Name == _G.Settings.SelectMon then
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    Haki()
-                                    AutoSkill()
-                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -938,9 +966,6 @@ spawn(function()
                         if v.Name == _G.Settings.SelectMon then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    Haki()
-                                    AutoSkill()
-                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -1080,9 +1105,6 @@ spawn(function()
                         if v.Name == "Elite Skeleton [Lv. 3100]" then
                            -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
-                                    Cl()
-                                    Haki()
-                                    AutoSkill()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
@@ -1879,15 +1901,16 @@ task.spawn(function()
     end
 end)
 
-spawn(function() 
-    while wait() do
-        pcall(function()
-            if _G.Settings.AutoFarm then
+task.spawn(function() 
+    while task.wait() do
+        if _G.Settings.AutoFarm then
+			pcall(function()
                 CheckLevel()
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
                         Tween(CFrameMon)
-                        if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                        wait(0.05)
+						if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1904,22 +1927,23 @@ spawn(function()
                         for i, v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
                             if v.Name == NameMon then
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat wait()
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
-                                    until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                    repeat task.wait()
+                                        --pcall(function()
+											Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
+                                    	--end)
+									until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 end
                             end
                         end
                     elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                             if v.Name == NameMon then
-                                --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and 
-								if v.Humanoid.Health > 0 then
-                                    repeat wait()
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
-                                    until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+										--pcall(function()
+                                        	Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
+                                    	--end)
+									until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 end
                             end
                         end
@@ -1943,8 +1967,8 @@ spawn(function()
                         Tween(CFrameMon)
                     end
                 end
-            end
-        end)
+            end)
+        end
     end
 end)
 
@@ -1959,6 +1983,7 @@ spawn(function()
                             repeat wait()
                                 EquipWeapon(_G.Settings.SelectWeapon)
                                 Haki()
+								PosMon = v.HumanoidRootPart.CFrame
                                 AutoSkill()
                                 Cl()
                                 Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
@@ -1971,6 +1996,7 @@ spawn(function()
                         repeat wait()
                             EquipWeapon(_G.Settings.SelectWeapon)
                             Haki()
+							PosMon = v.HumanoidRootPart.CFrame
                             AutoSkill()
                             Cl()
                             Tween(v.HumanoidRootPart.CFrame * MethodFarm)--CFrame.new(0,0,7)  --* CFrame.Angles(math.rad(-90),0,0)
