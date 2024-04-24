@@ -127,7 +127,7 @@ local whitelist = {
     ["4ef8b06356a3"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886  | 30 THB เกมอัพเดท
     ["2d2b3d280fd7"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
     ["d1f7d2001da3"] = "0482ef3e-c3cf-4ccf-ad7e-d1f7d2001da3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
-    ["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad --เกมอัพเดท
+    --["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad --เกมอัพเดท
 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
