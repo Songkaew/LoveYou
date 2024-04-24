@@ -1909,9 +1909,10 @@ task.spawn(function()
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
                         Tween(CFrameMon)
-                        wait(0.05)
+                        wait(0.175)
 						if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
-                            local args = {
+                            wait(0.175)
+							local args = {
                                 [1] = "take",
                                 [2] = NameQuest
                             }
