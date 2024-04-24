@@ -129,6 +129,7 @@ local whitelist = {
     ["d1f7d2001da3"] = "0482ef3e-c3cf-4ccf-ad7e-d1f7d2001da3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
     ["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad --เกมอัพเดท
     ["cfefc7dfd6de"] = "ad3aa7b3-8c6d-4566-b22f-cfefc7dfd6de", --Dis xz10094 | 40 THB
+    ["2e8ccbd86230"] = "bc98d52f-7ede-436e-9e87-2e8ccbd86230", --Dis fiion0888 | 30 THB
 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
