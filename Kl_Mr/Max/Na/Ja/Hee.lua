@@ -850,6 +850,9 @@ spawn(function()
                     if v.Name == _G.Settings.SelectMonNearest then
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
+                                Haki()
+                                AutoSkill()
+                                Cl()
                                 Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -918,6 +921,9 @@ spawn(function()
                         if v.Name == _G.Settings.SelectMon then
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    Haki()
+                                    AutoSkill()
+                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -932,6 +938,9 @@ spawn(function()
                         if v.Name == _G.Settings.SelectMon then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    Haki()
+                                    AutoSkill()
+                                    Cl()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -1071,6 +1080,9 @@ spawn(function()
                         if v.Name == "Elite Skeleton [Lv. 3100]" then
                            -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    Cl()
+                                    Haki()
+                                    AutoSkill()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
@@ -1875,8 +1887,7 @@ spawn(function()
                 if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                     if (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
                         Tween(CFrameMon)
-                        wait(0.05)
-						if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
+                        if game:GetService("Workspace").Monster.Mon:FindFirstChild(NameMon) or game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false then
                             local args = {
                                 [1] = "take",
                                 [2] = NameQuest
@@ -1894,24 +1905,21 @@ spawn(function()
                             if v.Name == NameMon then
                                 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     repeat wait()
-                                        pcall(function()
-											PosMon = v.HumanoidRootPart.CFrame
-											Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
-                                    	end)
-									until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
+                                    until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 end
                             end
                         end
                     elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(NameMon) then
                         for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
                             if v.Name == NameMon then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and 
+								if v.Humanoid.Health > 0 then
                                     repeat wait()
-										pcall(function()
-	                                        PosMon = v.HumanoidRootPart.CFrame
-                                        	Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
-                                    	end)
-									until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                        Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
+                                    until not _G.Settings.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                                 end
                             end
                         end
