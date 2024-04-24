@@ -41,8 +41,8 @@ local whitelist = {
 	["b7047c99ef36"] = "8758137a-e608-4ab6-b8de-b7047c99ef36", --Dis : park1526 --Game : DorothiezU8748 --THB 10
 	["2440cdd729c5"] = "6ed89a3c-37a6-469c-a869-2440cdd729c5", --Dis : lilfaxe --Game : FAXEHOPE --THB 10
 	["903dee7dc1d6"] = "d2d34fbf-768c-431e-9fb4-903dee7dc1d6", --Dis : ddx445 -- Game : 11lfutpbhurv11_23 --THB10
-	["cdf07ebf23b0"] = "7f9f2621-299c-4acf-98b5-cdf07ebf23b0", --Dis : ameenthailand -- Game : JJShopJQlb --THB10
-	["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis : ameenthailand.   Game : JJShopJQlb --THB 10 ชื้อ 2
+	--["cdf07ebf23b0"] = "7f9f2621-299c-4acf-98b5-cdf07ebf23b0", --Dis : ameenthailand -- Game : JJShopJQlb --THB10
+	--["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis : ameenthailand.   Game : JJShopJQlb --THB 10 ชื้อ 2
 	--["41ae65f24275"] = "0f70bd65-ea8b-4bf2-80c2-41ae65f24275", --Dis : smokey0792 -- Game : ooloo0_0 --THB10 -- ย้าย 1
 	--["8ad25655c214"] = "1fdd74e5-16e4-4590-9f5a-8ad25655c214", --Dis : smokey0792 -- Game : ooloo0_0 --THB10 คนนี้ลบโหลดตัวรันใหม่เลยสร้างkeyใหม่่
 	--["581575ce67cb"] = "e0a24a6b-dc0d-411b-a79f-581575ce67cb", --Dis ti_it | Game : kritmaidaihackna THB10
@@ -135,7 +135,7 @@ local whitelist = {
 	["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
 	["d4dcd86aed94"] = "9292a3ac-7f5c-4ece-9d9d-d4dcd86aed94", --Dis .3539
 	["25621f000b19"] = "6ff7421e-70f8-4ccb-8ba8-25621f000b19", --Dis ohmxp0
-	["cdf07ebf23b0"] = "7f9f2621-299c-4acf-98b5-cdf07ebf23b0", --Dis ameenthailand เกมอัพ
+	["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis ameenthailand
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
