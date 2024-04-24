@@ -34,6 +34,7 @@ local whitelist = {
 --- เริ่มใหม่
     ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", ---Dis fhdjnvvb | 30 THB เกมอัพเดท
     ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega | 30 THB เกมอัพเดท
+    ["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense | 30 THB เกมอัพเดท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -42,7 +43,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "bd8e3a1204c5"
+_G.register_key = "dbc815ece718"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
