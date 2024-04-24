@@ -36,7 +36,12 @@ local whitelist = {
     ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega | 30 THB เกมอัพเดท
     ["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense | 30 THB เกมอัพเดท
     ["0fd99bd44321"] = "b3fe896a-3533-45e8-9fad-0fd99bd44321", --Dis .kalw | 30 THB
+    ["4ef8b06356a3"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886  | 30 THB เกมอัพเดท
+    ["2d2b3d280fd7"] = "d83a188c-7650-4475-a34b-4ef8b06356a3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
+    ["d1f7d2001da3"] = "0482ef3e-c3cf-4ccf-ad7e-d1f7d2001da3", --Dis .33.0514_27886 | 30 THB เกมอัพเดท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
+
+
 
 
 }
