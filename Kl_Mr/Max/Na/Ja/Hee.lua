@@ -430,3 +430,35 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/READM
 	TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 	TextLabel_2.TextSize = 22.000
 	TextLabel_2.TextWrapped = true
+
+if _G.register_key == Hxven then
+	if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
+		print("whitelist![1] ")
+		ImageLabelMain.Visible = false
+		_G.MrMaxNaJaBuy = true
+		if game.PlaceId == 4520749081 then--kl
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+		elseif game.PlaceId == 6381829480 then--kl
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+		elseif game.PlaceId == 15759515082 then--kl
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+		elseif game.PlaceId == 9790558424 then--mp
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/mp/main/README.md"))()
+		elseif game.PlaceId == 2753915549 then--BF
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+		elseif game.PlaceId == 4442272183 then -- BF
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+		elseif game.PlaceId == 7449423635 then -- BF
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+		elseif game.PlaceId == 3351674303 then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Wxzzz1/1Z/main/README.md"))()
+		else
+			game:GetService("Players").LocalPlayer:Kick("Not Support")
+		end
+		game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
+		print("whitelist![1] OK")
+	else
+		print("whitelist![2] ติดต่อแอดมิน")
+	end
+end
+
