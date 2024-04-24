@@ -114,7 +114,7 @@ local whitelist = {
 	--["978699e05d51"] = "65d1ce06-235e-4bef-9013-978699e05d51", -- Dis fhdjnvvb 10 THB  --ครบแล้ว
 	--["a097b58e2ed1"] = "c81d3c30-bb8c-4d06-9523-a097b58e2ed1", --Dis trgracemega 30 THB
 	--["eeb1c00cda53"] = "1af75b6b-711b-4bbc-b320-eeb1c00cda53", --Dis isosloobad 30 THB
-	["17e666b8f704"] = "c924457d-df92-48cd-a701-17e666b8f704", --Dis .3539 30 THB
+	--["17e666b8f704"] = "c924457d-df92-48cd-a701-17e666b8f704", --Dis .3539 30 THB
 	["c2b3ccc66c40"] = "9825f130-2ad7-4d03-8b46-c2b3ccc66c40", --Dis no7308 30 THB
 	["1aa2a2273b9e"] = "276f7f48-3d2e-4d0e-a120-1aa2a2273b9e", --Dis thxng525258216 30 THB
 	["fd9dc5a24dc8"] = "a297163c-7afc-4c84-ac62-fd9dc5a24dc8", --Dis hakurei5027 30 THB
@@ -133,7 +133,8 @@ local whitelist = {
 	["46bcd79b5e75"] = "aef07a3a-71af-406d-acd8-46bcd79b5e75", --Dis aom.92
 	["96973d815e5c"] = "ce92361c-55ca-4c07-a3e6-96973d815e5c", --Dis .kikig
 	["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
-
+	["d4dcd86aed94"] = "9292a3ac-7f5c-4ece-9d9d-d4dcd86aed94", --Dis .3539
+	["25621f000b19"] = "6ff7421e-70f8-4ccb-8ba8-25621f000b19", --Dis ohmxp0
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -144,33 +145,38 @@ local whitelist = {
 _G.register_key = "dbc815ece718"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
-if _G.register_key == Hxven then
-	if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
-		print("whitelist![1] ")
-		ImageLabelMain.Visible = false
-		_G.MrMaxNaJaBuy = true
-		if game.PlaceId == 4520749081 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		elseif game.PlaceId == 6381829480 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		elseif game.PlaceId == 15759515082 then--kl
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
-		elseif game.PlaceId == 9790558424 then--mp
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/mp/main/README.md"))()
-		elseif game.PlaceId == 2753915549 then--BF
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
-		elseif game.PlaceId == 4442272183 then -- BF
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
-		elseif game.PlaceId == 7449423635 then -- BF
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
-		elseif game.PlaceId == 3351674303 then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Wxzzz1/1Z/main/README.md"))()
-		else
-			game:GetService("Players").LocalPlayer:Kick("Not Support")
+function HackBuyByPassKey()
+	if _G.register_key == Hxven then
+		if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
+			print("whitelist![1] ")
+			_G.MrMaxNaJaBuy = true
+			if game.PlaceId == 4520749081 then--kl
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+			elseif game.PlaceId == 6381829480 then--kl
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+			elseif game.PlaceId == 15759515082 then--kl
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+			elseif game.PlaceId == 9790558424 then--mp
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/mp/main/README.md"))()
+			elseif game.PlaceId == 2753915549 then--BF
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+			elseif game.PlaceId == 4442272183 then -- BF
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+			elseif game.PlaceId == 7449423635 then -- BF
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
+			elseif game.PlaceId == 3351674303 then
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Wxzzz1/1Z/main/README.md"))()
+			else
+				game:GetService("Players").LocalPlayer:Kick("Not Support")
+			end
+			game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
+			print("whitelist![1] OK")
 		end
-		game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:Destroy()
-		print("whitelist![1] OK")
-	else
+	end
+end
+
+HackBuyByPassKey()
+
 		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
 		local ImageLabelMain = Instance.new("ImageLabel")
 		local UICorner = Instance.new("UICorner")
@@ -306,7 +312,7 @@ if _G.register_key == Hxven then
 		TextButton.TextWrapped = true
 		TextButton.MouseButton1Click:Connect(function()
 			wait(0.05)
-			--[[if _G.register_key then
+			if _G.register_key then
 				TextBox.Text = _G.register_key
 			end
 			if _G.register_key == Hxven then
@@ -338,7 +344,7 @@ if _G.register_key == Hxven then
 				else
 					print("whitelist![2] ติดต่อแอดมิน")
 				end
-			end]]
+			end
 			if TextBox.Text == getgenv().passwordSet then
 				wait(.1)
 				TextBox.Text = "OK"
@@ -456,5 +462,3 @@ if _G.register_key == Hxven then
 		TextLabel_2.TextColor3 = Color3.fromRGB(38, 179, 255)
 		TextLabel_2.TextSize = 22.000
 		TextLabel_2.TextWrapped = true
-	end
-end
