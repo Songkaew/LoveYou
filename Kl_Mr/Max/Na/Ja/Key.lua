@@ -78,7 +78,7 @@ local whitelist = {
     ["0a75ea6b5bf4"] = "6c51c9bd-ab8e-460d-8db6-0a75ea6b5bf4", --Dis rakthaiii 20 THB
     ["ea0a3cda0320"] = "768ac446-f534-47e6-8d9c-ea0a3cda0320", --Dis thanongtoi_ 20 THB
     --["17e74ec7689d"] = "ac83a092-c75b-4279-8a93-17e74ec7689d", --Dis .33.0514_27886 20 THB
-    ["27333fb1d71d"] = "f3a5b7ae-6b31-4837-8fcf-27333fb1d71d", --Dis pun37774 20 THB
+    --["27333fb1d71d"] = "f3a5b7ae-6b31-4837-8fcf-27333fb1d71d", --Dis pun37774 20 THB
     ["88b29271751a"] = "ffc407af-d54a-457c-baaa-88b29271751a", --Dis hszx.15 YT No Buy
     ["4754ae0453a4"] = "9cfc269a-a31f-49b5-84cd-4754ae0453a4", --Dis pao089355 20 THB
     --20/4/2567
@@ -132,6 +132,7 @@ local whitelist = {
     ["cfefc7dfd6de"] = "ad3aa7b3-8c6d-4566-b22f-cfefc7dfd6de", --Dis xz10094 | 40 THB
     ["46bcd79b5e75"] = "aef07a3a-71af-406d-acd8-46bcd79b5e75", --Dis aom.92
     ["96973d815e5c"] = "ce92361c-55ca-4c07-a3e6-96973d815e5c", --Dis .kikig
+    ["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
 
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
