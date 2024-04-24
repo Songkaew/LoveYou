@@ -850,6 +850,9 @@ spawn(function()
                     if v.Name == _G.Settings.SelectMonNearest then
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
+                                Haki()
+                                AutoSkill()
+                                Cl()
                                 Tween(v.HumanoidRootPart.CFrame * (MethodFarm))  --* CFrame.Angles(math.rad(-90),0,0)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -1071,6 +1074,9 @@ spawn(function()
                         if v.Name == "Elite Skeleton [Lv. 3100]" then
                            -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
+                                    Cl()
+                                    Haki()
+                                    AutoSkill()
                                     Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid.WalkSpeed = 0
