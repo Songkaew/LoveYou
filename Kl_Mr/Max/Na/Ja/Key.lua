@@ -33,7 +33,7 @@ local Hxven = whitelist[5]
 local whitelist = {
 --- เริ่มใหม่
     ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", ---Dis fhdjnvvb | 30 THB เกมอัพเดท
-    ["a097b58e2ed1"] = "c81d3c30-bb8c-4d06-9523-a097b58e2ed1", --Dis trgracemega | 30 THB เกมอัพเดท
+    ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega | 30 THB เกมอัพเดท
     ["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -42,7 +42,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "bec4a1db00c2"
+_G.register_key = "bd8e3a1204c5"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 --]]
