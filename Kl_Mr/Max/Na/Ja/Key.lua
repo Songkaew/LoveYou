@@ -120,7 +120,7 @@ local whitelist = {
     ["fd9dc5a24dc8"] = "a297163c-7afc-4c84-ac62-fd9dc5a24dc8", --Dis hakurei5027 30 THB
     ["0e57d52e2407"] = "9cfb9589-945f-4e5c-b5e9-0e57d52e2407", --Dis Wx Freezzzzz
     -- เริ่มใหม่ 24/4/2567
-    ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", ---Dis fhdjnvvb | 30 THB เกมอัพเดท
+    ["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", --Dis fhdjnvvb | 30 THB เกมอัพเดท
     ["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega | 30 THB เกมอัพเดท
     ["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense | 30 THB เกมอัพเดท
     ["0fd99bd44321"] = "b3fe896a-3533-45e8-9fad-0fd99bd44321", --Dis .kalw | 30 THB
