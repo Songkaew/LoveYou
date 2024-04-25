@@ -120,7 +120,7 @@ local whitelist = {
 	["fd9dc5a24dc8"] = "a297163c-7afc-4c84-ac62-fd9dc5a24dc8", --Dis hakurei5027 30 THB
 	["6d59abbe212a"] = "1601dfe9-6226-4bd3-a747-6d59abbe212a", --Dis Wx Freezzzzz
 	-- เริ่มใหม่ 24/4/2567
-	["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", --Dis fhdjnvvb เกมอัพเดท
+	--["bec4a1db00c2"] = "2f35cd08-0f42-4733-b026-bec4a1db00c2", --Dis fhdjnvvb เกมอัพเดท
 	["bd8e3a1204c5"] = "4f889720-9ea4-4036-9514-bd8e3a1204c5", --Dis trgracemega เกมอัพเดท
 	["dbc815ece718"] = "f1fa962e-3b53-404a-96b9-dbc815ece718", --Dis itssense เกมอัพเดท
 	["0fd99bd44321"] = "b3fe896a-3533-45e8-9fad-0fd99bd44321", --Dis .kalw | 30 THB
@@ -153,7 +153,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "7b214a63d056"
+_G.register_key = "194c3bd8b1f1"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
