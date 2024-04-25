@@ -660,9 +660,9 @@ _G.Settings = {
 	SkillE = false,
 	MaxPoint = true,
 	Method = "Settings",
-	DistanceMob = 6.5,
+	DistanceMob = 7,
 	GanX = 0,
-	GanY = 6.5,
+	GanY = 7,
 	GanZ = 0,
 	GanAngles = 90,
 
