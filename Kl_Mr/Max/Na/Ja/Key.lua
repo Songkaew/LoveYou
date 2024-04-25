@@ -21,9 +21,9 @@ else
     getgenv().NameMap = "Not Support"
 end
 
-getgenv().CopyLinkKey = "https://link-center.net/1160501/mrmaxnaja-naja-sysemkey"
+getgenv().CopyLinkKey = "https://direct-link.net/1160501/mrmaxnaja-naja-sysemkey1"
 getgenv().SetCopyToClipboard = "https://discord.gg/6HaEYWNpzu"
-getgenv().passwordSet = "MrMaxNaJa-Key"
+getgenv().passwordSet = "Wxze-Key"
 
 local UserPy = game.Players.LocalPlayer.Name
 local ClientId = game:GetService("RbxAnalyticsService"):GetClientId()
