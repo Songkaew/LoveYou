@@ -146,7 +146,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "cdf07ebf23b0"
+_G.register_key = "194c3bd8b1"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
