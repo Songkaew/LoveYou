@@ -132,7 +132,7 @@ local whitelist = {
 	["cfefc7dfd6de"] = "ad3aa7b3-8c6d-4566-b22f-cfefc7dfd6de", --Dis xz10094 | 40 THB
 	["46bcd79b5e75"] = "aef07a3a-71af-406d-acd8-46bcd79b5e75", --Dis aom.92
 	--["96973d815e5c"] = "ce92361c-55ca-4c07-a3e6-96973d815e5c", --Dis .kikig
-	["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
+	--["214e3e3385e2"] = "7081ba46-76b2-4adc-8981-214e3e3385e2", --Dis pun37774
 	["d4dcd86aed94"] = "9292a3ac-7f5c-4ece-9d9d-d4dcd86aed94", --Dis .3539
 	["25621f000b19"] = "6ff7421e-70f8-4ccb-8ba8-25621f000b19", --Dis ohmxp0
 	["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis ameenthailand
@@ -148,6 +148,7 @@ local whitelist = {
 	["af2d681ed406"] = "4afe33a8-f122-4d95-b3ec-af2d681ed406", --Dis immaculate_eagle_76055
 	["80ebf7ceb9f5"] = "5847c07e-15bb-4031-a0f4-80ebf7ceb9f5", --Dis yoichiro3671 40 THB
 	["de54867daac3"] = "d4b1ef6f-19d1-48bf-b4b5-de54867daac3", --Dis p_poom082 เกมอัพ
+	["1e1369b1f1da"] = "dce0a9a8-e25e-4e79-817e-1e1369b1f1da", -- Dis  pun37774 เกมอัพ
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -156,7 +157,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "de54867daac3"
+_G.register_key = "1e1369b1f1da"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
