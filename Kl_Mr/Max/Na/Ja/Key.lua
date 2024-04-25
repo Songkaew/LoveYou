@@ -99,7 +99,7 @@ local whitelist = {
 	["083B6C31D6D8"] = "9C671507-19ED-4D14-9107-083B6C31D6D8", --Dis eurosadlhwqofihsad 30 THB
 	["adcc019c6c93"] = "3be0d390-7b1d-4dce-a931-adcc019c6c93", --Dis daimokin 30 THB
 	--22/4/2567
-	["af0d8ff3e5b2"] = "05cce1ac-b696-4aa7-8ad2-af0d8ff3e5b2", --Dis p_poom082 15 THB เปลี่ยน Hwid โอนแล้วหารแล้ว 7.5 THB ทำการเมื่อ 1:16
+	--["af0d8ff3e5b2"] = "05cce1ac-b696-4aa7-8ad2-af0d8ff3e5b2", --Dis p_poom082 15 THB เปลี่ยน Hwid โอนแล้วหารแล้ว 7.5 THB ทำการเมื่อ 1:16
 	----------------------------------------------------------
 	["189073ef20df"] = "89dcb8bd-408f-4b13-b7e0-189073ef20df", --Dis ghu9118 30 THB
 	["9ccb698851f5"] = "4d3e0a57-635e-42d5-b88e-9ccb698851f5", --Dis tew4808 30 THB
@@ -147,6 +147,7 @@ local whitelist = {
 	["fc10415513c7"] = "64380d86-d303-4194-a80a-fc10415513c7", --Dis .33.0514_27886
 	["af2d681ed406"] = "4afe33a8-f122-4d95-b3ec-af2d681ed406", --Dis immaculate_eagle_76055
 	["80ebf7ceb9f5"] = "5847c07e-15bb-4031-a0f4-80ebf7ceb9f5", --Dis yoichiro3671 40 THB
+	["de54867daac3"] = "d4b1ef6f-19d1-48bf-b4b5-de54867daac3", --Dis p_poom082 เกมอัพ
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -155,7 +156,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "80ebf7ceb9f5"
+_G.register_key = "de54867daac3"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
