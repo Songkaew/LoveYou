@@ -137,6 +137,7 @@ local whitelist = {
 	["25621f000b19"] = "6ff7421e-70f8-4ccb-8ba8-25621f000b19", --Dis ohmxp0
 	["9da146e62ef9"] = "a38e323b-f6c0-4a4e-a693-9da146e62ef9", --Dis ameenthailand
 	["6662418e567a"] = "11bb8d01-739f-44d7-b586-6662418e567a", --Dis .kikig
+	["08bd7f2282a4"] = "b7a3a50d-0756-4835-8f2e-08bd7f2282a4", --Dis thelord00500
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
