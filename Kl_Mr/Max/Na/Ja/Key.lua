@@ -50,7 +50,7 @@ local whitelist = {
 	["69984051992F"] = "1832A2A7-519D-4986-B367-69984051992F", --Dis exousss | Game : demarbec
 	["a22494a1b7cd"] = "0a8d55c6-74c4-4639-a121-a22494a1b7cd", --Dis somrak_fbi.   Game | : Pro_Somrak THB 10
 	["24c3da743496"] = "51553654-5dc5-4775-8d1c-24c3da743496", --Dis fun2096  THB10
-	["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
+	--["b4f081247e3b"] = "dddd761d-0847-4b5e-b445-b4f081247e3b", --Dis : immaculate_eagle_76055 -- Game :  --THB10
 	-- ["f5a54dac5f20"] = "12b1d9cf-7705-4a67-ba5f-f5a54dac5f20", --Dis : w8z6hc -- Game :  --THB20 มันโหลดตัวรันใหม่
 	["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
 	["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
@@ -145,6 +145,7 @@ local whitelist = {
 	["162584e751cd"] = "03ac8d18-650d-4fa6-9d74-162584e751cd", --Dis .33.0514_27886
 	["7ff891a7b2e7"] = "3489efc5-31c2-4225-8d2d-7ff891a7b2e7", --Dis .33.0514_27886
 	["fc10415513c7"] = "64380d86-d303-4194-a80a-fc10415513c7", --Dis .33.0514_27886
+	["af2d681ed406"] = "4afe33a8-f122-4d95-b3ec-af2d681ed406", --Dis immaculate_eagle_76055
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
