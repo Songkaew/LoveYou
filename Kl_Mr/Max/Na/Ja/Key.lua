@@ -86,7 +86,7 @@ local whitelist = {
 	["f50b3f94d110"] = "26d7bc2a-d737-43f0-86bd-f50b3f94d110", --Dis thnwatrphuukhamsrii 30 THB
 	["057cd16103d5"] = "2b28d151-a93b-43e5-820a-057cd16103d5", --Dis rimuru1763 30 THB
 	["6aad3d26ce09"] = "b4f9dfa4-57eb-42a7-8857-6aad3d26ce09", --Dis saran07 30THB
-	["7ee608ad5090"] = "cd6f5c5f-bbf5-4e93-966f-7ee608ad5090", --Dis stellas_t 30THB ธนาคาร
+	--["7ee608ad5090"] = "cd6f5c5f-bbf5-4e93-966f-7ee608ad5090", --Dis stellas_t 30THB ธนาคาร
 	["ac1e81413d7c"] = "5f5a0fe5-70e4-4b0a-8a98-ac1e81413d7c", --Dis aomqi 30THB
 	--21/4/2567
 	["7b5d170a5185"] = "ebb983e7-a46a-4158-8a47-7b5d170a5185", --Dis  gleeeeeeeeeeeeee 30 THB
@@ -148,6 +148,7 @@ local whitelist = {
 	["af2d681ed406"] = "4afe33a8-f122-4d95-b3ec-af2d681ed406", --Dis immaculate_eagle_76055
 	["80ebf7ceb9f5"] = "5847c07e-15bb-4031-a0f4-80ebf7ceb9f5", --Dis yoichiro3671 40 THB
 	["80ebf7ceb9f5"] = "5310b76c-294a-410d-8730-acc042b0eb95", --Dis kg_kengky 40 THB
+	["e3d7e41c5f79"] = "846ca058-9a4a-4a9b-a8a4-e3d7e41c5f79", -- Dis stellas_t เกมอัพ
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -156,7 +157,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "80ebf7ceb9f5"
+_G.register_key = "e3d7e41c5f79"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 --[[		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
