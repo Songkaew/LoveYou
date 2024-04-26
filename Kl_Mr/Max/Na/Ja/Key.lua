@@ -147,6 +147,7 @@ local whitelist = {
 	["fc10415513c7"] = "64380d86-d303-4194-a80a-fc10415513c7", --Dis .33.0514_27886
 	["af2d681ed406"] = "4afe33a8-f122-4d95-b3ec-af2d681ed406", --Dis immaculate_eagle_76055
 	["80ebf7ceb9f5"] = "5847c07e-15bb-4031-a0f4-80ebf7ceb9f5", --Dis yoichiro3671 40 THB
+	["80ebf7ceb9f5"] = "5310b76c-294a-410d-8730-acc042b0eb95", --Dis kg_kengky 40 THB
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
