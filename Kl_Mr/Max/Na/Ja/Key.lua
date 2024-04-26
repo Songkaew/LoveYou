@@ -150,6 +150,7 @@ local whitelist = {
 	["80ebf7ceb9f5"] = "5310b76c-294a-410d-8730-acc042b0eb95", --Dis kg_kengky 40 THB
 	["e3d7e41c5f79"] = "846ca058-9a4a-4a9b-a8a4-e3d7e41c5f79", -- Dis stellas_t เกมอัพ
 	["9a9a38cded89"] = "2a9406d1-3ea8-47bf-8f51-9a9a38cded89", -- Dis popo3304 40 THB
+	["f2854edc4106"] = "fbb57db6-7a96-4b4b-b7a6-f2854edc4106", -- Dis beet223 40 THB
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
@@ -158,7 +159,7 @@ local whitelist = {
 
 
 --[[
-_G.register_key = "9a9a38cded89"
+_G.register_key = "f2854edc4106"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 --[[		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
