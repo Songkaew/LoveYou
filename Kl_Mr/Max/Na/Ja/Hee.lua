@@ -658,6 +658,7 @@ _G.Settings = {
 	SkillC = false,
 	SkillV = false,
 	SkillE = false,
+    SkillB = false,
 	MaxPoint = true,
 	Method = "Settings",
 	DistanceMob = 7,
@@ -1686,7 +1687,10 @@ Main:Toggle2("Auto Skill [ E ]\nออโต้สกิว [ E ]",_G.Settings.S
     _G.Settings.SkillE = value
 	SaveSettings()
 end)
-
+Main:Toggle2("Auto Skill [ B ]\nออโต้สกิว [ E ]",_G.Settings.SkillB,function(value)
+    _G.Settings.SkillB = value
+	SaveSettings()
+end)
 function AutoSkill()
     if _G.Settings.SkillZ then
         game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game) wait()
