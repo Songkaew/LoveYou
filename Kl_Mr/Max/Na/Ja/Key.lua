@@ -154,6 +154,7 @@ local whitelist = {
 	["d0c49f3b8e3d"] = "36e8b8c8-553b-4ff6-8f95-d0c49f3b8e3d", -- Dis kizawaoka_17589 40 THB
 	["2189c4fa5482"] = "37804193-37a2-4c9d-a521-2189c4fa5482", -- Dis 2189c4fa5482 30 THB -- ธนาคาร
 	["50b1ae23372e"] = "6cc29c31-c3f4-4470-896e-50b1ae23372e", -- Dis taxlaxy 40 THB
+	["17595f5aeaf3"] = "1e63c7e8-412c-4c20-9312-17595f5aeaf3", -- Dis niaq_kaniya 40 THB Wx ไม่รับลูกค้า lol
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
