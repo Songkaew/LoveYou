@@ -1708,6 +1708,10 @@ function AutoSkill()
         game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game) wait()
         game:GetService("VirtualInputManager"):SendKeyEvent(false,"E",false,game) wait(.1)
     end
+    if _G.Settings.SkillB then
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"B",false,game) wait()
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,"B",false,game) wait(.1)
+    end
 end
 
 spawn(function()
