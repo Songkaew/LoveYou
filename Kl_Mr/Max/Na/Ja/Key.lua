@@ -55,7 +55,7 @@ local whitelist = {
 	["10c5701c5bd4"] = "0fda1e4c-dd41-4a1a-837e-10c5701c5bd4", --Dis w8z6hc อันล่าสุด
 	["2c24a414fe3f"] = "344ae7e8-68f9-4589-ae00-2c24a414fe3f", --Dis : pobo_2077 -- Game :  --THB20
 	["df2e5a931a9f"] = "b8487a66-4063-4e1a-af3c-df2e5a931a9f", --Dis : palm123112 -- Game :  --THB20
-	["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
+	--["b8ee5ed97021"] = "21f4f41a-a763-4da8-a166-b8ee5ed97021", -----Dis : smokey0792 -- Game : ooloo0_0 --THB10 keyใหม่อยู่นี้
 
 	--// วันที่ 18 เดือน 4 ปี 2567 //--
 	--["69bbe39e5ffd"] = "23a6010f-877a-47af-bd98-69bbe39e5ffd", ---Dis py661 THB 20  ลบเกมโหลดใหม่
@@ -156,15 +156,15 @@ local whitelist = {
 	["50b1ae23372e"] = "6cc29c31-c3f4-4470-896e-50b1ae23372e", -- Dis taxlaxy 40 THB
 	["17595f5aeaf3"] = "1e63c7e8-412c-4c20-9312-17595f5aeaf3", -- Dis niaq_kaniya 40 THB Wx ไม่รับลูกค้า lol
 	["53e71a23c669"] = "f18afe54-b8ed-4929-8302-53e71a23c669", -- Dis thereal4689 40 THB 
+	["9d3b171fcae9"] = "52c81e18-5067-4c9d-b5b1-9d3b171fcae9", --Dis smokey0792 เกมอัพ
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 
 
 }
 
 
-
 --[[
-_G.register_key = "53e71a23c669"
+_G.register_key = "9d3b171fcae9"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 --[[		local ScreenGuiKeybyMrMaxNaJa = Instance.new("ScreenGui")
