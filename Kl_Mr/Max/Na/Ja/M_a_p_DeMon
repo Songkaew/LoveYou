@@ -178,7 +178,7 @@ function CheckLevel()
         FMon = "Enel"
         Mon = "Thunder God"
         NameQ = "Jovahn"
-        CFrameMon = CFrame.new()
+        CFrameMon = CFrame.new(4027.66016, 2240.14087, -10663.5342, 0.742322028, -4.32407461e-08, 0.67004329, 5.64563436e-08, 1, 1.98786831e-09, -0.67004329, 3.63525565e-08, 0.742322028)
     end
 end
 --[[
@@ -334,31 +334,57 @@ task.spawn(function()
     while task.wait() do
         if _G.AutoFarm then
             pcall(function()
-                repeat wait()
-                    local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
-                        Wx.deletetime = -0.0
-                        Wx.deletetime = 0.0
-                        Wx.attacktime = 0
-                        Wx.timeToNextAttack = 0
-                        Wx.activeController.focusStart = 0
-                        Wx.activeController.attacktime = 0
-                        Wx.Click = 0
-                        Wx.Combat = 0
-                        Wx.attack = 0
-                        Wx.Size = 0
-                        Wx.Damage = 99999999
-                        Wx.Hitbox = 9999
-                        Wx.animFinished = false
-                        Wx.Fired = true
-                        Wx.cooldown = false
-                        Wx.cooldown = true
-                        Wx.cooldown = 0.0
-                        until not _G.AutoFarm
-
+                    repeat wait()
+                        local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
+                            Wx.deletetime = -0.0
+                            Wx.Remotes = true
+                            Wx.Remotes = 0
+                            Wx.deletetime = 0.0
+                            Wx.attacktime = 0
+                            Wx.timeToNextAttack = 0
+                            Wx.activeController.focusStart = 0
+                            Wx.activeController.attacktime = 0
+                            Wx.Click = 0
+                            Wx.Combat = 0
+                            Wx.attack = 0
+                            Wx.Size = 0
+                            Wx.Remotes.Click = 0
+                            Wx.Remotes.Replicate = 0
+                            Wx.Damage = 99999999
+                            Wx.Hitbox = 9999
+                            Wx.animFinished = false
+                            Wx.Fired = true
+                            Wx.cooldown = false
+                            Wx.cooldown = true
+                            Wx.cooldown = 0.0
+                            until not _G.AutoFarm
             end)
         end
     end
 end)
+
+
+
+
+
+
+spawn(function()
+    while wait() do
+        if _G.AutoFarm then
+            pcall(function()
+                coroutine.wrap(function()
+                    repeat wait()
+                        game:GetService("ReplicatedStorage").Remotes.ToClient.Click:FireServer()
+                        game:GetService("ReplicatedStorage").Remotes.Kick:FireServer()
+                        game:GetService("ReplicatedStorage").Remotes.Replicate:FireServer()
+                    until _G.AutoFarm
+                end)()
+            end)
+        end
+    end
+end)
+
+            
 
 
 spawn(function()
