@@ -144,6 +144,7 @@ local whitelist = {
 	["8d59293c72bb"] = "deb01686-9e66-4320-a086-8d59293c72bb", --Dis gojo_2244 40 THB
 	["ce97f72bebb5"] = "1245051b-19a5-4766-a71d-ce97f72bebb5", --Dis ohmxp0
 	["9dfc479b9a1c"] = "ece5e398-2357-4c96-8bb9-9dfc479b9a1c", --Dis itssense
+	["a1d147967c52"] = "72f90e16-a23f-4eeb-8cbf-a1d147967c52", --Dis trgracemega 40 THB
 
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 }
