@@ -142,6 +142,7 @@ local whitelist = {
 	["ecc2eba1663d"] = "f9e31e85-d29f-42ab-af29-ecc2eba1663d", --Dis kjx1864 40 THB
 	["5c00aee48256"] = "e6ec5241-04f3-44e6-9afd-5c00aee48256", --Dis areyou_chxnxtip06 40 THB
 	["8d59293c72bb"] = "deb01686-9e66-4320-a086-8d59293c72bb", --Dis gojo_2244 40 THB
+	["ce97f72bebb5"] = "1245051b-19a5-4766-a71d-ce97f72bebb5", --Dis ohmxp0
 
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 }
