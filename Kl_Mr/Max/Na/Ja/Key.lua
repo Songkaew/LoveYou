@@ -147,6 +147,7 @@ local whitelist = {
 	["a1d147967c52"] = "72f90e16-a23f-4eeb-8cbf-a1d147967c52", --Dis trgracemega 40 THB
 	["b142e8fe19a0"] = "2556f49b-99bd-4aff-879b-b142e8fe19a0", --Dis fhdjnvvb เกมอัพ
 	["ea6a15c272f4"] = "0470b1be-000f-4327-898a-ea6a15c272f4", --Dis
+	["2fed8ea55425"] = "b3718f93-f081-4824-90fe-2fed8ea55425", --Dis stellas_t 40 THB
 
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 }
