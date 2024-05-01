@@ -259,7 +259,7 @@ spawn(function()
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     PosMon = v.HumanoidRootPart.CFrame
-                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.5,0) * CFrame.Angles(math.rad(-90),0,0))
+                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.1,0) * CFrame.Angles(math.rad(-90),0,0))
                                     if v.Humanoid:FindFirstChild("Animator") then
                                         v.Humanoid.Animator:Destroy()
                                     end
@@ -270,14 +270,16 @@ spawn(function()
                                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                             repeat wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.5,0) * CFrame.Angles(math.rad(-90),0,0))
+                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.1,0) * CFrame.Angles(math.rad(-90),0,0))
                                                 if v.Humanoid:FindFirstChild("Animator") then
                                                     v.Humanoid.Animator:Destroy()
                                                 end
                                             until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
                                         else
-                                            Tween(CFrameMon)
+                                            Tween(CFrameMonMrMax)
                                         end
+                                    else
+                                        Tween(CFrameMon)
                                     end
                                 end
                                 if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
