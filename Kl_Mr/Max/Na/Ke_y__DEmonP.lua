@@ -558,3 +558,278 @@ spawn(function()
         end
     end
 end)
+
+Ply = Library:Tab("Player")
+
+Ply:Toggle("Spectate Player\nดูมุมมองของผู้เล่นอื่นที่เลือกใว้",false,function(value)
+    SpectatePlys = value
+	SaveSettings()
+    local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
+    local plr2 = game:GetService("Players"):FindFirstChild(_G.Settings.SelectPly)
+    repeat wait(.1)
+        game:GetService("Workspace").Camera.CameraSubject = game:GetService("Players"):FindFirstChild(_G.Settings.SelectPly).Character.Humanoid
+    until SpectatePlys == false 
+    game:GetService("Workspace").Camera.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
+end)
+
+Playerslist = {}
+
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Playerslist,v.Name)
+end
+
+local SelectedPly = Ply:Dropdown("Select Players\nเลือกผู้เล่น","",Playerslist,function(value)
+    _G.Settings.SelectPly = value
+	SaveSettings()
+end)
+
+Ply:Button("Refresh Player\nรีเฟสปุ่มเลือกผู้เล่น",function()
+    Playerslist = {}
+    SelectedPly:Clear()
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do  
+        SelectedPly:Add(v.Name)
+    end
+end)
+
+Ply:Button("Teleport to Player\nวาปไปยังผู้เล่นที่เลือกไว้",function() --game:GetService("Workspace").PlayerCharacters.AxileoRBLX.HumanoidRootPart
+    Tween(game:GetService("Players")[_G.Settings.SelectPly].Character.HumanoidRootPart.CFrame)
+    Tween(game:GetService("Workspace")[_G.Settings.SelectPly].HumanoidRootPart.CFrame)
+    Tween(game:GetService("Workspace").PlayerCharacters[_G.Settings.SelectPly].HumanoidRootPart.CFrame)
+end)
+
+
+function isnil(L_426_arg0)
+	return (L_426_arg0 == nil)
+end
+local function L_52_func(L_427_arg0)
+	return math.floor(tonumber(L_427_arg0) + 0.5)
+end
+Number = math.random(1, 1000000)
+function UpdateEspPlayer()
+	for L_428_forvar0, L_429_forvar1 in pairs(game:GetService'Players':GetChildren()) do
+		pcall(function()
+			if not isnil(L_429_forvar1.Character) then
+				if ESPPlayer then
+					if not isnil(L_429_forvar1.Character.Head) and not L_429_forvar1.Character.Head:FindFirstChild('NameEsp' .. Number) then
+						local L_430_ = Instance.new('BillboardGui', L_429_forvar1.Character.Head)
+						L_430_.Name = 'NameEsp' .. Number
+						L_430_.ExtentsOffset = Vector3.new(0, 1, 0)
+						L_430_.Size = UDim2.new(1, 200, 1, 30)
+						L_430_.Adornee = L_429_forvar1.Character.Head
+						L_430_.AlwaysOnTop = true
+						local L_431_ = Instance.new('TextLabel', L_430_)
+						L_431_.Font = "GothamBold"
+						L_431_.FontSize = "Size14"
+						L_431_.TextWrapped = true
+						L_431_.Text = (L_429_forvar1.Name .. ' \n' .. L_52_func((game:GetService('Players').LocalPlayer.Character.Head.Position - L_429_forvar1.Character.Head.Position).Magnitude / 3) .. ' M')
+						L_431_.Size = UDim2.new(1, 0, 1, 0)
+						L_431_.TextYAlignment = 'Top'
+						L_431_.BackgroundTransparency = 1
+						L_431_.TextStrokeTransparency = 0.5
+						if L_429_forvar1.Team == game:GetService("Teams").Pirates then
+							L_431_.TextColor3 = Color3.new(255, 0, 0)
+						else
+							L_431_.TextColor3 = Color3.new(0, 255, 255)
+						end
+					else
+						L_429_forvar1.Character.Head['NameEsp' .. Number].TextLabel.Text = (L_429_forvar1.Name .. ' | ' .. L_52_func((game:GetService('Players').LocalPlayer.Character.Head.Position - L_429_forvar1.Character.Head.Position).Magnitude / 3) .. ' M\nHealth : ' .. L_52_func(L_429_forvar1.Character.Humanoid.Health * 100 / L_429_forvar1.Character.Humanoid.MaxHealth) .. '%')
+					end
+				else
+					if L_429_forvar1.Character.Head:FindFirstChild('NameEsp' .. Number) then
+						L_429_forvar1.Character.Head:FindFirstChild('NameEsp' .. Number):Destroy()
+					end
+				end
+			end
+		end)
+	end
+end
+Ply:Label("ESP Players V.1")
+
+Ply:Toggle("Esp Player \n มองเส้นผู้เล่น",ESPPlayer,function(a)
+    ESPPlayer = a
+    while ESPPlayer do wait()
+        UpdateEspPlayer()
+    end
+end)
+Settings = Library:Tab("Settings")
+
+
+Settings:Label("Server|เกี่ยวกับเซิฟ")
+
+Settings:Button("Rejoin Server\nรีจอยเซิฟ",function()
+	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
+end)
+
+local ShowIDServer = Settings:Label("ID Server")
+local ShowIDServer = Settings:Label(tostring(game.JobId))
+ShowIDServer:Set(tostring(game.JobId))
+
+Settings:Button("Copy Id Server \n ก็อปไอดีเซิฟ",function()
+	setclipboard(tostring(game.JobId))
+end)
+
+Settings:Textbox("Job Id",true,function(Value)
+    _G.Settings.Job = value
+	SaveSettings()
+end)
+
+Settings:Button("Join Job Id",function()
+	--_G.Settings.Rejoin = false
+	game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Settings.Job, game.Players.LocalPlayer)
+	game:GetService("TeleportService"):Teleport(game.PlaceId , _G.Settings.Job , game:GetService("Players").localPlayer)
+end)
+
+Settings:Button("Hop Server \n ฮอปเซิฟ",function()
+	Hop()
+end)
+
+-- [ Hop Function ]
+
+function Hop()
+	local L_70_ = game.PlaceId
+	local L_71_ = {}
+	local L_72_ = ""
+	local L_73_ = os.date("!*t").hour
+	local L_74_ = false
+	function TPReturner()
+		local L_75_;
+		if L_72_ == "" then
+			L_75_ = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. L_70_ .. '/servers/Public?sortOrder=Asc&limit=100'))
+		else
+			L_75_ = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. L_70_ .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. L_72_))
+		end
+		local L_76_ = ""
+		if L_75_.nextPageCursor and L_75_.nextPageCursor ~= "null" and L_75_.nextPageCursor ~= nil then
+			L_72_ = L_75_.nextPageCursor
+		end
+		local L_77_ = 0;
+		for L_78_forvar0, L_79_forvar1 in pairs(L_75_.data) do
+			local L_80_ = true
+			L_76_ = tostring(L_79_forvar1.id)
+			if tonumber(L_79_forvar1.maxPlayers) > tonumber(L_79_forvar1.playing) then
+				for L_81_forvar0, L_82_forvar1 in pairs(L_71_) do
+					if L_77_ ~= 0 then
+						if L_76_ == tostring(L_82_forvar1) then
+							L_80_ = false
+						end
+					else
+						if tonumber(L_73_) ~= tonumber(L_82_forvar1) then
+							local L_83_ = pcall(function()
+								L_71_ = {}
+								table.insert(L_71_, L_73_)
+							end)
+						end
+					end
+					L_77_ = L_77_ + 1
+				end
+				if L_80_ == true then
+					table.insert(L_71_, L_76_)
+					wait()
+					pcall(function()
+						wait()
+						game:GetService("TeleportService"):TeleportToPlaceInstance(L_70_, L_76_, game.Players.LocalPlayer)
+					end)
+					wait(1)
+				end
+			end
+		end
+	end
+	function Teleport()
+		while wait() do
+			pcall(function()
+				TPReturner()
+				if L_72_ ~= "" then
+					TPReturner()
+				end
+			end)
+		end
+	end
+	Teleport()
+end
+--[[
+Settings:Button("Hop Server Low Player \n หาเซิฟคนน้อย",function()
+		_G.Settings.AutoTeleport = true
+		_G.Settings.DontTeleportTheSameNumber = true
+		_G.Settings.CopytoClipboard = false
+		if not game:IsLoaded() then
+			print("Game is loading waiting...")
+		end
+		local L_475_ = math.huge
+		local L_476_;
+		local L_477_;
+		local L_478_ = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+		function serversearch()
+			for L_479_forvar0, L_480_forvar1 in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(L_478_)).data) do
+				if type(L_480_forvar1) == "table" and L_480_forvar1.playing ~= nil and L_475_ > L_480_forvar1.playing then
+					L_476_ = L_480_forvar1.maxPlayers
+					L_475_ = L_480_forvar1.playing
+					L_477_ = L_480_forvar1.id
+				end
+			end
+		end
+		function getservers()
+			serversearch()
+			for L_481_forvar0, L_482_forvar1 in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(L_478_))) do
+				if L_481_forvar0 == "nextPageCursor" then
+					if L_478_:find("&cursor=") then
+						local L_483_ = L_478_:find("&cursor=")
+						local L_484_ = L_478_:sub(L_483_)
+						L_478_ = L_478_:gsub(L_484_, "")
+					end
+					L_478_ = L_478_ .. "&cursor=" .. L_482_forvar1
+					getservers()
+				end
+			end
+		end
+		getservers()
+		if AutoTeleport then
+			if DontTeleportTheSameNumber then
+				if # game:GetService("Players"):GetPlayers() - 4 == L_475_ then
+					return warn("It has same number of players (except you)")
+				elseif L_477_ == game.JobId then
+					return warn("Your current server is the most empty server atm")
+				end
+			end
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, L_477_)
+		end
+	end
+)
+]]
+Settings:Label("Community")
+
+Settings:Button("Click to Copy Link Youtube\nก็อปปี้ลิ้ง ยูทูป",function()
+	setclipboard("https://www.youtube.com/@MrMaxNaJaa")
+end)
+Settings:Button("Click to Copy Link Facebook\nก็อปปี้ลิ้ง เฟส",function()
+	setclipboard("https://www.facebook.com/MrMaxHub")
+end)
+Settings:Button("Click to Copy Link Discord\nก็อปปี้ลิ้ง ดิส",function()
+	setclipboard("https://discord.gg/eaResuTyQc")
+end)
+Settings:Button("Click to Copy Link Discord\nก็อปปี้ลิ้ง ดิส",function()
+	setclipboard("https://discord.gg/Bccvvy3AhT")
+end)
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	wait(1)
+	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
