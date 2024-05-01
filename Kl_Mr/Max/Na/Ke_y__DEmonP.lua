@@ -1,5 +1,4 @@
 
-
 spawn(function()
     while wait() do wait()
         if _G.AutoFarm then
@@ -180,6 +179,10 @@ function CheckLevel()
         Mon = "Thunder God"
         NameQ = "Jovahn"
         CFrameMon = CFrame.new(4027.66016, 2240.14087, -10663.5342, 0.742322028, -4.32407461e-08, 0.67004329, 5.64563436e-08, 1, 1.98786831e-09, -0.67004329, 3.63525565e-08, 0.742322028)
+        CFrameMonMrMax = CFrame.new(4074.45044, 2258.55029, -10865.2012, -0.830713272, 2.56041388e-09, 0.556700468, -6.55610899e-09, 1, -1.43823495e-08, -0.556700468, -1.55973972e-08, -0.830713272)
+        MrMaxMon =  "Divine Guardian"
+        MrMaxMonF = "SkyNpcs"
+        MrMaxNameQ = "Sofen"
     end
 end
 --[[
@@ -279,8 +282,36 @@ spawn(function()
                                         v.Humanoid.Animator:Destroy()
                                     end
                                 until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
-                                else
-                                    Tween(CFrameMon)
+                            else
+                                for i, v in pairs(game:GetService("Workspace").NPC.Fight[MrMaxMonF]:GetChildren()) do
+                                    if v.Name == MrMaxMon then
+                                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                            repeat wait()
+                                                PosMon = v.HumanoidRootPart.CFrame
+                                                if randomNumber == 1  then
+                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,0,7)) 
+                                                elseif randomNumber == 2 then
+                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,6)) 
+                                                else
+                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(7,0,0))          
+                                                end
+                                                if v.Humanoid:FindFirstChild("Animator") then
+                                                    v.Humanoid.Animator:Destroy()
+                                                end
+                                            until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
+                                       else
+                                            Tween(CFrameMonMrMax)
+                                        end
+                                    end
+                                end
+                                if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
+                                    Tween(CFrameMonMrMax)
+                                    Tween(game:GetService("Workspace").NPC.Talk[MrMaxNameQ].HumanoidRootPart.CFrame)
+                                    local args = {
+                                        [1] = workspace.NPC.Talk[MrMaxNameQ].Info
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args))
+                                end
                             end
                         end
                     end
@@ -557,3 +588,6 @@ spawn(function()
         end
     end
 end)
+
+
+
