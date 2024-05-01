@@ -152,6 +152,7 @@ local whitelist = {
 	["8dd5b0e2b814"] = "f86650e2-595e-4318-b616-8dd5b0e2b814", --Dis areyou_chxnxtip06 เกมอัพ
 	["6b1c6bc40815"] = "88f1c0f0-c8b4-4590-8b7a-6b1c6bc40815", --Dis .mintada 40 THB
 	["adcc019c6c93"] = "3be0d390-7b1d-4dce-a931-adcc019c6c93", --Dis daimokin เกมอัพ
+	["4bcf9292c623"] = "46272a08-079d-4fd7-a946-4bcf9292c623", --Dis khnhlkhrabaimtngchm 40 THB
 	["2bc56a03afd6"] = "d44fb0df-de02-4dd4-99f0-2bc56a03afd6",
 
 
@@ -159,7 +160,8 @@ local whitelist = {
 
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 }
- 
+ _G.register_key = "4bcf9292c623"
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 
 if _G.register_key == Hxven then
 	if whitelist[_G.register_key] == game:GetService("RbxAnalyticsService"):GetClientId() then
