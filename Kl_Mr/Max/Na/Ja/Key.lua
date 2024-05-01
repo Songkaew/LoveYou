@@ -154,7 +154,9 @@ local whitelist = {
 	["adcc019c6c93"] = "3be0d390-7b1d-4dce-a931-adcc019c6c93", --Dis daimokin เกมอัพ
 	["4bcf9292c623"] = "46272a08-079d-4fd7-a946-4bcf9292c623", --Dis khnhlkhrabaimtngchm 40 THB
 	["e290d751ce6d"] = "fee0f3f9-493c-4dc0-837e-e290d751ce6d", --Dis black_pipo
+	["ab726669d92b"] = "a04de207-2fad-4693-80bb-ab726669d92b", --Dis  wise_possum_23477 40 THB
 	["2bc56a03afd6"] = "d44fb0df-de02-4dd4-99f0-2bc56a03afd6",
+
 
 
 
