@@ -12,7 +12,7 @@ if _G.Key == Hxven then
 	if whitelist[_G.Key] == game:GetService("RbxAnalyticsService"):GetClientId() then
 		print("whitelist![1] Set")
 		if game.PlaceId == 4520749081 then
-
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/LoveH/Kl_Mr/Max/Na/Ke_y__DEmonP.lua"))()
 		else
 			game:GetService("Players").LocalPlayer:Kick("Not Support")
 		end
