@@ -1,5 +1,3 @@
-_G.Key = ""
-
 local UserPy = game.Players.LocalPlayer.Name
 local ClientId = game:GetService("RbxAnalyticsService"):GetClientId()
 local whitelist = string.split((ClientId), '-')
