@@ -151,6 +151,7 @@ local whitelist = {
 	["5df802cbf403"] = "3c62a6e5-0739-40f8-87bc-5df802cbf403", --Dis .3539
 	["8dd5b0e2b814"] = "f86650e2-595e-4318-b616-8dd5b0e2b814", --Dis areyou_chxnxtip06 เกมอัพ
 	["6b1c6bc40815"] = "88f1c0f0-c8b4-4590-8b7a-6b1c6bc40815", --Dis .mintada 40 THB
+	["adcc019c6c93"] = "3be0d390-7b1d-4dce-a931-adcc019c6c93", --Dis daimokin เกมอัพ
 	["2bc56a03afd6"] = "d44fb0df-de02-4dd4-99f0-2bc56a03afd6",
 
 
