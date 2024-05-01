@@ -275,13 +275,12 @@ spawn(function()
                                                     v.Humanoid.Animator:Destroy()
                                                 end
                                             until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
-                                       else
-                                            Tween(CFrameMonMrMax)
+                                        else
+                                            Tween(CFrameMon)
                                         end
                                     end
                                 end
                                 if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
-                                    Tween(CFrameMonMrMax)
                                     Tween(game:GetService("Workspace").NPC.Talk[MrMaxNameQ].HumanoidRootPart.CFrame)
                                     local args = {
                                         [1] = workspace.NPC.Talk[MrMaxNameQ].Info
@@ -331,6 +330,7 @@ Main:Button("Refresh Weapon",function()
         SelectWeapona:Add(v.Name)
     end
 end)
+
 function EquipWeapon(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
         Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
@@ -371,11 +371,6 @@ task.spawn(function()
     end
 end)
 
-
-
-
-
-
 spawn(function()
     while wait() do
         if _G.AutoFarm then
@@ -391,9 +386,6 @@ spawn(function()
         end
     end
 end)
-
-            
-
 
 spawn(function()
     while wait() do
