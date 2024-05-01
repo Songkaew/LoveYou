@@ -245,18 +245,6 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
         Main = Library:Tab("Main")
         Stats = Library:Tab("Stats")
 
-        spawn(function()
-            while wait() do
-                if _G.AutoFarm then
-                    pcall(function()
-                        randomNumber = math.random(1, 3)
-                        wait(0.3)
-                    end)
-                end
-            end
-        end)
-
-        
 Main:Toggle("AutoFarm",_G.AutoFarm,function(value)
     _G.AutoFarm = value
 end)
@@ -271,13 +259,7 @@ spawn(function()
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     PosMon = v.HumanoidRootPart.CFrame
-                                    if randomNumber == 1  then
-                                        Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,0,7)) 
-                                    elseif randomNumber == 2 then
-                                        Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,6)) 
-                                    else
-                                        Tween(v.HumanoidRootPart.CFrame  * CFrame.new(7,0,0))          
-                                    end
+                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.5,0) * CFrame.Angles(math.rad(-90),0,0))
                                     if v.Humanoid:FindFirstChild("Animator") then
                                         v.Humanoid.Animator:Destroy()
                                     end
@@ -288,13 +270,7 @@ spawn(function()
                                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                             repeat wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                if randomNumber == 1  then
-                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,0,7)) 
-                                                elseif randomNumber == 2 then
-                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,6)) 
-                                                else
-                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(7,0,0))          
-                                                end
+                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.5,0) * CFrame.Angles(math.rad(-90),0,0))
                                                 if v.Humanoid:FindFirstChild("Animator") then
                                                     v.Humanoid.Animator:Destroy()
                                                 end
@@ -366,30 +342,30 @@ task.spawn(function()
     while task.wait() do
         if _G.AutoFarm then
             pcall(function()
-                    repeat wait()
-                        local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
-                            Wx.deletetime = -0.0
-                            Wx.Remotes = true
-                            Wx.Remotes = 0
-                            Wx.deletetime = 0.0
-                            Wx.attacktime = 0
-                            Wx.timeToNextAttack = 0
-                            Wx.activeController.focusStart = 0
-                            Wx.activeController.attacktime = 0
-                            Wx.Click = 0
-                            Wx.Combat = 0
-                            Wx.attack = 0
-                            Wx.Size = 0
-                            Wx.Remotes.Click = 0
-                            Wx.Remotes.Replicate = 0
-                            Wx.Damage = 99999999
-                            Wx.Hitbox = 9999
-                            Wx.animFinished = false
-                            Wx.Fired = true
-                            Wx.cooldown = false
-                            Wx.cooldown = true
-                            Wx.cooldown = 0.0
-                            until not _G.AutoFarm
+                repeat wait()
+                local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
+                    Wx.deletetime = -0.0
+                    Wx.Remotes = true
+                    Wx.Remotes = 0
+                    Wx.deletetime = 0.0
+                    Wx.attacktime = 0
+                    Wx.timeToNextAttack = 0
+                    Wx.activeController.focusStart = 0
+                    Wx.activeController.attacktime = 0
+                    Wx.Click = 0
+                    Wx.Combat = 0
+                    Wx.attack = 0
+                    Wx.Size = 0
+                    Wx.Remotes.Click = 0
+                    Wx.Remotes.Replicate = 0
+                    Wx.Damage = 99999999
+                    Wx.Hitbox = 9999
+                    Wx.animFinished = false
+                    Wx.Fired = true
+                    Wx.cooldown = false
+                    Wx.cooldown = true
+                    Wx.cooldown = 0.0
+                until not _G.AutoFarm
             end)
         end
     end
@@ -420,7 +396,7 @@ end)
 
 
 spawn(function()
-while wait() do
+    while wait() do
         if _G.AutoFarm then
             pcall(function()
                 EquipWeapon(_G.SelectWeapon)
@@ -588,6 +564,3 @@ spawn(function()
         end
     end
 end)
-
-
-
