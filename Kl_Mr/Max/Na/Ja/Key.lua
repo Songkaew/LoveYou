@@ -197,8 +197,18 @@ if _G.register_key == Hxven then
     else
         setclipboard("https://discord.gg/6e8vnRFrFH")
         wait(0.5)
-        game.Players.LocalPlayer:kick("Error 49H\nติดต่อแอดมิน\nสำหรับคนที่ซื้อแล้วขึ้นหน้านี้")
+		if _G.key == "I Love MrMaxNaJa Hack Kl" then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+		else
+        	game.Players.LocalPlayer:kick("Error 49H\nติดต่อแอดมิน\nสำหรับคนที่ซื้อแล้วขึ้นหน้านี้")
+		end
     end
 else
-    game.Players.LocalPlayer:kick("Error 59H\nติดต่อแอดมิน\nสำหรับคนที่ซื้อแล้วขึ้นหน้านี้")
+	wait(0.5)
+	if _G.key == "I Love MrMaxNaJa Hack Kl" then
+		wait(0.5)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Kl_Mr/Max/Na/Ja/Hee.lua"))()
+	else
+    	game.Players.LocalPlayer:kick("Error 59H\nติดต่อแอดมิน\nสำหรับคนที่ซื้อแล้วขึ้นหน้านี้")
+	end
 end
