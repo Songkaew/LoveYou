@@ -1088,6 +1088,7 @@ Main:Toggle("Auto Farm Glass\nออโต้ฟาร์มฟาร์มแ�
     _G.Settings.AutoFarmGlass = value
 	SaveSettings()
 end)
+
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1148,6 +1149,42 @@ spawn(function()
     end
 end)
 
+
+Main:Label("Auto BigMom")
+
+Main:Toggle("Auto BigMom\nออโต้ฟามบิ๊กมำ",_G.AutoBigMon,function(value)
+    _G.AutoBigMon = value
+    SaveSettings()
+end)
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.Settings.AutoBigMon then  
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Ms.Mother [Lv. 7500]") then
+                    for i, v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Ms.Mother [Lv. 7500]" then
+                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    AutoSkill()
+                                    EquipWeapon(_G.Settings.SelectWeapon)
+                                    Haki()
+                                    Cl()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    PosMon =  v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                until not _G.Settings.AutoBigMon or not v.Parent or v.Humanoid.Health <= 0
+                            --end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
 Main:Label("Auto Farm SeaKing")
 Main:Toggle("Auto Farm SeaKing",_G.Settings.AutoFarmSeaKing,function(value)
     _G.Settings.AutoFarmSeaKing = value
@@ -1159,7 +1196,7 @@ spawn(function() -- SeaKing
         pcall(function() -- game:GetService("Workspace").SeaMonster.SeaKing.HumanoidRootPart -728.328003, 32.973999, -7758.54932, 0.129663587, 0, 0.991558075, 0, 1, 0, -0.991558075, 0, 0.129663587
             if _G.Settings.AutoFarmSeaKing then
                 if game:GetService("Workspace").SeaMonster:FindFirstChild("SeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
+                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do 
                         if v.Name == "SeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
@@ -1173,7 +1210,18 @@ spawn(function() -- SeaKing
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     AutoSkill()
                                     Haki()
-                                until not _G.Settings.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0
+                                    if v.Humanoid.Health <= 0 then
+                                        if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
+                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
+                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
+                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame
+                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
+                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame
+                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
+                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
+                                        end
+                                    end
+                                until not _G.Settings.AutoFarmSeaKing or not v.Parent -- or v.Humanoid.Health <= 0
                             --end
                         end
                     end
@@ -1189,7 +1237,7 @@ spawn(function()
     while wait() do  
         pcall(function()
             if _G.Settings.AutoFarmSeaKing then 
-                if (CFrameQAutoFarmAutoFarmSeaKing.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+                if CFrameQAutoFarmAutoFarmSeaKing.Position (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
                     for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
@@ -1198,7 +1246,18 @@ spawn(function()
                                 Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                                 Cl()
                                 AutoSkill()
-                            until not _G.Settings.AutoFarmSeaKing or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
+                                if v.Humanoid.Health <= 0 then
+                                    if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
+                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
+                                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
+                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame
+                                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
+                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame
+                                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
+                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
+                                    end
+                                end
+                            until not _G.Settings.AutoFarmSeaKing or not v.Parent -- or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
                         end
                     end
                 end
@@ -1327,6 +1386,8 @@ spawn(function()
     end
 end)--game:GetService("Workspace").SeaMonster
 --game:GetService("Workspace").SeaMonster.HydraSeaKing.HumanoidRootPart
+
+
 Main:Label("Auto HydraSeaKing")
 Main:Toggle("Auto HydraSeaKing",_G.Settings.AutoHydraSeaKing,function(value)
     _G.Settings.AutoHydraSeaKing = value
@@ -1752,7 +1813,7 @@ Stats:Toggle("Auto Stats Melee\nออโต้อัพสแตสหมัด
 	SaveSettings()
 end)
 spawn(function()
-    while task.wait() do
+    while task.wait(0.01) do
         pcall(function()
             if _G.Settings.Melee then
                 local args = {
@@ -1770,7 +1831,7 @@ Stats:Toggle("Auto Stats Defense\nออโต้อัพสแตสเลื�
 	SaveSettings()
 end)
  spawn(function()
-    while task.wait() do
+    while task.wait(0.01) do
         pcall(function()
             if _G.Settings.Defense then
                 local args = {
