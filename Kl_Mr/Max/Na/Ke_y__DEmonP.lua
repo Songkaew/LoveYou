@@ -241,7 +241,7 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
         --_G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
         --_G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
         
-        local Library = Update:Window("MrMaxNaJa Community | Map King Legacy","",Enum.KeyCode.RightControl);--"MrMaxNaJa Hub | Map King Legacy - Free Script Version 0.1.15.1 By MrMaxNaJa"
+        local Library = Update:Window("MrMaxNaJa Community | Map DemonPice","",Enum.KeyCode.RightControl);--"MrMaxNaJa Hub | Map King Legacy - Free Script Version 0.1.15.1 By MrMaxNaJa"
         Main = Library:Tab("Main")
         Stats = Library:Tab("Stats")
 
