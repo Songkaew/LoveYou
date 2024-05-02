@@ -157,6 +157,7 @@ local whitelist = {
 	["ab726669d92b"] = "a04de207-2fad-4693-80bb-ab726669d92b", --Dis  wise_possum_23477 40 THB
 	["2bc56a03afd6"] = "d44fb0df-de02-4dd4-99f0-2bc56a03afd6",
 	["00286faf2aab"] = "8690aef9-ef5b-4e4d-81d0-00286faf2aab", 
+	["fdfc059cb2f4"] = "ee0cc3d8-bcb5-41c8-b780-fdfc059cb2f4", --Dis mimosa5615 40 THB
 
 
 
