@@ -194,8 +194,8 @@ if _G.register_key == Hxven then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
 		elseif game.PlaceId == 7449423635 then -- BF
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/main/Narongrit_Songkaew.lua"))()
-		elseif game.PlaceId == 6897167394 then --DeMonPice
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/LoveH/Kl_Mr/Max/Na/Ke_y__DEmonP.lua"))()
+		--elseif game.PlaceId == 6897167394 then --DeMonPice
+			--loadstring(game:HttpGet("https://raw.githubusercontent.com/Songkaew/LoveYou/LoveH/Kl_Mr/Max/Na/Ke_y__DEmonP.lua"))()
 		elseif game.PlaceId == 3351674303 then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Wxzzz1/1Z/main/README.md"))()
 		else
