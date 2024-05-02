@@ -159,6 +159,7 @@ local whitelist = {
 	["00286faf2aab"] = "8690aef9-ef5b-4e4d-81d0-00286faf2aab", 
 	["fdfc059cb2f4"] = "ee0cc3d8-bcb5-41c8-b780-fdfc059cb2f4", --Dis mimosa5615 40 THB
 	["885bba87f5de"] = "a180d59c-1428-4c51-a0d8-885bba87f5de", --Dis chayut0764 40 THB
+	["d3f9d18aff13"] = "a9e116e8-5183-467e-a529-d3f9d18aff13", --Dis hakurei5027 Up
 
 
 
