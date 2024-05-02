@@ -247,6 +247,28 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
 
 Main:Toggle("AutoFarm",_G.AutoFarm,function(value)
     _G.AutoFarm = value
+	_G.Fast = value
+end)
+Main:Toggle("Tween Chest [Bug]",_G.BringFruit,function(value)
+	_G.BringFruit = value
+end)
+spawn(function()
+    while wait() do
+        if _G.BringFruit then
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").ChestSpawns["Orange Town"]:GetChildren()) do
+                    if string.find(v.ClassName, "Model") then --Chest
+                        _G.MrMaxNaJa = 1
+                        repeat wait()
+                            Tween(v.PressPart.CFrame)
+                            wait(0.5)
+                            _G.MrMaxNaJa = 2
+                        until not _G.BringFruit or _G.MrMaxNaJa == 2
+                    end
+                end
+            end)
+        end
+    end
 end)
 spawn(function()
     while wait() do
@@ -259,10 +281,11 @@ spawn(function()
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     PosMon = v.HumanoidRootPart.CFrame
-                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.1,0) * CFrame.Angles(math.rad(-90),0,0))
+                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,0) * CFrame.Angles(math.rad(-80),0,0))-- -90
                                     if v.Humanoid:FindFirstChild("Animator") then
                                         v.Humanoid.Animator:Destroy()
                                     end
+									v.HumanoidRootPart.Size = Vector3.new(150,150,150)
                                 until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
                             else
                                 for i, v in pairs(game:GetService("Workspace").NPC.Fight[MrMaxMonF]:GetChildren()) do
@@ -270,7 +293,7 @@ spawn(function()
                                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                             repeat wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7.1,0) * CFrame.Angles(math.rad(-90),0,0))
+                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.9,0) * CFrame.Angles(math.rad(-90),0,0))
                                                 if v.Humanoid:FindFirstChild("Animator") then
                                                     v.Humanoid.Animator:Destroy()
                                                 end
@@ -295,7 +318,7 @@ spawn(function()
                     if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
                         Tween(CFrameMon)
                         Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame)
-                        task.wait(0.6)
+                        wait(0.2)
                         local args = {
                             [1] = workspace.NPC.Talk[NameQ].Info
                         }
@@ -304,7 +327,7 @@ spawn(function()
                 else
                     Tween(CFrameMon)
                     Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame)
-                    task.wait(0.5)
+                    wait(0.2)
                     local args = {
                         [1] = workspace.NPC.Talk[NameQ].Info
                     }
@@ -344,46 +367,15 @@ task.spawn(function()
     while task.wait() do
         if _G.AutoFarm then
             pcall(function()
-                repeat wait()
                 local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
-                    Wx.deletetime = -0.0
-                    Wx.Remotes = true
-                    Wx.Remotes = 0
-                    Wx.deletetime = 0.0
-                    Wx.attacktime = 0
-                    Wx.timeToNextAttack = 0
-                    Wx.activeController.focusStart = 0
-                    Wx.activeController.attacktime = 0
-                    Wx.Click = 0
-                    Wx.Combat = 0
-                    Wx.attack = 0
-                    Wx.Size = 0
-                    Wx.Remotes.Click = 0
-                    Wx.Remotes.Replicate = 0
-                    Wx.Damage = 99999999
-                    Wx.Hitbox = 9999
-                    Wx.animFinished = false
-                    Wx.Fired = true
-                    Wx.cooldown = false
-                    Wx.cooldown = true
-                    Wx.cooldown = 0.0
-                until not _G.AutoFarm
-            end)
-        end
-    end
-end)
-
-spawn(function()
-    while wait() do
-        if _G.AutoFarm then
-            pcall(function()
-                coroutine.wrap(function()
-                    repeat wait()
-                        game:GetService("ReplicatedStorage").Remotes.ToClient.Click:FireServer()
-                        game:GetService("ReplicatedStorage").Remotes.Kick:FireServer()
-                        game:GetService("ReplicatedStorage").Remotes.Replicate:FireServer()
-                    until _G.AutoFarm
-                end)()
+				Wx.deletetime = 0
+				Wx.Remotes = true
+				Wx.deletetime = 0
+				Wx.Click = 0
+				Wx.Combat = 0
+				Wx.animFinished = false
+				Wx.Fired = true
+				Wx.cooldown = true
             end)
         end
     end
@@ -401,20 +393,20 @@ spawn(function()
     end
 end)
 
-    _G.BringMobFarm = true
+
     task.spawn(function()
         while task.wait() do
             pcall(function()
-                if _G.BringMobFarm then
+                if _G.AutoFarm then
                     for i, v in pairs(game.Workspace.NPC.Fight[FMon]:GetChildren()) do
-                        if v.Name == Mon and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        if v.Name == Mon and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7.1 then
                             v.HumanoidRootPart.CFrame = PosMon
                             v.Humanoid.JumpPower = 0
                             v.Humanoid.WalkSpeed = 0
                             v.Humanoid.NameDisplayDistance = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                            v.HumanoidRootPart.Size = Vector3.new(150,150,150)
                             v.Humanoid:ChangeState(14)
                         end
                     end
@@ -817,19 +809,82 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
+spawn(function()
+    while wait() do
+        if _G.Fast then
+			pcall(function()
+				repeat wait()
+					local args = {
+						[1] = "Combat",
+						[2] = 999999999,
+						[3] = "right",
+						[4] = 0,
+						[5] = "Combat"
+					}
+					game:GetService("ReplicatedStorage").Remotes.ServerMove:FireServer(unpack(args))
+				until not _G.Fast
+			end)
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        if _G.Fast then
+			pcall(function()
+				repeat wait()
+					local args = {
+						[1] = "Combat",
+						[2] = 0,
+						[3] = "left",
+						[4] = 999999999,
+						[5] = "Combat"
+					}
+					game:GetService("ReplicatedStorage").Remotes.ServerMove:FireServer(unpack(args))
+				until not _G.Fast
+			end)
+        end
+    end
+end)
 
+spawn(function()
+    while wait() do
+        if _G.Fast then
+			pcall(function()
+				local args = {
+					[1] = "Combat",
+					[2] = 0.275,
+					[3] = "right",
+					[4] = 0.275,
+					[5] = "Combat"
+				}
+				game:GetService("ReplicatedStorage").Remotes.ServerMove:FireServer(unpack(args))
+			end)
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        if _G.Fast then
+			pcall(function()
+				local args = {
+					[1] = "Combat",
+					[2] = 0.275,
+					[3] = "left",
+					[4] = 0.275,
+					[5] = "Combat"
+				}
+				game:GetService("ReplicatedStorage").Remotes.ServerMove:FireServer(unpack(args))
+			end)
+        end
+    end
+end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+spawn(function()
+    while wait() do
+        if _G.Fast then
+			pcall(function()
+				game:GetService("ReplicatedStorage").Remotes.ServerMove:FireServer()
+			end)
+        end
+    end
+end)
