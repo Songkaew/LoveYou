@@ -162,6 +162,7 @@ local whitelist = {
 	["d3f9d18aff13"] = "a9e116e8-5183-467e-a529-d3f9d18aff13", --Dis hakurei5027 Up
 	["c1118cabe6ca"] = "90c12aab-a817-4565-9e37-c1118cabe6ca", --Dis no7308
 	["c9cf75631975"] = "f77a9fcd-eb62-46aa-9a3a-c9cf75631975", --Dis เกมอัพ tew4808
+	["f7d93a1d13ad"] = "2e2cff03-5240-47a0-b11e-f7d93a1d13ad", --Dis aom.92 ธนา
 	
 
 
