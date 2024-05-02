@@ -1,3 +1,33 @@
+    local UserPy = game.Players.LocalPlayer.Name
+    local url = "https://discord.com/api/webhooks/1235632748392353872/dNloqc0mhvoXkQdn01rpnYcWkrcy96_IyF9AIBK90IL2LvUuNEAMDNvcS0wDoK4x88lj" -- ur webhook url
+    local data = { 
+        ["username"] = 'MrMaxNaJa', -- Webhook name here
+        ["avatar_url"] = "https://cdn.discordapp.com/attachments/948603231192363058/1088077196997955704/Untitled-1_copy.png", -- ur discord logo url
+        ["embeds"] = {
+            {
+                --["description"] = "เลเวล : " ..Levelplayer.."         User :" ..UserPy.. "#" ..tag.. "ใช้งานสคริปเมื่อ: " ..TimeGlobal.."Ping:"..Ping.."FPS:"..Fps.."",
+                ["color"] = tonumber(0x00ff00), -- color id		
+                ["type"] = "rich",
+                ["fields"] =  {
+                    {
+                        ["name"] = "[📁] **ชื่อผู้ใช้เติม**",
+                        ["value"] = 'ชื่อผู้ใช้เติม : ' ..UserPy..'\n Key User : \n ```lua\n["'.._G.register_key..'"]\n```',
+                    }
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "YouTube:MrMaxNaJa"
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    } 
+
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = {["content-type"] = "application/json"}
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+    request(abcdef)
 
 spawn(function()
     while wait() do wait()
