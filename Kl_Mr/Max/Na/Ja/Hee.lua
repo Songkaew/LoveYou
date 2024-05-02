@@ -1035,10 +1035,10 @@ end)
 spawn(function()
     while wait() do  
         pcall(function()
-            if _G.Settings.AutoBushido then  
-                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Bushido Ape [Lv.5000]") then
+            if _G.Settings.AutoBushido then   
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Bushido Ape [Lv. 5000]") then
                     for i, v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
-                        if v.Name == "Bushido Ape [Lv.5000]" then
+                        if v.Name == "Bushido Ape [Lv. 5000]" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     AutoSkill()
@@ -1055,6 +1055,8 @@ spawn(function()
                             --end
                         end
                     end
+                else
+                    Tween(CFrame.new(5109.83252, 398.845581, 8819.51953, -3.76105309e-05, -0.00615550438, -0.999981105, 4.40332806e-05, 0.999980986, -0.00615548715, 1, -4.42619203e-05, -3.72827053e-05))                
                 end
             end
         end)
