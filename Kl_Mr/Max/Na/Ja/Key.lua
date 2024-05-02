@@ -165,6 +165,7 @@ local whitelist = {
 	["f7d93a1d13ad"] = "2e2cff03-5240-47a0-b11e-f7d93a1d13ad", --Dis aom.92 ธนา
 	["61e287f77aba"] = "c81e079c-6abf-48c2-8856-61e287f77aba", 
 	["7bcf2b62d419"] = "724bf2a8-6544-4471-813a-7bcf2b62d419", -- รีHWId 15 บาท
+	["a8fef55ae9ad"] = "569777b4-7a49-4656-9ed7-a8fef55ae9ad", --Dis  trgracemega 50 บาท
 
 
 
