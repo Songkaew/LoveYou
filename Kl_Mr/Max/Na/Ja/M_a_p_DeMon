@@ -148,8 +148,13 @@ function CheckLevel()
     elseif Lv == 200 or Lv <= 219 then
         FMon = "Dragon"
         Mon = "Sand Dragon"
-        NamaeQ = "Shady Man"
+        NameQ = "Shady Man"
         CFrameMon = CFrame.new(-7192.96143, 239.409943, -4689.78906, 0.908635795, -6.42360387e-09, -0.417589515, 1.37992523e-13, 1, -1.53822786e-08, 0.417589515, 1.39768321e-08, 0.908635795)
+
+        MrMaxFMon = "Sandora"
+        MrMaxMon = "Desert Brigand"
+        MrMaxNameQ = "Wise"
+        CFrameMonMrMax = CFrame.new(-6415.04932, 41.2002563, -4820.07715, 0.0491887145, -1.01817506e-08, 0.998789489, 6.64856969e-08, 1, 6.91978075e-09, -0.998789489, 6.60648354e-08, 0.0491887145) 
     elseif Lv == 220 or Lv <= 239 then
         FMon = "Croc"
         Mon = "Desert King"
@@ -291,50 +296,24 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
                         if game:GetService("Workspace").NPC.Fight[FMon][Mon].HumanoidRootPart then
                             for i, v in pairs(game:GetService("Workspace").NPC.Fight[FMon]:GetChildren()) do
                                 if v.Name == Mon then
-                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+                                    if v:FindFirstChild("HumanoidRootPart") then
                                         if v.Humanoid.Health > 0 then
                                             repeat task.wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.5,1) * CFrame.Angles(math.rad(-90),0,0))-- -90
                                             until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
                                         end
-                                    else
-                                        Tween(CFrameMon)
                                     end
                                 end
                             end
-                        else
-                            Tween(CFrameMon)
-                            --[[if game:GetService("Workspace").NPC.Fight[MrMaxFMon][MrMaxMon].HumanoidRootPart then
-                                for i, v in pairs(game:GetService("Workspace").NPC.Fight[MrMaxFMon]:GetChildren()) do
-                                    if v.Name == MrMaxMon then
-                                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-                                            if v.Humanoid.Health > 0 then
-                                                repeat wait()
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,7) * CFrame.Angles(math.rad(-77),0,0))
-                                                    if v.Humanoid:FindFirstChild("Animator") then
-                                                        v.Humanoid.Animator:Destroy()
-                                                    end
-                                                until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
-                                            end
-                                        end
-                                    end
-                                end
-                            else
-                                Tween(CFrameMon)
-                            end]]
                         end
                     else
                         Tween(CFrameMon) wait(0.25)
-                        Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame)
-                        wait(0.45)
+                        Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame) wait(1.2)
                         local args = {
                             [1] = workspace.NPC.Talk[NameQ].Info
                         }
-                        game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args))
-                        wait(0.99)
-                        Tween(CFrameMon)
+                        game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args)) Tween(CFrameMon)
                     end
                 end)
             end
@@ -370,6 +349,7 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
         while task.wait() do
             if _G.AutoFarm then
                 pcall(function()
+                    _G.kkkkkkkddt = 0
                     local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
                     Wx.deletetime = 0
                     Wx.Remotes = true
