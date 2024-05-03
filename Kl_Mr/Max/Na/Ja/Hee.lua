@@ -1062,6 +1062,31 @@ spawn(function()
         end)
     end
 end)
+spawn(function()
+    while wait() do  
+        pcall(function()
+            if _G.Settings.AutoBushido then 
+                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Bushido Ape [Lv. 5000]") then
+                    for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                        if v.Name == "Bushido Ape [Lv. 5000]" then
+                           -- if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat wait()
+                                    EquipWeapon(_G.Settings.SelectWeapon)
+                                    Haki()
+                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))
+                                    Cl()
+                                    AutoSkill()
+                                until not _G.Settings.AutoBushido or not v.Parent or v.Humanoid.Health <= 0
+                          --  end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+
 
     Main:Toggle("Auto Farm SaberV2\nออโต้ฟาร์มเเชงค์v2",_G.Settings.AutoFarmSaberV2,function(value)
         _G.Settings.AutoFarmSaberV2 = value
