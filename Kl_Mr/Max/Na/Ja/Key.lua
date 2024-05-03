@@ -170,12 +170,13 @@ local whitelist = {
 	["665ecb7ce797"] = "f9095981-912d-4f00-be4f-665ecb7ce797", --Dis thanapon052 40 THB
 	["027176714085"] = "11f5fd98-1531-4b55-9a4b-027176714085", --เกมอัพ
 	["83a93b38f3cb"] = "c79e57af-a4ea-43bb-a35a-83a93b38f3cb", --Dis nopparuj_wongsa 40 THB
+	["c11d1796aec2"] = "c3804b4c-0384-43c5-8fea-c11d1796aec2",--Dis pong07715
+	["659e5de5e0a0"] = "28591889-2c26-4550-866f-659e5de5e0a0",--รีHWID 15 Discord mimosa5615
 
-
-
-
-
-
+--[[
+_G.register_key = "659e5de5e0a0"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
+--]]
 
 	
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
