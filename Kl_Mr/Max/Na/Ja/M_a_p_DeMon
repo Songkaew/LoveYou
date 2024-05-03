@@ -100,6 +100,11 @@ function CheckLevel()
         Mon = "Orange Pirate"
         NameQ = "Unrio"
         CFrameMon = CFrame.new(-2190.25903, 64.81353, -2421.58252, 0.400648534, 1.00018099e-07, -0.916231811, -6.31334629e-08, 1, 8.15555268e-08, 0.916231811, 2.51697845e-08, 0.400648534)
+
+        MrMaxFMon = "Reiner"
+        MrMaxMon = "Reiner"
+        MrMaxNameQ = "Zak"
+        CFrameMonMrMax = CFrame.new(-2190.25903, 64.81353, -2421.58252, 0.400648534, 1.00018099e-07, -0.916231811, -6.31334629e-08, 1, 8.15555268e-08, 0.916231811, 2.51697845e-08, 0.400648534)
     elseif Lv == 45 or Lv <= 59 then --59
         FMon = "Buggy"
         Mon = "Buggy"
@@ -114,6 +119,11 @@ function CheckLevel()
         FMon = "Gorillas"
         Mon = "King Abu"
         NameQ = "Monkey Hunter" 
+
+        MrMaxFMon = "Gorillas"
+        MrMaxMon = "Monkey"
+        MrMaxNameQ = "Zet"
+        CFrameMonMrMax = CFrame.new(-1119.89075, 58.7131538, 2372.09375, 0.679027259, -7.14578192e-08, 0.734113038, 3.36573116e-08, 1, 6.62072281e-08, -0.734113038, -2.02482386e-08, 0.679027259)
         CFrameMon = CFrame.new(-1818.16357, 53.0229187, 2338.39771, -0.808053792, -5.63250868e-09, 0.589108706, -1.49003592e-08, 1, -1.08770815e-08, -0.589108706, -1.75671975e-08, -0.808053792)
     elseif Lv == 100 or Lv <= 124 then
         FMon = "Baratie"
@@ -182,7 +192,7 @@ function CheckLevel()
         CFrameMon = CFrame.new(4027.66016, 2240.14087, -10663.5342, 0.742322028, -4.32407461e-08, 0.67004329, 5.64563436e-08, 1, 1.98786831e-09, -0.67004329, 3.63525565e-08, 0.742322028)
         CFrameMonMrMax = CFrame.new(4074.45044, 2258.55029, -10865.2012, -0.830713272, 2.56041388e-09, 0.556700468, -6.55610899e-09, 1, -1.43823495e-08, -0.556700468, -1.55973972e-08, -0.830713272)
         MrMaxMon =  "Divine Guardian"
-        MrMaxMonF = "SkyNpcs"
+        MrMaxFMon = "SkyNpcs"
         MrMaxNameQ = "Sofen"
     end
 end
@@ -217,153 +227,144 @@ game:GetService("ReplicatedStorage").Remotes.ToServer.StoreR:InvokeServer(unpack
 
 
 
-        --randomNumberUI = math.random(1,4)
-        _G.UIB = "17075379093"
-        
-        if randomNumberUI == 1 then
-            _G.TeamBlack =  true
-        elseif randomNumberUI == 2 then
-            _G.TeamWhite = true
-        elseif randomNumberUI == 3 then
-            _G.TeamGreen = true
-        elseif randomNumberUI == 4 then
-            _G.TeamRed = true
-        else
-            _G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
-            _G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
-            _G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
-            _G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
-            _G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
-        end
-        local Update = loadstring(game:HttpGet("https://pastebin.com/raw/LZBa7hU1"))() --https://raw.githubusercontent.com/NaJaxHub/ser/main/UIfreeNaJabat"))()
-        --_G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
-        --_G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
-        --_G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
-        --_G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
-        --_G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
-        
-        local Library = Update:Window("MrMaxNaJa Community | Map DemonPice","",Enum.KeyCode.RightControl);--"MrMaxNaJa Hub | Map King Legacy - Free Script Version 0.1.15.1 By MrMaxNaJa"
-        Main = Library:Tab("Main")
-        Stats = Library:Tab("Stats")
-
-Main:Toggle("AutoFarm",_G.AutoFarm,function(value)
-    _G.AutoFarm = value
-	_G.Fast = value
-end)
-Main:Toggle("Tween Chest [Bug]",_G.BringFruit,function(value)
-	_G.BringFruit = value
-end)
-spawn(function()
-    while wait() do
-        if _G.BringFruit then
-            pcall(function()
-                for i, v in pairs(game:GetService("Workspace").ChestSpawns["Orange Town"]:GetChildren()) do
-                    if string.find(v.ClassName, "Model") then --Chest
-                        _G.MrMaxNaJa = 1
-                        repeat wait()
-                            Tween(v.PressPart.CFrame)
-                            wait(0.5)
-                            _G.MrMaxNaJa = 2
-                        until not _G.BringFruit or _G.MrMaxNaJa == 2
-                    end
-                end
-            end)
-        end
+    randomNumberUI = math.random(1,4)
+    wait(0.2)
+    _G.UIB = "17075379093"
+    if randomNumberUI == 1 then
+        _G.TeamBlack =  true
+    elseif randomNumberUI == 2 then
+        _G.TeamWhite = true
+    elseif randomNumberUI == 3 then
+        _G.TeamGreen = true
+    elseif randomNumberUI == 4 then
+        _G.TeamRed = true
+    else
+        _G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
+        _G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
+        _G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
+        _G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
+        _G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
     end
-end)
+    local Update = loadstring(game:HttpGet("https://pastebin.com/raw/LZBa7hU1"))() --https://raw.githubusercontent.com/NaJaxHub/ser/main/UIfreeNaJabat"))()
+    --_G.Color = Color3.fromRGB(0,120,120)--Color3.fromRGB(120,35,100)
+    --_G.FrameTop = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 35, 35)
+    --_G.FrameTab =  Color3.fromRGB(0,75,75)--Color3.fromRGB(75, 35, 35)
+    --_G.PageFrame = Color3.fromRGB(0,85,85)--Color3.fromRGB(85, 35, 35)
+    --_G.ColorI = Color3.fromRGB(0,100,100)--Color3.fromRGB(100, 45, 45)
+    
+    local Library = Update:Window("MrMaxNaJa Community | Map DemonPice","",Enum.KeyCode.RightControl);--"MrMaxNaJa Hub | Map King Legacy - Free Script Version 0.1.15.1 By MrMaxNaJa"
+    Main = Library:Tab("Main")
+    Stats = Library:Tab("Stats")
 
-spawn(function()
-    while wait() do
-        if _G.AutoFarm then
-            pcall(function()
-                CheckLevel()
-                if  game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == true then
-                    for i, v in pairs(game:GetService("Workspace").NPC.Fight[FMon]:GetChildren()) do
-                        if v.Name == Mon then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    PosMon = v.HumanoidRootPart.CFrame
-                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.6,4) * CFrame.Angles(math.rad(-80),0,0))-- -90
-                                    if v.Humanoid:FindFirstChild("Animator") then
-                                        v.Humanoid.Animator:Destroy()
-                                    end
-									v.HumanoidRootPart.Size = Vector3.new(150,150,150)
-                                until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
-                            else
-                                for i, v in pairs(game:GetService("Workspace").NPC.Fight[MrMaxMonF]:GetChildren()) do
-                                    if v.Name == MrMaxMon then
-                                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                            repeat wait()
+    Main:Toggle("AutoFarm",_G.AutoFarm,function(value)
+        _G.AutoFarm = value
+        _G.Fast = value
+    end)
+    Main:Toggle("Tween Chest [Bug]",_G.BringFruit,function(value)
+        _G.BringFruit = value
+    end)
+    spawn(function()
+        while wait() do
+            if _G.BringFruit then
+                pcall(function()
+                    for i, v in pairs(game:GetService("Workspace").ChestSpawns["Orange Town"]:GetChildren()) do
+                        if string.find(v.ClassName, "Model") then --Chest
+                            _G.MrMaxNaJa = 1
+                            repeat wait()
+                                Tween(v.PressPart.CFrame)
+                                wait(0.5)
+                                _G.MrMaxNaJa = 2
+                            until not _G.BringFruit or _G.MrMaxNaJa == 2
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+
+    task.spawn(function()
+        while task.wait() do
+            if _G.AutoFarm then
+                pcall(function()
+                    CheckLevel()
+                    if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == true then
+                        if game:GetService("Workspace").NPC.Fight[FMon][Mon].HumanoidRootPart then
+                            for i, v in pairs(game:GetService("Workspace").NPC.Fight[FMon]:GetChildren()) do
+                                if v.Name == Mon then
+                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+                                        if v.Humanoid.Health > 0 then
+                                            repeat task.wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.6,4) * CFrame.Angles(math.rad(-90),0,0))
-                                                if v.Humanoid:FindFirstChild("Animator") then
-                                                    v.Humanoid.Animator:Destroy()
-                                                end
+                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.5,1) * CFrame.Angles(math.rad(-90),0,0))-- -90
                                             until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
-                                        else
-                                            Tween(CFrameMonMrMax)
                                         end
                                     else
                                         Tween(CFrameMon)
                                     end
                                 end
-                                if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
-                                    Tween(game:GetService("Workspace").NPC.Talk[MrMaxNameQ].HumanoidRootPart.CFrame)
-                                    local args = {
-                                        [1] = workspace.NPC.Talk[MrMaxNameQ].Info
-                                    }
-                                    game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args))
-                                end
                             end
+                        else
+                            Tween(CFrameMon)
+                            --[[if game:GetService("Workspace").NPC.Fight[MrMaxFMon][MrMaxMon].HumanoidRootPart then
+                                for i, v in pairs(game:GetService("Workspace").NPC.Fight[MrMaxFMon]:GetChildren()) do
+                                    if v.Name == MrMaxMon then
+                                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+                                            if v.Humanoid.Health > 0 then
+                                                repeat wait()
+                                                    PosMon = v.HumanoidRootPart.CFrame
+                                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,7) * CFrame.Angles(math.rad(-77),0,0))
+                                                    if v.Humanoid:FindFirstChild("Animator") then
+                                                        v.Humanoid.Animator:Destroy()
+                                                    end
+                                                until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false
+                                            end
+                                        end
+                                    end
+                                end
+                            else
+                                Tween(CFrameMon)
+                            end]]
                         end
-                    end
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Quests.Enabled == false then
-                        Tween(CFrameMon)
+                    else
+                        Tween(CFrameMon) wait(0.25)
                         Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame)
-                        wait(0.2)
+                        wait(0.45)
                         local args = {
                             [1] = workspace.NPC.Talk[NameQ].Info
                         }
                         game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args))
+                        wait(0.99)
+                        Tween(CFrameMon)
                     end
-                else
-                    Tween(CFrameMon)
-                    Tween(game:GetService("Workspace").NPC.Talk[NameQ].HumanoidRootPart.CFrame)
-                    wait(0.2)
-                    local args = {
-                        [1] = workspace.NPC.Talk[NameQ].Info
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.ToServer.Quest:FireServer(unpack(args))
-                end
-            end)
+                end)
+            end
+        end
+    end)
+
+
+    WeaponList = {}
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") then
+            table.insert(WeaponList ,v.Name)
         end
     end
-end)
+    local SelectWeapona = Main:Dropdown("Select Weapon\nเลือกอาวุธ","",WeaponList,function(value)
+        _G.SelectWeapon = value
+    end)
 
+    Main:Button("Refresh Weapon",function()
+        SelectWeapona:Clear()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+            SelectWeapona:Add(v.Name)
+        end
+    end)
 
-WeaponList = {}
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    if v:IsA("Tool") then
-        table.insert(WeaponList ,v.Name)
+    function EquipWeapon(ToolSe)
+        if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
+            Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
+        end
     end
-end
-local SelectWeapona = Main:Dropdown("Select Weapon\nเลือกอาวุธ","",WeaponList,function(value)
-    _G.SelectWeapon = value
-end)
-
-Main:Button("Refresh Weapon",function()
-    SelectWeapona:Clear()
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-        SelectWeapona:Add(v.Name)
-    end
-end)
-
-function EquipWeapon(ToolSe)
-    if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-        Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-        game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
-    end
-end
 
     task.spawn(function()
         while task.wait() do
@@ -388,21 +389,24 @@ end
             if _G.AutoFarm then
                 pcall(function()
                     EquipWeapon(_G.SelectWeapon)
+                    if game:GetService("Workspace").NPC.Fight[FMon][Mon].Humanoid:FindFirstChild("Animator") then
+                        game:GetService("Workspace").NPC.Fight[FMon][Mon].Humanoid.Animator:Destroy()
+                    end
                     game:GetService'VirtualUser':CaptureController()
                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                 end)
             end
         end
     end)
-    
+
     spawn(function()
         while wait() do
             if _G.AutoFarm then
                 pcall(function()
                     _G.AutoFarmPosMon = true
-                    wait(1)
+                    wait(0.6)
                     _G.AutoFarmPosMon = false
-                    wait(1)
+                    wait(0.3)
                 end)
             else
                 _G.AutoFarmPosMon = false
@@ -414,16 +418,17 @@ end
         while task.wait() do
             pcall(function()
                 if _G.AutoFarmPosMon then
+                    CheckLevel()
                     for i, v in pairs(game.Workspace.NPC.Fight[FMon]:GetChildren()) do
-                        if v.Name == Mon and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7.1 then
+                        if v.Name == Mon and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7 then--8
                             v.HumanoidRootPart.CFrame = PosMon
-                            v.Humanoid.JumpPower = 0
+                            --[[v.Humanoid.JumpPower = 0
                             v.Humanoid.WalkSpeed = 0
                             v.Humanoid.NameDisplayDistance = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                            v.Humanoid:ChangeState(12)
+                            v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                            v.Humanoid:ChangeState(8)]]
                         end
                     end
                 end
@@ -432,18 +437,17 @@ end
     end)
 
 
-    Stats:Toggle("Auto Stats Strength\nออโต้อัพสแตสหมัด",_G.Strength,function(value)
-        _G.Strength = value
-    end)
-    spawn(function()
-        while task.wait() do
-            pcall(function()
-                if _G.Strength then
+Stats:Toggle("Auto Stats Strength\nออโต้อัพสแตสหมัด",_G.Strength,function(value)
+    _G.Strength = value
+end)
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.Strength then
                 local args = {
                     [1] = 1,
                     [2] = "Strength"
                 }
-
                 game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
             end
         end)
@@ -456,31 +460,28 @@ spawn(function()
     while task.wait() do
         pcall(function()
             if _G.Defense then
-            local args = {
-                [1] = 1,
-                [2] = "Defense"
-            }
-
-            game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
-
-                end
-            end)
-        end
-    end)
-
-    Stats:Toggle("Auto Stats Sword\nออโต้อัพสแตสดาบ",_G.Sword,function(value)
-        _G.Sword = value
-    end)
-    spawn(function()
-        while task.wait() do
-            pcall(function()
-                if _G.Sword then
                 local args = {
                     [1] = 1,
-                    [2] = "Sword"
+                    [2] = "Defense"
                 }
-
                 game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
+            end
+        end)
+    end
+end)
+
+Stats:Toggle("Auto Stats Sword\nออโต้อัพสแตสดาบ",_G.Sword,function(value)
+    _G.Sword = value
+end)
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.Sword then
+            local args = {
+                [1] = 1,
+                [2] = "Sword"
+            }
+            game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
             end
         end)
     end
@@ -493,12 +494,11 @@ spawn(function()
     while task.wait() do
         pcall(function()
             if _G.Gun then
-            local args = {
-                [1] = 1,
-                [2] = "Gun"                                                                                         
-            }
-
-            game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
+                local args = {
+                    [1] = 1,
+                    [2] = "Gun"                                                                                         
+                }
+                game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
             end
         end)
     end
@@ -511,12 +511,11 @@ spawn(function()
     while task.wait() do
         pcall(function()
             if _G.DemonFruit then
-            local args = {
-                [1] = 1,
-                [2] = "Demon Fruit"
-            }
-
-            game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
+                local args = {
+                    [1] = 1,
+                    [2] = "Demon Fruit"
+                }
+                game:GetService("ReplicatedStorage").Remotes.ToServer.StatMinus:InvokeServer(unpack(args))
             end
         end)
     end
@@ -539,10 +538,10 @@ Main:Button2("BoostFps",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/ScriptHubScripts/master/FPS%20Boost"))()
 end)
 Main:Button2("Buy Haki",function()
-Tween(CFrame.new(-1974.46802, 81.0637894, 2796.43237, 0.999794245, -0, -0.0202846304, 0, 1, -0, 0.0202846304, 0, 0.999794245))
+    Tween(CFrame.new(-1974.46802, 81.0637894, 2796.43237, 0.999794245, -0, -0.0202846304, 0, 1, -0, 0.0202846304, 0, 0.999794245))
 end)
 Main:Button2("Buy ??",function()
-Tween(CFrame.new(-910.83606, 81.3092194, 2489.90845, -0.722996235, 1.80372943e-08, -0.690851986, -4.09315284e-08, 1, 6.89447788e-08, 0.690851986, 7.81244367e-08, -0.722996235))
+    Tween(CFrame.new(-910.83606, 81.3092194, 2489.90845, -0.722996235, 1.80372943e-08, -0.690851986, -4.09315284e-08, 1, 6.89447788e-08, 0.690851986, 7.81244367e-08, -0.722996235))
 end)
 
 Ply = Library:Tab("Player")
@@ -578,6 +577,7 @@ Ply:Button("Refresh Player\nรีเฟสปุ่มเลือกผู้�
 end)
 
 Ply:Button("Teleport to Player\nวาปไปยังผู้เล่นที่เลือกไว้",function() --game:GetService("Workspace").PlayerCharacters.AxileoRBLX.HumanoidRootPart
+    
     Tween(game:GetService("Players")[_G.Settings.SelectPly].Character.HumanoidRootPart.CFrame)
     Tween(game:GetService("Workspace")[_G.Settings.SelectPly].HumanoidRootPart.CFrame)
     Tween(game:GetService("Workspace").PlayerCharacters[_G.Settings.SelectPly].HumanoidRootPart.CFrame)
