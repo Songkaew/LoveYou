@@ -271,6 +271,7 @@ spawn(function()
         end
     end
 end)
+
 spawn(function()
     while wait() do
         if _G.AutoFarm then
@@ -282,7 +283,7 @@ spawn(function()
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     PosMon = v.HumanoidRootPart.CFrame
-                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,7,0) * CFrame.Angles(math.rad(-80),0,0))-- -90
+                                    Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.6,4) * CFrame.Angles(math.rad(-80),0,0))-- -90
                                     if v.Humanoid:FindFirstChild("Animator") then
                                         v.Humanoid.Animator:Destroy()
                                     end
@@ -294,7 +295,7 @@ spawn(function()
                                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                             repeat wait()
                                                 PosMon = v.HumanoidRootPart.CFrame
-                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.9,0) * CFrame.Angles(math.rad(-90),0,0))
+                                                Tween(v.HumanoidRootPart.CFrame  * CFrame.new(0,6.6,4) * CFrame.Angles(math.rad(-90),0,0))
                                                 if v.Humanoid:FindFirstChild("Animator") then
                                                     v.Humanoid.Animator:Destroy()
                                                 end
@@ -364,41 +365,55 @@ function EquipWeapon(ToolSe)
     end
 end
 
-task.spawn(function()
-    while task.wait() do
-        if _G.AutoFarm then
-            pcall(function()
-                local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
-				Wx.deletetime = 0
-				Wx.Remotes = true
-				Wx.deletetime = 0
-				Wx.Click = 0
-				Wx.Combat = 0
-				Wx.animFinished = false
-				Wx.Fired = true
-				Wx.cooldown = true
-            end)
+    task.spawn(function()
+        while task.wait() do
+            if _G.AutoFarm then
+                pcall(function()
+                    local Wx = require(game:GetService("Players").LocalPlayer.Backpack.Combat.Move.CombatTackle)
+                    Wx.deletetime = 0
+                    Wx.Remotes = true
+                    Wx.deletetime = 0
+                    Wx.Click = 0
+                    Wx.Combat = 0
+                    Wx.animFinished = false
+                    Wx.Fired = true
+                    Wx.cooldown = true
+                end)
+            end
         end
-    end
-end)
+    end)
 
-spawn(function()
-    while wait() do
-        if _G.AutoFarm then
-            pcall(function()
-                EquipWeapon(_G.SelectWeapon)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-            end)
+    spawn(function()
+        while wait() do
+            if _G.AutoFarm then
+                pcall(function()
+                    EquipWeapon(_G.SelectWeapon)
+                    game:GetService'VirtualUser':CaptureController()
+                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                end)
+            end
         end
-    end
-end)
-
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.AutoFarm then
+                pcall(function()
+                    _G.AutoFarmPosMon = true
+                    wait(1)
+                    _G.AutoFarmPosMon = false
+                    wait(1)
+                end)
+            else
+                _G.AutoFarmPosMon = false
+            end
+        end
+    end)
 
     task.spawn(function()
         while task.wait() do
             pcall(function()
-                if _G.AutoFarm then
+                if _G.AutoFarmPosMon then
                     for i, v in pairs(game.Workspace.NPC.Fight[FMon]:GetChildren()) do
                         if v.Name == Mon and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7.1 then
                             v.HumanoidRootPart.CFrame = PosMon
@@ -407,8 +422,8 @@ end)
                             v.Humanoid.NameDisplayDistance = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            v.HumanoidRootPart.Size = Vector3.new(150,150,150)
-                            v.Humanoid:ChangeState(14)
+                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                            v.Humanoid:ChangeState(12)
                         end
                     end
                 end
@@ -506,6 +521,20 @@ spawn(function()
         end)
     end
 end)
+
+Main:Button2("Pirates",function()
+    local args = {
+        [1] = game:GetService("Teams").Pirates
+    }
+    game:GetService("ReplicatedStorage").Remotes.Start:FireServer(unpack(args))
+end)
+Main:Button2("Marines",function()
+    local args = {
+        [1] = game:GetService("Teams").Marines
+    }
+    game:GetService("ReplicatedStorage").Remotes.Start:FireServer(unpack(args))
+end)
+
 Main:Button2("BoostFps",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/ScriptHubScripts/master/FPS%20Boost"))()
 end)
@@ -514,42 +543,6 @@ Tween(CFrame.new(-1974.46802, 81.0637894, 2796.43237, 0.999794245, -0, -0.020284
 end)
 Main:Button2("Buy ??",function()
 Tween(CFrame.new(-910.83606, 81.3092194, 2489.90845, -0.722996235, 1.80372943e-08, -0.690851986, -4.09315284e-08, 1, 6.89447788e-08, 0.690851986, 7.81244367e-08, -0.722996235))
-end)
-
-
-Main:Toggle2("Pirates",_G.Pirates,function(value)
-_G.Pirates = value
-end)
-
-spawn(function()
-    while wait() do
-        if _G.Pirates then
-            pcall(function()
-                local args = {
-                    [1] = game:GetService("Teams").Pirates
-                }
-
-                game:GetService("ReplicatedStorage").Remotes.Start:FireServer(unpack(args))
-            end)
-        end
-    end
-end)
-
-Main:Toggle2("Marines",_G.Marines,function(value)
-    _G.Marines = value
-end)
-spawn(function()
-    while wait() do
-        if _G.Marines then
-            pcall(function()
-                local args = {
-                    [1] = game:GetService("Teams").Marines
-                }
-
-               game:GetService("ReplicatedStorage").Remotes.Start:FireServer(unpack(args))
-            end)
-        end
-    end
 end)
 
 Ply = Library:Tab("Player")
