@@ -169,11 +169,11 @@ local whitelist = {
 	["c27048c3692b"] = "60d7691c-8471-4014-b95e-c27048c3692", --เกมอัพ  daimokin 
 	["665ecb7ce797"] = "f9095981-912d-4f00-be4f-665ecb7ce797", --Dis thanapon052 40 THB
 	["027176714085"] = "11f5fd98-1531-4b55-9a4b-027176714085", --เกมอัพ
+	["83a93b38f3cb"] = "c79e57af-a4ea-43bb-a35a-83a93b38f3cb", --Dis nopparuj_wongsa 40 THB
 
 
 
 
- 
 
 
 
