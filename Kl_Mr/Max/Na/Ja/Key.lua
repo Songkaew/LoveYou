@@ -166,11 +166,13 @@ local whitelist = {
 	["61e287f77aba"] = "c81e079c-6abf-48c2-8856-61e287f77aba", 
 	["7bcf2b62d419"] = "724bf2a8-6544-4471-813a-7bcf2b62d419", -- รีHWId 15 บาท
 	["a8fef55ae9ad"] = "569777b4-7a49-4656-9ed7-a8fef55ae9ad", --Dis  trgracemega 50 บาท
+	["c27048c3692b"] = "60d7691c-8471-4014-b95e-c27048c3692", --เกมอัพ  daimokin 
 
 
+ 
 
 
-
+	
 	["Admin"] = "Admin" --Dis :  -- Game :  --THB 
 }
 
