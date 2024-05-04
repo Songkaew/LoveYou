@@ -1028,8 +1028,8 @@ if W3 then
 --Bushido Ape [Lv.5000]
 Main:Label("Auto Bushido Ape")
 
-Main:Toggle("Auto Bushido\nออโต้ฟามบอสลิง",_G.AutoBushido,function(value)
-    _G.AutoBushido = value
+Main:Toggle("Auto Bushido\nออโต้ฟามบอสลิง",_G.Settings.AutoBushido,function(value)
+    _G.Settings.AutoBushido = value
     SaveSettings()
 end)
 spawn(function()
@@ -1215,10 +1215,11 @@ end)
 
 Main:Label("Auto BigMom")
 
-Main:Toggle("Auto BigMom\nออโต้ฟามบิ๊กมำ",_G.AutoBigMon,function(value)
-    _G.AutoBigMon = value
+Main:Toggle("Auto BigMom\nออโต้ฟามบิ๊กมำ",_G.Settings.AutoBigMon,function(value)
+    _G.Settings.AutoBigMon = value
     SaveSettings()
 end)
+
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1248,6 +1249,10 @@ spawn(function()
     end
 end)
 
+
+
+
+
 Main:Label("Auto Farm SeaKing")
 Main:Toggle("Auto Farm SeaKing",_G.Settings.AutoFarmSeaKing,function(value)
     _G.Settings.AutoFarmSeaKing = value
@@ -1273,22 +1278,21 @@ spawn(function() -- SeaKing
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     AutoSkill()
                                     Haki()
-                                    if v.Humanoid.Health <= 0 then
-                                        if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
-                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
-                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
-                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame
-                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
-                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame
-                                        elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
-                                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
-                                        end
-                                    end
                                 until not _G.Settings.AutoFarmSeaKing or not v.Parent -- or v.Humanoid.Health <= 0
                             --end
                         end
                     end
-                else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
+                else 
+                  if game:GetService("Workspace").SeaMonster.SeaKing.Humanoid.Health <= 0 then
+                    if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
+                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame
+                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame
+                    elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
+                    end
                    print("QNA")-- Tween(CFrame.new(-670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844))
                 end
             end
@@ -2695,23 +2699,6 @@ spawn(function()
 end)
 
 Chack:Seperator("Chack Fruit Drop")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 print("A")
 
 function AntiKick()
