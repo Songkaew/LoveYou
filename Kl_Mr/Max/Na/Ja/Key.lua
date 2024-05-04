@@ -172,9 +172,15 @@ local whitelist = {
 	["83a93b38f3cb"] = "c79e57af-a4ea-43bb-a35a-83a93b38f3cb", --Dis nopparuj_wongsa 40 THB
 	["c11d1796aec2"] = "c3804b4c-0384-43c5-8fea-c11d1796aec2",--Dis pong07715
 	["659e5de5e0a0"] = "28591889-2c26-4550-866f-659e5de5e0a0",--รีHWID 15 Discord mimosa5615
+	["4eaee7a8e886"] = "aa7767ea-1443-44e6-b73e-4eaee7a8e886", --เกมอัพ kg_kengky
+
+
+
+
+
 
 --[[
-_G.register_key = "659e5de5e0a0"
+_G.register_key = "4eaee7a8e886"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 
