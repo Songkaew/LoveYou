@@ -1037,7 +1037,7 @@ spawn(function()
         pcall(function()
             if _G.Settings.AutoBushido then   
                 if game:GetService("Workspace").Monster.Boss:FindFirstChild("Bushido Ape [Lv. 5000]") then
-                    for i, v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
+                    for i,v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
                         if v.Name == "Bushido Ape [Lv. 5000]" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
@@ -1283,7 +1283,7 @@ spawn(function() -- SeaKing
                         end
                     end
                 else 
-                  if game:GetService("Workspace").SeaMonster.SeaKing.Humanoid.Health <= 0 then
+                if game:GetService("Workspace").SeaMonster.SeaKing.Humanoid.Health <= 0 then
                     if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
                     elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
@@ -1293,6 +1293,7 @@ spawn(function() -- SeaKing
                     elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
                     end
+                end
                    print("QNA")-- Tween(CFrame.new(-670.511047, 20.845871, -7412.35156, -0.996531844, -7.71622055e-08, 0.083212465, -8.09884781e-08, 1, -4.26064943e-08, -0.083212465, -4.9197979e-08, -0.996531844))
                 end
             end
