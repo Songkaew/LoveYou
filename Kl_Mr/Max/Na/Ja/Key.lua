@@ -174,6 +174,7 @@ local whitelist = {
 	["659e5de5e0a0"] = "28591889-2c26-4550-866f-659e5de5e0a0",--รีHWID 15 Discord mimosa5615
 	["4eaee7a8e886"] = "aa7767ea-1443-44e6-b73e-4eaee7a8e886", --เกมอัพ kg_kengky
 	["9b5e0d7efa26"] = "b8c86cd7-601f-4b44-819e-9b5e0d7efa26", --เกมอัพ
+	["43021dd28d2d"] = "6d3e0f9b-f88a-490e-af53-43021dd28d2d", --15 THB
 
 
 
