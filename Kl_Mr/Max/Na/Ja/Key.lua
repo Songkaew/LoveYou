@@ -175,6 +175,7 @@ local whitelist = {
 	["4eaee7a8e886"] = "aa7767ea-1443-44e6-b73e-4eaee7a8e886", --เกมอัพ kg_kengky
 	["9b5e0d7efa26"] = "b8c86cd7-601f-4b44-819e-9b5e0d7efa26", --เกมอัพ
 	["43021dd28d2d"] = "6d3e0f9b-f88a-490e-af53-43021dd28d2d", --15 THB
+	["1cb6a6cabedc"] = "113c01fb-c984-4857-a69e-1cb6a6cabedc", --40 THB kao7034
 
 
 
