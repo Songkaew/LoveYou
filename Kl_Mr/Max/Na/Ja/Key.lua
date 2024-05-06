@@ -176,14 +176,14 @@ local whitelist = {
 	["9b5e0d7efa26"] = "b8c86cd7-601f-4b44-819e-9b5e0d7efa26", --เกมอัพ
 	["43021dd28d2d"] = "6d3e0f9b-f88a-490e-af53-43021dd28d2d", --15 THB
 	["1cb6a6cabedc"] = "113c01fb-c984-4857-a69e-1cb6a6cabedc", --40 THB kao7034
-
+	["afa4f4e54ba9"] = "198c7cfa-118d-41e0-9810-afa4f4e54ba9", --40 THB
 
 
 
 
 
 --[[
-_G.register_key = "9b5e0d7efa26"
+_G.register_key = "afa4f4e54ba9"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 
