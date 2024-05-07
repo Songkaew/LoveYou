@@ -180,11 +180,13 @@ local whitelist = {
 	["598b8cda01fc"] = "3955e527-813c-433a-a552-598b8cda01fc", --40 THB
 	["933dd0fadcd0"] = "1ac601c5-55e8-4166-bd4b-933dd0fadcd0", --40 THB
 	["64541f56fb57"] = "6da9e79c-42bf-4ada-a48d-64541f56fb57", --40 THB
+	["e9c0f619a91d"] = "7e717640-625c-49fa-b24e-e9c0f619a91d", --40THB
+
 
 
 
 --[[
-_G.register_key = "64541f56fb57"
+_G.register_key = "e9c0f619a91d"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/Test/main/README.md"))() 
 --]]
 
