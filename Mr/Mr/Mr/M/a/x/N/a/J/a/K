@@ -62,12 +62,12 @@ _G.Settings = {
 	SafeAt = 40,
 	StopHeal = 65,
 
-	DistanceMob = 7,
+	DistanceMob = 8,
 	MaxPoint = true,
 	AntiSit = true,
 	Haki = true,
 	GanX = 0,
-	GanY = 7,
+	GanY = 8,
 	GanZ = 0,
 	GanAngles = 90,
 	---------
