@@ -678,7 +678,7 @@ end
 
 	local notif = loadstring(game:HttpGet("https://raw.githubusercontent.com/insanedude59/notiflib/main/main"))()
 	local library = loadstring(game:HttpGet("https://pastebin.com/raw/CJ15intv"))()
-	local Window = library:CreateWindow("Xez Shop | ".."KL".." | by MrMaxNaJa")
+	local Window = library:CreateWindow("NTR Hub | ".."KL".." | by MrMaxNaJa")
 	local Mainnnnnnn = Window:CreateTab("Main")
 	local Statssssssssssss = Window:CreateTab("Stats")
 	local Teleportttttttt = Window:CreateTab("Teleport-Shop")
