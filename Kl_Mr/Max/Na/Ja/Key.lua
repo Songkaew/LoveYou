@@ -184,6 +184,7 @@ local whitelist = {
 	["cea0b481df11"] = "9b69d3de-03d1-4923-97c0-cea0b481df11", --40 THB
 	["37ceae3c9934"] = "b5a30ef5-c820-4817-a6f4-37ceae3c9934", --40THB
 	["d8fbba465641"] = "d4df1432-f1ca-452b-be2c-d8fbba465641", --40THB
+	["6354ee0f030e"] = "2ee1f7ea-4fca-467a-8dd3-6354ee0f030e", --40THB
 
 
 
