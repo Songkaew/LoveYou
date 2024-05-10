@@ -8,6 +8,7 @@ local ClientId = game:GetService("RbxAnalyticsService"):GetClientId() local whit
 
 local whitelist = {
 	["b404c5c6087c"] = "9bd7aa38-b0b9-4c20-afa4-b404c5c6087c",--ErrorCode:34
+
 }
 
 
@@ -30,13 +31,15 @@ if getgenv().key == Hxven then--ErrorCode:45
     else
 		getgenv().ChackebHookErrorCode_34 = true
 		print("whitelist|ErrorCode:34\nError:ClientId")
-		setclipboard(game:GetService("RbxAnalyticsService"):GetClientId())
+		setclipboard('getgenv().key = "'..(Hxven)..'"\n loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/M/main/KL-NTR-Hub.lua"))() \n whitelist : '..(ClientId))
+		--setclipboard(game:GetService("RbxAnalyticsService"):GetClientId())
 		print("whitelist|ErrorCode:34\nwhitelist|ทักหาแอดมิน")
     end
 else
 	getgenv().ChackebHookErrorCode_45 = true
 	print("whitelist|ErrorCode:45\nError:ClientId")
-	setclipboard(game:GetService("RbxAnalyticsService"):GetClientId())
+	setclipboard('getgenv().key = "'..(Hxven)..'"\n loadstring(game:HttpGet("https://raw.githubusercontent.com/NaJaxHub/M/main/KL-NTR-Hub.lua"))() \n whitelist : '..(ClientId))
+	--setclipboard(game:GetService("RbxAnalyticsService"):GetClientId())
 	print("whitelist|ErrorCode:45\nwhitelist|ทักหาแอดมิน")
 end wait(1)
 
