@@ -188,6 +188,7 @@ local whitelist = {
 	["acfebce356c9"] = "c1acdda5-4175-458a-a490-acfebce356c9", --40 THB
 	["9c30cbf0d843"] = "f7ec0bdb-96de-4338-8da6-9c30cbf0d843",--key
 	["07906ffee740"] = "61b7e055-0b79-4768-8a05-07906ffee740",
+	["45f9470a9a89"] = "42e41085-b27c-43ea-aaa6-45f9470a9a89", --40
 
 
 
