@@ -708,11 +708,91 @@ function SaveSettings()
 		return warn("Status : Undetected Executor")
 	end
 end
+
 wait(0.01)
 LoadSettings()
 wait(0.01)
 else
 	wait(0.15)
+end
+
+
+function Hop()
+	local Dy = game.PlaceId
+	local Iy = {}
+	local wy = ""
+	local jy = os.date("!*t").hour
+	local Py = false
+	function TPReturner()
+		local a
+		if wy == "" then
+			a =
+				game.HttpService:JSONDecode(
+				game:HttpGet("https://games.roblox.com/v1/games/" .. Dy .. "/servers/Public?sortOrder=Desc&limit=100")
+			)
+		else
+			a =
+				game.HttpService:JSONDecode(
+				game:HttpGet(
+					"https://games.roblox.com/v1/games/" .. Dy .. "/servers/Public?sortOrder=Desc&limit=100&cursor=" .. wy
+				)
+			)
+		end
+		local Xs = ""
+		if a.nextPageCursor and a.nextPageCursor ~= "null" and a.nextPageCursor ~= nil then
+			wy = a.nextPageCursor
+		end
+		local Os = 0
+		for cW, wW in pairs(a.data) do
+			local TW = true
+			Xs = tostring(wW.id)
+			if tonumber(wW.maxPlayers) > tonumber(wW.playing) then
+				for uO, ZO in pairs(Iy) do
+					if Os ~= 0 then
+						if Xs == tostring(ZO) then
+							TW = false
+						end
+					else
+						if tonumber(jy) ~= tonumber(ZO) then
+							local om =
+								pcall(
+								function()
+									Iy = {}
+									table.insert(Iy, jy)
+								end
+							)
+						end
+					end
+					Os = Os + 1
+				end
+				if TW == true then
+					table.insert(Iy, Xs)
+					wait()
+					pcall(
+						function()
+							wait()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(Dy, Xs, i)
+						end
+					)
+					wait(5)
+				end
+			end
+		end
+	end
+
+	if getgenv().Teleport == nil then
+		getgenv().Teleport = function()
+			while task.wait() do
+				pcall(function()
+					TPReturner()
+					if wy ~= "" then
+						TPReturner()
+					end
+				end)
+			end
+		end
+	end
+	getgenv().Teleport()
 end
 randomNumberUI = math.random(1,4)
 _G.UIB = "17075379093"
@@ -1221,32 +1301,32 @@ Main:Toggle("Auto BigMom\nออโต้ฟามบิ๊กมำ",_G.Setting
 end)
 
 spawn(function()
-    while wait() do  
-        pcall(function()
-            if _G.Settings.AutoBigMon then  
-                if game:GetService("Workspace").Monster.Boss:FindFirstChild("Ms.Mother [Lv. 7500]") then
-                    for i, v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
-                        if v.Name == "Ms.Mother [Lv. 7500]" then
-                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    AutoSkill()
-                                    EquipWeapon(_G.Settings.SelectWeapon)
-                                    Haki()
-                                    Cl()
-                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                until not _G.Settings.AutoBigMon or not v.Parent or v.Humanoid.Health <= 0
-                            --end
-                        end
-                    end
-                end
-            end
-        end)
-    end
+	while wait() do  
+		pcall(function()
+			if _G.Settings.AutoBigMon then  
+				if game:GetService("Workspace").Monster.Boss:FindFirstChild("Ms. Mother [Lv. 7500]") then
+					for i, v in pairs(ame:GetService("Workspace").Monster.Boss:GetChildren()) do
+						if v.Name == "Ms. Mother [Lv. 7500]" then
+							--if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+								repeat task.wait()
+									AutoSkill()
+									EquipWeapon(_G.Settings.SelectWeapon)
+									Haki()
+									Cl()
+									Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
+									v.HumanoidRootPart.CanCollide = false
+									v.Humanoid.WalkSpeed = 0
+									v.Head.CanCollide = false
+									PosMon =  v.HumanoidRootPart.CFrame
+									v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+								until not _G.Settings.AutoBigMon or not v.Parent or v.Humanoid.Health <= 0
+							--end
+						end
+					end
+				end
+			end
+		end)
+	end
 end)
 
 
@@ -1301,6 +1381,8 @@ spawn(function() -- SeaKing
     end
 end)
 
+---12465.7666, 18.7575169, -2334.94141, 0.0205248594, -0, -0.999789357, 0, 1, -0, 0.999789357, 0, 0.0205248594
+---12464.8066, 21.7249298, -2334.81055, 0.016664369, -3.59973349e-08, -0.999861121, 3.46885791e-08, 1, -3.54241898e-08, 0.999861121, -3.40934392e-08, 0.016664369
 spawn(function()
     while wait() do  
         pcall(function()
@@ -1309,6 +1391,7 @@ spawn(function()
                     for i, v in pairs(game:GetService("Workspace").SeaMonster.SeaKing:GetChildren()) do
                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                             repeat wait()
+								AutoSkill()
                                 EquipWeapon(_G.Settings.SelectWeapon)
                                 Haki()
                                 Tween(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -1316,13 +1399,19 @@ spawn(function()
                                 AutoSkill()
                                 if v.Humanoid.Health <= 0 then
                                     if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
-                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame
+                                    	Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame)--CFrame.new(12465.7666, 18.7575169, -2334.94141, 0.0205248594, -0, -0.999789357, 0, 1, -0, 0.999789357, 0, 0.0205248594)--
                                     elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
-                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame
+                                    	Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame)
                                     elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
-                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame
+                                    	Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame)
                                     elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
-                                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame
+                                    	Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame)
+									else
+										Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame)
+										Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame)
+										Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame)
+										Tween(game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame)
+										
                                     end
                                 end
                             until not _G.Settings.AutoFarmSeaKing or not v.Parent -- or v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.MainGui.QuestBoard.Visible == false
@@ -1339,66 +1428,53 @@ Main:Toggle("Auto Ghost Ship",_G.Settings.GhostShip,function(value)
 	SaveSettings()
 end)
 spawn(function()
-    while wait() do  
-        pcall(function()
-            if _G.Settings.GhostShip then 
-                if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
-                    for i, v in pairs(game:GetService("Workspace").GhostMonster:GetChildren()) do
-                        if v.Name == "Ghost Ship" then
-                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    AutoSkill()
-                                    EquipWeapon(_G.Settings.SelectWeapon)
-                                    Haki()
-                                    Cl()
-                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                until not _G.Settings.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
-                            --end
-                        end
-                    end
-                end
-            end
-        end)
-    end
+	while wait() do  
+		pcall(function()
+			if _G.Settings.GhostShip then 
+				if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
+					for i,v in pairs(game:GetService("Workspace").GhostMonster:GetChildren()) do
+						if v.Name == "Ghost Ship" then
+							repeat wait()
+								AutoSkill()
+								EquipWeapon(_G.Settings.SelectWeapon)
+								Haki()
+								Cl()
+								Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,8,8))--CFrame.new(0,0,8)
+								v.HumanoidRootPart.CanCollide = false
+								v.Humanoid.WalkSpeed = 0
+								v.Head.CanCollide = false
+								PosMon =  v.HumanoidRootPart.CFrame
+								v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+							until not _G.Settings.GhostShip or not v.Parent or v.Humanoid.Health <= 0
+						end
+					end
+				else
+					if game:GetService("Workspace"):FindFirstChild("Chest1") then
+						Tween(game:GetService("Workspace").Chest1.RootPart.CFrame)
+					elseif game:GetService("Workspace"):FindFirstChild("Chest2") then
+						Tween(game:GetService("Workspace").Chest2.RootPart.CFrame)
+					elseif game:GetService("Workspace"):FindFirstChild("Chest3") then
+						Tween(game:GetService("Workspace").Chest3.RootPart.CFrame)
+					elseif game:GetService("Workspace"):FindFirstChild("Chest4") then
+						Tween(game:GetService("Workspace").Chest4.RootPart.CFrame)
+					elseif game:GetService("Workspace"):FindFirstChild("Chest5") then
+						Tween(game:GetService("Workspace").Chest5.RootPart.CFrame)
+					elseif game:GetService("Workspace"):FindFirstChild("Chest6") then
+						Tween(game:GetService("Workspace").Chest6.RootPart.CFrame)
+					else
+						Tween(game:GetService("Workspace").Chest1.RootPart.CFrame)
+						Tween(game:GetService("Workspace").Chest2.RootPart.CFrame)
+						Tween(game:GetService("Workspace").Chest3.RootPart.CFrame)
+						Tween(game:GetService("Workspace").Chest4.RootPart.CFrame)
+						Tween(game:GetService("Workspace").Chest5.RootPart.CFrame)
+						Tween(game:GetService("Workspace").Chest6.RootPart.CFrame)
+					end
+				end
+			end
+		end)
+	end
 end)
---game:GetService("Workspace").Chest3.RootPart
---game:GetService("Workspace").Chest2.RootPart
---game:GetService("Workspace").Chest1.RootPart
-spawn(function()
-    while wait() do  
-        pcall(function()
-            if _G.Settings.GhostShip then 
-                if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
-                    for i, v in pairs(game:GetService("Workspace").GhostMonster:GetChildren()) do
-                        if v.Name == "Ghost Ship" then
-                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    EquipWeapon(_G.Settings.SelectWeapon)
-                                    Haki()
-                                    Cl()
-                                    AutoSkill()
-                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))--CFrame.new(0,0,8)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    PosMon =  v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                until not _G.Settings.GhostShipi or not v.Parent or v.Humanoid.Health <= 0
-                            --end
-                        end
-                    end
-                else  
-                    Tween(CFrame.new(-2312.24902, 15.8045273, 4929.13525, 0.0706309304, 0.00120048679, -0.997501791, -0.00142576592, 0.99999845, 0.00110253599, 0.997501493, 0.00134433107, 0.0706325248))
-                end
-            end
-        end)
-    end
-end)
+
 Main:Label("Auto King Samurai")
 Main:Toggle("Auto King Samurai",_G.Settings.AutoKingSamurai,function(value)
     _G.Settings.AutoKingSamurai = value
@@ -1455,7 +1531,22 @@ spawn(function()
 end)--game:GetService("Workspace").SeaMonster
 --game:GetService("Workspace").SeaMonster.HydraSeaKing.HumanoidRootPart
 
-
+function GetHydra()
+	for i,v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
+		if v.Name:find("Hydra") then
+			return v
+		end
+	end
+	return false
+end
+function getHydraIsland()
+	for i,v in pairs(game:GetService("Workspace").Island:GetChildren()) do
+		if v.Name:find("Sea King") then
+			return true
+		end
+	end
+	return false
+end
 Main:Label("Auto HydraSeaKing")
 Main:Toggle("Auto HydraSeaKing",_G.Settings.AutoHydraSeaKing,function(value)
     _G.Settings.AutoHydraSeaKing = value
@@ -1467,8 +1558,10 @@ spawn(function()
         pcall(function()
             if _G.Settings.AutoHydraSeaKing then
                 if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
-                        if v.Name == "HydraSeaKing" then
+					if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing").Humanoid.Health > 0 then 
+							PosMonHydra = game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing"):GetModelCFrame()
+							for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
+								if v.Name == "HydraSeaKing" then
                             --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                 repeat wait()
                                     EquipWeapon(_G.Settings.SelectWeapon)
@@ -1480,41 +1573,52 @@ spawn(function()
                                     PosMon =  v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                     AutoSkill()
-                                    
                                     Haki()
-                                until not _G.Settings.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
-                            --end
-                        end
-                    end
-                else  --3396.95801, 8.73243332, 7341.67334, 0.958037913, -0, -0.286641508, 0, 1, -0, 0.286641508, 0, 0.958037913
-                    Tween(CFrame.new(-12426.9854, 66.7678375, -2339.03223, -0.58515799, 0, 0.810919285, 0, 1, 0, -0.810919285, 0, -0.58515799))
+                                until not _G.Settings.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0 
+								if getHydraIsland() == true then
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Island["Sea King "..tostring(getHydraIName())].HydraStand.CFrame * CFrame.new(0,2,-2)
+								else
+									if _G.Settings.AutoHydraSeaKingHop and NewWorld then
+										Hop()
+									end   
+								end
+							end 
+                        end-- pcall
+					end
                 end
             end
         end)
     end
 end)
+
+
 spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.Settings.AutoHydraSeaKing then
-                if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing") then
-                    for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
-                        if v.Name == "HydraSeaKing" then
-                            --if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat wait()
-                                    EquipWeapon(_G.Settings.SelectWeapon)
-                                    Haki()
-                                    Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
-                                    Cl()
-                                    AutoSkill()
-                                until not _G.Settings.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
-                            --end
-                        end
-                    end
-                end
-            end
-        end)
-    end
+	while wait() do
+		pcall(function()
+			if _G.Settings.AutoHydraSeaKing then
+				if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing") then
+					if game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing").Humanoid.Health > 0 then 
+						pcall(function()
+							PosMonHydra = game:GetService("Workspace").SeaMonster:FindFirstChild("HydraSeaKing"):GetModelCFrame()
+							for i, v in pairs(game:GetService("Workspace").SeaMonster:GetChildren()) do
+								if v.Name == "HydraSeaKing" then
+									--if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+										repeat wait()
+											EquipWeapon(_G.Settings.SelectWeapon)
+											Haki()
+											Tween(v.HumanoidRootPart.CFrame * (MethodFarm))-- CFrame.new(0,0,8)
+											Cl()
+											AutoSkill()
+										until not _G.Settings.AutoHydraSeaKing or not v.Parent or v.Humanoid.Health <= 0
+									--end
+								end
+							end
+						end)
+					end
+				end
+			end
+		end)
+	end
 end)
 
 end
