@@ -12,7 +12,7 @@ local whitelist = {
 	["b1e41056f814"] = "f7e890e2-f055-4748-9a7e-b1e41056f814",--shadow6._
 	["b08822dcdb86"] = "df53c9ba-dc47-40f5-a261-b08822dcdb86",--5555555555555asdsad
 	["e33c33b8343c"] = "c17ea44b-65f3-4a0f-866e-e33c33b8343c", -- เกมอัพ heartbrokeeeeeeeee
-	--["c708948ba987"] = "2c81807f-83b2-41d7-abf4-c6b750b97132", -- เกมอัพ ballnaja7162
+	["c6b750b97132"] = "2c81807f-83b2-41d7-abf4-c6b750b97132", -- เกมอัพ ballnaja7162
 
 
 }
