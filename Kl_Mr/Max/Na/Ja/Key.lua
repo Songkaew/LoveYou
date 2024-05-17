@@ -199,6 +199,7 @@ local whitelist = {
 	["65b0557c3164"] = "fa17d4c7-f23b-4c97-be1c-65b0557c3164",
 	["fca992a7634d"] = "cad3ab42-7b84-4cdc-81f1-fca992a7634d",
 	["7ea56af35a5a"] = "33203cd1-d4e8-43fa-9507-7ea56af35a5a",
+	["00722af18be2"] = "fa9e69a0-ce1e-4118-95ed-00722af18be2",
 
 
 
