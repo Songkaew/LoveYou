@@ -210,6 +210,10 @@ local whitelist = {
 	["8d300c2e1c46"] = "ee16817c-30fe-4a93-8394-8d300c2e1c46",
 	["0128a8e327a9"] = "05235c49-2603-4ac3-816e-0128a8e327a9",
 	["bdd62fa5ac1b"] = "49df8735-6c38-4724-a034-bdd62fa5ac1b",
+	["4ab5d5442ea5"] = "b92b8702-22d7-4deb-b0d0-4ab5d5442ea5",
+
+
+
 
 --[[
 _G.register_key = "bdd62fa5ac1b"
